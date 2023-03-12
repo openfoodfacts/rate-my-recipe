@@ -10,7 +10,7 @@ type RecipeStateType = {
   servings: number;
   ingredients: {
     id: IngredientId;
-    quantity: number;
+    quantity?: number;
   }[];
   instructions: string[];
 };
@@ -46,8 +46,15 @@ const recipeSlice = createSlice<
 >({
   name: "recipe",
   initialState: {
-    recipes: {},
-    ids: [],
+    recipes: {
+      empty_recipe: {
+        ingredients: [{ id: "chicken" }, { id: "porc" }],
+        servings: 4,
+        instructions: [],
+      },
+    },
+    ids: ["empty_recipe"],
+    currentRecipeId: "empty_recipe",
   },
   reducers: {
     /**
@@ -116,3 +123,11 @@ const recipeSlice = createSlice<
 });
 
 export default recipeSlice;
+
+export const {
+  incrementServings,
+  decrementServings,
+  removeIngredient,
+  addIngredient,
+  updateIngredient,
+} = recipeSlice.actions;

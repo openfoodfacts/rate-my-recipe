@@ -1,6 +1,7 @@
 import "./globals.css";
 import "@fontsource/public-sans";
 import StateProvider from "../redux/StateProvider";
+import AppBar from "@/components/AppBar";
 
 export const metadata = {
   title: "Rate My Recipe",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StateProvider>{children}</StateProvider>
+        <StateProvider>
+          <AppBar />
+          {children}
+        </StateProvider>
       </body>
     </html>
   );
