@@ -1,20 +1,25 @@
 "use client";
 
 import * as React from "react";
-import Card from "@mui/joy/Card";
 
+import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import IconButton from "@mui/joy/IconButton";
+import Tooltip from "@mui/joy/Tooltip";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import {
   selectCurrentIngredientsIds,
   selectAvailableIngredients,
 } from "../redux/selectors";
-import { Box, Button, IconButton, Tooltip } from "@mui/joy";
-import { addIngredient, removeIngredient } from "@/redux/reducers/recipes";
 
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+
+import { addIngredient, removeIngredient } from "@/redux/reducers/recipes";
 import { IngredientTypes } from "@/redux/reducers/ingredients";
 
 const ingredientTypes: IngredientTypes[] = [

@@ -5,12 +5,18 @@ import Sheet from "@mui/joy/Sheet";
 import List from "@mui/joy/List";
 import ListItem from "@mui/joy/ListItem";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Box from "@mui/joy/Box";
+import IconButton from "@mui/joy/IconButton";
+import Tooltip from "@mui/joy/Tooltip";
 import Typography from "@mui/joy/Typography";
+
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+
 import { selectCurrentIngredients } from "../redux/selectors";
-import { Box, IconButton, Tooltip } from "@mui/joy";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import { removeIngredient } from "@/redux/reducers/recipes";
 
 export default function IngredientList({ recipeId }: { recipeId?: string }) {

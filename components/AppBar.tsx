@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mui/joy";
+import Box from "@mui/joy/Box";
 
 const AppBar = () => (
   <Box
