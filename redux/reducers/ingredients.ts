@@ -15,7 +15,7 @@ export type IngredientType = {
   // Type of the food.
   type: IngredientTypes;
   quantityUnit: string;
-  quantityOptions?: number[];
+  quantityOptions: number[];
   decorator?: string;
 };
 
