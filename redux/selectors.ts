@@ -30,3 +30,20 @@ export const selectAvailableIngredients = createSelector(
       .filter((id) => ingredients.values[id].type === ingredientType)
       .map((id) => ingredients.values[id])
 );
+
+export const selectUnusedIngredients = createSelector(
+  (state: RootState) => state.ingredients,
+  (state: RootState, ingredientType: string) => ingredientType,
+  (state: RootState, ingredientType: string, recipeId?: string) =>
+    state.recipe.recipes[
+      state.recipe.currentRecipeId ?? recipeId ?? ""
+    ].ingredients.map((ingredient) => ingredient.id),
+  (ingredients, ingredientType, usedIds) =>
+    ingredients.ids
+      .filter(
+        (id) =>
+          ingredients.values[id].type === ingredientType &&
+          !usedIds.includes(id)
+      )
+      .map((id) => ingredients.values[id])
+);

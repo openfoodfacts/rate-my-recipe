@@ -96,11 +96,16 @@ const recipeSlice = createSlice<
      */
     addIngredient: (
       state,
-      action: PayloadAction<ReciepeAction<{ newIngredient: any }>>
+      action: PayloadAction<
+        ReciepeAction<{ ingredientId: string; quantity: number }>
+      >
     ) => {
       const recipeId = getRecipeId(state, action);
 
-      state.recipes[recipeId].ingredients.push(action.payload.newIngredient);
+      state.recipes[recipeId].ingredients.push({
+        id: action.payload.ingredientId,
+        quantity: action.payload.quantity,
+      });
     },
     /**
      * Update the ingredient quanity
