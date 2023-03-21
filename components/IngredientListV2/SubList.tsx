@@ -74,6 +74,7 @@ const SubList = ({
               <FormLabel>Ingredient</FormLabel>
               <Select
                 value={ingredientAddtition.ingredientIndex}
+                // @ts-ignore
                 onChange={(_, newValue: number) => {
                   setIngredientAddtition((prev) => ({
                     ...prev,
@@ -93,8 +94,10 @@ const SubList = ({
               <FormLabel>Quantity</FormLabel>
               <Select
                 value={ingredientAddtition.quantityIndex}
+                // @ts-ignore
                 onChange={(_, newValue: number) => {
                   setIngredientAddtition((prev) => ({
+                    ingredientIndex: 0, // to remove (here to satisfy TS)
                     ...prev,
                     quantityIndex: newValue,
                   }));

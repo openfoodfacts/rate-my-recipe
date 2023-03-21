@@ -85,6 +85,7 @@ const IngredientItem = (
               <FormLabel>Quantity</FormLabel>
               <Select
                 value={editValues.quantity}
+                // @ts-ignore
                 onChange={(_, newValue: number) => {
                   setEditValues((prev) => ({
                     ...prev,
