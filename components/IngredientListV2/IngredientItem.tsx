@@ -16,13 +16,16 @@ import Button from "@mui/joy/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { removeIngredient, updateIngredient } from "@/redux/reducers/recipes";
 import { IngredientType } from "@/redux/reducers/ingredients";
+import { selectUnusedIngredients } from "@/redux/selectors";
+import { RootState } from "@/redux/store";
+import { availableIngredients } from "@/data/ingredients";
 
 const IngredientItem = (
-  props: IngredientType & { quantity?: number; recipeId?: string }
+  props: IngredientType & { quantity?: number; recipeId: string }
 ) => {
   const {
     id,
@@ -30,14 +33,33 @@ const IngredientItem = (
     quantityUnit,
     quantityOptions,
     recipeId,
+    type,
     quantity = props.quantityOptions[0],
   } = props;
 
   const [editValues, setEditValues] = React.useState<
-    undefined | { quantity?: number }
+    undefined | { quantityIndex: number; ingredientIndex: number }
   >(undefined);
 
+  const unusedIngredients = useSelector((state: RootState) =>
+    selectUnusedIngredients(state, type, recipeId)
+  );
+  const availableIngredientOptions = [
+    { id, decorator, quantityUnit, quantityOptions },
+    ...unusedIngredients,
+  ];
+
   const dispatch = useDispatch();
+
+  const currentQuantityOptions =
+    editValues?.ingredientIndex === undefined
+      ? quantityOptions
+      : availableIngredientOptions[editValues.ingredientIndex].quantityOptions;
+
+  const currentQuantityUnit =
+    editValues?.ingredientIndex === undefined
+      ? quantityUnit
+      : availableIngredientOptions[editValues.ingredientIndex].quantityUnit;
 
   return (
     <ListItem key={id}>
@@ -59,9 +81,18 @@ const IngredientItem = (
           <Box>
             <Tooltip title="Edit" sx={{ mr: 1 }}>
               <IconButton
+                size="sm"
                 onClick={() => {
                   setEditValues((prev) =>
-                    prev === undefined ? { quantity: quantity } : undefined
+                    prev === undefined
+                      ? {
+                          quantityIndex: Math.max(
+                            0,
+                            quantityOptions.indexOf(quantity)
+                          ),
+                          ingredientIndex: 0,
+                        }
+                      : undefined
                   );
                 }}
               >
@@ -70,6 +101,7 @@ const IngredientItem = (
             </Tooltip>
             <Tooltip title="Remove">
               <IconButton
+                size="sm"
                 onClick={() => {
                   dispatch(removeIngredient({ ingredientId: id }));
                 }}
@@ -81,25 +113,55 @@ const IngredientItem = (
         </Box>
         {editValues !== undefined && (
           <Box>
-            <FormControl sx={{ width: 200 }}>
-              <FormLabel>Quantity</FormLabel>
-              <Select
-                value={editValues.quantity}
-                // @ts-ignore
-                onChange={(_, newValue: number) => {
-                  setEditValues((prev) => ({
-                    ...prev,
-                    quantity: newValue,
-                  }));
-                }}
-              >
-                {quantityOptions.map((option) => (
-                  <Option value={option} key={option}>
-                    {quantityUnit ? `${option} (${quantityUnit})` : option}
-                  </Option>
-                ))}
-              </Select>
-            </FormControl>
+            <Box
+              sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}
+            >
+              <FormControl sx={{ width: "48%" }}>
+                <FormLabel>Ingredient</FormLabel>
+                <Select
+                  value={editValues.ingredientIndex}
+                  // @ts-ignore
+                  onChange={(_, newValue: number) => {
+                    setEditValues((prev) => ({
+                      ...prev,
+                      ingredientIndex: newValue,
+                      quantityIndex: 0,
+                    }));
+                  }}
+                >
+                  {availableIngredientOptions.map((option, optionIndex) => (
+                    <Option value={optionIndex} key={option.id}>
+                      {option.id}
+                    </Option>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl sx={{ width: 200 }}>
+                <FormLabel>Quantity</FormLabel>
+                <Select
+                  value={editValues.quantityIndex}
+                  // @ts-ignore
+                  onChange={(_, newValue: number) => {
+                    setEditValues((prev) =>
+                      prev === undefined
+                        ? prev
+                        : {
+                            ...prev,
+                            quantityIndex: newValue,
+                          }
+                    );
+                  }}
+                >
+                  {currentQuantityOptions.map((option, optionIndex) => (
+                    <Option value={optionIndex} key={option}>
+                      {quantityUnit
+                        ? `${option} (${currentQuantityUnit})`
+                        : option}
+                    </Option>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
             <Box sx={{ mt: 2, display: "flex" }}>
               <Button
                 fullWidth
@@ -114,11 +176,17 @@ const IngredientItem = (
                 fullWidth
                 variant="soft"
                 onClick={() => {
+                  const newIngredientId =
+                    availableIngredientOptions[editValues.ingredientIndex].id;
+                  const newQuantity =
+                    currentQuantityOptions[editValues?.quantityIndex];
+
                   dispatch(
                     updateIngredient({
                       recipeId,
                       ingredientId: id,
-                      quantity: editValues?.quantity,
+                      quantity: newQuantity,
+                      newIngredientId,
                     })
                   );
                   setEditValues(undefined);

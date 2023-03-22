@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  configureStore,
-  PayloadAction,
-  SliceCaseReducers,
-} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import recipeSlice from "./reducers/recipes";
 import ingredientsSlice from "./reducers/ingredients";
 
@@ -15,9 +10,6 @@ const store = configureStore({
     ingredients: ingredientsSlice.reducer,
   },
 });
-
-// Can still subscribe to the store
-store.subscribe(() => console.log(store.getState()));
 
 export type RootState = ReturnType<typeof store.getState>;
 

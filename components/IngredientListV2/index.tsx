@@ -6,13 +6,12 @@ import List from "@mui/joy/List";
 import ListItem from "@mui/joy/ListItem";
 import Typography from "@mui/joy/Typography";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-
-import { selectCurrentIngredients } from "@/redux/selectors";
-
 import { IngredientTypes } from "@/redux/reducers/ingredients";
 import SubList from "./SubList";
+import { IngredientsFooter } from "./IngredientsFooter";
+import { AddIngredient } from "./AddIngredient";
+import { Box, IconButton } from "@mui/joy";
+import Clear from "@mui/icons-material/Clear";
 
 const ingredientTypes: IngredientTypes[] = [
   "VPO",
@@ -23,13 +22,39 @@ const ingredientTypes: IngredientTypes[] = [
   "condiment",
 ];
 
-export default function IngredientList({ recipeId }: { recipeId?: string }) {
-  const ingredients = useSelector((state: RootState) =>
-    selectCurrentIngredients(state, recipeId)
-  );
-
+export default function IngredientList({
+  recipeId,
+  copy,
+  remove,
+}: {
+  recipeId: string;
+  copy: () => void;
+  remove?: () => void;
+}) {
   return (
-    <Sheet sx={{ width: 450, p: 2 }}>
+    <Sheet
+      sx={{
+        width: 350,
+        p: 2,
+        mx: 1,
+        height: "calc(100vh - 84px)",
+        maxHeight: "calc(100vh - 84px)",
+        overflowY: "auto",
+        borderRadius: 8,
+      }}
+    >
+      <Box
+        sx={{
+          height: 32,
+          textAlign: "right",
+        }}
+      >
+        {remove === undefined ? null : (
+          <IconButton onClick={remove} size="sm" variant="plain">
+            <Clear />
+          </IconButton>
+        )}
+      </Box>
       <Typography
         id="decorated-list-demo"
         level="body3"
@@ -45,11 +70,12 @@ export default function IngredientList({ recipeId }: { recipeId?: string }) {
       >
         {ingredientTypes.map((ingredientType) => (
           <React.Fragment key={ingredientType}>
-            <ListItem>{ingredientType}</ListItem>
             <SubList ingredientType={ingredientType} recipeId={recipeId} />
           </React.Fragment>
         ))}
       </List>
+      <AddIngredient recipeId={recipeId} />
+      <IngredientsFooter recipeId={recipeId} copy={copy} />
     </Sheet>
   );
 }

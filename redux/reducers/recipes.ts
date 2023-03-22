@@ -1,6 +1,5 @@
 import {
   createSlice,
-  configureStore,
   PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
@@ -21,23 +20,7 @@ type RecipesStateType = {
   currentRecipeId?: string;
 };
 
-type ReciepeAction<CustomT> = CustomT & { recipeId?: string };
-
-const getRecipeId = (
-  state: RecipesStateType,
-  action: PayloadAction<ReciepeAction<{}>>
-) => {
-  const recipeId = action.payload.recipeId ?? state.currentRecipeId;
-  if (recipeId === undefined) {
-    throw new Error("recipeId is unfedinef");
-  }
-  if (state.recipes[recipeId] === undefined) {
-    throw new Error(
-      `recipeId "${recipeId}" does not correspond to a known receipe`
-    );
-  }
-  return recipeId;
-};
+type ReciepeAction<CustomT> = CustomT & { recipeId: string };
 
 const recipeSlice = createSlice<
   RecipesStateType,
@@ -62,7 +45,7 @@ const recipeSlice = createSlice<
      * @param state
      */
     incrementServings: (state, action) => {
-      const recipeId = getRecipeId(state, action);
+      const recipeId = action.payload.recipeId;
       state.recipes[recipeId].servings += 1;
     },
     /**
@@ -70,7 +53,7 @@ const recipeSlice = createSlice<
      * @param state
      */
     decrementServings: (state, action) => {
-      const recipeId = getRecipeId(state, action);
+      const recipeId = action.payload.recipeId;
       state.recipes[recipeId].servings = Math.max(
         1,
         state.recipes[recipeId].servings
@@ -83,13 +66,11 @@ const recipeSlice = createSlice<
       state,
       action: PayloadAction<ReciepeAction<{ ingredientId: string }>>
     ) => {
-      const recipeId = getRecipeId(state, action);
+      const { recipeId, ingredientId } = action.payload;
 
       state.recipes[recipeId].ingredients = state.recipes[
         recipeId
-      ].ingredients.filter(
-        (ingredient) => ingredient.id !== action.payload.ingredientId
-      );
+      ].ingredients.filter((ingredient) => ingredient.id !== ingredientId);
     },
     /**
      * Add the ingredient
@@ -100,11 +81,11 @@ const recipeSlice = createSlice<
         ReciepeAction<{ ingredientId: string; quantity: number }>
       >
     ) => {
-      const recipeId = getRecipeId(state, action);
+      const { recipeId, ingredientId, quantity } = action.payload;
 
       state.recipes[recipeId].ingredients.push({
-        id: action.payload.ingredientId,
-        quantity: action.payload.quantity,
+        id: ingredientId,
+        quantity,
       });
     },
     /**
@@ -113,16 +94,34 @@ const recipeSlice = createSlice<
     updateIngredient: (
       state,
       action: PayloadAction<
-        ReciepeAction<{ ingredientId: string; quantity: number }>
+        ReciepeAction<{
+          ingredientId: string;
+          quantity: number;
+          newIngredientId?: string;
+        }>
       >
     ) => {
-      const recipeId = getRecipeId(state, action);
+      const { recipeId, quantity, ingredientId, newIngredientId } =
+        action.payload;
 
       const ingredientIndex = state.recipes[recipeId].ingredients.findIndex(
-        (ingredient) => ingredient.id === action.payload.ingredientId
+        (ingredient) => ingredient.id === ingredientId
       );
-      state.recipes[recipeId].ingredients[ingredientIndex].quantity =
-        action.payload.quantity;
+      state.recipes[recipeId].ingredients[ingredientIndex].quantity = quantity;
+      state.recipes[recipeId].ingredients[ingredientIndex].id =
+        newIngredientId ?? ingredientId;
+    },
+    /**
+     * Copy a recipe
+     */
+    copyRecipe: (
+      state,
+      action: PayloadAction<ReciepeAction<{ createdId: string }>>
+    ) => {
+      const { recipeId, createdId } = action.payload;
+
+      state.recipes[createdId] = state.recipes[recipeId];
+      state.ids.push(createdId);
     },
   },
 });
@@ -135,4 +134,5 @@ export const {
   removeIngredient,
   addIngredient,
   updateIngredient,
+  copyRecipe,
 } = recipeSlice.actions;

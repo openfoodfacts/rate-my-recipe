@@ -51,11 +51,7 @@ const useIngredientType = () => {
   return { ingredientType, next, prev, diasbalePrev, diasbaleNext };
 };
 
-export default function IngredientSelector({
-  recipeId,
-}: {
-  recipeId?: string;
-}) {
+export default function IngredientSelector({ recipeId }: { recipeId: string }) {
   const { ingredientType, next, prev, diasbalePrev, diasbaleNext } =
     useIngredientType();
   const ingredientsUsed = useSelector((state: RootState) =>
