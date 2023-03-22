@@ -6,7 +6,6 @@ import IngredientList from "@/components/IngredientListV2";
 
 import { useDispatch } from "react-redux";
 import { copyRecipe } from "@/redux/reducers/recipes";
-import { Divider } from "@mui/material";
 
 export default function Home() {
   const [recipeIds, setRecipeIds] = React.useState(["empty_recipe"]);

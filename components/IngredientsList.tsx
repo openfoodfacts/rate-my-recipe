@@ -19,7 +19,7 @@ import { selectCurrentIngredients } from "../redux/selectors";
 
 import { removeIngredient } from "@/redux/reducers/recipes";
 
-export default function IngredientList({ recipeId }: { recipeId?: string }) {
+export default function IngredientList({ recipeId }: { recipeId: string }) {
   const ingredients = useSelector((state: RootState) =>
     selectCurrentIngredients(state, recipeId)
   );
