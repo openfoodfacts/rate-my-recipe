@@ -1,0 +1,24 @@
+Notes:															
+Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées															
+															
+Ingredient type	Ingredient type id	Minimum number of ingredients	Maximum number of ingredients	Description	Ingredient	Ingredient id	Description	Preparation	Health	Environment	Quantity 	Quantity id	default_weight	default_weight_per_unit	default_number_of_units
+Ingrédient principal	ingredient-principal	0	1	L'ingrédient principal du mafé est souvent une source de protéines : viande, poisson... 											
+					Poulet	chicken	Le mafé de poulet est l'un des plats les plus populaires d'Afrique.		Le poulet est une viande blanche peu calorique.						
+											Poulet entier	whole-chicken		1500	1
+											Cuisses de poulet			250	6
+											Blancs de poulet			200	4
+					Boeuf	beef				Le boeuf a un fort impact environnemental.					
+											Boeuf	beef	500		
+					Agneau	lamb					Viande d'agneau	lamb	500		
+Légumes	vegetables	0	10												
+					Oignons	onion		Faire revenir les oignons pour encore plus de goût							
+											Oignons	onions	100		3
+					Carottes	carrot									
+											Carottes	carrot	300	75	4
+Matière grasse	fat	1	1	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.											
+					Huile d'arachide										
+											Cuillère à soupe d'huile d'olive			10	2
+					Huile de colza										
+					Huile de tournesol										
+					Huile d'olive										
+					Huile de palme										

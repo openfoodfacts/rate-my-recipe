@@ -1,0 +1,132 @@
+[
+  {
+    "Ingredient type": "Ingrédient principal",
+    "Ingredient type id": "ingredient-principal",
+    "Minimum number of ingredients": "0",
+    "Maximum number of ingredients": "1",
+    "Description": "L'ingrédient principal du mafé est souvent une source de protéines : viande, poisson... ",
+    "ingredients": [
+      {
+        "Ingredient": "Poulet",
+        "Ingredient id": "chicken",
+        "Description": "Le mafé de poulet est l'un des plats les plus populaires d'Afrique.",
+        "Health": "Le poulet est une viande blanche peu calorique.",
+        "quantities": [
+          {
+            "Quantity ": "Poulet entier",
+            "Quantity id": "whole-chicken",
+            "default_weight_per_unit": "1500",
+            "default_number_of_units": "1"
+          },
+          {
+            "Quantity ": "Cuisses de poulet",
+            "default_weight_per_unit": "250",
+            "default_number_of_units": "6"
+          },
+          {
+            "Quantity ": "Blancs de poulet",
+            "default_weight_per_unit": "200",
+            "default_number_of_units": "4"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Boeuf",
+        "Ingredient id": "beef",
+        "Environment": "Le boeuf a un fort impact environnemental.",
+        "quantities": [
+          {
+            "Quantity ": "Boeuf",
+            "Quantity id": "beef",
+            "default_weight": "500"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Agneau",
+        "Ingredient id": "lamb",
+        "Quantity ": "Viande d'agneau",
+        "Quantity id": "lamb",
+        "default_weight": "500",
+        "quantities": [
+          {
+            "Ingredient": "Agneau",
+            "Ingredient id": "lamb",
+            "Quantity ": "Viande d'agneau",
+            "Quantity id": "lamb",
+            "default_weight": "500"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Ingredient type": "Légumes",
+    "Ingredient type id": "vegetables",
+    "Minimum number of ingredients": "0",
+    "Maximum number of ingredients": "10",
+    "ingredients": [
+      {
+        "Ingredient": "Oignons",
+        "Ingredient id": "onion",
+        "Preparation": "Faire revenir les oignons pour encore plus de goût",
+        "quantities": [
+          {
+            "Quantity ": "Oignons",
+            "Quantity id": "onions",
+            "default_weight": "100",
+            "default_number_of_units": "3"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Carottes",
+        "Ingredient id": "carrot",
+        "quantities": [
+          {
+            "Quantity ": "Carottes",
+            "Quantity id": "carrot",
+            "default_weight": "300",
+            "default_weight_per_unit": "75",
+            "default_number_of_units": "4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Ingredient type": "Matière grasse",
+    "Ingredient type id": "fat",
+    "Minimum number of ingredients": "1",
+    "Maximum number of ingredients": "1",
+    "Description": "La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.",
+    "ingredients": [
+      {
+        "Ingredient": "Huile d'arachide",
+        "quantities": [
+          {
+            "Quantity ": "Cuillère à soupe d'huile d'olive",
+            "default_weight_per_unit": "10",
+            "default_number_of_units": "2"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Huile de colza",
+        "quantities": []
+      },
+      {
+        "Ingredient": "Huile de tournesol",
+        "quantities": []
+      },
+      {
+        "Ingredient": "Huile d'olive",
+        "quantities": []
+      },
+      {
+        "Ingredient": "Huile de palme",
+        "quantities": []
+      }
+    ]
+  }
+]
