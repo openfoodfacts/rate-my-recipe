@@ -96,6 +96,13 @@ export default function Navigator() {
           <Button
             key={ingredient["Ingredient id"]}
             onClick={() => {
+              if (ingredient.quantities.length === 1) {
+                // If only one quantity type, we set it directly
+                setView("value");
+                setIngredientId(ingredient["Ingredient id"]);
+                setQuantityId(ingredient.quantities[0]["Quantity id"]);
+                return;
+              }
               setView("quantity");
               setIngredientId(ingredient["Ingredient id"]);
             }}
