@@ -66,6 +66,9 @@ export default function Navigator() {
     );
   }, [currentIngredient, quantityId]);
 
+  const skipQuantityView =
+    currentIngredient && currentIngredient.quantities.length === 1;
+
   React.useEffect(() => {
     if (view === "value") {
       setQuantityValue(Number(currentQuantity?.default_number_of_units ?? 1));
@@ -99,6 +102,7 @@ export default function Navigator() {
         view={view}
         setView={setView}
         disableNext={ingredientId === undefined}
+        skipQuantityView={skipQuantityView}
       >
         {currentType?.ingredients.map((ingredient) => (
           <Button
@@ -116,6 +120,14 @@ export default function Navigator() {
             }}
           >
             {ingredient["Ingredient"]}
+            {ingredient.quantities[0].image_url && (
+              <img
+                src={ingredient.quantities[0].image_url}
+                height={150}
+                width={150}
+                style={{ objectFit: "contain" }}
+              />
+            )}
           </Button>
         ))}
       </HeaderWrapper>
@@ -137,28 +149,69 @@ export default function Navigator() {
             }}
           >
             {quantity["Quantity "]}
+            {quantity.image_url && (
+              <img
+                src={quantity.image_url}
+                height={150}
+                width={150}
+                style={{ objectFit: "contain" }}
+              />
+            )}
           </Button>
         ))}
       </HeaderWrapper>
     );
   }
   return (
-    <HeaderWrapper view={view} setView={setView}>
-      <Input
-        type="number"
-        value={quantityValue}
-        onChange={(event) => setQuantityValue(Number(event.target.value))}
-      />
+    <HeaderWrapper
+      view={view}
+      setView={setView}
+      skipQuantityView={skipQuantityView}
+    >
+      <Stack direction="row" justifyContent="space-between">
+        <Button
+          disabled={quantityValue === 1}
+          onClick={() => {
+            setQuantityValue((prev) => (prev as number) - 1);
+          }}
+        >
+          -
+        </Button>
+        <Input
+          type="number"
+          value={quantityValue}
+          onChange={(event) => setQuantityValue(Number(event.target.value))}
+        />
+        <Button
+          onClick={() => {
+            setQuantityValue((prev) => (prev as number) + 1);
+          }}
+        >
+          +
+        </Button>
+      </Stack>
     </HeaderWrapper>
   );
 }
 
 const viewsOrder = ["type", "ingredient", "quantity", "value"];
 
-const HeaderWrapper = ({ view, setView, disableNext, children }: any) => {
+const HeaderWrapper = ({
+  view,
+  setView,
+  skipQuantityView,
+  disableNext,
+  children,
+}: any) => {
   const viewIndex = viewsOrder.findIndex((v) => v === view);
-  const prevView = viewsOrder[viewIndex - 1];
-  const nextView = viewsOrder[viewIndex + 1];
+  const prevView =
+    skipQuantityView && viewsOrder[viewIndex - 1] === "quantity"
+      ? viewsOrder[viewIndex - 2]
+      : viewsOrder[viewIndex - 1];
+  const nextView =
+    skipQuantityView && viewsOrder[viewIndex + 1] === "quantity"
+      ? viewsOrder[viewIndex + 2]
+      : viewsOrder[viewIndex + 1];
 
   return (
     <Stack direction="column" spacing={2}>
