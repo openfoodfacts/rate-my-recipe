@@ -3,7 +3,6 @@
 import * as React from "react";
 import Sheet from "@mui/joy/Sheet";
 import List from "@mui/joy/List";
-import ListItem from "@mui/joy/ListItem";
 import Typography from "@mui/joy/Typography";
 
 import { IngredientTypes } from "@/redux/reducers/ingredients";

@@ -2,9 +2,7 @@
   {
     "Ingredient type": "Ingrédient principal",
     "Ingredient type id": "ingredient-principal",
-    "Minimum number of ingredients": "0",
-    "Maximum number of ingredients": "1",
-    "Description": "L'ingrédient principal du mafé est souvent une source de protéines : viande, poisson... ",
+    "Description": "L'ingrédient principal du ragoût est souvent une source de protéines : viande, poisson... ",
     "ingredients": [
       {
         "Ingredient": "Poulet",
@@ -16,17 +14,22 @@
             "Quantity ": "Poulet entier",
             "Quantity id": "whole-chicken",
             "default_weight_per_unit": "1500",
-            "default_number_of_units": "1"
+            "default_number_of_units": "1",
+            "image_url": "https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg"
           },
           {
             "Quantity ": "Cuisses de poulet",
+            "Quantity id": "chicken-thigh",
             "default_weight_per_unit": "250",
-            "default_number_of_units": "6"
+            "default_number_of_units": "6",
+            "image_url": "https://images.openfoodfacts.org/images/products/323/089/002/6553/front_fr.17.400.jpg"
           },
           {
             "Quantity ": "Blancs de poulet",
+            "Quantity id": "chicken-breast",
             "default_weight_per_unit": "200",
-            "default_number_of_units": "4"
+            "default_number_of_units": "4",
+            "image_url": "https://images.openfoodfacts.org/images/products/021/040/303/3783/front_fr.3.400.jpg"
           }
         ]
       },
@@ -38,7 +41,8 @@
           {
             "Quantity ": "Boeuf",
             "Quantity id": "beef",
-            "default_weight": "500"
+            "default_weight": "500",
+            "image_url": "https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg"
           }
         ]
       },
@@ -46,15 +50,17 @@
         "Ingredient": "Agneau",
         "Ingredient id": "lamb",
         "Quantity ": "Viande d'agneau",
-        "Quantity id": "lamb",
-        "default_weight": "500",
         "quantities": [
           {
             "Ingredient": "Agneau",
             "Ingredient id": "lamb",
-            "Quantity ": "Viande d'agneau",
+            "Quantity ": "Viande d'agneau"
+          },
+          {
+            "Quantity ": "Agneau",
             "Quantity id": "lamb",
-            "default_weight": "500"
+            "default_weight": "500",
+            "image_url": "https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg"
           }
         ]
       }
@@ -63,32 +69,56 @@
   {
     "Ingredient type": "Légumes",
     "Ingredient type id": "vegetables",
-    "Minimum number of ingredients": "0",
-    "Maximum number of ingredients": "10",
     "ingredients": [
       {
         "Ingredient": "Oignons",
-        "Ingredient id": "onion",
+        "Ingredient id": "onions",
         "Preparation": "Faire revenir les oignons pour encore plus de goût",
         "quantities": [
           {
             "Quantity ": "Oignons",
-            "Quantity id": "onions",
-            "default_weight": "100",
-            "default_number_of_units": "3"
+            "Quantity id": "onion",
+            "default_weight_per_unit": "100",
+            "default_number_of_units": "3",
+            "image_url": "https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg"
           }
         ]
       },
       {
         "Ingredient": "Carottes",
-        "Ingredient id": "carrot",
+        "Ingredient id": "carrots",
         "quantities": [
           {
             "Quantity ": "Carottes",
             "Quantity id": "carrot",
-            "default_weight": "300",
             "default_weight_per_unit": "75",
-            "default_number_of_units": "4"
+            "default_number_of_units": "4",
+            "image_url": "https://fr.openfoodfacts.org/produit/3420820009040/carottes-sans-marque"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Courgettes",
+        "Ingredient id": "courgettes",
+        "quantities": [
+          {
+            "Quantity ": "Courgette",
+            "Quantity id": "courgette",
+            "default_weight_per_unit": "150",
+            "default_number_of_units": "3",
+            "image_url": "https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg"
+          }
+        ]
+      },
+      {
+        "Ingredient": "Pommes de terre",
+        "Ingredient id": "potatoes",
+        "quantities": [
+          {
+            "Quantity ": "Pommes de terre",
+            "Quantity id": "potatoes",
+            "default_weight": "1000",
+            "image_url": "https://images.openfoodfacts.org/images/products/325/039/991/5578/front_fr.3.400.jpg"
           }
         ]
       }
@@ -97,35 +127,33 @@
   {
     "Ingredient type": "Matière grasse",
     "Ingredient type id": "fat",
-    "Minimum number of ingredients": "1",
-    "Maximum number of ingredients": "1",
     "Description": "La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.",
     "ingredients": [
       {
-        "Ingredient": "Huile d'arachide",
+        "Ingredient": "Huile d'olive",
+        "Ingredient id": "olive-oild",
         "quantities": [
           {
-            "Quantity ": "Cuillère à soupe d'huile d'olive",
+            "Quantity ": "Cuillères à soupe d'huile d'olive",
+            "Quantity id": "olive-oil",
             "default_weight_per_unit": "10",
-            "default_number_of_units": "2"
+            "default_number_of_units": "2",
+            "image_url": "https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg"
           }
         ]
       },
       {
         "Ingredient": "Huile de colza",
-        "quantities": []
-      },
-      {
-        "Ingredient": "Huile de tournesol",
-        "quantities": []
-      },
-      {
-        "Ingredient": "Huile d'olive",
-        "quantities": []
-      },
-      {
-        "Ingredient": "Huile de palme",
-        "quantities": []
+        "Ingredient id": "rapeseed-oil",
+        "quantities": [
+          {
+            "Quantity ": "Cuillères à soupe d'huile de colza",
+            "Quantity id": "rapeseed-oil",
+            "default_weight_per_unit": "10",
+            "default_number_of_units": "2",
+            "image_url": "https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg"
+          }
+        ]
       }
     ]
   }
