@@ -58,11 +58,19 @@ export default function Navigator() {
   }, [currentType, ingredientId]);
 
   const currentQuantity = React.useMemo(() => {
-    currentIngredient &&
+    return (
+      currentIngredient &&
       currentIngredient.quantities.find(
         (quantity) => quantity["Quantity id"] === quantityId
-      );
+      )
+    );
   }, [currentIngredient, quantityId]);
+
+  React.useEffect(() => {
+    if (view === "value") {
+      setQuantityValue(Number(currentQuantity?.default_number_of_units ?? 1));
+    }
+  }, [view, currentQuantity]);
 
   if (view === "type") {
     return (
@@ -136,7 +144,11 @@ export default function Navigator() {
   }
   return (
     <HeaderWrapper view={view} setView={setView}>
-      <Input type="number" />{" "}
+      <Input
+        type="number"
+        value={quantityValue}
+        onChange={(event) => setQuantityValue(Number(event.target.value))}
+      />
     </HeaderWrapper>
   );
 }
