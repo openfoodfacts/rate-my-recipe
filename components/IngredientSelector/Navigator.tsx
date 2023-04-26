@@ -2,121 +2,94 @@
 import * as React from "react";
 import data from "../../data/ingredient_taxonomy.json";
 import { Button, Input, Stack } from "@mui/joy";
-
-type Quantity = {
-  "Quantity ": string;
-  "Quantity id": string;
-  default_weight: string;
-  default_weight_per_unit: string;
-  default_number_of_units: string;
-  image_url: string;
-};
-type Ingredients = {
-  Ingredient: string;
-  "Ingredient id": string;
-  Preparation: string;
-  quantities: Quantity[];
-};
-type Type = {
-  "Ingredient type": string;
-  "Ingredient type id": string;
-  Description: string;
-  ingredients: Ingredients[];
-};
-
-type DataType = Type[];
-type ViewTypes = "type" | "ingredient" | "quantity" | "value";
+import {
+  selectEditorCurrentIngredient,
+  selectEditorCurrentQuantity,
+  selectEditorCurrentType,
+  selectEditorState,
+  selectEditorView,
+} from "@/redux/selectors_v2";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  DataType,
+  updateEditorState,
+  updateType,
+  updateIngredient,
+  updateQuantity,
+  updateValue,
+  decreaseQuantityValue,
+  increaseQuantityValue,
+  ViewsTypes,
+  closeEditor,
+} from "@/redux/reducers/editor";
+import { removeIngredient, upsetIngredient } from "@/redux/reducers/recipes_v2";
 
 export default function Navigator() {
-  const [view, setView] = React.useState<ViewTypes>("type");
-  const [typeId, setTypeId] = React.useState<string | undefined>(undefined);
-  const [ingredientId, setIngredientId] = React.useState<string | undefined>(
-    undefined
-  );
-  const [quantityId, setQuantityId] = React.useState<string | undefined>(
-    undefined
-  );
-  const [quantityValue, setQuantityValue] = React.useState<number | undefined>(
-    undefined
-  );
+  const state = useSelector(selectEditorState);
+  const dispatch = useDispatch();
+  const {
+    currentView: view,
+    typeId,
+    ingredientId,
+    quantityId,
+    quantityValue,
+  } = state;
 
-  const currentType = React.useMemo(() => {
-    return (
-      (data as DataType).find(
-        (type) => type["Ingredient type id"] === typeId
-      ) ?? null
-    );
-  }, [typeId]);
+  console.log(state);
 
-  const currentIngredient = React.useMemo(() => {
-    return (
-      currentType &&
-      currentType.ingredients.find(
-        (ingredient) => ingredient["Ingredient id"] === ingredientId
-      )
-    );
-  }, [currentType, ingredientId]);
-
-  const currentQuantity = React.useMemo(() => {
-    return (
-      currentIngredient &&
-      currentIngredient.quantities.find(
-        (quantity) => quantity["Quantity id"] === quantityId
-      )
-    );
-  }, [currentIngredient, quantityId]);
+  const currentType = useSelector(selectEditorCurrentType);
+  const currentIngredient = useSelector(selectEditorCurrentIngredient);
+  const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
 
-  React.useEffect(() => {
-    if (view === "value") {
-      setQuantityValue(Number(currentQuantity?.default_number_of_units ?? 1));
-    }
-  }, [view, currentQuantity]);
-
   if (view === "type") {
     return (
-      <HeaderWrapper
-        view={view}
-        setView={setView}
-        disableNext={typeId === undefined}
-      >
+      <InteractionWrapper>
         {(data as DataType).map((type) => (
           <Button
             key={type["Ingredient type id"]}
             onClick={() => {
-              setView("ingredient");
-              setTypeId(type["Ingredient type id"]);
+              dispatch(
+                updateType({
+                  currentView: "ingredient",
+                  typeId: type["Ingredient type id"],
+                })
+              );
             }}
           >
             {type["Ingredient type"]}
           </Button>
         ))}
-      </HeaderWrapper>
+      </InteractionWrapper>
     );
   }
   if (view === "ingredient") {
     return (
-      <HeaderWrapper
-        view={view}
-        setView={setView}
-        disableNext={ingredientId === undefined}
-        skipQuantityView={skipQuantityView}
-      >
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentType?.ingredients.map((ingredient) => (
           <Button
             key={ingredient["Ingredient id"]}
             onClick={() => {
               if (ingredient.quantities.length === 1) {
                 // If only one quantity type, we set it directly
-                setView("value");
-                setIngredientId(ingredient["Ingredient id"]);
-                setQuantityId(ingredient.quantities[0]["Quantity id"]);
+                dispatch(
+                  updateQuantity({
+                    currentView: "value",
+                    ingredientId: ingredient["Ingredient id"],
+                    quantityId: ingredient.quantities[0]["Quantity id"],
+                  })
+                );
+
                 return;
               }
-              setView("quantity");
-              setIngredientId(ingredient["Ingredient id"]);
+              dispatch(
+                updateIngredient({
+                  currentView: "quantity",
+                  ingredientId: ingredient["Ingredient id"],
+                })
+              );
             }}
           >
             {ingredient["Ingredient"]}
@@ -130,22 +103,22 @@ export default function Navigator() {
             )}
           </Button>
         ))}
-      </HeaderWrapper>
+      </InteractionWrapper>
     );
   }
   if (view === "quantity") {
     return (
-      <HeaderWrapper
-        view={view}
-        setView={setView}
-        disableNext={quantityId === undefined}
-      >
+      <InteractionWrapper>
         {currentIngredient?.quantities.map((quantity) => (
           <Button
             key={quantity["Quantity id"]}
             onClick={() => {
-              setView("value");
-              setQuantityId(quantity["Quantity id"]);
+              dispatch(
+                updateQuantity({
+                  currentView: "value",
+                  quantityId: quantity["Quantity id"],
+                })
+              );
             }}
           >
             {quantity["Quantity "]}
@@ -159,50 +132,57 @@ export default function Navigator() {
             )}
           </Button>
         ))}
-      </HeaderWrapper>
+      </InteractionWrapper>
     );
   }
   return (
-    <HeaderWrapper
-      view={view}
-      setView={setView}
-      skipQuantityView={skipQuantityView}
-    >
+    <InteractionWrapper skipQuantityView={skipQuantityView}>
       <Stack direction="row" justifyContent="space-between">
         <Button
           disabled={quantityValue === 1}
           onClick={() => {
-            setQuantityValue((prev) => (prev as number) - 1);
+            dispatch(decreaseQuantityValue({}));
           }}
         >
           -
         </Button>
         <Input
           type="number"
-          value={quantityValue}
-          onChange={(event) => setQuantityValue(Number(event.target.value))}
+          value={quantityValue ?? undefined}
+          onChange={(event) =>
+            dispatch(updateValue({ quantityValue: Number(event.target.value) }))
+          }
         />
         <Button
           onClick={() => {
-            setQuantityValue((prev) => (prev as number) + 1);
+            dispatch(increaseQuantityValue({}));
           }}
         >
           +
         </Button>
       </Stack>
-    </HeaderWrapper>
+    </InteractionWrapper>
   );
 }
 
-const viewsOrder = ["type", "ingredient", "quantity", "value"];
+const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
 
-const HeaderWrapper = ({
-  view,
-  setView,
-  skipQuantityView,
-  disableNext,
-  children,
-}: any) => {
+const viewToValue = {
+  type: "typeId",
+  ingredient: "ingredientId",
+  quantity: "quantityId",
+  value: "quantityValue",
+} as const;
+
+const InteractionWrapper = ({ skipQuantityView, children }: any) => {
+  const {
+    currentView: view,
+    modifiedIngredient,
+    ...values
+  } = useSelector(selectEditorState);
+
+  const dispatch = useDispatch();
+
   const viewIndex = viewsOrder.findIndex((v) => v === view);
   const prevView =
     skipQuantityView && viewsOrder[viewIndex - 1] === "quantity"
@@ -213,20 +193,78 @@ const HeaderWrapper = ({
       ? viewsOrder[viewIndex + 2]
       : viewsOrder[viewIndex + 1];
 
+  const disableNext =
+    !viewToValue[view!] || values[viewToValue[view!]] === null;
+
+  const disableValidation = viewsOrder.some(
+    // Test if some value are not specified
+    (v) => values[viewToValue[view!]] === null
+  );
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack
+      direction="column"
+      spacing={2}
+      sx={{ position: "relative", height: "100%" }}
+    >
       <Stack direction="row" justifyContent="space-between">
-        <Button disabled={!prevView} onClick={() => setView(prevView)}>
+        <Button
+          disabled={!prevView}
+          onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
+        >
           Prev
         </Button>
         <Button
           disabled={!nextView || disableNext}
-          onClick={() => setView(nextView)}
+          onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
         >
           Next
         </Button>
       </Stack>
       {children}
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        sx={{ position: "absolute", bottom: 0, width: "100%" }}
+      >
+        <Button
+          fullWidth
+          color="danger"
+          onClick={() => dispatch(closeEditor({}))}
+        >
+          Cancel
+        </Button>
+        <Button
+          fullWidth
+          color="success"
+          disabled={disableValidation}
+          onClick={() => {
+            if (
+              modifiedIngredient !== undefined &&
+              values.quantityId !== modifiedIngredient.quantityId
+            ) {
+              dispatch(
+                removeIngredient({
+                  recipeId: "empty_recipe",
+                  ingredientId: modifiedIngredient.ingredientId,
+                  quantityId: modifiedIngredient.quantityId,
+                })
+              );
+            }
+            dispatch(
+              upsetIngredient({
+                recipeId: "empty_recipe",
+                ingredientTypeId: values.typeId,
+                ingredientId: values.ingredientId,
+                quantityId: values.quantityId,
+                quantityValue: values.quantityValue,
+              })
+            );
+            dispatch(closeEditor({}));
+          }}
+        >
+          Validate
+        </Button>
+      </Stack>
     </Stack>
   );
 };

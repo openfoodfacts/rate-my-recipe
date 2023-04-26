@@ -4,16 +4,19 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import Navigator from "./Navigator";
+import { useDispatch, useSelector } from "react-redux";
+import { selectEditorView } from "@/redux/selectors_v2";
+import { closeEditor } from "@/redux/reducers/editor";
 
 export default function IngredientSelector() {
-  const [open, setOpen] = React.useState(false);
+  const view = useSelector(selectEditorView);
+  const dispatch = useDispatch();
 
   return (
     <React.Fragment>
-      <Button onClick={() => setOpen(true)}>Open</Button>
       <Drawer
-        open={open}
-        onClose={() => setOpen(false)}
+        open={view !== null}
+        onClose={() => dispatch(closeEditor({}))}
         anchor="bottom"
         sx={{
           [`& .${drawerClasses.paper}`]: {

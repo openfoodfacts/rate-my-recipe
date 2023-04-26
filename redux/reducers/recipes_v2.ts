@@ -5,15 +5,18 @@ import {
 } from "@reduxjs/toolkit";
 import { IngredientId } from "./ingredients";
 
+export type Ingredient = {
+  typeId: string;
+  id: IngredientId;
+  quantities: {
+    id: string;
+    value: number;
+  }[];
+};
+
 type RecipeStateType = {
   servings: number;
-  ingredients: {
-    id: IngredientId;
-    quantities: {
-      id: string;
-      value: number;
-    }[];
-  }[];
+  ingredients: Ingredient[];
   instructions: string[];
 };
 
@@ -33,7 +36,22 @@ const recipeSlicev2 = createSlice<
   initialState: {
     recipes: {
       empty_recipe: {
-        ingredients: [],
+        ingredients: [
+          {
+            typeId: "ingredient-principal",
+            id: "chicken",
+            quantities: [
+              {
+                id: "whole-chicken",
+                value: 1,
+              },
+              {
+                id: "chicken-thigh",
+                value: 2,
+              },
+            ],
+          },
+        ],
         servings: 4,
         instructions: [],
       },
@@ -41,26 +59,32 @@ const recipeSlicev2 = createSlice<
     ids: ["empty_recipe"],
   },
   reducers: {
-    
     upsetIngredient: (
       state,
       action: PayloadAction<
         ReciepeAction<{
+          ingredientTypeId: string;
           ingredientId: string;
           quantityId: string;
           quantityValue: number;
         }>
       >
     ) => {
-      const { recipeId, ingredientId, quantityId, quantityValue } =
-        action.payload;
+      const {
+        recipeId,
+        ingredientTypeId,
+        ingredientId,
+        quantityId,
+        quantityValue,
+      } = action.payload;
 
       const ingredientIndex = state.recipes[recipeId].ingredients.findIndex(
-        ({ id }) => ingredientId === id
+        ({ id, typeId }) => ingredientId === id && typeId === ingredientTypeId
       );
       if (ingredientIndex === -1) {
         state.recipes[recipeId].ingredients.push({
           id: ingredientId,
+          typeId: ingredientTypeId,
           quantities: [{ id: quantityId, value: quantityValue }],
         });
         return;
@@ -81,6 +105,7 @@ const recipeSlicev2 = createSlice<
         ].value = quantityValue;
       }
     },
+
     /**
      * Remove the ingredient with the given id
      */
