@@ -34,9 +34,6 @@ export default function Navigator() {
     quantityId,
     quantityValue,
   } = state;
-
-  console.log(state);
-
   const currentType = useSelector(selectEditorCurrentType);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
   const currentQuantity = useSelector(selectEditorCurrentQuantity);

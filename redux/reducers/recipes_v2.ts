@@ -4,6 +4,88 @@ import {
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
 import { IngredientId } from "./ingredients";
+import data from "../../data/ingredient_taxonomy.json";
+import { DataType } from "./editor";
+
+export const INGREDIENT = "i";
+export const QUANTITY = "q";
+export const VALUE = "v";
+
+function groupURLParams(params: { key: string; value: string }[]) {
+  const rep: {
+    [k: string]: {
+      ingredientId?: string;
+      quantityId?: string;
+      value?: string;
+    };
+  } = {};
+
+  params.forEach(({ key, value }) => {
+    if (key.startsWith(INGREDIENT)) {
+      const id = key.slice(INGREDIENT.length);
+      rep[id] = { ...rep[id], ingredientId: value };
+    }
+    if (key.startsWith(QUANTITY)) {
+      const id = key.slice(QUANTITY.length);
+      rep[id] = { ...rep[id], quantityId: value };
+    }
+    if (key.startsWith(VALUE)) {
+      const id = key.slice(VALUE.length);
+      rep[id] = { ...rep[id], value };
+    }
+  });
+
+  return rep;
+}
+function groupByIngredient(groupedParams: {
+  [k: string]: {
+    ingredientId?: string;
+    quantityId?: string;
+    value?: string;
+  };
+}) {
+  const rep: { [ingredientId: string]: { q: string; v: number }[] } = {};
+  Object.values(groupedParams).forEach(
+    ({ ingredientId, quantityId, value }) => {
+      if (
+        !value ||
+        isNaN(parseInt(value)) ||
+        !ingredientId ||
+        !INGREDIENT_TO_TYPE[ingredientId]
+      ) {
+        return;
+      }
+      if (
+        quantityId &&
+        !INGREDIENT_TO_TYPE[ingredientId].quantities.includes(quantityId)
+      ) {
+        return;
+      }
+
+      rep[ingredientId] = [
+        ...(rep[ingredientId] ?? []),
+        {
+          q: quantityId ?? INGREDIENT_TO_TYPE[ingredientId].quantities[0],
+          v: parseInt(value),
+        },
+      ];
+    }
+  );
+
+  return rep;
+}
+
+const INGREDIENT_TO_TYPE: {
+  [k: string]: { quantities: string[]; typeId: string };
+} = {};
+(data as DataType).forEach((type) => {
+  const typeId = type["Ingredient type id"];
+  type.ingredients.forEach((ingredient) => {
+    const ingredientId = ingredient["Ingredient id"];
+    const quantities = ingredient.quantities.map((q) => q["Quantity id"]);
+    INGREDIENT_TO_TYPE[ingredientId] = { quantities, typeId };
+  });
+});
 
 export type Ingredient = {
   typeId: string;
@@ -128,9 +210,34 @@ const recipeSlicev2 = createSlice<
           ({ id }) => quantityId !== id
         );
     },
+
+    parseURLParameters: (
+      state,
+      action: PayloadAction<
+        ReciepeAction<{
+          params: any[];
+        }>
+      >
+    ) => {
+      const { recipeId, params } = action.payload;
+      const groupedParams = groupByIngredient(groupURLParams(params));
+
+      const ingredients = Object.entries(groupedParams).map(
+        ([ingredientId, quantities]) => {
+          return {
+            typeId: INGREDIENT_TO_TYPE[ingredientId].typeId,
+            id: ingredientId,
+            quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
+          };
+        }
+      );
+
+      state.recipes[recipeId].ingredients = ingredients;
+    },
   },
 });
 
 export default recipeSlicev2;
 
-export const { upsetIngredient, removeIngredient } = recipeSlicev2.actions;
+export const { upsetIngredient, removeIngredient, parseURLParameters } =
+  recipeSlicev2.actions;

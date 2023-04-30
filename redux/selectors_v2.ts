@@ -2,11 +2,31 @@ import { createSelector } from "reselect";
 import { RootState } from "./store";
 import data from "../data/ingredient_taxonomy.json";
 import { DataType } from "./reducers/editor";
+import { VALUE, QUANTITY, INGREDIENT } from "./reducers/recipes_v2";
 
 export const selectCurrentIngredients = createSelector(
   (state: RootState, currentRecipeId: string) => currentRecipeId,
   (state: RootState) => state.recipeV2.recipes,
   (currentRecipeId, recipes) => recipes[currentRecipeId].ingredients
+);
+
+export const selectURLParams = createSelector(
+  selectCurrentIngredients,
+  (ingredients) => {
+    let i = 0;
+    return ingredients
+      .flatMap((ingredient) =>
+        ingredient.quantities.flatMap((quantity) => {
+          i += 1;
+          return [
+            `${INGREDIENT}${i}=${ingredient.id}`,
+            `${QUANTITY}${i}=${quantity.id}`,
+            `${VALUE}${i}=${quantity.value}`,
+          ];
+        })
+      )
+      .join("&");
+  }
 );
 
 export const selectEditorState = createSelector(
