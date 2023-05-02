@@ -22,7 +22,11 @@ import {
   ViewsTypes,
   closeEditor,
 } from "@/redux/reducers/editor";
-import { removeIngredient, upsetIngredient } from "@/redux/reducers/recipes_v2";
+import {
+  removeIngredient,
+  updateRecipeIngredients,
+  upsetIngredient,
+} from "@/redux/reducers/recipes_v2";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -239,21 +243,28 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
               modifiedIngredient !== undefined &&
               values.quantityId !== modifiedIngredient.quantityId
             ) {
-              dispatch(
-                removeIngredient({
-                  recipeId: "empty_recipe",
-                  ingredientId: modifiedIngredient.ingredientId,
-                  quantityId: modifiedIngredient.quantityId,
+              // dispatch(
+              //   removeIngredient({
+              //     recipeId: "empty_recipe",
+
+              dispatch<any>(
+                updateRecipeIngredients({
+                  type: "delete",
+                  ingredientId: modifiedIngredient.ingredientId!,
+                  quantityId: modifiedIngredient.quantityId!,
                 })
               );
             }
-            dispatch(
-              upsetIngredient({
-                recipeId: "empty_recipe",
-                ingredientTypeId: values.typeId,
-                ingredientId: values.ingredientId,
-                quantityId: values.quantityId,
-                quantityValue: values.quantityValue,
+            // dispatch(
+            //   upsetIngredient({
+            //     recipeId: "empty_recipe",
+            dispatch<any>(
+              updateRecipeIngredients({
+                type: "upsert",
+                ingredientTypeId: values.typeId!,
+                ingredientId: values.ingredientId!,
+                quantityId: values.quantityId!,
+                quantityValue: values.quantityValue!,
               })
             );
             dispatch(closeEditor({}));

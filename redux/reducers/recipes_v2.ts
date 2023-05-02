@@ -1,4 +1,5 @@
 import {
+  createAsyncThunk,
   createSlice,
   PayloadAction,
   SliceCaseReducers,
@@ -6,6 +7,77 @@ import {
 import { IngredientId } from "./ingredients";
 import data from "../../data/ingredient_taxonomy.json";
 import { DataType } from "./editor";
+
+export const updateRecipeIngredients = createAsyncThunk(
+  "updateIngredients",
+  async (action: UpdateActionType, thunkAPI: any) => {
+    const nextIngredients = ingredientReducer(
+      thunkAPI.getState().recipeV2.recipes["empty_recipe"].ingredients,
+      action
+    );
+
+    console.log(nextIngredients);
+    const ingredients = nextIngredients
+      .flatMap((ingredient) => {
+        const ingredientType = (data as DataType).find(
+          (type) => type["Ingredient type id"] === ingredient.typeId
+        )!;
+        const ingredientData = ingredientType.ingredients.find(
+          (ing) => ing["Ingredient id"] === ingredient.id
+        )!;
+
+        return ingredient.quantities.map((quantity) => {
+          const quantityData = ingredientData.quantities.find(
+            (q) => q["Quantity id"] === quantity.id
+          )!;
+          console.log(quantityData);
+          const isPerUnit = !!quantityData.default_weight_per_unit;
+
+          const weight =
+            quantity.value *
+            (isPerUnit ? parseInt(quantityData.default_weight_per_unit) : 1);
+
+          return `${ingredientData.Ingredient} ${weight}g`;
+        });
+      })
+      .join(", ");
+
+    try {
+      var headers = new Headers({
+        Authorization: `Basic off:off`,
+        "Content-type": "application/json; charset=UTF-8",
+      });
+      const rep = await fetch(
+        "https://@world.openfoodfacts.dev/api/v3/product/test",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            lc: "en",
+            fields: "ingredients,nutriments_estimated,nutriscore_grade",
+            product: {
+              ingredients_text_en: ingredients,
+            },
+          }),
+          headers,
+        }
+      );
+      console.log(rep);
+    } catch (error) {
+      console.error(error);
+    }
+
+    const response = await new Promise((resolve) =>
+      setTimeout(
+        () =>
+          resolve({
+            data: "A",
+          }),
+        1000
+      )
+    );
+    return response;
+  }
+);
 
 export const INGREDIENT = "i";
 export const QUANTITY = "q";
@@ -100,6 +172,7 @@ type RecipeStateType = {
   servings: number;
   ingredients: Ingredient[];
   instructions: string[];
+  nutriscore: any;
 };
 
 type RecipesStateType = {
@@ -108,6 +181,93 @@ type RecipesStateType = {
 };
 
 type ReciepeAction<CustomT> = CustomT & { recipeId: string };
+
+type UpdateActionType =
+  | {
+      type: "upsert";
+      ingredientTypeId: string;
+      ingredientId: string;
+      quantityId: string;
+      quantityValue: number;
+    }
+  | {
+      type: "delete";
+      ingredientId: string;
+      quantityId: string;
+    };
+
+const ingredientReducer = (
+  ingredients: Ingredient[],
+  action: UpdateActionType
+): Ingredient[] => {
+  if (action.type === "upsert") {
+    const { ingredientTypeId, ingredientId, quantityId, quantityValue } =
+      action;
+    const ingredientIndex = ingredients.findIndex(
+      ({ id, typeId }) => ingredientId === id && typeId === ingredientTypeId
+    );
+    if (ingredientIndex === -1) {
+      return [
+        ...ingredients,
+        {
+          id: ingredientId,
+          typeId: ingredientTypeId,
+          quantities: [{ id: quantityId, value: quantityValue }],
+        },
+      ];
+    }
+
+    const quantityIndex = ingredients[ingredientIndex].quantities.findIndex(
+      ({ id }) => quantityId === id
+    );
+    const defaultizedQuantityIndex =
+      quantityIndex < 0
+        ? ingredients[ingredientIndex].quantities.length
+        : quantityIndex;
+
+    return [
+      ...ingredients.slice(0, ingredientIndex),
+      {
+        ...ingredients[ingredientIndex],
+        quantities: [
+          ...ingredients[ingredientIndex].quantities.slice(
+            0,
+            defaultizedQuantityIndex
+          ),
+          {
+            id: quantityId,
+            value: quantityValue,
+          },
+          ...ingredients[ingredientIndex].quantities.slice(
+            defaultizedQuantityIndex + 1
+          ),
+        ],
+      },
+
+      ...ingredients.slice(ingredientIndex + 1),
+    ];
+  }
+
+  const { ingredientId, quantityId } = action;
+
+  const ingredientIndex = ingredients.findIndex(
+    ({ id }) => ingredientId === id
+  );
+  if (ingredientIndex === -1) {
+    return ingredients;
+  }
+
+  return [
+    ...ingredients.slice(0, ingredientIndex),
+    {
+      ...ingredients[ingredientIndex],
+      quantities: ingredients[ingredientIndex].quantities.filter(
+        ({ id }) => quantityId !== id
+      ),
+    },
+    ...ingredients.slice(ingredientIndex + 1),
+  ];
+};
 
 const recipeSlicev2 = createSlice<
   RecipesStateType,
@@ -118,98 +278,66 @@ const recipeSlicev2 = createSlice<
   initialState: {
     recipes: {
       empty_recipe: {
-        ingredients: [
-          {
-            typeId: "ingredient-principal",
-            id: "chicken",
-            quantities: [
-              {
-                id: "whole-chicken",
-                value: 1,
-              },
-              {
-                id: "chicken-thigh",
-                value: 2,
-              },
-            ],
-          },
-        ],
+        ingredients: [],
         servings: 4,
         instructions: [],
+        nutriscore: null,
       },
     },
     ids: ["empty_recipe"],
   },
   reducers: {
-    upsetIngredient: (
-      state,
-      action: PayloadAction<
-        ReciepeAction<{
-          ingredientTypeId: string;
-          ingredientId: string;
-          quantityId: string;
-          quantityValue: number;
-        }>
-      >
-    ) => {
-      const {
-        recipeId,
-        ingredientTypeId,
-        ingredientId,
-        quantityId,
-        quantityValue,
-      } = action.payload;
+    // upsetIngredient: (
+    //   state,
+    //   action: PayloadAction<
+    //     ReciepeAction<{
+    //       ingredientTypeId: string;
+    //       ingredientId: string;
+    //       quantityId: string;
+    //       quantityValue: number;
+    //     }>
+    //   >
+    // ) => {
+    //   const {
+    //     recipeId,
+    //     ingredientTypeId,
+    //     ingredientId,
+    //     quantityId,
+    //     quantityValue,
+    //   } = action.payload;
 
-      const ingredientIndex = state.recipes[recipeId].ingredients.findIndex(
-        ({ id, typeId }) => ingredientId === id && typeId === ingredientTypeId
-      );
-      if (ingredientIndex === -1) {
-        state.recipes[recipeId].ingredients.push({
-          id: ingredientId,
-          typeId: ingredientTypeId,
-          quantities: [{ id: quantityId, value: quantityValue }],
-        });
-        return;
-      }
+    //   state.recipes[recipeId].ingredients = ingredientReducer(
+    //     state.recipes[recipeId].ingredients,
+    //     {
+    //       type: "upsert",
+    //       ingredientTypeId,
+    //       ingredientId,
+    //       quantityId,
+    //       quantityValue,
+    //     }
+    //   );
+    // },
 
-      const quantityIndex = state.recipes[recipeId].ingredients[
-        ingredientIndex
-      ].quantities.findIndex(({ id }) => quantityId === id);
+    // /**
+    //  * Remove the ingredient with the given id
+    //  */
+    // removeIngredient: (
+    //   state,
+    //   action: PayloadAction<
+    //     ReciepeAction<{ ingredientId: string; quantityId: string }>
+    //   >
+    // ) => {
+    //   const { recipeId, ingredientId, quantityId } = action.payload;
 
-      if (quantityIndex < 0) {
-        state.recipes[recipeId].ingredients[ingredientIndex].quantities.push({
-          id: quantityId,
-          value: quantityValue,
-        });
-      } else {
-        state.recipes[recipeId].ingredients[ingredientIndex].quantities[
-          quantityIndex
-        ].value = quantityValue;
-      }
-    },
-
-    /**
-     * Remove the ingredient with the given id
-     */
-    removeIngredient: (
-      state,
-      action: PayloadAction<
-        ReciepeAction<{ ingredientId: string; quantityId: string }>
-      >
-    ) => {
-      const { recipeId, ingredientId, quantityId } = action.payload;
-
-      const ingredientIndex = state.recipes[recipeId].ingredients.findIndex(
-        ({ id }) => ingredientId === id
-      );
-      if (ingredientIndex === -1) {
-        return;
-      }
-      state.recipes[recipeId].ingredients[ingredientIndex].quantities =
-        state.recipes[recipeId].ingredients[ingredientIndex].quantities.filter(
-          ({ id }) => quantityId !== id
-        );
-    },
+    //   state.recipes[recipeId].ingredients = ingredientReducer(
+    //     state.recipes[recipeId].ingredients,
+    //     {
+    //       type: "delete",
+    //       ingredientId,
+    //       quantityId,
+    //     }
+    //   );
+    // },
 
     parseURLParameters: (
       state,
@@ -234,6 +362,19 @@ const recipeSlicev2 = createSlice<
 
       state.recipes[recipeId].ingredients = ingredients;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(updateRecipeIngredients.pending, (state, action) => {
+      state.recipes["empty_recipe"].ingredients = ingredientReducer(
+        state.recipes["empty_recipe"].ingredients,
+        action.meta.arg
+      );
+    });
+
+    builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
+      console.log(action);
+      state.recipes["empty_recipe"].nutriscore = action.payload;
+    });
   },
 });
 

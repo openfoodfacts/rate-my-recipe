@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import {
   Ingredient,
   removeIngredient,
+  updateRecipeIngredients,
   upsetIngredient,
 } from "@/redux/reducers/recipes_v2";
 
@@ -37,7 +38,7 @@ const IngredientCard = (props: Ingredient) => {
   )!;
 
   const quantitiesData = quantities.map(({ id: quantityId, value }) => ({
-    ...ingredientData.quantities.find((q) => q["Quantity id"] === quantityId),
+    ...ingredientData.quantities.find((q) => q["Quantity id"] === quantityId)!,
     id,
     value,
   }));
@@ -64,11 +65,7 @@ const IngredientCard = (props: Ingredient) => {
             <BookmarkAdd />
           </IconButton> */}
           <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
-            <img
-              src={quantity["image_url"]}
-              loading="lazy"
-              alt=""
-            />
+            <img src={quantity["image_url"]} loading="lazy" alt="" />
           </AspectRatio>
           <Box sx={{ display: "flex", py: 1, justifyContent: "space-between" }}>
             <Button
@@ -77,9 +74,12 @@ const IngredientCard = (props: Ingredient) => {
               size="sm"
               disabled={quantity.value < 2}
               onClick={() =>
-                dispatch(
-                  upsetIngredient({
-                    recipeId: "empty_recipe",
+                // dispatch(
+                //   upsetIngredient({
+                dispatch<any>(
+                  updateRecipeIngredients({
+                    type: "upsert",
+                    // recipeId: "empty_recipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
                     quantityId: quantity["Quantity id"],
@@ -96,9 +96,12 @@ const IngredientCard = (props: Ingredient) => {
               color="neutral"
               size="sm"
               onClick={() =>
-                dispatch(
-                  upsetIngredient({
-                    recipeId: "empty_recipe",
+                // dispatch(
+                //   upsetIngredient({
+                dispatch<any>(
+                  updateRecipeIngredients({
+                    type: "upsert",
+                    // recipeId: "empty_recipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
                     quantityId: quantity["Quantity id"],
@@ -119,10 +122,11 @@ const IngredientCard = (props: Ingredient) => {
               aria-label="Explore Bahamas Islands"
               sx={{ ml: "auto", fontWeight: 600, mr: 5 }}
               onClick={() =>
-                dispatch(
-                  removeIngredient({
-                    recipeId: "empty_recipe",
-                    ingredientTypeId: typeId,
+                dispatch<any>(
+                  updateRecipeIngredients({
+                    // recipeId: "empty_recipe",
+                    type: "delete",
+                    // ingredientTypeId: typeId,
                     ingredientId: id,
                     quantityId: quantity["Quantity id"],
                   })
