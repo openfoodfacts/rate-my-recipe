@@ -16,7 +16,6 @@ export const updateRecipeIngredients = createAsyncThunk(
       action
     );
 
-    console.log(nextIngredients);
     const ingredients = nextIngredients
       .flatMap((ingredient) => {
         const ingredientType = (data as DataType).find(
@@ -30,7 +29,6 @@ export const updateRecipeIngredients = createAsyncThunk(
           const quantityData = ingredientData.quantities.find(
             (q) => q["Quantity id"] === quantity.id
           )!;
-          console.log(quantityData);
           const isPerUnit = !!quantityData.default_weight_per_unit;
 
           const weight =
@@ -48,20 +46,21 @@ export const updateRecipeIngredients = createAsyncThunk(
         "Content-type": "application/json; charset=UTF-8",
       });
       const rep = await fetch(
-        "https://@world.openfoodfacts.dev/api/v3/product/test",
+        "https://world.openfoodfacts.dev/api/v3/product/test",
         {
-          method: "POST",
+          method: "PATCH",
           body: JSON.stringify({
             lc: "en",
             fields: "ingredients,nutriments_estimated,nutriscore_grade",
             product: {
+              categories_tags: ["fruits"],
               ingredients_text_en: ingredients,
             },
           }),
           headers,
         }
       );
-      console.log(rep);
+      console.log(await rep.json());
     } catch (error) {
       console.error(error);
     }
@@ -372,7 +371,6 @@ const recipeSlicev2 = createSlice<
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
-      console.log(action);
       state.recipes["empty_recipe"].nutriscore = action.payload;
     });
   },
