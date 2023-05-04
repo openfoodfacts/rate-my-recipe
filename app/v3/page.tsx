@@ -18,6 +18,7 @@ import { DataType, openEditor } from "@/redux/reducers/editor";
 import { Sheet } from "@mui/joy";
 import { parseURLParameters } from "@/redux/reducers/recipes_v2";
 import data from "../../data/ingredient_taxonomy.json";
+import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -112,6 +113,8 @@ export default function Home() {
         <Button sx={{ px: 5 }} onClick={() => dispatch(openEditor({}))}>
           Add Ingredient
         </Button>
+
+        <ShowNutritionalTable />
       </Sheet>
       <IngredientSelector />
     </main>

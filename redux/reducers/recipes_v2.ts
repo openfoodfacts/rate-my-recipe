@@ -40,41 +40,30 @@ export const updateRecipeIngredients = createAsyncThunk(
       })
       .join(", ");
 
-    try {
-      var headers = new Headers({
-        Authorization: `Basic off:off`,
-        "Content-type": "application/json; charset=UTF-8",
-      });
-      const rep = await fetch(
-        "https://world.openfoodfacts.dev/api/v3/product/test",
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            lc: "en",
-            fields: "ingredients,nutriments_estimated,nutriscore_grade",
-            product: {
-              categories_tags: ["fruits"],
-              ingredients_text_en: ingredients,
-            },
-          }),
-          headers,
-        }
-      );
-      console.log(await rep.json());
-    } catch (error) {
-      console.error(error);
-    }
+    var headers = new Headers({
+      Authorization: `Basic off:off`,
+      "Content-type": "application/json; charset=UTF-8",
+    });
 
-    const response = await new Promise((resolve) =>
-      setTimeout(
-        () =>
-          resolve({
-            data: "A",
-          }),
-        1000
-      )
+    const rep = await fetch(
+      "https://world.openfoodfacts.dev/api/v3/product/test",
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          lc: "fr",
+          fields: "ingredients,nutriments_estimated,nutriscore_grade",
+          product: {
+            lang: "fr",
+            categories_tags: ["fruits"],
+            ingredients_text_fr: ingredients,
+          },
+        }),
+        headers,
+      }
     );
-    return response;
+    const answer = await rep.json();
+
+    return answer;
   }
 );
 
@@ -172,6 +161,7 @@ type RecipeStateType = {
   ingredients: Ingredient[];
   instructions: string[];
   nutriscore: any;
+  nutriments: any;
 };
 
 type RecipesStateType = {
@@ -281,6 +271,7 @@ const recipeSlicev2 = createSlice<
         servings: 4,
         instructions: [],
         nutriscore: null,
+        nutriments: {},
       },
     },
     ids: ["empty_recipe"],
@@ -371,7 +362,13 @@ const recipeSlicev2 = createSlice<
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
-      state.recipes["empty_recipe"].nutriscore = action.payload;
+      if (!action.payload.product.nutriscore_grade) {
+        console.error(action.payload);
+      }
+      state.recipes["empty_recipe"].nutriscore =
+        action.payload.product.nutriscore_grade;
+      state.recipes["empty_recipe"].nutriments =
+        action.payload.product.nutriments_estimated;
     });
   },
 });
