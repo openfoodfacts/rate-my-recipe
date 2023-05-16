@@ -3,30 +3,7 @@ import {
   PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
-import data from "../../data/ingredient_taxonomy.json";
-
-export type Quantity = {
-  "Quantity ": string;
-  "Quantity id": string;
-  default_weight: string;
-  default_weight_per_unit: string;
-  default_number_of_units: string;
-  image_url: string;
-};
-export type Ingredients = {
-  Ingredient: string;
-  "Ingredient id": string;
-  Preparation: string;
-  quantities: Quantity[];
-};
-export type Type = {
-  "Ingredient type": string;
-  "Ingredient type id": string;
-  Description: string;
-  ingredients: Ingredients[];
-};
-
-export type DataType = Type[];
+import data from "../../data";
 
 const getDefaultQuantityValue = (state: EditorState) => {
   const currentType = (data as DataType).find(
