@@ -12,7 +12,7 @@ import {
   removeIngredient,
   updateRecipeIngredients,
   upsetIngredient,
-} from "@/redux/reducers/recipes_v2";
+} from "@/redux/reducers/recipes";
 
 import data from "../data/ingredient_taxonomy.json";
 import {

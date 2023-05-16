@@ -8,10 +8,10 @@ import Sheet from "@mui/joy/Sheet";
 
 export default function ShowNutritionalTable() {
   const nutriscore = useSelector(
-    (state: RootState) => state.recipeV2.recipes["empty_recipe"].nutriscore
+    (state: RootState) => state.recipe.recipes["empty_recipe"].nutriscore
   );
   const nutriments = useSelector(
-    (state: RootState) => state.recipeV2.recipes["empty_recipe"].nutriments
+    (state: RootState) => state.recipe.recipes["empty_recipe"].nutriments
   );
 
   const [open, setOpen] = React.useState(false);

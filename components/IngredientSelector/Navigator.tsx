@@ -8,7 +8,7 @@ import {
   selectEditorCurrentType,
   selectEditorState,
   selectEditorView,
-} from "@/redux/selectors_v2";
+} from "@/redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DataType,
@@ -26,7 +26,7 @@ import {
   removeIngredient,
   updateRecipeIngredients,
   upsetIngredient,
-} from "@/redux/reducers/recipes_v2";
+} from "@/redux/reducers/recipes";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
