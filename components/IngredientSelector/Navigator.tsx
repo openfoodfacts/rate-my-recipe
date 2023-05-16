@@ -1,17 +1,15 @@
 "use client";
 import * as React from "react";
-import data from "../../data/ingredient_taxonomy.json";
+import data from "../../data";
 import { Button, Input, Stack } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
   selectEditorCurrentType,
   selectEditorState,
-  selectEditorView,
 } from "@/redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  DataType,
   updateEditorState,
   updateType,
   updateIngredient,
@@ -22,25 +20,14 @@ import {
   ViewsTypes,
   closeEditor,
 } from "@/redux/reducers/editor";
-import {
-  removeIngredient,
-  updateRecipeIngredients,
-  upsetIngredient,
-} from "@/redux/reducers/recipes";
+import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
   const dispatch = useDispatch();
-  const {
-    currentView: view,
-    typeId,
-    ingredientId,
-    quantityId,
-    quantityValue,
-  } = state;
+  const { currentView: view, quantityValue } = state;
   const currentType = useSelector(selectEditorCurrentType);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
-  const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
@@ -48,19 +35,19 @@ export default function Navigator() {
   if (view === "type") {
     return (
       <InteractionWrapper>
-        {(data as DataType).map((type) => (
+        {Object.values(data.categories).map((category) => (
           <Button
-            key={type["Ingredient type id"]}
+            key={category.category_id}
             onClick={() => {
               dispatch(
                 updateType({
                   currentView: "ingredient",
-                  typeId: type["Ingredient type id"],
+                  typeId: category.category_id,
                 })
               );
             }}
           >
-            {type["Ingredient type"]}
+            {category.category_name}
           </Button>
         ))}
       </InteractionWrapper>
@@ -69,70 +56,79 @@ export default function Navigator() {
   if (view === "ingredient") {
     return (
       <InteractionWrapper skipQuantityView={skipQuantityView}>
-        {currentType?.ingredients.map((ingredient) => (
-          <Button
-            key={ingredient["Ingredient id"]}
-            onClick={() => {
-              if (ingredient.quantities.length === 1) {
-                // If only one quantity type, we set it directly
+        {currentType?.ingredients.map((ingredientId) => {
+          const ingredient = data.ingredients[ingredientId];
+          const image_url =
+            data.quantities[ingredient.quantities[0]].quantity_image_url;
+
+          return (
+            <Button
+              key={ingredientId}
+              onClick={() => {
+                if (ingredient.quantities.length === 1) {
+                  // If only one quantity type, we set it directly
+                  dispatch(
+                    updateQuantity({
+                      currentView: "value",
+                      ingredientId,
+                      quantityId: ingredient.quantities[0],
+                    })
+                  );
+
+                  return;
+                }
                 dispatch(
-                  updateQuantity({
-                    currentView: "value",
-                    ingredientId: ingredient["Ingredient id"],
-                    quantityId: ingredient.quantities[0]["Quantity id"],
+                  updateIngredient({
+                    currentView: "quantity",
+                    ingredientId,
                   })
                 );
-
-                return;
-              }
-              dispatch(
-                updateIngredient({
-                  currentView: "quantity",
-                  ingredientId: ingredient["Ingredient id"],
-                })
-              );
-            }}
-          >
-            {ingredient["Ingredient"]}
-            {ingredient.quantities[0].image_url && (
-              <img
-                src={ingredient.quantities[0].image_url}
-                height={150}
-                width={150}
-                style={{ objectFit: "contain" }}
-              />
-            )}
-          </Button>
-        ))}
+              }}
+            >
+              {ingredient.ingredient_name}
+              {image_url && (
+                <img
+                  src={image_url}
+                  height={150}
+                  width={150}
+                  style={{ objectFit: "contain" }}
+                />
+              )}
+            </Button>
+          );
+        })}
       </InteractionWrapper>
     );
   }
   if (view === "quantity") {
     return (
       <InteractionWrapper>
-        {currentIngredient?.quantities.map((quantity) => (
-          <Button
-            key={quantity["Quantity id"]}
-            onClick={() => {
-              dispatch(
-                updateQuantity({
-                  currentView: "value",
-                  quantityId: quantity["Quantity id"],
-                })
-              );
-            }}
-          >
-            {quantity["Quantity "]}
-            {quantity.image_url && (
-              <img
-                src={quantity.image_url}
-                height={150}
-                width={150}
-                style={{ objectFit: "contain" }}
-              />
-            )}
-          </Button>
-        ))}
+        {currentIngredient?.quantities.map((quantityId) => {
+          const quantity = data.quantities[quantityId];
+          return (
+            <Button
+              key={quantityId}
+              onClick={() => {
+                dispatch(
+                  updateQuantity({
+                    currentView: "value",
+                    quantityId: quantityId,
+                  })
+                );
+              }}
+            >
+              {quantity.quantity_name}
+              {quantity.quantity_image_url && (
+                <img
+                  src={quantity.quantity_image_url}
+                  height={150}
+                  width={150}
+                  style={{ objectFit: "contain" }}
+                />
+              )}
+            </Button>
+          );
+        })}
       </InteractionWrapper>
     );
   }

@@ -1,7 +1,6 @@
 import { createSelector } from "reselect";
 import { RootState } from "./store";
-import data from "../data/ingredient_taxonomy.json";
-import { DataType } from "./reducers/editor";
+import data from "../data";
 import { VALUE, QUANTITY, INGREDIENT } from "./reducers/recipes";
 
 export const selectCurrentIngredients = createSelector(
@@ -42,29 +41,20 @@ export const selectEditorView = createSelector(
 export const selectEditorCurrentType = createSelector(
   (state: RootState) => state.editor,
   (editor) =>
-    (data as DataType).find(
-      (type) => type["Ingredient type id"] === editor.typeId
-    ) ?? null
+    (editor.typeId != undefined && data.categories[editor.typeId]) || null
 );
 
 export const selectEditorCurrentIngredient = createSelector(
   (state: RootState) => state.editor,
-  selectEditorCurrentType,
-  (editor, currentType) =>
-    (currentType &&
-      currentType.ingredients.find(
-        (ingredient) => ingredient["Ingredient id"] === editor.ingredientId
-      )) ??
+  (editor) =>
+    (editor.ingredientId != undefined &&
+      data.ingredients[editor.ingredientId]) ||
     null
 );
 
 export const selectEditorCurrentQuantity = createSelector(
   (state: RootState) => state.editor,
-  selectEditorCurrentIngredient,
-  (editor, currentIngredient) =>
-    (currentIngredient &&
-      currentIngredient.quantities.find(
-        (quantity) => quantity["Quantity id"] === editor.quantityId
-      )) ??
+  (editor) =>
+    (editor.quantityId != undefined && data.quantities[editor.quantityId]) ||
     null
 );

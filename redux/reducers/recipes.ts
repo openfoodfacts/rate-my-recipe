@@ -4,8 +4,7 @@ import {
   PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
-import data from "../../data/ingredient_taxonomy.json";
-import { DataType } from "./editor";
+import data from "../../data";
 
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
@@ -17,24 +16,21 @@ export const updateRecipeIngredients = createAsyncThunk(
 
     const ingredients = nextIngredients
       .flatMap((ingredient) => {
-        const ingredientType = (data as DataType).find(
-          (type) => type["Ingredient type id"] === ingredient.typeId
-        )!;
-        const ingredientData = ingredientType.ingredients.find(
-          (ing) => ing["Ingredient id"] === ingredient.id
-        )!;
+        const ingredientData = data.ingredients[ingredient.id];
 
         return ingredient.quantities.map((quantity) => {
-          const quantityData = ingredientData.quantities.find(
-            (q) => q["Quantity id"] === quantity.id
-          )!;
-          const isPerUnit = !!quantityData.default_weight_per_unit;
+          const quantityData = data.quantities[quantity.id];
+
+          const isPerUnit =
+            quantityData.quantity_default_weight_per_unit !== undefined;
 
           const weight =
             quantity.value *
-            (isPerUnit ? parseInt(quantityData.default_weight_per_unit) : 1);
+            (isPerUnit
+              ? parseInt(quantityData.quantity_default_weight_per_unit!)
+              : 1);
 
-          return `${ingredientData.Ingredient} ${weight}g`;
+          return `${ingredientData.ingredient_name} ${weight}g`;
         });
       })
       .join(", ");
@@ -110,13 +106,13 @@ function groupByIngredient(groupedParams: {
         !value ||
         isNaN(parseInt(value)) ||
         !ingredientId ||
-        !INGREDIENT_TO_TYPE[ingredientId]
+        !data.ingredients[ingredientId]
       ) {
         return;
       }
       if (
         quantityId &&
-        !INGREDIENT_TO_TYPE[ingredientId].quantities.includes(quantityId)
+        !data.ingredients[ingredientId].quantities.includes(quantityId)
       ) {
         return;
       }
@@ -124,7 +120,7 @@ function groupByIngredient(groupedParams: {
       rep[ingredientId] = [
         ...(rep[ingredientId] ?? []),
         {
-          q: quantityId ?? INGREDIENT_TO_TYPE[ingredientId].quantities[0],
+          q: quantityId ?? data.ingredients[ingredientId].quantities[0],
           v: parseInt(value),
         },
       ];
@@ -133,18 +129,6 @@ function groupByIngredient(groupedParams: {
 
   return rep;
 }
-
-const INGREDIENT_TO_TYPE: {
-  [k: string]: { quantities: string[]; typeId: string };
-} = {};
-(data as DataType).forEach((type) => {
-  const typeId = type["Ingredient type id"];
-  type.ingredients.forEach((ingredient) => {
-    const ingredientId = ingredient["Ingredient id"];
-    const quantities = ingredient.quantities.map((q) => q["Quantity id"]);
-    INGREDIENT_TO_TYPE[ingredientId] = { quantities, typeId };
-  });
-});
 
 export type Ingredient = {
   typeId: string;
@@ -276,58 +260,6 @@ const recipeSlice = createSlice<
     ids: ["empty_recipe"],
   },
   reducers: {
-    // upsetIngredient: (
-    //   state,
-    //   action: PayloadAction<
-    //     ReciepeAction<{
-    //       ingredientTypeId: string;
-    //       ingredientId: string;
-    //       quantityId: string;
-    //       quantityValue: number;
-    //     }>
-    //   >
-    // ) => {
-    //   const {
-    //     recipeId,
-    //     ingredientTypeId,
-    //     ingredientId,
-    //     quantityId,
-    //     quantityValue,
-    //   } = action.payload;
-
-    //   state.recipes[recipeId].ingredients = ingredientReducer(
-    //     state.recipes[recipeId].ingredients,
-    //     {
-    //       type: "upsert",
-    //       ingredientTypeId,
-    //       ingredientId,
-    //       quantityId,
-    //       quantityValue,
-    //     }
-    //   );
-    // },
-
-    // /**
-    //  * Remove the ingredient with the given id
-    //  */
-    // removeIngredient: (
-    //   state,
-    //   action: PayloadAction<
-    //     ReciepeAction<{ ingredientId: string; quantityId: string }>
-    //   >
-    // ) => {
-    //   const { recipeId, ingredientId, quantityId } = action.payload;
-
-    //   state.recipes[recipeId].ingredients = ingredientReducer(
-    //     state.recipes[recipeId].ingredients,
-    //     {
-    //       type: "delete",
-    //       ingredientId,
-    //       quantityId,
-    //     }
-    //   );
-    // },
-
     parseURLParameters: (
       state,
       action: PayloadAction<
@@ -342,7 +274,7 @@ const recipeSlice = createSlice<
       const ingredients = Object.entries(groupedParams).map(
         ([ingredientId, quantities]) => {
           return {
-            typeId: INGREDIENT_TO_TYPE[ingredientId].typeId,
+            typeId: data.ingredients[ingredientId].category_id,
             id: ingredientId,
             quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
           };

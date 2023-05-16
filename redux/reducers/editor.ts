@@ -6,28 +6,19 @@ import {
 import data from "../../data";
 
 const getDefaultQuantityValue = (state: EditorState) => {
-  const currentType = (data as DataType).find(
-    (type) => type["Ingredient type id"] === state.typeId
-  );
-  if (currentType === undefined) {
-    throw new Error(`Unknown ingredient type "${state.typeId}"`);
+  if (state.quantityId == null) {
+    throw new Error(`state.quantityId is "${state.quantityId}"`);
   }
 
-  const currentIngredient = currentType.ingredients.find(
-    (ingredient) => ingredient["Ingredient id"] === state.ingredientId
-  );
-  if (currentIngredient === undefined) {
-    throw new Error(`Unknown ingredient id "${state.ingredientId}"`);
-  }
-  const currentQuantity = currentIngredient.quantities.find(
-    (quantity) => quantity["Quantity id"] === state.quantityId
-  );
+  const currentQuantity = data.quantities[state.quantityId];
+
   if (currentQuantity === undefined) {
     throw new Error(`Unknown quantity id "${state.quantityId}"`);
   }
 
-  return currentQuantity.default_number_of_units
-    ? Number(currentQuantity.default_number_of_units)
+  // TODO: clarify how to do the distinction betwee beef which is given by gramms, and chicken wings which are units
+  return currentQuantity.quantity_default_number_of_units
+    ? Number(currentQuantity.quantity_default_number_of_units)
     : 1;
 };
 

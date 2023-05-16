@@ -7,54 +7,31 @@ import Typography from "@mui/joy/Typography";
 
 import { useDispatch } from "react-redux";
 
-import {
-  Ingredient,
-  removeIngredient,
-  updateRecipeIngredients,
-  upsetIngredient,
-} from "@/redux/reducers/recipes";
+import { Ingredient, updateRecipeIngredients } from "@/redux/reducers/recipes";
 
-import data from "../data/ingredient_taxonomy.json";
-import {
-  DataType,
-  Ingredients,
-  Type,
-  updateEditorState,
-} from "@/redux/reducers/editor";
+import data from "../data";
+import { updateEditorState } from "@/redux/reducers/editor";
 
 const IngredientCard = (props: Ingredient) => {
   const { id, typeId, quantities } = props;
 
   const dispatch = useDispatch();
 
-  const typeIndex = (data as DataType).findIndex(
-    (type: Type) => type["Ingredient type id"] === typeId
-  );
-
-  const ingredientData: Ingredients = (data as DataType)[
-    typeIndex
-  ].ingredients.find(
-    (ingredient: Ingredients) => ingredient["Ingredient id"] === id
-  )!;
+  const ingredientData = data.ingredients[id];
 
   const quantitiesData = quantities.map(({ id: quantityId, value }) => ({
-    ...ingredientData.quantities.find((q) => q["Quantity id"] === quantityId)!,
-    id,
+    ...data.quantities[quantityId],
     value,
   }));
 
   return (
     <React.Fragment>
       {quantitiesData.map((quantity) => (
-        <Card
-          variant="outlined"
-          sx={{ width: 320 }}
-          key={quantity["Quantity id"]}
-        >
+        <Card variant="outlined" sx={{ width: 320 }} key={quantity.quantity_id}>
           <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
-            {ingredientData["Ingredient"]}
+            {ingredientData.ingredient_name}
           </Typography>
-          <Typography level="body2">({quantity["Quantity "]})</Typography>
+          <Typography level="body2">({quantity.quantity_name})</Typography>
           {/* <IconButton
             aria-label="bookmark Bahamas Islands"
             variant="plain"
@@ -65,7 +42,7 @@ const IngredientCard = (props: Ingredient) => {
             <BookmarkAdd />
           </IconButton> */}
           <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
-            <img src={quantity["image_url"]} loading="lazy" alt="" />
+            <img src={quantity.quantity_image_url} loading="lazy" alt="" />
           </AspectRatio>
           <Box sx={{ display: "flex", py: 1, justifyContent: "space-between" }}>
             <Button
@@ -82,7 +59,7 @@ const IngredientCard = (props: Ingredient) => {
                     // recipeId: "empty_recipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
-                    quantityId: quantity["Quantity id"],
+                    quantityId: quantity.quantity_id,
                     quantityValue: quantity.value - 1,
                   })
                 )
@@ -104,7 +81,7 @@ const IngredientCard = (props: Ingredient) => {
                     // recipeId: "empty_recipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
-                    quantityId: quantity["Quantity id"],
+                    quantityId: quantity.quantity_id,
                     quantityValue: quantity.value + 1,
                   })
                 )
@@ -128,7 +105,7 @@ const IngredientCard = (props: Ingredient) => {
                     type: "delete",
                     // ingredientTypeId: typeId,
                     ingredientId: id,
-                    quantityId: quantity["Quantity id"],
+                    quantityId: quantity.quantity_id,
                   })
                 )
               }
@@ -148,13 +125,13 @@ const IngredientCard = (props: Ingredient) => {
                     currentView: "ingredient",
                     typeId,
                     ingredientId: id,
-                    quantityId: quantity["Quantity id"],
+                    quantityId: quantity.quantity_id,
                     quantityValue: quantity.value,
                     // This identify the modified ingredient, such that we cvan delete it if validated
                     modifiedIngredient: {
                       typeId,
                       ingredientId: id,
-                      quantityId: quantity["Quantity id"],
+                      quantityId: quantity.quantity_id,
                     },
                   })
                 );
