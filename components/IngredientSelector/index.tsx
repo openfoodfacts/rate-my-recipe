@@ -5,7 +5,7 @@ import Button from "@mui/joy/Button";
 import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import Navigator from "./Navigator";
 import { useDispatch, useSelector } from "react-redux";
-import { selectEditorView } from "@/redux/selectors_v2";
+import { selectEditorView } from "@/redux/selectors";
 import { closeEditor } from "@/redux/reducers/editor";
 
 export default function IngredientSelector() {

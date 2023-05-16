@@ -1,26 +1,245 @@
 import {
+  createAsyncThunk,
   createSlice,
   PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
-import { IngredientId } from "./ingredients";
+import data from "../../data";
+
+export const updateRecipeIngredients = createAsyncThunk(
+  "updateIngredients",
+  async (action: UpdateActionType, thunkAPI: any) => {
+    const nextIngredients = ingredientReducer(
+      thunkAPI.getState().recipe.recipes["empty_recipe"].ingredients,
+      action
+    );
+
+    const ingredients = nextIngredients
+      .flatMap((ingredient) => {
+        const ingredientData = data.ingredients[ingredient.id];
+
+        return ingredient.quantities.map((quantity) => {
+          const quantityData = data.quantities[quantity.id];
+
+          const isPerUnit =
+            quantityData.quantity_default_weight_per_unit !== undefined;
+
+          const weight =
+            quantity.value *
+            (isPerUnit
+              ? parseInt(quantityData.quantity_default_weight_per_unit!)
+              : 1);
+
+          return `${ingredientData.ingredient_name} ${weight}g`;
+        });
+      })
+      .join(", ");
+
+    var headers = new Headers({
+      Authorization: `Basic off:off`,
+      "Content-type": "application/json; charset=UTF-8",
+    });
+
+    const rep = await fetch(
+      "https://world.openfoodfacts.dev/api/v3/product/test",
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          lc: "fr",
+          fields: "ingredients,nutriments_estimated,nutriscore_grade",
+          product: {
+            lang: "fr",
+            categories_tags: ["fruits"],
+            ingredients_text_fr: ingredients,
+          },
+        }),
+        headers,
+      }
+    );
+    const answer = await rep.json();
+
+    return answer;
+  }
+);
+
+export const INGREDIENT = "i";
+export const QUANTITY = "q";
+export const VALUE = "v";
+
+function groupURLParams(params: { key: string; value: string }[]) {
+  const rep: {
+    [k: string]: {
+      ingredientId?: string;
+      quantityId?: string;
+      value?: string;
+    };
+  } = {};
+
+  params.forEach(({ key, value }) => {
+    if (key.startsWith(INGREDIENT)) {
+      const id = key.slice(INGREDIENT.length);
+      rep[id] = { ...rep[id], ingredientId: value };
+    }
+    if (key.startsWith(QUANTITY)) {
+      const id = key.slice(QUANTITY.length);
+      rep[id] = { ...rep[id], quantityId: value };
+    }
+    if (key.startsWith(VALUE)) {
+      const id = key.slice(VALUE.length);
+      rep[id] = { ...rep[id], value };
+    }
+  });
+
+  return rep;
+}
+function groupByIngredient(groupedParams: {
+  [k: string]: {
+    ingredientId?: string;
+    quantityId?: string;
+    value?: string;
+  };
+}) {
+  const rep: { [ingredientId: string]: { q: string; v: number }[] } = {};
+  Object.values(groupedParams).forEach(
+    ({ ingredientId, quantityId, value }) => {
+      if (
+        !value ||
+        isNaN(parseInt(value)) ||
+        !ingredientId ||
+        !data.ingredients[ingredientId]
+      ) {
+        return;
+      }
+      if (
+        quantityId &&
+        !data.ingredients[ingredientId].quantities.includes(quantityId)
+      ) {
+        return;
+      }
+
+      rep[ingredientId] = [
+        ...(rep[ingredientId] ?? []),
+        {
+          q: quantityId ?? data.ingredients[ingredientId].quantities[0],
+          v: parseInt(value),
+        },
+      ];
+    }
+  );
+
+  return rep;
+}
+
+export type Ingredient = {
+  typeId: string;
+  id: string;
+  quantities: {
+    id: string;
+    value: number;
+  }[];
+};
 
 type RecipeStateType = {
   servings: number;
-  ingredients: {
-    id: IngredientId;
-    quantity?: number;
-  }[];
+  ingredients: Ingredient[];
   instructions: string[];
+  nutriscore: any;
+  nutriments: any;
 };
 
 type RecipesStateType = {
   recipes: { [id: string]: RecipeStateType };
   ids: string[];
-  currentRecipeId?: string;
 };
 
 type ReciepeAction<CustomT> = CustomT & { recipeId: string };
+
+type UpdateActionType =
+  | {
+      type: "upsert";
+      ingredientTypeId: string;
+      ingredientId: string;
+      quantityId: string;
+      quantityValue: number;
+    }
+  | {
+      type: "delete";
+      ingredientId: string;
+      quantityId: string;
+    };
+
+const ingredientReducer = (
+  ingredients: Ingredient[],
+  action: UpdateActionType
+): Ingredient[] => {
+  if (action.type === "upsert") {
+    const { ingredientTypeId, ingredientId, quantityId, quantityValue } =
+      action;
+    const ingredientIndex = ingredients.findIndex(
+      ({ id, typeId }) => ingredientId === id && typeId === ingredientTypeId
+    );
+    if (ingredientIndex === -1) {
+      return [
+        ...ingredients,
+        {
+          id: ingredientId,
+          typeId: ingredientTypeId,
+          quantities: [{ id: quantityId, value: quantityValue }],
+        },
+      ];
+    }
+
+    const quantityIndex = ingredients[ingredientIndex].quantities.findIndex(
+      ({ id }) => quantityId === id
+    );
+    const defaultizedQuantityIndex =
+      quantityIndex < 0
+        ? ingredients[ingredientIndex].quantities.length
+        : quantityIndex;
+
+    return [
+      ...ingredients.slice(0, ingredientIndex),
+      {
+        ...ingredients[ingredientIndex],
+        quantities: [
+          ...ingredients[ingredientIndex].quantities.slice(
+            0,
+            defaultizedQuantityIndex
+          ),
+          {
+            id: quantityId,
+            value: quantityValue,
+          },
+          ...ingredients[ingredientIndex].quantities.slice(
+            defaultizedQuantityIndex + 1
+          ),
+        ],
+      },
+
+      ...ingredients.slice(ingredientIndex + 1),
+    ];
+  }
+
+  const { ingredientId, quantityId } = action;
+
+  const ingredientIndex = ingredients.findIndex(
+    ({ id }) => ingredientId === id
+  );
+  if (ingredientIndex === -1) {
+    return ingredients;
+  }
+
+  return [
+    ...ingredients.slice(0, ingredientIndex),
+    {
+      ...ingredients[ingredientIndex],
+      quantities: ingredients[ingredientIndex].quantities.filter(
+        ({ id }) => quantityId !== id
+      ),
+    },
+    ...ingredients.slice(ingredientIndex + 1),
+  ];
+};
 
 const recipeSlice = createSlice<
   RecipesStateType,
@@ -31,108 +250,61 @@ const recipeSlice = createSlice<
   initialState: {
     recipes: {
       empty_recipe: {
-        ingredients: [{ id: "chicken" }, { id: "porc" }],
+        ingredients: [],
         servings: 4,
         instructions: [],
+        nutriscore: null,
+        nutriments: {},
       },
     },
     ids: ["empty_recipe"],
-    currentRecipeId: "empty_recipe",
   },
   reducers: {
-    /**
-     * Adds one to the number of servings
-     * @param state
-     */
-    incrementServings: (state, action) => {
-      const recipeId = action.payload.recipeId;
-      state.recipes[recipeId].servings += 1;
-    },
-    /**
-     * Removes one to the number of servings
-     * @param state
-     */
-    decrementServings: (state, action) => {
-      const recipeId = action.payload.recipeId;
-      state.recipes[recipeId].servings = Math.max(
-        1,
-        state.recipes[recipeId].servings
-      );
-    },
-    /**
-     * Remove the ingredient with the given id
-     */
-    removeIngredient: (
-      state,
-      action: PayloadAction<ReciepeAction<{ ingredientId: string }>>
-    ) => {
-      const { recipeId, ingredientId } = action.payload;
-
-      state.recipes[recipeId].ingredients = state.recipes[
-        recipeId
-      ].ingredients.filter((ingredient) => ingredient.id !== ingredientId);
-    },
-    /**
-     * Add the ingredient
-     */
-    addIngredient: (
-      state,
-      action: PayloadAction<
-        ReciepeAction<{ ingredientId: string; quantity: number }>
-      >
-    ) => {
-      const { recipeId, ingredientId, quantity } = action.payload;
-
-      state.recipes[recipeId].ingredients.push({
-        id: ingredientId,
-        quantity,
-      });
-    },
-    /**
-     * Update the ingredient quanity
-     */
-    updateIngredient: (
+    parseURLParameters: (
       state,
       action: PayloadAction<
         ReciepeAction<{
-          ingredientId: string;
-          quantity: number;
-          newIngredientId?: string;
+          params: any[];
         }>
       >
     ) => {
-      const { recipeId, quantity, ingredientId, newIngredientId } =
-        action.payload;
+      const { recipeId, params } = action.payload;
+      const groupedParams = groupByIngredient(groupURLParams(params));
 
-      const ingredientIndex = state.recipes[recipeId].ingredients.findIndex(
-        (ingredient) => ingredient.id === ingredientId
+      const ingredients = Object.entries(groupedParams).map(
+        ([ingredientId, quantities]) => {
+          return {
+            typeId: data.ingredients[ingredientId].category_id,
+            id: ingredientId,
+            quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
+          };
+        }
       );
-      state.recipes[recipeId].ingredients[ingredientIndex].quantity = quantity;
-      state.recipes[recipeId].ingredients[ingredientIndex].id =
-        newIngredientId ?? ingredientId;
-    },
-    /**
-     * Copy a recipe
-     */
-    copyRecipe: (
-      state,
-      action: PayloadAction<ReciepeAction<{ createdId: string }>>
-    ) => {
-      const { recipeId, createdId } = action.payload;
 
-      state.recipes[createdId] = state.recipes[recipeId];
-      state.ids.push(createdId);
+      state.recipes[recipeId].ingredients = ingredients;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(updateRecipeIngredients.pending, (state, action) => {
+      state.recipes["empty_recipe"].ingredients = ingredientReducer(
+        state.recipes["empty_recipe"].ingredients,
+        action.meta.arg
+      );
+    });
+
+    builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
+      if (!action.payload.product.nutriscore_grade) {
+        console.error(action.payload);
+      }
+      state.recipes["empty_recipe"].nutriscore =
+        action.payload.product.nutriscore_grade;
+      state.recipes["empty_recipe"].nutriments =
+        action.payload.product.nutriments_estimated;
+    });
   },
 });
 
 export default recipeSlice;
 
-export const {
-  incrementServings,
-  decrementServings,
-  removeIngredient,
-  addIngredient,
-  updateIngredient,
-  copyRecipe,
-} = recipeSlice.actions;
+export const { upsetIngredient, removeIngredient, parseURLParameters } =
+  recipeSlice.actions;
