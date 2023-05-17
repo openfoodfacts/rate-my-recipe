@@ -13,10 +13,24 @@ export default function ShowNutritionalTable() {
   const nutriments = useSelector(
     (state: RootState) => state.recipe.recipes["empty_recipe"].nutriments
   );
-
+  const modifiedNutriments = useSelector(
+    (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriments
+  );
+  const modifiedNutriscore = useSelector(
+    (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriscore
+  );
+ 
   const [open, setOpen] = React.useState(false);
 
-  if (!nutriments || !nutriscore) {
+  console.log(modifiedNutriments, "modifiedNutriments")
+  console.log(nutriments, "nutriments")
+
+  if (
+    !nutriments ||
+    !nutriscore ||
+    !Object.keys(modifiedNutriments).length ||
+    !modifiedNutriscore
+  ) {
     return null;
   }
 
@@ -48,6 +62,7 @@ export default function ShowNutritionalTable() {
     <>
       <Stack>
         <Nutriscore grade={nutriscore} />
+        <Nutriscore grade={modifiedNutriscore} /> 
         <Button onClick={() => setOpen(true)}>More info</Button>
       </Stack>
       <Drawer
@@ -67,7 +82,8 @@ export default function ShowNutritionalTable() {
           <thead>
             <tr>
               <th>Nutriment</th>
-              <th>pour 100 g</th>
+              <th>Valeur initiale (pour 100 g)</th>
+            <th>Valeur modifiée (pour 100 g)</th>
             </tr>
           </thead>
           <tbody>
@@ -83,6 +99,12 @@ export default function ShowNutritionalTable() {
                   {NUTRIMENTS_TITLE[key]}
                 </td>
                 <td>{nutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}</td>
+                <td>
+                {modifiedNutriments?.[key]?.toFixed(
+                  NUTRIMENTS_PRECISION[key]
+                )}
+              </td>
+
               </tr>
             ))}
           </tbody>

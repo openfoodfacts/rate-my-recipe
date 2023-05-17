@@ -8,9 +8,9 @@ import data from "../../data";
 
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
-  async (action: UpdateActionType, thunkAPI: any) => {
+  async ({ recipeId, ...action }: ReciepeAction<UpdateActionType>, thunkAPI: any) => {
     const nextIngredients = ingredientReducer(
-      thunkAPI.getState().recipe.recipes["empty_recipe"].ingredients,
+      thunkAPI.getState().recipe.recipes[recipeId].ingredients,
       action
     );
 
@@ -148,12 +148,20 @@ type RecipeStateType = {
 };
 
 type RecipesStateType = {
-  recipes: { [id: string]: RecipeStateType };
+  recipes: { 
+    [id: string]: RecipeStateType ,
+    modifiedRecipe: RecipeStateType;
+    empty_recipe: RecipeStateType;
+  
+  };
   ids: string[];
 };
 
 type ReciepeAction<CustomT> = CustomT & { recipeId: string };
-
+interface UpdateRecipeIngredientsPayload {
+  recipeId: string;
+  action: UpdateActionType;
+}
 type UpdateActionType =
   | {
       type: "upsert";
@@ -166,11 +174,12 @@ type UpdateActionType =
       type: "delete";
       ingredientId: string;
       quantityId: string;
-    };
+    }
+   
 
 const ingredientReducer = (
   ingredients: Ingredient[],
-  action: UpdateActionType
+  action: UpdateActionType,
 ): Ingredient[] => {
   if (action.type === "upsert") {
     const { ingredientTypeId, ingredientId, quantityId, quantityValue } =
@@ -249,6 +258,13 @@ const recipeSlice = createSlice<
   name: "recipe",
   initialState: {
     recipes: {
+      modifiedRecipe:{
+        ingredients: [],
+        servings: 4,
+        instructions: [],
+        nutriscore: null,
+        nutriments: {},  
+      },
       empty_recipe: {
         ingredients: [],
         servings: 4,
@@ -257,9 +273,10 @@ const recipeSlice = createSlice<
         nutriments: {},
       },
     },
-    ids: ["empty_recipe"],
+    ids: ["modifiedRecipe","empty_recipe"],
   },
   reducers: {
+  
     parseURLParameters: (
       state,
       action: PayloadAction<
@@ -282,24 +299,29 @@ const recipeSlice = createSlice<
       );
 
       state.recipes[recipeId].ingredients = ingredients;
+      console.log(ingredients, "les ingredients")
     },
   },
   extraReducers: (builder) => {
     builder.addCase(updateRecipeIngredients.pending, (state, action) => {
-      state.recipes["empty_recipe"].ingredients = ingredientReducer(
-        state.recipes["empty_recipe"].ingredients,
+      const { recipeId } = action.meta.arg;
+      state.recipes[recipeId].ingredients = ingredientReducer(
+        state.recipes[recipeId].ingredients,
         action.meta.arg
       );
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
+      const { recipeId } = action.meta.arg;
+  
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);
       }
-      state.recipes["empty_recipe"].nutriscore =
-        action.payload.product.nutriscore_grade;
-      state.recipes["empty_recipe"].nutriments =
-        action.payload.product.nutriments_estimated;
+      const { nutriscore_grade, nutriments_estimated } = action.payload.product;
+      state.recipes[recipeId].nutriscore = nutriscore_grade;
+      state.recipes[recipeId].nutriments = nutriments_estimated;
+     
+     
     });
   },
 });

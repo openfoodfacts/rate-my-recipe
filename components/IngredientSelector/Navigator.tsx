@@ -245,6 +245,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
 
               dispatch<any>(
                 updateRecipeIngredients({
+                  recipeId: "empty_recipe",
                   type: "delete",
                   ingredientId: modifiedIngredient.ingredientId!,
                   quantityId: modifiedIngredient.quantityId!,
@@ -256,6 +257,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
             //     recipeId: "empty_recipe",
             dispatch<any>(
               updateRecipeIngredients({
+                recipeId: "empty_recipe",
                 type: "upsert",
                 ingredientTypeId: values.typeId!,
                 ingredientId: values.ingredientId!,
