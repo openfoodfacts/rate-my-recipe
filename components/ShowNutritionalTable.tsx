@@ -31,17 +31,17 @@ const NUTRIMENTS_PRECISION = {
 } as any;
 
 export default function ShowNutritionalTable() {
-  const nutriscore = useSelector(
-    (state: RootState) => state.recipe.recipes["empty_recipe"].nutriscore
+  const userNutriscore = useSelector(
+    (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore
   );
-  const nutriments = useSelector(
-    (state: RootState) => state.recipe.recipes["empty_recipe"].nutriments
+  const userNutriments = useSelector(
+    (state: RootState) => state.recipe.recipes["userRecipe"].nutriments
   );
-  const modifiedNutriments = useSelector(
-    (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriments
+  const urlNutriments = useSelector(
+    (state: RootState) => state.recipe.recipes["urlRecipe"].nutriments
   );
-  const modifiedNutriscore = useSelector(
-    (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriscore
+  const urlNutriscore = useSelector(
+    (state: RootState) => state.recipe.recipes["urlRecipe"].nutriscore
   );
 
   const [open, setOpen] = React.useState(false);
@@ -49,8 +49,8 @@ export default function ShowNutritionalTable() {
   return (
     <>
       <Stack>
-        <Nutriscore grade={nutriscore} />
-        <Nutriscore grade={modifiedNutriscore} />
+        <Nutriscore grade={userNutriscore} />
+        <Nutriscore grade={urlNutriscore} />
         <Button onClick={() => setOpen(true)}>More info</Button>
       </Stack>
       <Drawer
@@ -86,11 +86,11 @@ export default function ShowNutritionalTable() {
                 >
                   {NUTRIMENTS_TITLE[key]}
                 </td>
-                <td>{nutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}</td>
                 <td>
-                  {modifiedNutriments?.[key]?.toFixed(
-                    NUTRIMENTS_PRECISION[key]
-                  )}
+                  {urlNutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}
+                </td>
+                <td>
+                  {userNutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}
                 </td>
               </tr>
             ))}

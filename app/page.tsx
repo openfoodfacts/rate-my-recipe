@@ -22,12 +22,12 @@ export default function Home() {
 
   const searchParams = useSearchParams();
   const params = useSelector((state: RootState) =>
-    selectURLParams(state, "empty_recipe")
+    selectURLParams(state, "userRecipe")
   );
   React.useEffect(() => {
     dispatch<any>(
       updateRecipeIngredients({
-        recipeId: "empty_recipe",
+        recipeId: "userRecipe",
         type: "overideFromURLParams",
         ingredients: Array.from(searchParams.entries()).map(([key, value]) => ({
           key,
@@ -39,7 +39,7 @@ export default function Home() {
     if (Array.from(searchParams.entries()).length !== 0) {
       dispatch<any>(
         updateRecipeIngredients({
-          recipeId: "modifiedRecipe",
+          recipeId: "urlRecipe",
           type: "overideFromURLParams",
           ingredients: Array.from(searchParams.entries()).map(
             ([key, value]) => ({
@@ -53,7 +53,7 @@ export default function Home() {
   }, [dispatch, searchParams]);
 
   const ingrdients = useSelector((state: RootState) =>
-    selectCurrentIngredients(state, "empty_recipe")
+    selectCurrentIngredients(state, "userRecipe")
   );
 
   return (
