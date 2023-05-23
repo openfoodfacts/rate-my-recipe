@@ -239,10 +239,6 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
               modifiedIngredient !== undefined &&
               values.quantityId !== modifiedIngredient.quantityId
             ) {
-              // dispatch(
-              //   removeIngredient({
-              //     recipeId: "empty_recipe",
-
               dispatch<any>(
                 updateRecipeIngredients({
                   recipeId: "empty_recipe",
@@ -252,9 +248,6 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
                 })
               );
             }
-            // dispatch(
-            //   upsetIngredient({
-            //     recipeId: "empty_recipe",
             dispatch<any>(
               updateRecipeIngredients({
                 recipeId: "empty_recipe",

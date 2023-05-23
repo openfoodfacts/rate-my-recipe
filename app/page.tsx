@@ -11,7 +11,10 @@ import IngredientCard from "@/components/IngredientCard";
 import { Button, Stack } from "@mui/material";
 import { openEditor } from "@/redux/reducers/editor";
 import { Sheet } from "@mui/joy";
-import { parseURLParameters } from "@/redux/reducers/recipes";
+import {
+  parseURLParameters,
+  updateRecipeIngredients,
+} from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
 export default function Home() {
@@ -22,15 +25,31 @@ export default function Home() {
     selectURLParams(state, "empty_recipe")
   );
   React.useEffect(() => {
-    dispatch(
-      parseURLParameters({
+    dispatch<any>(
+      updateRecipeIngredients({
         recipeId: "empty_recipe",
-        params: Array.from(searchParams.entries()).map(([key, value]) => ({
+        type: "overideFromURLParams",
+        ingredients: Array.from(searchParams.entries()).map(([key, value]) => ({
           key,
           value,
         })),
       })
     );
+    // Might be better to have only one call but at least it works
+    if (Array.from(searchParams.entries()).length !== 0) {
+      dispatch<any>(
+        updateRecipeIngredients({
+          recipeId: "modifiedRecipe",
+          type: "overideFromURLParams",
+          ingredients: Array.from(searchParams.entries()).map(
+            ([key, value]) => ({
+              key,
+              value,
+            })
+          ),
+        })
+      );
+    }
   }, [dispatch, searchParams]);
 
   const ingrdients = useSelector((state: RootState) =>
