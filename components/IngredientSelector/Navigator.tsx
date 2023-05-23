@@ -34,6 +34,7 @@ export default function Navigator() {
 
   if (view === "type") {
     return (
+      
       <InteractionWrapper>
         {Object.values(data.categories).map((category) => (
           <Button
@@ -47,7 +48,7 @@ export default function Navigator() {
               );
             }}
           >
-            {category.category_name}
+            {category.category_name}  
           </Button>
         ))}
       </InteractionWrapper>
@@ -55,6 +56,7 @@ export default function Navigator() {
   }
   if (view === "ingredient") {
     return (
+ 
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentType?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
@@ -85,7 +87,7 @@ export default function Navigator() {
                 );
               }}
             >
-              {ingredient.ingredient_name}
+              {ingredient.ingredient_name} 
               {image_url && (
                 <img
                   src={image_url}
@@ -98,10 +100,12 @@ export default function Navigator() {
           );
         })}
       </InteractionWrapper>
+     
     );
   }
   if (view === "quantity") {
     return (
+   
       <InteractionWrapper>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
@@ -130,9 +134,60 @@ export default function Navigator() {
           );
         })}
       </InteractionWrapper>
+    
     );
   }
-  return (
+
+  if (view === "value") {
+    let quantityLabel = "";
+
+    if (quantityValue !== null && quantityValue !== undefined) {
+      quantityLabel = quantityValue.toString();
+    } else {
+      quantityLabel = "";
+    }
+
+    if (currentIngredient) {
+      const ingredient = data.ingredients[currentIngredient.ingredient_id];
+      console.log(ingredient)
+  
+      if (ingredient.category_id === "fat") {
+        if (ingredient.ingredient_id === "olive-oild") {
+          quantityLabel += " cuillère d'huile d'olive";
+          console.log(quantityLabel)
+        } else if (ingredient.ingredient_id === "rapeseed-oil") {
+          quantityLabel += " cuillère d'Huile de colza";
+        console.log(quantityLabel)
+      } 
+      
+    }
+      else if (ingredient.category_id === "ingredient-principal") {
+
+    if (
+      ingredient.ingredient_id === "chicken" ||
+      ingredient.ingredient_id === "beef" ||
+      ingredient.ingredient_id === "lamb"
+    ) {
+      quantityLabel += " gr";
+      console.log(quantityLabel);
+    }
+  
+      } else if (ingredient.category_id === "vegetables") {
+        if (
+          ingredient.ingredient_id === "onions" ||
+          ingredient.ingredient_id === "carrots" ||
+          ingredient.ingredient_id === "courgettes" ||
+          ingredient.ingredient_id === "potatoes" 
+        ) {
+          quantityLabel = `${quantityLabel} ${ingredient.ingredient_name}`;
+           console.log(quantityLabel)
+        }
+       
+      }
+    }
+ 
+    return (
+  
     <InteractionWrapper skipQuantityView={skipQuantityView}>
       <Stack direction="row" justifyContent="space-between">
         <Button
@@ -144,12 +199,12 @@ export default function Navigator() {
           -
         </Button>
         <Input
-          type="number"
-          value={quantityValue ?? undefined}
-          onChange={(event) =>
-            dispatch(updateValue({ quantityValue: Number(event.target.value) }))
-          }
-        />
+        type="text"
+        value={quantityLabel}
+        onChange={(event) =>
+        dispatch(updateValue({ quantityValue: Number(event.target.value) }))
+       }
+      />
         <Button
           onClick={() => {
             dispatch(increaseQuantityValue({}));
@@ -159,9 +214,12 @@ export default function Navigator() {
         </Button>
       </Stack>
     </InteractionWrapper>
-  );
+   
+   );
+ 
+   }
+   return null;
 }
-
 const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
 
 const viewToValue = {
@@ -272,3 +330,4 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
     </Stack>
   );
 };
+
