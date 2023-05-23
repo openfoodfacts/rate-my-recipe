@@ -46,9 +46,6 @@ export default function ShowNutritionalTable() {
 
   const [open, setOpen] = React.useState(false);
 
-  console.log(modifiedNutriments, "modifiedNutriments");
-  console.log(nutriments, "nutriments");
-
   return (
     <>
       <Stack>
