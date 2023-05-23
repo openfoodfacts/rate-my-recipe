@@ -6,6 +6,30 @@ import { Button, Drawer, Stack, drawerClasses } from "@mui/material";
 import Table from "@mui/joy/Table";
 import Sheet from "@mui/joy/Sheet";
 
+const NUTRIMENTS_TITLE: { [key: string]: string } = {
+  "energy-kcal_100g": "Energie (kCal)",
+  "energy-kj_100g": "Energie (kJ)",
+  carbohydrates_100g: "Calories",
+  sugars_100g: "dont Sucre",
+  fat_100g: "Graisse",
+  "saturated-fat_100g": "dont saturée",
+  fiber_100g: "Fibres",
+  proteins_100g: "Proteines",
+  salt_100g: "Sel",
+};
+
+const NUTRIMENTS_PRECISION = {
+  "energy-kcal_100g": 1,
+  "energy-kj_100g": 0,
+  carbohydrates_100g: 1,
+  sugars_100g: 1,
+  fat_100g: 1,
+  "saturated-fat_100g": 1,
+  fiber_100g: 1,
+  proteins_100g: 1,
+  salt_100g: 1,
+} as any;
+
 export default function ShowNutritionalTable() {
   const nutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["empty_recipe"].nutriscore
@@ -19,50 +43,17 @@ export default function ShowNutritionalTable() {
   const modifiedNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriscore
   );
- 
+
   const [open, setOpen] = React.useState(false);
 
-  console.log(modifiedNutriments, "modifiedNutriments")
-  console.log(nutriments, "nutriments")
-
-  if (
-    !nutriments ||
-    !nutriscore ||
-    !Object.keys(modifiedNutriments).length ||
-    !modifiedNutriscore
-  ) {
-    return null;
-  }
-
-  const NUTRIMENTS_TITLE: { [key: string]: string } = {
-    "energy-kcal_100g": "Energie (kCal)",
-    "energy-kj_100g": "Energie (kJ)",
-    carbohydrates_100g: "Calories",
-    sugars_100g: "dont Sucre",
-    fat_100g: "Graisse",
-    "saturated-fat_100g": "dont saturée",
-    fiber_100g: "Fibres",
-    proteins_100g: "Proteines",
-    salt_100g: "Sel",
-  };
-
-  const NUTRIMENTS_PRECISION = {
-    "energy-kcal_100g": 1,
-    "energy-kj_100g": 0,
-    carbohydrates_100g: 1,
-    sugars_100g: 1,
-    fat_100g: 1,
-    "saturated-fat_100g": 1,
-    fiber_100g: 1,
-    proteins_100g: 1,
-    salt_100g: 1,
-  } as any;
+  console.log(modifiedNutriments, "modifiedNutriments");
+  console.log(nutriments, "nutriments");
 
   return (
     <>
       <Stack>
         <Nutriscore grade={nutriscore} />
-        <Nutriscore grade={modifiedNutriscore} /> 
+        <Nutriscore grade={modifiedNutriscore} />
         <Button onClick={() => setOpen(true)}>More info</Button>
       </Stack>
       <Drawer
@@ -83,7 +74,7 @@ export default function ShowNutritionalTable() {
             <tr>
               <th>Nutriment</th>
               <th>Valeur initiale (pour 100 g)</th>
-            <th>Valeur modifiée (pour 100 g)</th>
+              <th>Valeur modifiée (pour 100 g)</th>
             </tr>
           </thead>
           <tbody>
@@ -100,11 +91,10 @@ export default function ShowNutritionalTable() {
                 </td>
                 <td>{nutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}</td>
                 <td>
-                {modifiedNutriments?.[key]?.toFixed(
-                  NUTRIMENTS_PRECISION[key]
-                )}
-              </td>
-
+                  {modifiedNutriments?.[key]?.toFixed(
+                    NUTRIMENTS_PRECISION[key]
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

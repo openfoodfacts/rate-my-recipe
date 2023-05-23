@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function Nutriscore({ grade = "a", height = 80 }) {
+function Nutriscore({ grade = "empty", height = 80 }) {
   return (
     <Image
       src={`/nutriscores/nutriscore-${grade}.svg`}
