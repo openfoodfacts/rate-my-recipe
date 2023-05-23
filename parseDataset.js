@@ -75,11 +75,18 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     .some((cell) => cell !== "");
 
   if (isNewCategory) {
-    data.categories[lineObject.category_id] = { ...lineObject, ingredients: [] };
     currentState = { category_id: lineObject.category_id };
+    data.categories[lineObject.category_id] = {
+      ...lineObject,
+      ingredients: [],
+    };
     return;
   }
   if (isNewIngredient) {
+    currentState = {
+      category_id: currentState.category_id,
+      ingredient_id: lineObject.ingredient_id,
+    };
     data.categories[currentState.category_id].ingredients.push(
       lineObject.ingredient_id
     );
@@ -87,10 +94,6 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
       ...lineObject,
       ...currentState,
       quantities: [],
-    };
-    currentState = {
-      category_id: currentState.category_id,
-      ingredient_id: lineObject.ingredient_id,
     };
     return;
   }

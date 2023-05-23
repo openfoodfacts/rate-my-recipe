@@ -45,7 +45,7 @@
     },
     "beef": {
       "ingredient_name": "Boeuf",
-      "ingredient_id": "chicken",
+      "ingredient_id": "beef",
       "ingredient_environment": "Le boeuf a un fort impact environnemental.",
       "category_id": "ingredient-principal",
       "quantities": [
@@ -54,7 +54,7 @@
     },
     "lamb": {
       "ingredient_name": "Agneau",
-      "ingredient_id": "beef",
+      "ingredient_id": "lamb",
       "quantity_name": "Viande d'agneau",
       "category_id": "ingredient-principal",
       "quantities": [
@@ -72,7 +72,7 @@
     },
     "carrots": {
       "ingredient_name": "Carottes",
-      "ingredient_id": "onions",
+      "ingredient_id": "carrots",
       "category_id": "vegetables",
       "quantities": [
         "carrot"
@@ -80,7 +80,7 @@
     },
     "courgettes": {
       "ingredient_name": "Courgettes",
-      "ingredient_id": "carrots",
+      "ingredient_id": "courgettes",
       "category_id": "vegetables",
       "quantities": [
         "courgette"
@@ -88,7 +88,7 @@
     },
     "potatoes": {
       "ingredient_name": "Pommes de terre",
-      "ingredient_id": "courgettes",
+      "ingredient_id": "potatoes",
       "category_id": "vegetables",
       "quantities": [
         "potatoes"
@@ -104,7 +104,7 @@
     },
     "rapeseed-oil": {
       "ingredient_name": "Huile de colza",
-      "ingredient_id": "olive-oild",
+      "ingredient_id": "rapeseed-oil",
       "category_id": "fat",
       "quantities": [
         "rapeseed-oil"
