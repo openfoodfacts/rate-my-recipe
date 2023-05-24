@@ -138,54 +138,42 @@ export default function Navigator() {
     );
   }
 
-  if (view === "value") {
-    let quantityLabel = "";
+      let quantityLabel = "";
 
-    if (quantityValue !== null && quantityValue !== undefined) {
-      quantityLabel = quantityValue.toString();
-    } else {
-      quantityLabel = "";
-    }
-
-    if (currentIngredient) {
-      const ingredient = data.ingredients[currentIngredient.ingredient_id];
-      console.log(ingredient)
-  
-      if (ingredient.category_id === "fat") {
-        if (ingredient.ingredient_id === "olive-oild") {
-          quantityLabel += " cuillère d'huile d'olive";
-          console.log(quantityLabel)
-        } else if (ingredient.ingredient_id === "rapeseed-oil") {
-          quantityLabel += " cuillère d'Huile de colza";
-        console.log(quantityLabel)
-      } 
-      
-    }
-      else if (ingredient.category_id === "ingredient-principal") {
-
-    if (
-      ingredient.ingredient_id === "chicken" ||
-      ingredient.ingredient_id === "beef" ||
-      ingredient.ingredient_id === "lamb"
-    ) {
-      quantityLabel += " gr";
-      console.log(quantityLabel);
-    }
-  
-      } else if (ingredient.category_id === "vegetables") {
-        if (
-          ingredient.ingredient_id === "onions" ||
-          ingredient.ingredient_id === "carrots" ||
-          ingredient.ingredient_id === "courgettes" ||
-          ingredient.ingredient_id === "potatoes" 
-        ) {
-          quantityLabel = `${quantityLabel} ${ingredient.ingredient_name}`;
-           console.log(quantityLabel)
-        }
-       
+      if (quantityValue !== null && quantityValue !== undefined) {
+        quantityLabel = quantityValue.toString();
+      } else {
+        quantityLabel = "";
       }
-    }
- 
+  
+      if (currentIngredient) {
+        const ingredient = data.ingredients[currentIngredient.ingredient_id];
+  
+        if (ingredient.category_id === "fat") {
+          if (ingredient.ingredient_name === "Huile d'olive") {
+            quantityLabel += " cuillère d'huile d'olive";
+          } else if (ingredient.ingredient_name === "Huile de colza") {
+            quantityLabel += " cuillère d'Huile de colza";
+          }
+        } else if (ingredient.category_id === "ingredient-principal") {
+          if (
+            ingredient.ingredient_name === "Poulet" ||
+            ingredient.ingredient_name === "Boeuf" ||
+            ingredient.ingredient_name === "Agneau"
+          ) {
+            quantityLabel += " gr";
+          }
+        } else if (ingredient.category_id === "vegetables") {
+          if (
+            ingredient.ingredient_name === "Oignons" ||
+            ingredient.ingredient_name === "Carottes" ||
+            ingredient.ingredient_name === "Courgettes" ||
+            ingredient.ingredient_name === "Pommes de terre"
+          ) {
+            quantityLabel = `${quantityLabel} ${ingredient.ingredient_name}`;
+          }
+        }
+      
     return (
   
     <InteractionWrapper skipQuantityView={skipQuantityView}>
