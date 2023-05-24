@@ -45,7 +45,7 @@
     },
     "beef": {
       "ingredient_name": "Boeuf",
-      "ingredient_id": "chicken",
+      "ingredient_id": "beef",
       "ingredient_environment": "Le boeuf a un fort impact environnemental.",
       "category_id": "ingredient-principal",
       "quantities": [
@@ -54,8 +54,9 @@
     },
     "lamb": {
       "ingredient_name": "Agneau",
-      "ingredient_id": "beef",
+      "ingredient_id": "lamb",
       "quantity_name": "Viande d'agneau",
+      "quantity_api_name": "Viande d'agneau",
       "category_id": "ingredient-principal",
       "quantities": [
         "lamb"
@@ -72,7 +73,7 @@
     },
     "carrots": {
       "ingredient_name": "Carottes",
-      "ingredient_id": "onions",
+      "ingredient_id": "carrots",
       "category_id": "vegetables",
       "quantities": [
         "carrot"
@@ -80,7 +81,7 @@
     },
     "courgettes": {
       "ingredient_name": "Courgettes",
-      "ingredient_id": "carrots",
+      "ingredient_id": "courgettes",
       "category_id": "vegetables",
       "quantities": [
         "courgette"
@@ -88,7 +89,7 @@
     },
     "potatoes": {
       "ingredient_name": "Pommes de terre",
-      "ingredient_id": "courgettes",
+      "ingredient_id": "potatoes",
       "category_id": "vegetables",
       "quantities": [
         "potatoes"
@@ -104,7 +105,7 @@
     },
     "rapeseed-oil": {
       "ingredient_name": "Huile de colza",
-      "ingredient_id": "olive-oild",
+      "ingredient_id": "rapeseed-oil",
       "category_id": "fat",
       "quantities": [
         "rapeseed-oil"
@@ -114,6 +115,7 @@
   "quantities": {
     "whole-chicken": {
       "quantity_name": "Poulet entier",
+      "quantity_api_name": "Poulet entier",
       "quantity_id": "whole-chicken",
       "quantity_default_weight_per_unit": "1500",
       "quantity_default_number_of_units": "1",
@@ -123,6 +125,7 @@
     },
     "chicken-thigh": {
       "quantity_name": "Cuisses de poulet",
+      "quantity_api_name": "Cuisses de poulet",
       "quantity_id": "chicken-thigh",
       "quantity_default_weight_per_unit": "250",
       "quantity_default_number_of_units": "6",
@@ -132,6 +135,7 @@
     },
     "chicken-breast": {
       "quantity_name": "Blancs de poulet",
+      "quantity_api_name": "Blancs de poulet",
       "quantity_id": "chicken-breast",
       "quantity_default_weight_per_unit": "200",
       "quantity_default_number_of_units": "4",
@@ -141,6 +145,7 @@
     },
     "beef": {
       "quantity_name": "Boeuf",
+      "quantity_api_name": "Boeuf",
       "quantity_id": "beef",
       "quantity_default_weight": "500",
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg",
@@ -149,6 +154,7 @@
     },
     "lamb": {
       "quantity_name": "Agneau",
+      "quantity_api_name": "Agneau",
       "quantity_id": "lamb",
       "quantity_default_weight": "500",
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg",
@@ -157,6 +163,7 @@
     },
     "onion": {
       "quantity_name": "Oignons",
+      "quantity_api_name": "Oignons",
       "quantity_id": "onion",
       "quantity_default_weight_per_unit": "100",
       "quantity_default_number_of_units": "3",
@@ -166,15 +173,17 @@
     },
     "carrot": {
       "quantity_name": "Carottes",
+      "quantity_api_name": "Carottes",
       "quantity_id": "carrot",
       "quantity_default_weight_per_unit": "75",
       "quantity_default_number_of_units": "4",
-      "quantity_image_url": "https://fr.openfoodfacts.org/produit/3420820009040/carottes-sans-marque",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg",
       "category_id": "vegetables",
       "ingredient_id": "carrots"
     },
     "courgette": {
       "quantity_name": "Courgette",
+      "quantity_api_name": "Courgette",
       "quantity_id": "courgette",
       "quantity_default_weight_per_unit": "150",
       "quantity_default_number_of_units": "3",
@@ -184,6 +193,7 @@
     },
     "potatoes": {
       "quantity_name": "Pommes de terre",
+      "quantity_api_name": "Pommes de terre",
       "quantity_id": "potatoes",
       "quantity_default_weight": "1000",
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/039/991/5578/front_fr.3.400.jpg",
@@ -192,6 +202,7 @@
     },
     "olive-oil": {
       "quantity_name": "Cuillères à soupe d'huile d'olive",
+      "quantity_api_name": "huile d'olive",
       "quantity_id": "olive-oil",
       "quantity_default_weight_per_unit": "10",
       "quantity_default_number_of_units": "2",
@@ -201,6 +212,7 @@
     },
     "rapeseed-oil": {
       "quantity_name": "Cuillères à soupe d'huile de colza",
+      "quantity_api_name": "huile de colza",
       "quantity_id": "rapeseed-oil",
       "quantity_default_weight_per_unit": "10",
       "quantity_default_number_of_units": "2",

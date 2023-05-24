@@ -30,11 +30,12 @@ const COLUMNS = {
   7: "ingredient_health",
   8: "ingredient_environment",
   9: "quantity_name",
-  10: "quantity_id",
-  11: "quantity_default_weight",
-  12: "quantity_default_weight_per_unit",
-  13: "quantity_default_number_of_units",
-  14: "quantity_image_url",
+  10: "quantity_api_name",
+  11: "quantity_id",
+  12: "quantity_default_weight",
+  13: "quantity_default_weight_per_unit",
+  14: "quantity_default_number_of_units",
+  15: "quantity_image_url",
 };
 
 // Level of depths (end excluded)
@@ -75,11 +76,18 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     .some((cell) => cell !== "");
 
   if (isNewCategory) {
-    data.categories[lineObject.category_id] = { ...lineObject, ingredients: [] };
     currentState = { category_id: lineObject.category_id };
+    data.categories[lineObject.category_id] = {
+      ...lineObject,
+      ingredients: [],
+    };
     return;
   }
   if (isNewIngredient) {
+    currentState = {
+      category_id: currentState.category_id,
+      ingredient_id: lineObject.ingredient_id,
+    };
     data.categories[currentState.category_id].ingredients.push(
       lineObject.ingredient_id
     );
@@ -87,10 +95,6 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
       ...lineObject,
       ...currentState,
       quantities: [],
-    };
-    currentState = {
-      category_id: currentState.category_id,
-      ingredient_id: lineObject.ingredient_id,
     };
     return;
   }

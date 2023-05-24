@@ -25,6 +25,7 @@ export type IngredientsType = {
 
 export type QuantityType = {
   quantity_name?: string;
+  quantity_api_name?: string;
   quantity_id: QuantityId;
   quantity_default_weight?: string;
   quantity_default_weight_per_unit?: string;
