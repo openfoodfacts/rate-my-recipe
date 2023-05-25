@@ -152,8 +152,8 @@ type RecipeStateType = {
 type RecipesStateType = {
   recipes: { 
     [id: string]: RecipeStateType;
-    modifiedRecipe: RecipeStateType;
-    empty_recipe: RecipeStateType;
+    urlRecipe: RecipeStateType;
+    userRecipe: RecipeStateType;
   
   };
   ids: string[];
@@ -276,14 +276,14 @@ const recipeSlice = createSlice<
   name: "recipe",
   initialState: {
     recipes: {
-      modifiedRecipe: {
+      urlRecipe: {
         ingredients: [],
         servings: 4,
         instructions: [],
         nutriscore: null,
         nutriments: {},
       },
-      empty_recipe: {
+      userRecipe: {
         ingredients: [],
         servings: 4,
         instructions: [],
@@ -291,7 +291,7 @@ const recipeSlice = createSlice<
         nutriments: {},
       },
     },
-    ids: ["modifiedRecipe", "empty_recipe"],
+    ids: ["urlRecipe", "userRecipe"],
   },
   reducers: { },
   extraReducers: (builder) => {
