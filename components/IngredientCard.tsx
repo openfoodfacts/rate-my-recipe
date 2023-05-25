@@ -56,7 +56,7 @@ const IngredientCard = (props: Ingredient) => {
                 dispatch<any>(
                   updateRecipeIngredients({
                     type: "upsert",
-                    // recipeId: "empty_recipe",
+                    recipeId: "userRecipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
                     quantityId: quantity.quantity_id,
@@ -73,12 +73,10 @@ const IngredientCard = (props: Ingredient) => {
               color="neutral"
               size="sm"
               onClick={() =>
-                // dispatch(
-                //   upsetIngredient({
                 dispatch<any>(
                   updateRecipeIngredients({
                     type: "upsert",
-                    // recipeId: "empty_recipe",
+                    recipeId: "userRecipe",
                     ingredientTypeId: typeId,
                     ingredientId: id,
                     quantityId: quantity.quantity_id,
@@ -101,7 +99,7 @@ const IngredientCard = (props: Ingredient) => {
               onClick={() =>
                 dispatch<any>(
                   updateRecipeIngredients({
-                    // recipeId: "empty_recipe",
+                     recipeId: "userRecipe",
                     type: "delete",
                     // ingredientTypeId: typeId,
                     ingredientId: id,

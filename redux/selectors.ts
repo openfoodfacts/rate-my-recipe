@@ -4,9 +4,11 @@ import data from "../data";
 import { VALUE, QUANTITY, INGREDIENT } from "./reducers/recipes";
 
 export const selectCurrentIngredients = createSelector(
+  
   (state: RootState, currentRecipeId: string) => currentRecipeId,
   (state: RootState) => state.recipe.recipes,
   (currentRecipeId, recipes) => recipes[currentRecipeId].ingredients
+
 );
 
 export const selectURLParams = createSelector(

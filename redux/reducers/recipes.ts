@@ -1,16 +1,18 @@
 import {
   createAsyncThunk,
   createSlice,
-  PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
 import data from "../../data";
 
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
-  async (action: UpdateActionType, thunkAPI: any) => {
+    async (
+      { recipeId, ...action }: ReciepeAction<UpdateActionType>,
+      thunkAPI: any
+    ) => {
     const nextIngredients = ingredientReducer(
-      thunkAPI.getState().recipe.recipes["empty_recipe"].ingredients,
+      thunkAPI.getState().recipe.recipes[recipeId].ingredients,
       action
     );
 
@@ -148,7 +150,12 @@ type RecipeStateType = {
 };
 
 type RecipesStateType = {
-  recipes: { [id: string]: RecipeStateType };
+  recipes: { 
+    [id: string]: RecipeStateType;
+    urlRecipe: RecipeStateType;
+    userRecipe: RecipeStateType;
+  
+  };
   ids: string[];
 };
 
@@ -166,6 +173,13 @@ type UpdateActionType =
       type: "delete";
       ingredientId: string;
       quantityId: string;
+    }
+    | {
+      type: "overideFromURLParams";
+      ingredients: {
+        key: string;
+        value: string;
+      }[];
     };
 
 const ingredientReducer = (
@@ -219,7 +233,20 @@ const ingredientReducer = (
       ...ingredients.slice(ingredientIndex + 1),
     ];
   }
+  if (action.type === "overideFromURLParams") {
+    const groupedParams = groupByIngredient(groupURLParams(action.ingredients));
 
+    const ingredients = Object.entries(groupedParams).map(
+      ([ingredientId, quantities]) => {
+        return {
+          typeId: data.ingredients[ingredientId].category_id,
+          id: ingredientId,
+          quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
+        };
+      }
+    );
+    return ingredients;
+  }
   const { ingredientId, quantityId } = action;
 
   const ingredientIndex = ingredients.findIndex(
@@ -249,7 +276,14 @@ const recipeSlice = createSlice<
   name: "recipe",
   initialState: {
     recipes: {
-      empty_recipe: {
+      urlRecipe: {
+        ingredients: [],
+        servings: 4,
+        instructions: [],
+        nutriscore: null,
+        nutriments: {},
+      },
+      userRecipe: {
         ingredients: [],
         servings: 4,
         instructions: [],
@@ -257,49 +291,28 @@ const recipeSlice = createSlice<
         nutriments: {},
       },
     },
-    ids: ["empty_recipe"],
+    ids: ["urlRecipe", "userRecipe"],
   },
-  reducers: {
-    parseURLParameters: (
-      state,
-      action: PayloadAction<
-        ReciepeAction<{
-          params: any[];
-        }>
-      >
-    ) => {
-      const { recipeId, params } = action.payload;
-      const groupedParams = groupByIngredient(groupURLParams(params));
-
-      const ingredients = Object.entries(groupedParams).map(
-        ([ingredientId, quantities]) => {
-          return {
-            typeId: data.ingredients[ingredientId].category_id,
-            id: ingredientId,
-            quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
-          };
-        }
-      );
-
-      state.recipes[recipeId].ingredients = ingredients;
-    },
-  },
+  reducers: { },
   extraReducers: (builder) => {
     builder.addCase(updateRecipeIngredients.pending, (state, action) => {
-      state.recipes["empty_recipe"].ingredients = ingredientReducer(
-        state.recipes["empty_recipe"].ingredients,
+      const { recipeId } = action.meta.arg;
+      state.recipes[recipeId].ingredients = ingredientReducer(
+        state.recipes[recipeId].ingredients,
         action.meta.arg
       );
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
+   const { recipeId } = action.meta.arg;
+  
+
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);
       }
-      state.recipes["empty_recipe"].nutriscore =
-        action.payload.product.nutriscore_grade;
-      state.recipes["empty_recipe"].nutriments =
-        action.payload.product.nutriments_estimated;
+      const { nutriscore_grade, nutriments_estimated } = action.payload.product;
+      state.recipes[recipeId].nutriscore = nutriscore_grade;
+      state.recipes[recipeId].nutriments = nutriments_estimated;
     });
   },
 });
