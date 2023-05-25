@@ -11,7 +11,7 @@ import IngredientCard from "@/components/IngredientCard";
 import { Button, Stack } from "@mui/material";
 import { openEditor } from "@/redux/reducers/editor";
 import { Sheet } from "@mui/joy";
-import { parseURLParameters } from "@/redux/reducers/recipes";
+import { parseURLParameters, updateRecipeIngredients } from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
 export default function Home() {
@@ -19,22 +19,38 @@ export default function Home() {
 
   const searchParams = useSearchParams();
   const params = useSelector((state: RootState) =>
-    selectURLParams(state, "empty_recipe")
+    selectURLParams(state, "modifiedRecipe")
   );
   React.useEffect(() => {
-    dispatch(
-      parseURLParameters({
+    dispatch<any>(
+      updateRecipeIngredients({
         recipeId: "empty_recipe",
-        params: Array.from(searchParams.entries()).map(([key, value]) => ({
+        type: "overideFromURLParams",
+        ingredients: Array.from(searchParams.entries()).map(([key, value]) => ({
           key,
           value,
         })),
       })
     );
+    if (Array.from(searchParams.entries()).length !== 0) {
+      dispatch<any>(
+        updateRecipeIngredients({
+          recipeId: "modifiedRecipe",
+          type: "overideFromURLParams",
+          ingredients: Array.from(searchParams.entries()).map(
+            ([key, value]) => ({
+              key,
+              value,
+            })
+          ),
+        })
+      );
+    }
+  
   }, [dispatch, searchParams]);
 
   const ingrdients = useSelector((state: RootState) =>
-    selectCurrentIngredients(state, "empty_recipe")
+    selectCurrentIngredients(state, "modifiedRecipe")
   );
 
   return (

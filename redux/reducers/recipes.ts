@@ -8,7 +8,10 @@ import data from "../../data";
 
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
-  async ({ recipeId, ...action }: ReciepeAction<UpdateActionType>, thunkAPI: any) => {
+    async (
+      { recipeId, ...action }: ReciepeAction<UpdateActionType>,
+      thunkAPI: any
+    ) => {
     const nextIngredients = ingredientReducer(
       thunkAPI.getState().recipe.recipes[recipeId].ingredients,
       action
@@ -149,7 +152,7 @@ type RecipeStateType = {
 
 type RecipesStateType = {
   recipes: { 
-    [id: string]: RecipeStateType ,
+    [id: string]: RecipeStateType;
     modifiedRecipe: RecipeStateType;
     empty_recipe: RecipeStateType;
   
@@ -158,10 +161,7 @@ type RecipesStateType = {
 };
 
 type ReciepeAction<CustomT> = CustomT & { recipeId: string };
-interface UpdateRecipeIngredientsPayload {
-  recipeId: string;
-  action: UpdateActionType;
-}
+
 type UpdateActionType =
   | {
       type: "upsert";
@@ -175,11 +175,17 @@ type UpdateActionType =
       ingredientId: string;
       quantityId: string;
     }
-   
+    | {
+      type: "overideFromURLParams";
+      ingredients: {
+        key: string;
+        value: string;
+      }[];
+    };
 
 const ingredientReducer = (
   ingredients: Ingredient[],
-  action: UpdateActionType,
+  action: UpdateActionType
 ): Ingredient[] => {
   if (action.type === "upsert") {
     const { ingredientTypeId, ingredientId, quantityId, quantityValue } =
@@ -228,7 +234,20 @@ const ingredientReducer = (
       ...ingredients.slice(ingredientIndex + 1),
     ];
   }
+  if (action.type === "overideFromURLParams") {
+    const groupedParams = groupByIngredient(groupURLParams(action.ingredients));
 
+    const ingredients = Object.entries(groupedParams).map(
+      ([ingredientId, quantities]) => {
+        return {
+          typeId: data.ingredients[ingredientId].category_id,
+          id: ingredientId,
+          quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
+        };
+      }
+    );
+    return ingredients;
+  }
   const { ingredientId, quantityId } = action;
 
   const ingredientIndex = ingredients.findIndex(
@@ -258,7 +277,7 @@ const recipeSlice = createSlice<
   name: "recipe",
   initialState: {
     recipes: {
-      modifiedRecipe:{
+      modifiedRecipe: {
         ingredients: [],
         servings: 4,
         instructions: [],
@@ -273,35 +292,9 @@ const recipeSlice = createSlice<
         nutriments: {},
       },
     },
-    ids: ["modifiedRecipe","empty_recipe"],
+    ids: ["modifiedRecipe", "empty_recipe"],
   },
-  reducers: {
-  
-    parseURLParameters: (
-      state,
-      action: PayloadAction<
-        ReciepeAction<{
-          params: any[];
-        }>
-      >
-    ) => {
-      const { recipeId, params } = action.payload;
-      const groupedParams = groupByIngredient(groupURLParams(params));
-
-      const ingredients = Object.entries(groupedParams).map(
-        ([ingredientId, quantities]) => {
-          return {
-            typeId: data.ingredients[ingredientId].category_id,
-            id: ingredientId,
-            quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
-          };
-        }
-      );
-
-      state.recipes[recipeId].ingredients = ingredients;
-      console.log(ingredients, "les ingredients")
-    },
-  },
+  reducers: { },
   extraReducers: (builder) => {
     builder.addCase(updateRecipeIngredients.pending, (state, action) => {
       const { recipeId } = action.meta.arg;
@@ -312,8 +305,9 @@ const recipeSlice = createSlice<
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
-      const { recipeId } = action.meta.arg;
+   const { recipeId } = action.meta.arg;
   
+
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);
       }

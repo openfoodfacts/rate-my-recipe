@@ -19,20 +19,10 @@ export default function ShowNutritionalTable() {
   const modifiedNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["modifiedRecipe"].nutriscore
   );
+
  
   const [open, setOpen] = React.useState(false);
 
-  console.log(modifiedNutriments, "modifiedNutriments")
-  console.log(nutriments, "nutriments")
-
-  if (
-    !nutriments ||
-    !nutriscore ||
-    !Object.keys(modifiedNutriments).length ||
-    !modifiedNutriscore
-  ) {
-    return null;
-  }
 
   const NUTRIMENTS_TITLE: { [key: string]: string } = {
     "energy-kcal_100g": "Energie (kCal)",
@@ -45,7 +35,7 @@ export default function ShowNutritionalTable() {
     proteins_100g: "Proteines",
     salt_100g: "Sel",
   };
-
+  
   const NUTRIMENTS_PRECISION = {
     "energy-kcal_100g": 1,
     "energy-kj_100g": 0,
@@ -57,12 +47,23 @@ export default function ShowNutritionalTable() {
     proteins_100g: 1,
     salt_100g: 1,
   } as any;
+  if (
+    !nutriments ||
+    !nutriscore ||
+    !Object.keys(modifiedNutriments).length ||
+    !modifiedNutriscore
+  ) {
+    return null;
+  }
+
 
   return (
     <>
       <Stack>
-        <Nutriscore grade={nutriscore} />
-        <Nutriscore grade={modifiedNutriscore} /> 
+        {nutriscore !== undefined && <Nutriscore grade={nutriscore} />}
+      {modifiedNutriscore !== undefined && (
+        <Nutriscore grade={modifiedNutriscore} />
+      )}
         <Button onClick={() => setOpen(true)}>More info</Button>
       </Stack>
       <Drawer
@@ -87,27 +88,28 @@ export default function ShowNutritionalTable() {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(NUTRIMENTS_TITLE).map((key) => (
-              <tr key={key}>
-                <td
-                  style={{
-                    paddingLeft: NUTRIMENTS_TITLE[key].includes("dont")
-                      ? 10
-                      : 0,
-                  }}
-                >
-                  {NUTRIMENTS_TITLE[key]}
-                </td>
-                <td>{nutriments?.[key]?.toFixed(NUTRIMENTS_PRECISION[key])}</td>
-                <td>
-                {modifiedNutriments?.[key]?.toFixed(
-                  NUTRIMENTS_PRECISION[key]
-                )}
-              </td>
-
-              </tr>
-            ))}
-          </tbody>
+  {Object.keys(NUTRIMENTS_TITLE).map((key) => (
+    <tr key={key}>
+      <td
+        style={{
+          paddingLeft: NUTRIMENTS_TITLE[key].includes("dont") ? 10 : 0,
+        }}
+      >
+        {NUTRIMENTS_TITLE[key]}
+      </td>
+      <td>
+        {nutriments && nutriments[key] !== undefined
+          ? nutriments[key].toFixed(NUTRIMENTS_PRECISION[key])
+          : "N/A"}
+      </td>
+      <td>
+        {modifiedNutriments && modifiedNutriments[key] !== undefined
+          ? modifiedNutriments[key].toFixed(NUTRIMENTS_PRECISION[key])
+          : "N/A"}
+      </td>
+    </tr>
+  ))}
+</tbody>
         </Table>
         <Sheet
           sx={{
