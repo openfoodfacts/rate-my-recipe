@@ -6,6 +6,7 @@ import { Button, Drawer, Stack, drawerClasses } from "@mui/material";
 import Table from "@mui/joy/Table";
 import Sheet from "@mui/joy/Sheet";
 
+
 export default function ShowNutritionalTable() {
   const nutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["empty_recipe"].nutriscore
@@ -79,12 +80,19 @@ export default function ShowNutritionalTable() {
           },
         }}
       >
-        <Table aria-label="basic table">
+        <Table
+          aria-label="basic table"
+          sx={{ "& span": { whiteSpace: "initial" } }}
+        >
           <thead>
             <tr>
               <th>Nutriment</th>
-              <th>Valeur initiale (pour 100 g)</th>
-            <th>Valeur modifiée (pour 100 g)</th>
+              <th>
+                <span>Valeur initiale (pour 100 g)</span>
+              </th>
+              <th>
+                <span>Valeur modifiée (pour 100 g)</span>
+              </th>
             </tr>
           </thead>
           <tbody>

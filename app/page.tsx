@@ -6,17 +6,17 @@ import IngredientSelector from "@/components/IngredientSelector";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
-import { RootState } from "@/redux/store";
+import store, { RootState } from "@/redux/store";
 import IngredientCard from "@/components/IngredientCard";
 import { Button, Stack } from "@mui/material";
 import { openEditor } from "@/redux/reducers/editor";
 import { Sheet } from "@mui/joy";
-import { parseURLParameters, updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
 export default function Home() {
   const dispatch = useDispatch();
-
+  const currentRecipeId = "userRecipe"; 
   const searchParams = useSearchParams();
   const params = useSelector((state: RootState) =>
     selectURLParams(state, "modifiedRecipe")
@@ -50,15 +50,48 @@ export default function Home() {
   }, [dispatch, searchParams]);
 
   const ingrdients = useSelector((state: RootState) =>
-    selectCurrentIngredients(state, "modifiedRecipe")
-  );
+  selectCurrentIngredients(state, "empty_recipe")
+);
+  function handleShareButtonClick() {
+    const url = "https://amathjourney.com/api/yololo";
+  
+    const ingredients = selectCurrentIngredients(store.getState(), currentRecipeId);
 
+    const valuesAndQuantities = ingredients.flatMap((ingredient) =>
+    ingredient.quantities.map((quantity) => ({
+      quantity: quantity.id,
+      value: quantity.value,
+    }))
+  );
+  const body = JSON.stringify({ valuesAndQuantities });
+  
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+     return data
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  
+  
   return (
     <main
       style={{
         maxWidth: "100%",
       }}
     >
+     
+     <Button onClick={handleShareButtonClick}>
+      Share Recipe
+    </Button>
       <p>
         url:{" "}
         <a

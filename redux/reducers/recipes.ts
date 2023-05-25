@@ -1,7 +1,6 @@
 import {
   createAsyncThunk,
   createSlice,
-  PayloadAction,
   SliceCaseReducers,
 } from "@reduxjs/toolkit";
 import data from "../../data";
@@ -282,7 +281,7 @@ const recipeSlice = createSlice<
         servings: 4,
         instructions: [],
         nutriscore: null,
-        nutriments: {},  
+        nutriments: {},
       },
       empty_recipe: {
         ingredients: [],
@@ -314,8 +313,6 @@ const recipeSlice = createSlice<
       const { nutriscore_grade, nutriments_estimated } = action.payload.product;
       state.recipes[recipeId].nutriscore = nutriscore_grade;
       state.recipes[recipeId].nutriments = nutriments_estimated;
-     
-     
     });
   },
 });
