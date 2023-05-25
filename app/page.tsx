@@ -16,10 +16,10 @@ import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const currentRecipeId = "userRecipe"; 
+  const currentRecipeId = "userRecipe";
   const searchParams = useSearchParams();
   const params = useSelector((state: RootState) =>
-    selectURLParams(state, "urlRecipe")
+    selectURLParams(state, currentRecipeId)
   );
   React.useEffect(() => {
     dispatch<any>(
