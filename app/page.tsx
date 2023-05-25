@@ -46,25 +46,27 @@ export default function Home() {
         })
       );
     }
-  
   }, [dispatch, searchParams]);
 
   const ingrdients = useSelector((state: RootState) =>
-  selectCurrentIngredients(state, "userRecipe")
-);
+    selectCurrentIngredients(state, "userRecipe")
+  );
   function handleShareButtonClick() {
     const url = "https://amathjourney.com/api/yololo";
-  
-    const ingredients = selectCurrentIngredients(store.getState(), currentRecipeId);
+
+    const ingredients = selectCurrentIngredients(
+      store.getState(),
+      currentRecipeId
+    );
 
     const valuesAndQuantities = ingredients.flatMap((ingredient) =>
-    ingredient.quantities.map((quantity) => ({
-      quantity: quantity.id,
-      value: quantity.value,
-    }))
-  );
-  const body = JSON.stringify({ valuesAndQuantities });
-  
+      ingredient.quantities.map((quantity) => ({
+        quantity: quantity.id,
+        value: quantity.value,
+      }))
+    );
+    const body = JSON.stringify({ valuesAndQuantities });
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -74,24 +76,20 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-     return data
+        return data;
       })
       .catch((error) => {
         console.error(error);
       });
   }
-  
-  
+
   return (
     <main
       style={{
         maxWidth: "100%",
       }}
     >
-     
-     <Button onClick={handleShareButtonClick}>
-      Share Recipe
-    </Button>
+      <Button onClick={handleShareButtonClick}>Share Recipe</Button>
       <p>
         url:{" "}
         <a
