@@ -21,6 +21,7 @@ import {
   closeEditor,
 } from "@/redux/reducers/editor";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { ButtonBase } from "@mui/material";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -138,30 +139,26 @@ export default function Navigator() {
     );
   }
 
-      let quantityLabel = "";
-
-      if (quantityValue !== null && quantityValue !== undefined) {
-        quantityLabel = quantityValue.toString();
-      } else {
-        quantityLabel = "";
-      }
-  
+     let value = "";
       if (currentIngredient) {
         const ingredient = data.ingredients[currentIngredient.ingredient_id];
   
         if (ingredient.category_id === "fat") {
           if (ingredient.ingredient_name === "Huile d'olive") {
-            quantityLabel += " cuillère d'huile d'olive";
+            value += " cuillère d'huile d'olive";
           } else if (ingredient.ingredient_name === "Huile de colza") {
-            quantityLabel += " cuillère d'Huile de colza";
+            value += " cuillère d'Huile de colza";
           }
-        } else if (ingredient.category_id === "ingredient-principal") {
+        } else if (ingredient.category_id === "ingredient-principal") 
+        {
           if (
             ingredient.ingredient_name === "Poulet" ||
             ingredient.ingredient_name === "Boeuf" ||
             ingredient.ingredient_name === "Agneau"
           ) {
-            quantityLabel += " gr";
+            if (ingredient.default_weight) {
+              value += ` ${ingredient.ingredient_name}`;
+            } 
           }
         } else if (ingredient.category_id === "vegetables") {
           if (
@@ -170,7 +167,7 @@ export default function Navigator() {
             ingredient.ingredient_name === "Courgettes" ||
             ingredient.ingredient_name === "Pommes de terre"
           ) {
-            quantityLabel = `${quantityLabel} ${ingredient.ingredient_name}`;
+            value = ` ${ingredient.ingredient_name}`;
           }
         }
       
@@ -187,12 +184,19 @@ export default function Navigator() {
           -
         </Button>
         <Input
-        type="text"
-        value={quantityLabel}
+        type="number"
+        value={quantityValue ? quantityValue.toString() : ''}
         onChange={(event) =>
         dispatch(updateValue({ quantityValue: Number(event.target.value) }))
        }
       />
+     
+     {(ingredient.category_id === "ingredient-principal" || ingredient.category_id === "fat" || ingredient.category_id === "vegetables") && (
+      <span>{value}</span>
+    )}
+      {ingredient.default_weight && (
+        <Button>gr</Button>
+      )}
         <Button
           onClick={() => {
             dispatch(increaseQuantityValue({}));
@@ -201,6 +205,7 @@ export default function Navigator() {
           +
         </Button>
       </Stack>
+    
     </InteractionWrapper>
    
    );

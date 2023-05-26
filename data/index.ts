@@ -12,6 +12,7 @@ export type CategoryType = {
 };
 
 export type IngredientsType = {
+  default_weight?: any;
   ingredient_taxonomy?: string;
   ingredient_name?: string;
   ingredient_id: IngredientsId;
