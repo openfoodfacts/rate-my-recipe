@@ -190,13 +190,13 @@ export default function Navigator() {
         dispatch(updateValue({ quantityValue: Number(event.target.value) }))
        }
       />
-     
+       {ingredient.default_weight && (
+        <Button>gr</Button>
+      )}
      {(ingredient.category_id === "ingredient-principal" || ingredient.category_id === "fat" || ingredient.category_id === "vegetables") && (
       <span>{value}</span>
     )}
-      {ingredient.default_weight && (
-        <Button>gr</Button>
-      )}
+    
         <Button
           onClick={() => {
             dispatch(increaseQuantityValue({}));
