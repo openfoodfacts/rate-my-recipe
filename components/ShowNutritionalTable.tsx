@@ -8,6 +8,8 @@ import Sheet from "@mui/joy/Sheet";
 import DecreaseIcon from "@mui/icons-material/SouthEast";
 import IncreaseIcon from "@mui/icons-material/NorthEast";
 import StableIcon from "@mui/icons-material/East";
+import CloseIcom  from '@mui/icons-material/Close';
+import InfoIcon from '@mui/icons-material/Info';
 
 const NUTRIMENTS_TITLE: { [key: string]: string } = {
   "energy-kcal_100g": "Energie (kCal)",
@@ -86,13 +88,11 @@ export default function ShowNutritionalTable() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <>
-      <Stack>
-        <Nutriscore grade={userNutriscore} />
-        <Nutriscore grade={urlNutriscore} />
-
-        <Button onClick={() => setOpen(true)}>More info</Button>
+    <> <Stack direction="row" spacing={2} sx={{ padding: "30px", justifyContent: "center", alignItems: "center"}}>
+        <Nutriscore grade={userNutriscore} height={50} />
+        <Nutriscore grade={urlNutriscore} height={50} />
       </Stack>
+      <Button color="warning" variant="contained" sx={{ px: 5 }} startIcon={<InfoIcon />} onClick={() => setOpen(true)}>More info</Button>
       <Drawer
         open={open}
         onClose={() => setOpen(false)}
@@ -102,11 +102,22 @@ export default function ShowNutritionalTable() {
             p: 2,
           },
         }}
-      >
+      >      
+      <Stack direction="row" justifyContent="center">
+      <Button 
+      variant="contained"
+       onClick={() => setOpen(false)}
+       sx={{ mb: 2 }}
+      startIcon={<CloseIcom />}>
+        Close
+      </Button>
+
+    </Stack>
         <Table
-          aria-label="basic table"
-          sx={{ "& span": { whiteSpace: "initial" } }}
+       borderAxis="both"
+       sx={{ "& span": { whiteSpace: "initial" }, p: 2 }} 
         >
+         
           <thead>
             <tr>
               <th>Nutriment</th>
@@ -167,7 +178,7 @@ export default function ShowNutritionalTable() {
             textAlign: "center",
           }}
         >
-          <Button onClick={() => setOpen(false)}>Close</Button>
+        
         </Sheet>
       </Drawer>
     </>
