@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Input, Stack } from "@mui/joy";
+import { Button, Input, Stack, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -28,10 +28,10 @@ export default function Navigator() {
   const { currentView: view, quantityValue } = state;
   const currentType = useSelector(selectEditorCurrentType);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
+  const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
-
   if (view === "type") {
     return (
       <InteractionWrapper>
@@ -132,13 +132,28 @@ export default function Navigator() {
       </InteractionWrapper>
     );
   }
+
+  if (currentQuantity === null) {
+    throw new Error(
+      "currentQuantity is not set whereas being in quantity view"
+    );
+  }
+  const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
+  const updateStep = 1;
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
+      <img
+        src={currentQuantity.quantity_image_url}
+        height={150}
+        width={150}
+        style={{ objectFit: "contain" }}
+      />
+      <Typography>{currentQuantity?.quantity_name}</Typography>
       <Stack direction="row" justifyContent="space-between">
         <Button
-          disabled={quantityValue === 1}
+          disabled={!quantityValue || quantityValue - updateStep <= 0}
           onClick={() => {
-            dispatch(decreaseQuantityValue({}));
+            dispatch(decreaseQuantityValue({ step: updateStep }));
           }}
         >
           -
@@ -149,10 +164,11 @@ export default function Navigator() {
           onChange={(event) =>
             dispatch(updateValue({ quantityValue: Number(event.target.value) }))
           }
+          endDecorator={isWeightValue ? <Typography>g</Typography> : null}
         />
         <Button
           onClick={() => {
-            dispatch(increaseQuantityValue({}));
+            dispatch(increaseQuantityValue({ step: updateStep }));
           }}
         >
           +
@@ -161,7 +177,6 @@ export default function Navigator() {
     </InteractionWrapper>
   );
 }
-
 const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
 
 const viewToValue = {
