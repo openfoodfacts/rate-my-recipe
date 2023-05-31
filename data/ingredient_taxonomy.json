@@ -185,7 +185,7 @@
       "ingredient_id": "carrots"
     },
     "courgette": {
-      "quantity_name": "Courgette",
+      "quantity_name": "Courgettes",
       "quantity_api_name": "Courgette",
       "quantity_id": "courgette",
       "quantity_default_weight_per_unit": "150",
