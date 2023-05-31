@@ -142,9 +142,7 @@ export default function Navigator() {
   }
 
   if (currentQuantity === null) {
-    throw new Error(
-      "currentQuantity is not set whereas being in quantity view"
-    );
+    return null;
   }
   const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
   const updateStep = 1;
