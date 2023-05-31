@@ -10,7 +10,7 @@ import { RootState } from "@/redux/store";
 import IngredientCard from "@/components/IngredientCard";
 import { Button, Stack } from "@mui/material";
 import { openEditor } from "@/redux/reducers/editor";
-import { Sheet } from "@mui/joy";
+import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
@@ -54,28 +54,41 @@ export default function Home() {
     <main
       style={{
         maxWidth: "100%",
+        maxHeight: "100vh",
+        position: "relative",
       }}
     >
       <AppBar />
-      <Stack direction="row" flexWrap="wrap">
+      <Stack
+        direction="row"
+        flexWrap="wrap"
+        sx={{
+          my: 2,
+        }}
+      >
         {ingrdients.map((ingredient) => (
           <IngredientCard {...ingredient} key={ingredient.id} />
         ))}
       </Stack>
       <Sheet
+        variant="soft"
+        color="neutral"
+        invertedColors
         sx={{
-          p: 2,
-          position: "fixed",
+          pt: 2,
+          position: "sticky",
           bottom: 0,
           width: "100%",
           textAlign: "center",
-          marginTop: "20px",
+          borderTopLeftRadius: "10px",
+          borderTopRightRadius: "10px",
         }}
       >
         <Button
           variant="contained"
           startIcon={<Add />}
           onClick={() => dispatch(openEditor({}))}
+          sx={{ mb: 2 }}
         >
           Add Ingredient
         </Button>
