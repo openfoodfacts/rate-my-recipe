@@ -40,7 +40,6 @@ type EditorState = {
   ingredientId?: string | null;
   quantityId?: string | null;
   quantityValue?: number | null;
-  weight?: number | null;
   // This identify the modified ingredient, such that we cvan delete it if validated
   modifiedIngredient?: {
     typeId: string | null;
@@ -58,7 +57,6 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       ingredientId: null,
       quantityId: null,
       quantityValue: null,
-      weight: 500,
     },
     reducers: {
       updateEditorState: (state, action: PayloadAction<EditorState>) => {
@@ -123,19 +121,6 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
           quantityValue: state.quantityValue + (action.payload.step ?? 1),
         };
       },
-      decreaseDefaultWeight: (state) => {
-        if (state.weight == null) {
-          return state;
-        }
-        return { ...state, weight: state.weight - 1 };
-      },
-      increaseDefaultWeight: (state) => {
-        if (state.weight == null) {
-          return state;
-        }
-        return { ...state, weight: state.weight + 1 };
-      },
-
       closeEditor: () => {
         return {
           currentView: null,

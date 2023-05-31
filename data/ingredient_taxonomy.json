@@ -33,7 +33,6 @@
   "ingredients": {
     "chicken": {
       "ingredient_name": "Poulet",
-      "default_weight":"gr",
       "ingredient_id": "chicken",
       "ingredient_description": "Le mafé de poulet est l'un des plats les plus populaires d'Afrique.",
       "ingredient_health": "Le poulet est une viande blanche peu calorique.",
@@ -46,7 +45,6 @@
     },
     "beef": {
       "ingredient_name": "Boeuf",
-      "default_weight":"gr",
       "ingredient_id": "beef",
       "ingredient_environment": "Le boeuf a un fort impact environnemental.",
       "category_id": "ingredient-principal",
@@ -56,7 +54,6 @@
     },
     "lamb": {
       "ingredient_name": "Agneau",
-      "default_weight":"gr",
       "ingredient_id": "lamb",
       "quantity_name": "Viande d'agneau",
       "quantity_api_name": "Viande d'agneau",
@@ -185,7 +182,7 @@
       "ingredient_id": "carrots"
     },
     "courgette": {
-      "quantity_name": "Courgettes",
+      "quantity_name": "Courgette",
       "quantity_api_name": "Courgette",
       "quantity_id": "courgette",
       "quantity_default_weight_per_unit": "150",
