@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Input, Stack, Typography } from "@mui/joy";
+import { Button, Input, Stack, Grid, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -37,6 +37,7 @@ export default function Navigator() {
       <InteractionWrapper>
         {Object.values(data.categories).map((category) => (
           <Button
+            color="primary"
             key={category.category_id}
             onClick={() => {
               dispatch(
@@ -63,7 +64,13 @@ export default function Navigator() {
 
           return (
             <Button
+              variant="outlined"
               key={ingredientId}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+              }}
               onClick={() => {
                 if (ingredient.quantities.length === 1) {
                   // If only one quantity type, we set it directly
@@ -89,9 +96,9 @@ export default function Navigator() {
               {image_url && (
                 <img
                   src={image_url}
-                  height={150}
-                  width={150}
-                  style={{ objectFit: "contain" }}
+                  height={100}
+                  width={100}
+                  style={{ objectFit: "contain", marginLeft: "10px" }}
                 />
               )}
             </Button>
@@ -107,6 +114,7 @@ export default function Navigator() {
           const quantity = data.quantities[quantityId];
           return (
             <Button
+              variant="outlined"
               key={quantityId}
               onClick={() => {
                 dispatch(
@@ -117,7 +125,7 @@ export default function Navigator() {
                 );
               }}
             >
-              {quantity.quantity_name}
+              {quantity.quantity_name} ggg
               {quantity.quantity_image_url && (
                 <img
                   src={quantity.quantity_image_url}
@@ -134,9 +142,7 @@ export default function Navigator() {
   }
 
   if (currentQuantity === null) {
-    throw new Error(
-      "currentQuantity is not set whereas being in quantity view"
-    );
+    return null;
   }
   const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
   const updateStep = 1;
@@ -232,7 +238,9 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
           Next
         </Button>
       </Stack>
+
       {children}
+
       <Stack
         direction="row"
         justifyContent="space-between"

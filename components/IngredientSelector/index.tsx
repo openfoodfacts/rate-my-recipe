@@ -23,7 +23,10 @@ export default function IngredientSelector() {
             height: "90vh",
             borderTopRightRadius: 10,
             borderTopLeftRadius: 10,
-            p: 2,
+            p: 3,
+            width:"50%",
+            overflowX: "auto",
+            margin: "auto",
           },
         }}
       >

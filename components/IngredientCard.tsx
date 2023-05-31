@@ -4,7 +4,7 @@ import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
-
+import Grid from "@mui/material/Grid";
 import { useDispatch } from "react-redux";
 
 import { Ingredient, updateRecipeIngredients } from "@/redux/reducers/recipes";
@@ -27,9 +27,12 @@ const IngredientCard = (props: Ingredient) => {
   return (
     <React.Fragment>
       {quantitiesData.map((quantity) => (
-        <Card variant="outlined" sx={{ width: 320 }} key={quantity.quantity_id}>
+        <Card variant="outlined" sx={{ width: 300  ,mb: 10, ml: 2, '@media (max-width: 767px)': {
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        },}} key={quantity.quantity_id}>
           <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
-            {ingredientData.ingredient_name}
+            {ingredientData.ingredient_name} 
           </Typography>
           <Typography level="body2">({quantity.quantity_name})</Typography>
           {/* <IconButton
@@ -139,7 +142,9 @@ const IngredientCard = (props: Ingredient) => {
             </Button>
           </Box>
         </Card>
+ 
       ))}
+  
     </React.Fragment>
   );
 };

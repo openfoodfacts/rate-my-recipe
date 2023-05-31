@@ -2,12 +2,17 @@ import * as React from "react";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import Nutriscore from "@/components/Nutriscore";
-import { Button, Drawer, Stack, drawerClasses } from "@mui/material";
+import { Drawer, drawerClasses } from "@mui/material";
+import { Button, Divider, Stack } from "@mui/joy";
 import Table from "@mui/joy/Table";
 import Sheet from "@mui/joy/Sheet";
+import IconButton from "@mui/joy/IconButton";
 import DecreaseIcon from "@mui/icons-material/SouthEast";
 import IncreaseIcon from "@mui/icons-material/NorthEast";
 import StableIcon from "@mui/icons-material/East";
+import InfoIcon from "@mui/icons-material/Info";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CloseIcon from "@mui/icons-material/Close";
 
 const NUTRIMENTS_TITLE: { [key: string]: string } = {
   "energy-kcal_100g": "Energie (kCal)",
@@ -86,27 +91,40 @@ export default function ShowNutritionalTable() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <>
-      <Stack>
-        <Nutriscore grade={userNutriscore} />
-        <Nutriscore grade={urlNutriscore} />
-
-        <Button onClick={() => setOpen(true)}>More info</Button>
+    <Sheet>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ padding: "30px", justifyContent: "center", alignItems: "center" }}
+      >
+        <Nutriscore grade={urlNutriscore} height={50} />
+        <ArrowForwardIcon />
+        <Nutriscore grade={userNutriscore} height={50} />
+        <IconButton variant="outlined" onClick={() => setOpen(true)}>
+          <InfoIcon />
+        </IconButton>
       </Stack>
       <Drawer
         open={open}
         onClose={() => setOpen(false)}
-        anchor="left"
+        anchor="bottom"
         sx={{
           [`& .${drawerClasses.paper}`]: {
             p: 2,
           },
         }}
       >
-        <Table
-          aria-label="basic table"
-          sx={{ "& span": { whiteSpace: "initial" } }}
-        >
+        <Stack direction="row" justifyContent="center">
+          <IconButton
+            variant="plain"
+            color="neutral"
+            sx={{ ml: "auto" }}
+            onClick={() => setOpen(false)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Stack>
+        <Table sx={{ "& span": { whiteSpace: "initial" } }}>
           <thead>
             <tr>
               <th>Nutriment</th>
@@ -156,20 +174,18 @@ export default function ShowNutritionalTable() {
                 </tr>
               );
             })}
+            <tr>
+              <td />
+              <td>
+                <Nutriscore grade={urlNutriscore} height={40} />
+              </td>
+              <td>
+                <Nutriscore grade={userNutriscore} height={40} />
+              </td>
+            </tr>
           </tbody>
         </Table>
-        <Sheet
-          sx={{
-            p: 2,
-            position: "fixed",
-            bottom: 0,
-            width: "100%",
-            textAlign: "center",
-          }}
-        >
-          <Button onClick={() => setOpen(false)}>Close</Button>
-        </Sheet>
       </Drawer>
-    </>
+    </Sheet>
   );
 }
