@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Input, Stack } from "@mui/joy";
+import { Button, Input, Stack, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -21,22 +21,19 @@ import {
   closeEditor,
 } from "@/redux/reducers/editor";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
-import { ButtonBase } from "@mui/material";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
   const dispatch = useDispatch();
   const { currentView: view, quantityValue } = state;
-  const { weight } = state;
   const currentType = useSelector(selectEditorCurrentType);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
+  const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
-    console.log(weight, "    console.log(Weight)")
   if (view === "type") {
     return (
-      
       <InteractionWrapper>
         {Object.values(data.categories).map((category) => (
           <Button
@@ -50,7 +47,7 @@ export default function Navigator() {
               );
             }}
           >
-            {category.category_name}  
+            {category.category_name}
           </Button>
         ))}
       </InteractionWrapper>
@@ -58,7 +55,6 @@ export default function Navigator() {
   }
   if (view === "ingredient") {
     return (
- 
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentType?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
@@ -89,7 +85,7 @@ export default function Navigator() {
                 );
               }}
             >
-              {ingredient.ingredient_name} 
+              {ingredient.ingredient_name}
               {image_url && (
                 <img
                   src={image_url}
@@ -102,12 +98,10 @@ export default function Navigator() {
           );
         })}
       </InteractionWrapper>
-     
     );
   }
   if (view === "quantity") {
     return (
-   
       <InteractionWrapper>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
@@ -136,91 +130,52 @@ export default function Navigator() {
           );
         })}
       </InteractionWrapper>
-    
     );
   }
 
-     let value = "";
-      if (currentIngredient) {
-        const ingredient = data.ingredients[currentIngredient.ingredient_id];
-  console.log(ingredient)
-  const defaultWeight = data.quantities[currentIngredient.ingredient_id]?.quantity_default_weight;
- console.log(defaultWeight)
-        if (ingredient.category_id === data.ingredients['olive-oild'].category_id) {
-          if (ingredient.ingredient_name === data.ingredients['olive-oild'].ingredient_name) {
-            value += data.quantities['olive-oil'].quantity_name;;
-          } else if (ingredient.ingredient_name === data.ingredients['rapeseed-oil'].ingredient_name) {
-            value += data.quantities['rapeseed-oil'].quantity_name;
-          }
-        } else if (ingredient.category_id === data.categories['ingredient-principal'].category_id) 
-        {
-          if (
-            ingredient.ingredient_name === data.ingredients.chicken.ingredient_name||
-            ingredient.ingredient_name === data.ingredients.beef.ingredient_name ||
-            ingredient.ingredient_name === data.ingredients.lamb.ingredient_name 
-          ) {
-            if (ingredient.ingredient_id === data.ingredients.chicken.ingredient_id) {
-              value += ` ${ingredient.ingredient_name} `;
-            } else {
-              value += ` ${ingredient.ingredient_name} `;
-            }
-          
-          }
-        } else if (ingredient.category_id === data.categories.vegetables.category_id) {
-          if (
-            ingredient.ingredient_name === data.quantities.onion.quantity_name ||
-            ingredient.ingredient_name === data.quantities.carrot.quantity_name||
-            ingredient.ingredient_name === data.quantities.courgette.quantity_name||
-            ingredient.ingredient_name === data.quantities.potatoes.quantity_name
-          ) {
-            value = ` ${ingredient.ingredient_name}`;
-          }
-        }
-      console.log(quantityValue)
-  
-    return (
-  
+  if (currentQuantity === null) {
+    throw new Error(
+      "currentQuantity is not set whereas being in quantity view"
+    );
+  }
+  const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
+  const updateStep = 1;
+  return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
+      <img
+        src={currentQuantity.quantity_image_url}
+        height={150}
+        width={150}
+        style={{ objectFit: "contain" }}
+      />
+      <Typography>{currentQuantity?.quantity_name}</Typography>
       <Stack direction="row" justifyContent="space-between">
         <Button
-          disabled={quantityValue === 1}
+          disabled={!quantityValue || quantityValue - updateStep <= 0}
           onClick={() => {
-            dispatch(decreaseQuantityValue({}));
+            dispatch(decreaseQuantityValue({ step: updateStep }));
           }}
         >
           -
         </Button>
-         <Input
-        value={
-        ingredient.ingredient_id === data.ingredients.chicken.ingredient_id || ingredient.category_id === data.ingredients['olive-oild'].category_id  || ingredient.category_id === data.categories.vegetables.category_id
-          ? quantityValue?.toString()
-          : `${weight?.toString()} gr` /* here weight is undefiend ? */
-      }
-        onChange={(event) =>
-        dispatch(updateValue({ quantityValue: Number(event.target.value) }))
-        
-       }
-      />
-     
-     {(ingredient.category_id === "ingredient-principal" || ingredient.category_id === "fat" || ingredient.category_id === "vegetables") && (
-      <span>{value}</span>
-    )}
-    
+        <Input
+          type="number"
+          value={quantityValue ?? undefined}
+          onChange={(event) =>
+            dispatch(updateValue({ quantityValue: Number(event.target.value) }))
+          }
+          endDecorator={isWeightValue ? <Typography>g</Typography> : null}
+        />
         <Button
           onClick={() => {
-            dispatch(increaseQuantityValue({}));
+            dispatch(increaseQuantityValue({ step: updateStep }));
           }}
         >
           +
         </Button>
       </Stack>
-    
     </InteractionWrapper>
-   
-   );
- 
-   }
-   return null;
+  );
 }
 const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
 
@@ -332,4 +287,3 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
     </Stack>
   );
 };
-
