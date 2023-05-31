@@ -16,10 +16,20 @@ const getDefaultQuantityValue = (state: EditorState) => {
     throw new Error(`Unknown quantity id "${state.quantityId}"`);
   }
 
-  // TODO: clarify how to do the distinction betwee beef which is given by gramms, and chicken wings which are units
-  return currentQuantity.quantity_default_number_of_units
-    ? Number(currentQuantity.quantity_default_number_of_units)
-    : 1;
+  if (
+    currentQuantity.quantity_default_number_of_units !== undefined &&
+    !Number.isNaN(currentQuantity.quantity_default_number_of_units)
+  ) {
+    return Number(currentQuantity.quantity_default_number_of_units);
+  }
+
+  if (
+    currentQuantity.quantity_default_weight !== undefined &&
+    !Number.isNaN(currentQuantity.quantity_default_weight)
+  ) {
+    return Number(currentQuantity.quantity_default_weight);
+  }
+  return 1;
 };
 
 export type ViewsTypes = "type" | "ingredient" | "quantity" | "value";
@@ -87,17 +97,29 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       updateValue: (state, action: PayloadAction<EditorState>) => {
         return { ...state, ...action.payload };
       },
-      decreaseQuantityValue: (state) => {
+      decreaseQuantityValue: (
+        state,
+        action: PayloadAction<{ step?: number }>
+      ) => {
         if (state.quantityValue == null) {
           return state;
         }
-        return { ...state, quantityValue: state.quantityValue - 1 };
+        return {
+          ...state,
+          quantityValue: state.quantityValue - (action.payload.step ?? 1),
+        };
       },
-      increaseQuantityValue: (state) => {
+      increaseQuantityValue: (
+        state,
+        action: PayloadAction<{ step?: number }>
+      ) => {
         if (state.quantityValue == null) {
           return state;
         }
-        return { ...state, quantityValue: state.quantityValue + 1 };
+        return {
+          ...state,
+          quantityValue: state.quantityValue + (action.payload.step ?? 1),
+        };
       },
       closeEditor: () => {
         return {
@@ -133,5 +155,7 @@ export const {
   updateQuantity,
   updateValue,
   decreaseQuantityValue,
+  decreaseDefaultWeight,
   increaseQuantityValue,
+  increaseDefaultWeight,
 } = editor.actions;

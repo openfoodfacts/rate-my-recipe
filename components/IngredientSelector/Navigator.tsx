@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Grid, Input, Stack } from "@mui/joy";
+import { Button, Input, Stack, Grid, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -28,19 +28,16 @@ export default function Navigator() {
   const { currentView: view, quantityValue } = state;
   const currentType = useSelector(selectEditorCurrentType);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
+  const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
-
   if (view === "type") {
     return (
-   
       <InteractionWrapper>
-   
         {Object.values(data.categories).map((category) => (
-          <Button 
-          color="primary"
-      
+          <Button
+            color="primary"
             key={category.category_id}
             onClick={() => {
               dispatch(
@@ -50,15 +47,11 @@ export default function Navigator() {
                 })
               );
             }}
-    
-          
           >
             {category.category_name}
           </Button>
         ))}
-   
       </InteractionWrapper>
-   
     );
   }
   if (view === "ingredient") {
@@ -71,10 +64,13 @@ export default function Navigator() {
 
           return (
             <Button
-  
               variant="outlined"
               key={ingredientId}
-              style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+              }}
               onClick={() => {
                 if (ingredient.quantities.length === 1) {
                   // If only one quantity type, we set it directly
@@ -96,7 +92,7 @@ export default function Navigator() {
                 );
               }}
             >
-              {ingredient.ingredient_name} 
+              {ingredient.ingredient_name}
               {image_url && (
                 <img
                   src={image_url}
@@ -118,7 +114,7 @@ export default function Navigator() {
           const quantity = data.quantities[quantityId];
           return (
             <Button
-            variant="outlined"
+              variant="outlined"
               key={quantityId}
               onClick={() => {
                 dispatch(
@@ -144,13 +140,28 @@ export default function Navigator() {
       </InteractionWrapper>
     );
   }
+
+  if (currentQuantity === null) {
+    throw new Error(
+      "currentQuantity is not set whereas being in quantity view"
+    );
+  }
+  const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
+  const updateStep = 1;
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
+      <img
+        src={currentQuantity.quantity_image_url}
+        height={150}
+        width={150}
+        style={{ objectFit: "contain" }}
+      />
+      <Typography>{currentQuantity?.quantity_name}</Typography>
       <Stack direction="row" justifyContent="space-between">
         <Button
-          disabled={quantityValue === 1}
+          disabled={!quantityValue || quantityValue - updateStep <= 0}
           onClick={() => {
-            dispatch(decreaseQuantityValue({}));
+            dispatch(decreaseQuantityValue({ step: updateStep }));
           }}
         >
           -
@@ -161,10 +172,11 @@ export default function Navigator() {
           onChange={(event) =>
             dispatch(updateValue({ quantityValue: Number(event.target.value) }))
           }
+          endDecorator={isWeightValue ? <Typography>g</Typography> : null}
         />
         <Button
           onClick={() => {
-            dispatch(increaseQuantityValue({}));
+            dispatch(increaseQuantityValue({ step: updateStep }));
           }}
         >
           +
@@ -173,7 +185,6 @@ export default function Navigator() {
     </InteractionWrapper>
   );
 }
-
 const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
 
 const viewToValue = {
@@ -230,13 +241,13 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
         </Button>
       </Stack>
 
-  {children}
+      {children}
 
       <Stack
         direction="row"
         justifyContent="space-between"
         sx={{ position: "absolute", bottom: 0, width: "100%" }}
-       >
+      >
         <Button
           fullWidth
           color="danger"
