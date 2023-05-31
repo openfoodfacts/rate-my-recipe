@@ -5,16 +5,17 @@ import { useSearchParams } from "next/navigation";
 import IngredientSelector from "@/components/IngredientSelector";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
+import { selectCurrentIngredients } from "@/redux/selectors";
 import { RootState } from "@/redux/store";
-import IngredientCard from "@/components/IngredientCard";
-import { Button, Stack } from "@mui/material";
+import IngredientCards from "@/components/IngredientCard";
 import { openEditor } from "@/redux/reducers/editor";
 import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
 import AppBar from "@/components/AppBar";
+import Button from "@mui/joy/Button";
+import Box from "@mui/joy/Box";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -46,36 +47,30 @@ export default function Home() {
     }
   }, [dispatch, searchParams]);
 
-  const ingrdients = useSelector((state: RootState) =>
+  const ingredients = useSelector((state: RootState) =>
     selectCurrentIngredients(state, "userRecipe")
   );
 
   return (
     <main
       style={{
-        maxWidth: "100%",
-        maxHeight: "100vh",
+        height: "100vh",
         position: "relative",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <AppBar />
-      <Stack
-        direction="row"
-        flexWrap="wrap"
-        sx={{
-          my: 2,
-        }}
-      >
-        {ingrdients.map((ingredient) => (
-          <IngredientCard {...ingredient} key={ingredient.id} />
-        ))}
-      </Stack>
+      <Box sx={{ my: 2, mx: 1, flexGrow: 1 }}>
+        <IngredientCards ingredients={ingredients} />
+      </Box>
       <Sheet
         variant="soft"
         color="neutral"
         invertedColors
         sx={{
           pt: 2,
+          pb: 1,
           position: "sticky",
           bottom: 0,
           width: "100%",
@@ -85,8 +80,9 @@ export default function Home() {
         }}
       >
         <Button
-          variant="contained"
-          startIcon={<Add />}
+          variant="solid"
+          color="primary"
+          startDecorator={<Add />}
           onClick={() => dispatch(openEditor({}))}
           sx={{ mb: 2 }}
         >
