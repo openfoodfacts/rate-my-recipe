@@ -91,16 +91,16 @@ export default function ShowNutritionalTable() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Sheet>
+    <>
       <Stack
         direction="row"
         spacing={2}
-        sx={{ padding: "30px", justifyContent: "center", alignItems: "center" }}
+        sx={{ justifyContent: "center", alignItems: "center" }}
       >
         <Nutriscore grade={urlNutriscore} height={50} />
         <ArrowForwardIcon />
         <Nutriscore grade={userNutriscore} height={50} />
-        <IconButton variant="outlined" onClick={() => setOpen(true)}>
+        <IconButton variant="plain" onClick={() => setOpen(true)}>
           <InfoIcon />
         </IconButton>
       </Stack>
@@ -111,6 +111,8 @@ export default function ShowNutritionalTable() {
         sx={{
           [`& .${drawerClasses.paper}`]: {
             p: 2,
+            borderTopLeftRadius: 15,
+            borderTopRightRadius: 15,
           },
         }}
       >
@@ -186,6 +188,6 @@ export default function ShowNutritionalTable() {
           </tbody>
         </Table>
       </Drawer>
-    </Sheet>
+    </>
   );
 }
