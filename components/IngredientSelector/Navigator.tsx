@@ -125,7 +125,7 @@ export default function Navigator() {
                 );
               }}
             >
-              {quantity.quantity_name} ggg
+              {quantity.quantity_ingredient_name}
               {quantity.quantity_image_url && (
                 <img
                   src={quantity.quantity_image_url}
@@ -154,7 +154,6 @@ export default function Navigator() {
         width={150}
         style={{ objectFit: "contain" }}
       />
-      <Typography>{currentQuantity?.quantity_name}</Typography>
       <Stack direction="row" justifyContent="space-between">
         <Button
           disabled={!quantityValue || quantityValue - updateStep <= 0}
@@ -170,7 +169,7 @@ export default function Navigator() {
           onChange={(event) =>
             dispatch(updateValue({ quantityValue: Number(event.target.value) }))
           }
-          endDecorator={isWeightValue ? <Typography>g</Typography> : null}
+          endDecorator={isWeightValue ? <Typography>g</Typography> : (quantityValue > 1 ? currentQuantity?.quantity_name : currentQuantity?.quantity_name_1)}
         />
         <Button
           onClick={() => {

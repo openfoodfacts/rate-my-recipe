@@ -133,7 +133,7 @@ function groupByIngredient(groupedParams: {
 }
 
 export type Ingredient = {
-  typeId: string;
+  categoryId: string;
   id: string;
   quantities: {
     id: string;
@@ -164,7 +164,7 @@ type ReciepeAction<CustomT> = CustomT & { recipeId: string };
 type UpdateActionType =
   | {
       type: "upsert";
-      ingredientTypeId: string;
+      ingredientCategoryId: string;
       ingredientId: string;
       quantityId: string;
       quantityValue: number;
@@ -187,17 +187,17 @@ const ingredientReducer = (
   action: UpdateActionType
 ): Ingredient[] => {
   if (action.type === "upsert") {
-    const { ingredientTypeId, ingredientId, quantityId, quantityValue } =
+    const { ingredientCategoryId: ingredientTypeId, ingredientId, quantityId, quantityValue } =
       action;
     const ingredientIndex = ingredients.findIndex(
-      ({ id, typeId }) => ingredientId === id && typeId === ingredientTypeId
+      ({ id, categoryId: typeId }) => ingredientId === id && typeId === ingredientTypeId
     );
     if (ingredientIndex === -1) {
       return [
         ...ingredients,
         {
           id: ingredientId,
-          typeId: ingredientTypeId,
+          categoryId: ingredientTypeId,
           quantities: [{ id: quantityId, value: quantityValue }],
         },
       ];

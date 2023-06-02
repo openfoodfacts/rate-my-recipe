@@ -19,7 +19,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
       <Typography level="h2" fontSize="md">
-        {props.quantity_name}
+        {props.quantity_ingredient_name}
       </Typography>
       {/* <Typography level="body2">({props.quantity_name})</Typography> */}
 
@@ -52,7 +52,8 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
         >
           -
         </Button>
-        <Typography>{props.value}</Typography>
+        <Typography>{props.value} { props.quantity_unit_id == 'g' ? 'g' : (props.value > 1 ? props?.quantity_name : props?.quantity_name_1)}</Typography>
+
         <Button
           variant="solid"
           color="neutral"
@@ -109,7 +110,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
                 quantityValue: props.value,
-                // This identify the modified ingredient, such that we cvan delete it if validated
+                // This identify the modified ingredient, such that we can delete it if validated
                 modifiedIngredient: {
                   typeId: props.category_id,
                   ingredientId: props.ingredient_id,
