@@ -187,17 +187,17 @@ const ingredientReducer = (
   action: UpdateActionType
 ): Ingredient[] => {
   if (action.type === "upsert") {
-    const { ingredientCategoryId: ingredientTypeId, ingredientId, quantityId, quantityValue } =
+    const { ingredientCategoryId: ingredientCategoryId, ingredientId, quantityId, quantityValue } =
       action;
     const ingredientIndex = ingredients.findIndex(
-      ({ id, categoryId: typeId }) => ingredientId === id && typeId === ingredientTypeId
+      ({ id, categoryId }) => ingredientId === id && categoryId === ingredientCategoryId
     );
     if (ingredientIndex === -1) {
       return [
         ...ingredients,
         {
           id: ingredientId,
-          categoryId: ingredientTypeId,
+          categoryId: ingredientCategoryId,
           quantities: [{ id: quantityId, value: quantityValue }],
         },
       ];
@@ -239,7 +239,7 @@ const ingredientReducer = (
     const ingredients = Object.entries(groupedParams).map(
       ([ingredientId, quantities]) => {
         return {
-          typeId: data.ingredients[ingredientId].category_id,
+          categoryId: data.ingredients[ingredientId].category_id,
           id: ingredientId,
           quantities: quantities.map(({ q, v }) => ({ id: q, value: v })),
         };

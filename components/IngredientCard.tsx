@@ -42,7 +42,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
               updateRecipeIngredients({
                 type: "upsert",
                 recipeId: "userRecipe",
-                ingredientTypeId: props.category_id,
+                ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
                 quantityValue: props.value - 1,
@@ -63,7 +63,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
               updateRecipeIngredients({
                 type: "upsert",
                 recipeId: "userRecipe",
-                ingredientTypeId: props.category_id,
+                ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
                 quantityValue: props.value + 1,
@@ -106,13 +106,13 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
             dispatch(
               updateEditorState({
                 currentView: "ingredient",
-                typeId: props.category_id,
+                categoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
                 quantityValue: props.value,
                 // This identify the modified ingredient, such that we can delete it if validated
                 modifiedIngredient: {
-                  typeId: props.category_id,
+                  categoryId: props.category_id,
                   ingredientId: props.ingredient_id,
                   quantityId: props.quantity_id,
                 },

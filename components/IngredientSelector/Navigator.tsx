@@ -5,13 +5,13 @@ import { Button, Input, Stack, Grid, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
-  selectEditorCurrentType,
+  selectEditorCurrentCategory,
   selectEditorState,
 } from "@/redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateEditorState,
-  updateType,
+  updateCategory,
   updateIngredient,
   updateQuantity,
   updateValue,
@@ -26,13 +26,13 @@ export default function Navigator() {
   const state = useSelector(selectEditorState);
   const dispatch = useDispatch();
   const { currentView: view, quantityValue } = state;
-  const currentType = useSelector(selectEditorCurrentType);
+  const currentCategory = useSelector(selectEditorCurrentCategory);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
   const currentQuantity = useSelector(selectEditorCurrentQuantity);
 
   const skipQuantityView =
     currentIngredient && currentIngredient.quantities.length === 1;
-  if (view === "type") {
+  if (view === "category") {
     return (
       <InteractionWrapper>
         {Object.values(data.categories).map((category) => (
@@ -41,9 +41,9 @@ export default function Navigator() {
             key={category.category_id}
             onClick={() => {
               dispatch(
-                updateType({
+                updateCategory({
                   currentView: "ingredient",
-                  typeId: category.category_id,
+                  categoryId: category.category_id,
                 })
               );
             }}
@@ -57,7 +57,7 @@ export default function Navigator() {
   if (view === "ingredient") {
     return (
       <InteractionWrapper skipQuantityView={skipQuantityView}>
-        {currentType?.ingredients.map((ingredientId) => {
+        {currentCategory?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
           const image_url =
             data.quantities[ingredient.quantities[0]].quantity_image_url;
@@ -182,10 +182,10 @@ export default function Navigator() {
     </InteractionWrapper>
   );
 }
-const viewsOrder: ViewsTypes[] = ["type", "ingredient", "quantity", "value"];
+const viewsOrder: ViewsTypes[] = ["category", "ingredient", "quantity", "value"];
 
 const viewToValue = {
-  type: "typeId",
+  category: "categoryId",
   ingredient: "ingredientId",
   quantity: "quantityId",
   value: "quantityValue",
@@ -274,7 +274,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
               updateRecipeIngredients({
                 recipeId: "userRecipe",
                 type: "upsert",
-                ingredientTypeId: values.typeId!,
+                ingredientCategoryId: values.categoryId!,
                 ingredientId: values.ingredientId!,
                 quantityId: values.quantityId!,
                 quantityValue: values.quantityValue!,
