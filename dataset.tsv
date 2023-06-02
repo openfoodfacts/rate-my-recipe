@@ -1,7 +1,7 @@
 Notes:																
 Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées																
 																
-Ingredient category name	Ingredient category id	Description	Ingredient name	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed	Quantity displayed 1	Ingredient quantity name	Quantity id	default_weight	default_weight_per_unit	default_number_of_units	
+Ingredient category name	Ingredient category id	Description	Ingredient name	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed	Quantity displayed 1	Quantity ingredient name	Quantity unit id	default_weight	default_weight_per_unit	default_number_of_units	image_url
 Ingrédient principal	ingredient-principal	L'ingrédient principal du ragoût est souvent une source de protéines : viande, poisson... 														
 			Poulet	chicken	Le mafé de poulet est l'un des plats les plus populaires d'Afrique.		Le poulet est une viande blanche peu calorique.									
 									poulets	poulet	Poulet entier	whole-unit		1500	1	https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg
@@ -16,7 +16,7 @@ Pommes de terre, légumineuses et céréales	cereales
 																
 			Pommes de terre	potatoes												
 												g	1000			https://images.openfoodfacts.org/images/products/325/039/991/5578/front_fr.3.400.jpg
-Matière grasse	matieres-grasses	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.														
+Matières grasses	matieres-grasses	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.														
 			Huile d'olive	olive-oil												
 									cuillères	cuillère		tbsp		10	2	https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg
 			Huile de colza	rapeseed-oil												
