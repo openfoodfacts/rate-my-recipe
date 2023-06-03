@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <main
       style={{
-        height: "100vh",
+        height: "100%",
         position: "relative",
         display: "flex",
         flexDirection: "column",
