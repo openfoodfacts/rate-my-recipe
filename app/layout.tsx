@@ -1,7 +1,6 @@
 import "./globals.css";
 import "@fontsource/public-sans";
 import StateProvider from "../redux/StateProvider";
-import AppBar from "@/components/AppBar";
 
 export const metadata = {
   title: "Rate My Recipe",
