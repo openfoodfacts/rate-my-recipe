@@ -114,7 +114,7 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
       quantity_id
     );
     // If quantity_ingredient_name is not specified, use ingredient_name
-    lineObject.quantity_ingredient_name = lineObject.quantity_ingredient_name ? lineObject.quantity_ingredient_name : currentState.ingredient_name;
+    lineObject.quantity_ingredient_name = lineObject.quantity_ingredient_name || currentState.ingredient_name;
     data.quantities[quantity_id] = {
       ...lineObject,
       ...currentState,
