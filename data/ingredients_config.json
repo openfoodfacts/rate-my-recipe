@@ -145,8 +145,8 @@
   },
   "quantities": {
     "chicken.whole-unit": {
-      "quantity_name": "poulets",
-      "quantity_name_1": "poulet",
+      "quantity_name_plural": "poulets",
+      "quantity_name_singular": "poulet",
       "quantity_ingredient_name": "Poulet entier",
       "quantity_unit_id": "whole-unit",
       "quantity_default_weight_per_unit": "1500",
@@ -158,8 +158,8 @@
       "ingredient_name": "Poulet"
     },
     "chicken.thigh-unit": {
-      "quantity_name": "cuisses",
-      "quantity_name_1": "cuisse",
+      "quantity_name_plural": "cuisses",
+      "quantity_name_singular": "cuisse",
       "quantity_ingredient_name": "Cuisses de poulet",
       "quantity_unit_id": "thigh-unit",
       "quantity_default_weight_per_unit": "250",
@@ -171,8 +171,8 @@
       "ingredient_name": "Poulet"
     },
     "chicken.breast-unit": {
-      "quantity_name": "blancs",
-      "quantity_name_1": "blanc",
+      "quantity_name_plural": "blancs",
+      "quantity_name_singular": "blanc",
       "quantity_ingredient_name": "Blancs de poulet",
       "quantity_unit_id": "breast-unit",
       "quantity_default_weight_per_unit": "200",
@@ -214,8 +214,8 @@
       "ingredient_name": "Pommes de terre"
     },
     "olive-oil.tbsp": {
-      "quantity_name": "cuillères",
-      "quantity_name_1": "cuillère",
+      "quantity_name_plural": "cuillères",
+      "quantity_name_singular": "cuillère",
       "quantity_unit_id": "tbsp",
       "quantity_default_weight_per_unit": "10",
       "quantity_default_number_of_units": "2",
@@ -227,8 +227,8 @@
       "ingredient_name": "Huile d'olive"
     },
     "rapeseed-oil.tbsp": {
-      "quantity_name": "cuillères",
-      "quantity_name_1": "cuillère",
+      "quantity_name_plural": "cuillères",
+      "quantity_name_singular": "cuillère",
       "quantity_unit_id": "tbsp",
       "quantity_default_weight_per_unit": "10",
       "quantity_default_number_of_units": "2",
@@ -259,8 +259,8 @@
       "ingredient_name": "Carottes"
     },
     "celeri-branche.unit": {
-      "quantity_name": "branches",
-      "quantity_name_1": "branche",
+      "quantity_name_plural": "branches",
+      "quantity_name_singular": "branche",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": "100",
       "quantity_default_number_of_units": "2",
@@ -271,8 +271,8 @@
       "ingredient_name": "Céleri branche"
     },
     "chou-blanc.unit": {
-      "quantity_name": "chou",
-      "quantity_name_1": "choux",
+      "quantity_name_plural": "chou",
+      "quantity_name_singular": "choux",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": "1000",
       "quantity_default_number_of_units": "1",
@@ -283,8 +283,8 @@
       "ingredient_name": "Chou blanc"
     },
     "courgettes.unit": {
-      "quantity_name": "courgettes",
-      "quantity_name_1": "courgette",
+      "quantity_name_plural": "courgettes",
+      "quantity_name_singular": "courgette",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": "150",
       "quantity_default_number_of_units": "3",
@@ -296,8 +296,8 @@
       "ingredient_name": "Courgettes"
     },
     "oignons.unit": {
-      "quantity_name": "oignon",
-      "quantity_name_1": "oignons",
+      "quantity_name_plural": "oignon",
+      "quantity_name_singular": "oignons",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": "150",
       "quantity_default_number_of_units": "2",
