@@ -36,7 +36,7 @@ const COLUMNS = {
   7: "ingredient_health",
   8: "ingredient_environment",
   9: "quantity_name",
-  10: "quantity_name_1",
+  10: "quantity_name_singular",
   11: "quantity_ingredient_name",
   12: "quantity_unit_id",
   13: "quantity_default_weight",
