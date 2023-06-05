@@ -52,7 +52,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
         >
           -
         </Button>
-        <Typography>{props.value} { props.quantity_unit_id == 'g' ? 'g' : (props.value > 1 ? props?.quantity_name : props?.quantity_name_1)}</Typography>
+        <Typography>{props.value} { props.quantity_unit_id == 'g' ? 'g' : (props.value > 1 ? props?.quantity_name_plural : props?.quantity_name_singular)}</Typography>
 
         <Button
           variant="solid"

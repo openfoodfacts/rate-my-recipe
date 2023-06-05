@@ -27,8 +27,8 @@ export type IngredientType = {
 };
 
 export type QuantityType = {
-  quantity_name?: string;
-  quantity_name_1?: string;
+  quantity_name_plural?: string;
+  quantity_name_singular?: string;
   quantity_ingredient_name?: string;
   quantity_id: QuantityId;
   quantity_unit_id?: string;
