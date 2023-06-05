@@ -15,15 +15,15 @@ After that, you will be able to run `nvm install <node version>` and `nvm use <n
 
 This project use `yarn` to manage library dependencies with 
 
-```basj
+```bash
 npm install --global yarn
 
+### Run the project
+
+The following commend will install all the dependencies and run the project in localhost:3000
+
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
