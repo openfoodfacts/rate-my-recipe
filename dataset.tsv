@@ -1,37 +1,27 @@
-Notes:																
-Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées																
-																
-Ingredient category name	Ingredient category id	Description	Ingredient name	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed	Quantity displayed 1	Ingredient quantity name	Quantity id	default_weight	default_weight_per_unit	default_number_of_units	
-Ingrédient principal	ingredient-principal	L'ingrédient principal du ragoût est souvent une source de protéines : viande, poisson... 														
-			Poulet	chicken	Le mafé de poulet est l'un des plats les plus populaires d'Afrique.		Le poulet est une viande blanche peu calorique.									
-									poulets	poulet	Poulet entier	whole-unit		1500	1	https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg
-									cuisses	cuisse	Cuisses de poulet	thigh-unit		250	6	https://images.openfoodfacts.org/images/products/323/089/002/6553/front_fr.17.400.jpg
-									blancs	blanc	Blancs de poulet	breast-unit		200	4	https://images.openfoodfacts.org/images/products/021/040/303/3783/front_fr.3.400.jpg
-			Boeuf	beef				Le boeuf a un fort impact environnemental.								
-											Boeuf	g	500			https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg
-			Agneau	lamb							Viande d'agneau					
-											Agneau	g	500			https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg
-Pommes de terre, légumineuses et céréales	cereales															
-																
-																
-			Pommes de terre	potatoes												
-												g	1000			https://images.openfoodfacts.org/images/products/325/039/991/5578/front_fr.3.400.jpg
-Matière grasse	matieres-grasses	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.														
-			Huile d'olive	olive-oil												
-									cuillères	cuillère		tbsp		10	2	https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg
-			Huile de colza	rapeseed-oil												
-									cuillères	cuillère		tbsp		10	2	https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
-																
-Légumes	legumes															
-			Betteraves cuites	betteraves-cuites												
-												g	500			
-			Carottes	carottes												
-												g	500			https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg
-			Céleri branche	celeri-branche												
-									branches	branche		unit		100	2	
-			Chou blanc	chou-blanc												
-									chou	choux		unit		1000	1	
-			Courgettes	courgettes												
-									courgettes	courgette		unit		150	3	https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg
-			Oignons	oignons												
-									oignon	oignons		unit		150	2	https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
+Notes:															
+Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées															
+															
+Ingredient type	Ingredient type id	Description	Ingredient	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed	Quantity API name	Quantity id	default_weight	default_weight_per_unit	default_number_of_units	
+Ingrédient principal	ingredient-principal	L'ingrédient principal du ragoût est souvent une source de protéines : viande, poisson... 													
+			Poulet	chicken	Le mafé de poulet est l'un des plats les plus populaires d'Afrique.		Le poulet est une viande blanche peu calorique.								
+									Poulet entier	Poulet entier	whole-chicken		1500	1	https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg
+									Cuisses de poulet	Cuisses de poulet	chicken-thigh		250	6	https://images.openfoodfacts.org/images/products/323/089/002/6553/front_fr.17.400.jpg
+									Blancs de poulet	Blancs de poulet	chicken-breast		200	4	https://images.openfoodfacts.org/images/products/021/040/303/3783/front_fr.3.400.jpg
+			Boeuf	beef				Le boeuf a un fort impact environnemental.							
+									Boeuf	Boeuf	beef	500			https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg
+			Agneau	lamb					Viande d'agneau	Viande d'agneau					
+									Agneau	Agneau	lamb	500			https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg
+Légumes	vegetables														
+			Oignons	onions		Faire revenir les oignons pour encore plus de goût									
+									Oignons	Oignons	onion		100	3	https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
+			Carottes	carrots											
+									Carottes	Carottes	carrot		75	4	https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg
+			Courgettes	courgettes											
+									Courgette	Courgette	courgette		150	3	https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg
+			Pommes de terre	potatoes											
+									Pommes de terre	Pommes de terre	potatoes	1000			https://images.openfoodfacts.org/images/products/325/039/991/5578/front_fr.3.400.jpg
+Matière grasse	fat	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.													
+			Huile d'olive	olive-oild											
+									Cuillères à soupe d'huile d'olive	huile d'olive	olive-oil		10	2	https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg
+			Huile de colza	rapeseed-oil											
+									Cuillères à soupe d'huile de colza	huile de colza	rapeseed-oil		10	2	https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
