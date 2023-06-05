@@ -2,20 +2,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Clone the repository.
 
-Install NPM.
+### Setup JS env
 
-On Ubuntu 22.04, the default installed version of NodeJS is too old.
+If you're new to JavaScript environment, you might want to install [nvm](https://github.com/nvm-sh/nvm) which is a version manager for Node.js
 
-```bash
-sudo apt install npm
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-```
+You can follow the installation guide here: https://github.com/nvm-sh/nvm#installing-and-updating
 
-Run the development server:
+After that, you will be able to run `nvm install <node version>` and `nvm use <node version>` to install and switch between node versions.
+
+### Install the package manager
+
+This project use `yarn` to manage library dependencies with 
+
+```basj
+npm install --global yarn
 
 ```bash
 npm run dev
