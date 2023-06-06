@@ -2,7 +2,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository.
+
+Install NPM.
+
+On Ubuntu 22.04, the default installed version of NodeJS is too old.
+
+```bash
+sudo apt install npm
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+```
+
+Run the development server:
 
 ```bash
 npm run dev
