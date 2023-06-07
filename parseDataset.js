@@ -1,3 +1,9 @@
+/**
+ * The ingredients categories, ingredients and quantities are configured in Google Sheets table
+ * that is exported to the dataset.tsv file
+ * Running "nodejs parseDataset.js" generates a structured ingredients_config.json file
+ */
+
 const fs = require("fs");
 
 const TITLE_LINE = 3;
@@ -29,19 +35,20 @@ const COLUMNS = {
   6: "ingredient_preparation",
   7: "ingredient_health",
   8: "ingredient_environment",
-  9: "quantity_name",
-  10: "quantity_api_name",
-  11: "quantity_id",
-  12: "quantity_default_weight",
-  13: "quantity_default_weight_per_unit",
-  14: "quantity_default_number_of_units",
-  15: "quantity_image_url",
+  9: "quantity_name_plural",
+  10: "quantity_name_singular",
+  11: "quantity_ingredient_name",
+  12: "quantity_unit_id",
+  13: "quantity_default_weight",
+  14: "quantity_default_weight_per_unit",
+  15: "quantity_default_number_of_units",
+  16: "quantity_image_url",
 };
 
 // Level of depths (end excluded)
 const categoriesRange = [0, 3];
 const ingredientsRange = [3, 9];
-const quantitiesRange = [9, 15];
+const quantitiesRange = [9, 16];
 
 const createObject = (line) => {
   const rep = {};
@@ -87,6 +94,7 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     currentState = {
       category_id: currentState.category_id,
       ingredient_id: lineObject.ingredient_id,
+      ingredient_name: lineObject.ingredient_name,
     };
     data.categories[currentState.category_id].ingredients.push(
       lineObject.ingredient_id
@@ -99,10 +107,15 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     return;
   }
   if (isNewQuantity) {
+    // Concatenate ingredient_id and quantity_unit_id to get the unique quantity_id
+    const quantity_id = currentState.ingredient_id + '.' + lineObject.quantity_unit_id;
+    lineObject.quantity_id = quantity_id;
     data.ingredients[currentState.ingredient_id].quantities.push(
-      lineObject.quantity_id
+      quantity_id
     );
-    data.quantities[lineObject.quantity_id] = {
+    // If quantity_ingredient_name is not specified, use ingredient_name
+    lineObject.quantity_ingredient_name = lineObject.quantity_ingredient_name || currentState.ingredient_name;
+    data.quantities[quantity_id] = {
       ...lineObject,
       ...currentState,
     };
@@ -111,7 +124,7 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
 });
 
 fs.writeFile(
-  "./data/ingredient_taxonomy.json",
+  "./data/ingredients_config.json",
   JSON.stringify(data, null, 2),
   (err) => {
     if (err) {

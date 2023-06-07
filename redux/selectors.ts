@@ -40,10 +40,10 @@ export const selectEditorView = createSelector(
   (editor) => editor.currentView
 );
 
-export const selectEditorCurrentType = createSelector(
+export const selectEditorCurrentCategory = createSelector(
   (state: RootState) => state.editor,
   (editor) =>
-    (editor.typeId != undefined && data.categories[editor.typeId]) || null
+    (editor.categoryId != undefined && data.categories[editor.categoryId]) || null
 );
 
 export const selectEditorCurrentIngredient = createSelector(

@@ -32,17 +32,17 @@ const getDefaultQuantityValue = (state: EditorState) => {
   return 1;
 };
 
-export type ViewsTypes = "type" | "ingredient" | "quantity" | "value";
+export type ViewsTypes = "category" | "ingredient" | "quantity" | "value";
 
 type EditorState = {
   currentView: null | ViewsTypes;
-  typeId?: string | null;
+  categoryId?: string | null;
   ingredientId?: string | null;
   quantityId?: string | null;
   quantityValue?: number | null;
   // This identify the modified ingredient, such that we cvan delete it if validated
   modifiedIngredient?: {
-    typeId: string | null;
+    categoryId: string | null;
     ingredientId: string | null;
     quantityId: string | null;
   };
@@ -53,7 +53,7 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
     name: "editor",
     initialState: {
       currentView: null,
-      typeId: null,
+      categoryId: null,
       ingredientId: null,
       quantityId: null,
       quantityValue: null,
@@ -62,10 +62,10 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       updateEditorState: (state, action: PayloadAction<EditorState>) => {
         return { ...state, ...action.payload };
       },
-      updateType: (state, action: PayloadAction<EditorState>) => {
-        // If type change, we reset the next value since they are now unvalid
+      updateCategory: (state, action: PayloadAction<EditorState>) => {
+        // If category changes, we reset the next value since they are now unvalid
         const reset =
-          state.typeId === action.payload.typeId
+          state.categoryId === action.payload.categoryId
             ? {}
             : {
                 ingredientId: null,
@@ -124,7 +124,7 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       closeEditor: () => {
         return {
           currentView: null,
-          typeId: null,
+          categoryId: null,
           ingredientId: null,
           quantityId: null,
           quantityValue: null,
@@ -133,8 +133,8 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       },
       openEditor: () => {
         return {
-          currentView: "type",
-          typeId: null,
+          currentView: "category",
+          categoryId: null,
           ingredientId: null,
           quantityId: null,
           quantityValue: null,
@@ -150,7 +150,7 @@ export const {
   updateEditorState,
   closeEditor,
   openEditor,
-  updateType,
+  updateCategory,
   updateIngredient,
   updateQuantity,
   updateValue,

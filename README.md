@@ -2,7 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-
 ### Setup JS env
 
 If you're new to JavaScript environment, you might want to install [nvm](https://github.com/nvm-sh/nvm) which is a version manager for Node.js
