@@ -12,8 +12,6 @@ export type CategoryType = {
 };
 
 export type IngredientType = {
-  quantity_default_number_of_units?: any;
-  quantity_default_weight?: any;
   default_weight?: any;
   ingredient_taxonomy?: string;
   ingredient_name?: string;
@@ -32,9 +30,10 @@ export type QuantityType = {
   quantity_ingredient_name?: string;
   quantity_id: QuantityId;
   quantity_unit_id?: string;
-  quantity_default_weight?: string;
-  quantity_default_weight_per_unit?: string;
-  quantity_default_number_of_units?: string;
+  quantity_default_weight?: number;
+  quantity_default_weight_per_unit?: number;
+  quantity_default_number_of_units?: number;
+  quantity_step?: number;
   quantity_image_url?: string;
   category_id: CategoryId;
   ingredient_id: IngredientId;

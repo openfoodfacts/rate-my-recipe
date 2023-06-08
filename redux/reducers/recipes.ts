@@ -7,10 +7,10 @@ import data from "../../data";
 
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
-    async (
-      { recipeId, ...action }: ReciepeAction<UpdateActionType>,
-      thunkAPI: any
-    ) => {
+  async (
+    { recipeId, ...action }: ReciepeAction<UpdateActionType>,
+    thunkAPI: any
+  ) => {
     const nextIngredients = ingredientReducer(
       thunkAPI.getState().recipe.recipes[recipeId].ingredients,
       action
@@ -28,9 +28,7 @@ export const updateRecipeIngredients = createAsyncThunk(
 
           const weight =
             quantity.value *
-            (isPerUnit
-              ? parseInt(quantityData.quantity_default_weight_per_unit!)
-              : 1);
+            (isPerUnit ? quantityData.quantity_default_weight_per_unit! : 1);
 
           return `${ingredientData.ingredient_name} ${weight}g`;
         });
@@ -73,7 +71,7 @@ function groupURLParams(params: { key: string; value: string }[]) {
     [k: string]: {
       ingredientId?: string;
       quantityId?: string;
-      value?: string;
+      value?: number;
     };
   } = {};
 
@@ -88,7 +86,7 @@ function groupURLParams(params: { key: string; value: string }[]) {
     }
     if (key.startsWith(VALUE)) {
       const id = key.slice(VALUE.length);
-      rep[id] = { ...rep[id], value };
+      rep[id] = { ...rep[id], value: parseInt(value) };
     }
   });
 
@@ -98,7 +96,7 @@ function groupByIngredient(groupedParams: {
   [k: string]: {
     ingredientId?: string;
     quantityId?: string;
-    value?: string;
+    value?: number;
   };
 }) {
   const rep: { [ingredientId: string]: { q: string; v: number }[] } = {};
@@ -106,7 +104,7 @@ function groupByIngredient(groupedParams: {
     ({ ingredientId, quantityId, value }) => {
       if (
         !value ||
-        isNaN(parseInt(value)) ||
+        isNaN(value) ||
         !ingredientId ||
         !data.ingredients[ingredientId]
       ) {
@@ -123,7 +121,7 @@ function groupByIngredient(groupedParams: {
         ...(rep[ingredientId] ?? []),
         {
           q: quantityId ?? data.ingredients[ingredientId].quantities[0],
-          v: parseInt(value),
+          v: value,
         },
       ];
     }
@@ -150,11 +148,10 @@ type RecipeStateType = {
 };
 
 type RecipesStateType = {
-  recipes: { 
+  recipes: {
     [id: string]: RecipeStateType;
     urlRecipe: RecipeStateType;
     userRecipe: RecipeStateType;
-  
   };
   ids: string[];
 };
@@ -174,7 +171,7 @@ type UpdateActionType =
       ingredientId: string;
       quantityId: string;
     }
-    | {
+  | {
       type: "overideFromURLParams";
       ingredients: {
         key: string;
@@ -187,10 +184,15 @@ const ingredientReducer = (
   action: UpdateActionType
 ): Ingredient[] => {
   if (action.type === "upsert") {
-    const { ingredientCategoryId: ingredientCategoryId, ingredientId, quantityId, quantityValue } =
-      action;
+    const {
+      ingredientCategoryId: ingredientCategoryId,
+      ingredientId,
+      quantityId,
+      quantityValue,
+    } = action;
     const ingredientIndex = ingredients.findIndex(
-      ({ id, categoryId }) => ingredientId === id && categoryId === ingredientCategoryId
+      ({ id, categoryId }) =>
+        ingredientId === id && categoryId === ingredientCategoryId
     );
     if (ingredientIndex === -1) {
       return [
@@ -293,7 +295,7 @@ const recipeSlice = createSlice<
     },
     ids: ["urlRecipe", "userRecipe"],
   },
-  reducers: { },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(updateRecipeIngredients.pending, (state, action) => {
       const { recipeId } = action.meta.arg;
@@ -304,8 +306,7 @@ const recipeSlice = createSlice<
     });
 
     builder.addCase(updateRecipeIngredients.fulfilled, (state, action) => {
-   const { recipeId } = action.meta.arg;
-  
+      const { recipeId } = action.meta.arg;
 
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);

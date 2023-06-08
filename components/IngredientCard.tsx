@@ -16,6 +16,15 @@ import { QuantityType } from "../data";
 const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
 
+  const isWeightValue = props.quantity_default_weight !== undefined;
+
+  const unit =
+    (isWeightValue && props.quantity_unit_id) ||
+    (props.value > 1 && props.quantity_name_plural) ||
+    props.quantity_name_singular;
+
+  const step = props.quantity_step ?? 1;
+  
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
       <Typography level="h2" fontSize="md">
@@ -45,14 +54,14 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
-                quantityValue: props.value - 1,
+                quantityValue: props.value - step,
               })
             )
           }
         >
           -
         </Button>
-        <Typography>{props.value} { props.quantity_unit_id == 'g' ? 'g' : (props.value > 1 ? props?.quantity_name_plural : props?.quantity_name_singular)}</Typography>
+        <Typography>{`${props.value} ${unit}`}</Typography>
 
         <Button
           variant="solid"
@@ -66,7 +75,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
-                quantityValue: props.value + 1,
+                quantityValue: props.value + step,
               })
             )
           }
