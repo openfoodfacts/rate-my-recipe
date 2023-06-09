@@ -139,7 +139,7 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     lineObject.quantity_default_number_of_units = parseNumber(
       lineObject.quantity_default_number_of_units
     );
-    lineObject.quantity_step = parseNumber(lineObject.quantity_step);
+    lineObject.quantity_step = parseNumber(lineObject.quantity_step) ?? 1;
 
     // Defaultize values
     lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";

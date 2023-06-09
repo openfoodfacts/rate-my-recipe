@@ -21,6 +21,7 @@ import {
   closeEditor,
 } from "@/redux/reducers/editor";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { getUnit } from "@/data/utils";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -147,15 +148,6 @@ export default function Navigator() {
     return null;
   }
 
-  const isWeightValue = currentQuantity.quantity_default_weight !== undefined;
-
-  const unitName =
-    (isWeightValue && currentQuantity.quantity_unit_id) ||
-    (quantityValue! > 1 && currentQuantity.quantity_name_plural) ||
-    currentQuantity.quantity_name_singular;
-
-  const step = currentQuantity.quantity_step ?? 1;
-
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
       <img
@@ -166,9 +158,13 @@ export default function Navigator() {
       />
       <Stack direction="row" justifyContent="space-between">
         <Button
-          disabled={!quantityValue || quantityValue - step <= 0}
+          disabled={
+            !quantityValue || quantityValue - currentQuantity.quantity_step <= 0
+          }
           onClick={() => {
-            dispatch(decreaseQuantityValue({ step }));
+            dispatch(
+              decreaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
           }}
         >
           -
@@ -183,11 +179,15 @@ export default function Navigator() {
               })
             );
           }}
-          endDecorator={<Typography>{unitName}</Typography>}
+          endDecorator={
+            <Typography>{getUnit(currentQuantity, quantityValue!)}</Typography>
+          }
         />
         <Button
           onClick={() => {
-            dispatch(increaseQuantityValue({ step }));
+            dispatch(
+              increaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
           }}
         >
           +

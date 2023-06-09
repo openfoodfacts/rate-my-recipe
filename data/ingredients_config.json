@@ -649,6 +649,7 @@
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg",
       "quantity_id": "chicken.whole-unit",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "chicken",
       "ingredient_name": "Poulet"
@@ -662,6 +663,7 @@
       "quantity_default_number_of_units": 6,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/323/089/002/6553/front_fr.17.400.jpg",
       "quantity_id": "chicken.thigh-unit",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "chicken",
       "ingredient_name": "Poulet"
@@ -675,6 +677,7 @@
       "quantity_default_number_of_units": 4,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/021/040/303/3783/front_fr.3.400.jpg",
       "quantity_id": "chicken.breast-unit",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "chicken",
       "ingredient_name": "Poulet"
@@ -685,6 +688,7 @@
       "quantity_default_weight": 500,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/324/541/585/1442/front_fr.3.400.jpg",
       "quantity_id": "beef.g",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "beef",
       "ingredient_name": "Boeuf"
@@ -695,6 +699,7 @@
       "quantity_default_weight": 500,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg",
       "quantity_id": "lamb.g",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "lamb",
       "ingredient_name": "Agneau"
@@ -708,6 +713,7 @@
       "quantity_default_number_of_units": 4,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/285/687/502/8735/front_fr.3.400.jpg",
       "quantity_id": "lamb.chop-unit",
+      "quantity_step": 1,
       "category_id": "meat-fish-eggs",
       "ingredient_id": "lamb",
       "ingredient_name": "Agneau"
@@ -765,6 +771,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg",
       "quantity_id": "celeri-branche.unit",
       "quantity_ingredient_name": "Céleri branche",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "celeri-branche",
       "ingredient_name": "Céleri branche"
@@ -778,6 +785,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg",
       "quantity_id": "white-cabbage.unit",
       "quantity_ingredient_name": "Chou blanc",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "white-cabbage",
       "ingredient_name": "Chou blanc"
@@ -791,6 +799,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg",
       "quantity_id": "green-cabbage.unit",
       "quantity_ingredient_name": "Chou vert",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "green-cabbage",
       "ingredient_name": "Chou vert"
@@ -804,6 +813,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg",
       "quantity_id": "courgettes.unit",
       "quantity_ingredient_name": "Courgette",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "courgettes",
       "ingredient_name": "Courgette"
@@ -813,6 +823,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg",
       "quantity_id": "spinach.g",
       "quantity_ingredient_name": "Epinard",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "spinach",
       "ingredient_name": "Epinard"
@@ -826,6 +837,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg",
       "quantity_id": "onions.unit",
       "quantity_ingredient_name": "Oignon",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "onions",
       "ingredient_name": "Oignon"
@@ -835,6 +847,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg",
       "quantity_id": "green-chili-pepper.g",
       "quantity_ingredient_name": "Piment vert",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "green-chili-pepper",
       "ingredient_name": "Piment vert"
@@ -844,6 +857,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg",
       "quantity_id": "red-chili-pepper.g",
       "quantity_ingredient_name": "Piment rouge",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "red-chili-pepper",
       "ingredient_name": "Piment rouge"
@@ -853,6 +867,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/376/005/653/0926/front_fr.4.400.jpg",
       "quantity_id": "leek.g",
       "quantity_ingredient_name": "Poireau",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "leek",
       "ingredient_name": "Poireau"
@@ -862,6 +877,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/843/517/701/1863/front_fr.3.400.jpg",
       "quantity_id": "red-pepper.g",
       "quantity_ingredient_name": "Poivron rouge",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "red-pepper",
       "ingredient_name": "Poivron rouge"
@@ -871,6 +887,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/843/700/678/8915/front_fr.4.400.jpg",
       "quantity_id": "green-pepper.g",
       "quantity_ingredient_name": "Poivron vert",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "green-pepper",
       "ingredient_name": "Poivron vert"
@@ -880,6 +897,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/020/969/003/0506/front_fr.9.400.jpg",
       "quantity_id": "tomato.g",
       "quantity_ingredient_name": "Tomate",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "tomato",
       "ingredient_name": "Tomate"
@@ -889,6 +907,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/358/028/211/0804/front_fr.3.400.jpg",
       "quantity_id": "tomato-pulp.g",
       "quantity_ingredient_name": "Pulpe de tomate",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "tomato-pulp",
       "ingredient_name": "Pulpe de tomate"
@@ -898,6 +917,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20023218/front_fr.97.400.jpg",
       "quantity_id": "tomato-sauce.g",
       "quantity_ingredient_name": "Sauce tomate",
+      "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "tomato-sauce",
       "ingredient_name": "Sauce tomate"
@@ -907,6 +927,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20439354/front_fr.24.400.jpg",
       "quantity_id": "potato.g",
       "quantity_ingredient_name": "Pomme de terre",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "potato",
       "ingredient_name": "Pomme de terre"
@@ -916,6 +937,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/326/385/078/1568/front_fr.11.400.jpg",
       "quantity_id": "lentils.g",
       "quantity_ingredient_name": "Lentilles",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "lentils",
       "ingredient_name": "Lentilles"
@@ -925,6 +947,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/301/780/007/8860/front_fr.108.400.jpg",
       "quantity_id": "chickpea.g",
       "quantity_ingredient_name": "Pois chiche",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "chickpea",
       "ingredient_name": "Pois chiche"
@@ -934,6 +957,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg",
       "quantity_id": "wheat-flour.g",
       "quantity_ingredient_name": "Farine de blé",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "wheat-flour",
       "ingredient_name": "Farine de blé"
@@ -943,6 +967,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/319/122/002/0262/front_fr.10.400.jpg",
       "quantity_id": "frik.g",
       "quantity_ingredient_name": "Frik (blé concassé)",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "frik",
       "ingredient_name": "Frik (blé concassé)"
@@ -952,6 +977,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/303/835/235/7005/front_fr.82.400.jpg",
       "quantity_id": "wheat-semolina.g",
       "quantity_ingredient_name": "Semoule de blé",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "wheat-semolina",
       "ingredient_name": "Semoule de blé"
@@ -961,6 +987,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/405/648/909/5736/front_fr.37.400.jpg",
       "quantity_id": "rice.g",
       "quantity_ingredient_name": "Riz",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "rice",
       "ingredient_name": "Riz"
@@ -970,6 +997,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/807/680/208/5738/front_fr.3312.200.jpg",
       "quantity_id": "pasta.g",
       "quantity_ingredient_name": "Pâtes",
+      "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "pasta",
       "ingredient_name": "Pâtes"
@@ -983,6 +1011,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg",
       "quantity_id": "olive-oil.tbsp",
       "quantity_ingredient_name": "Huile d'olive",
+      "quantity_step": 1,
       "category_id": "fats",
       "ingredient_id": "olive-oil",
       "ingredient_name": "Huile d'olive"
@@ -996,6 +1025,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg",
       "quantity_id": "rapeseed-oil.tbsp",
       "quantity_ingredient_name": "Huile de colza",
+      "quantity_step": 1,
       "category_id": "fats",
       "ingredient_id": "rapeseed-oil",
       "ingredient_name": "Huile de colza"
@@ -1009,6 +1039,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg",
       "quantity_id": "sunflower-oil.tbsp",
       "quantity_ingredient_name": "Huile de tournesol",
+      "quantity_step": 1,
       "category_id": "fats",
       "ingredient_id": "sunflower-oil",
       "ingredient_name": "Huile de tournesol"
@@ -1030,6 +1061,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/315/525/000/1554/front_fr.81.400.jpg",
       "quantity_id": "cream.ml",
       "quantity_ingredient_name": "Crème fraîche",
+      "quantity_step": 1,
       "category_id": "fats",
       "ingredient_id": "cream",
       "ingredient_name": "Crème fraîche"
@@ -1040,6 +1072,7 @@
       "quantity_image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg",
       "quantity_id": "water.cl",
       "quantity_ingredient_name": "Eau",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "water",
       "ingredient_name": "Eau"
@@ -1050,6 +1083,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/622/297/3180/front_fr.38.400.jpg",
       "quantity_id": "lemon-juice.cl",
       "quantity_ingredient_name": "Jus de citron",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "lemon-juice",
       "ingredient_name": "Jus de citron"
@@ -1059,6 +1093,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.10.400.jpg",
       "quantity_id": "coconut-milk.cl",
       "quantity_ingredient_name": "Lait de coco",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "coconut-milk",
       "ingredient_name": "Lait de coco"
@@ -1069,6 +1104,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/711/7395/front_fr.75.400.jpg",
       "quantity_id": "vinegar.cl",
       "quantity_ingredient_name": "Vinaigre",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "vinegar",
       "ingredient_name": "Vinaigre"
@@ -1079,6 +1115,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/345/097/013/5887/front_fr.3.400.jpg",
       "quantity_id": "white-wine.cl",
       "quantity_ingredient_name": "Vin blanc",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "white-wine",
       "ingredient_name": "Vin blanc"
@@ -1089,6 +1126,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/317/907/100/0978/front_fr.3.400.jpg",
       "quantity_id": "red-wine.cl",
       "quantity_ingredient_name": "Vin rouge",
+      "quantity_step": 1,
       "category_id": "liquids",
       "ingredient_id": "red-wine",
       "ingredient_name": "Vin rouge"
@@ -1102,6 +1140,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/318/328/000/1800/front_en.123.200.jpg",
       "quantity_id": "salt.unit",
       "quantity_ingredient_name": "Sel",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "salt",
       "ingredient_name": "Sel"
@@ -1115,6 +1154,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg",
       "quantity_id": "pepper.unit",
       "quantity_ingredient_name": "Poivre",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "pepper",
       "ingredient_name": "Poivre"
@@ -1125,6 +1165,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg",
       "quantity_id": "sugar.g",
       "quantity_ingredient_name": "Sucre",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "sugar",
       "ingredient_name": "Sucre"
@@ -1137,6 +1178,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20253462/front_fr.37.200.jpg",
       "quantity_id": "garlic.unit",
       "quantity_ingredient_name": "Ail",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "garlic",
       "ingredient_name": "Ail"
@@ -1150,6 +1192,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/761/303/368/7983/front_en.239.200.jpg",
       "quantity_id": "beef-stock.unit",
       "quantity_ingredient_name": "Bouillon de boeuf",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "beef-stock",
       "ingredient_name": "Bouillon de boeuf"
@@ -1163,6 +1206,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/520/233/610/3539/front_fr.3.200.jpg",
       "quantity_id": "cinnamon.tsp",
       "quantity_ingredient_name": "Cannelle",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "cinnamon",
       "ingredient_name": "Cannelle"
@@ -1176,6 +1220,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/405/648/902/1773/front_fr.12.200.jpg",
       "quantity_id": "curcuma.tsp",
       "quantity_ingredient_name": "Curcuma",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "curcuma",
       "ingredient_name": "Curcuma"
@@ -1188,6 +1233,7 @@
       "quantity_default_number_of_units": 1,
       "quantity_id": "curry.tsp",
       "quantity_ingredient_name": "Curry",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "curry",
       "ingredient_name": "Curry"
@@ -1200,6 +1246,7 @@
       "quantity_default_number_of_units": 1,
       "quantity_id": "ginger.tsp",
       "quantity_ingredient_name": "Gingembre",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "ginger",
       "ingredient_name": "Gingembre"
@@ -1209,6 +1256,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/260/072/201/2466/front_fr.3.200.jpg",
       "quantity_id": "pumpkin-seeds.g",
       "quantity_ingredient_name": "Graines de courges",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "pumpkin-seeds",
       "ingredient_name": "Graines de courges"
@@ -1221,6 +1269,7 @@
       "quantity_default_number_of_units": 1,
       "quantity_id": "fennel-seeds.tsp",
       "quantity_ingredient_name": "Graines de fenouil",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "fennel-seeds",
       "ingredient_name": "Graines de fenouil"
@@ -1233,6 +1282,7 @@
       "quantity_default_number_of_units": 1,
       "quantity_id": "nigelle-seeds.tsp",
       "quantity_ingredient_name": "Graines de Nigelle",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "nigelle-seeds",
       "ingredient_name": "Graines de Nigelle"
@@ -1241,6 +1291,7 @@
       "quantity_unit_id": "g",
       "quantity_id": "harissa.g",
       "quantity_ingredient_name": "Harissa",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "harissa",
       "ingredient_name": "Harissa"
@@ -1252,6 +1303,7 @@
       "quantity_default_weight_per_unit": 5,
       "quantity_id": "laurel.unit",
       "quantity_ingredient_name": "Laurier",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "laurel",
       "ingredient_name": "Laurier"
@@ -1264,6 +1316,7 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/871/210/087/1986/front_fr.121.200.jpg",
       "quantity_id": "mustard.tsp",
       "quantity_ingredient_name": "Moutarde",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "mustard",
       "ingredient_name": "Moutarde"
@@ -1275,6 +1328,7 @@
       "quantity_default_weight_per_unit": 10,
       "quantity_id": "nutmeg.tsp",
       "quantity_ingredient_name": "Muscade",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "nutmeg",
       "ingredient_name": "Muscade"
@@ -1286,6 +1340,7 @@
       "quantity_default_weight_per_unit": 10,
       "quantity_id": "oregano.tsp",
       "quantity_ingredient_name": "Origan",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "oregano",
       "ingredient_name": "Origan"
@@ -1297,6 +1352,7 @@
       "quantity_default_weight_per_unit": 10,
       "quantity_id": "paprika.tsp",
       "quantity_ingredient_name": "Paprika",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "paprika",
       "ingredient_name": "Paprika"
@@ -1308,6 +1364,7 @@
       "quantity_default_weight_per_unit": 10,
       "quantity_id": "ras-el-hanout.tsp",
       "quantity_ingredient_name": "Ras el hanout",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "ras-el-hanout",
       "ingredient_name": "Ras el hanout"
@@ -1319,6 +1376,7 @@
       "quantity_default_weight_per_unit": 20,
       "quantity_id": "concentrated-tomato.tsp",
       "quantity_ingredient_name": "Tomate concentrée",
+      "quantity_step": 1,
       "category_id": "spices-condiments",
       "ingredient_id": "concentrated-tomato",
       "ingredient_name": "Tomate concentrée"
@@ -1330,6 +1388,7 @@
       "quantity_default_weight_per_unit": 25,
       "quantity_id": "basil.unit",
       "quantity_ingredient_name": "Basilic",
+      "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "basil",
       "ingredient_name": "Basilic"
@@ -1341,6 +1400,7 @@
       "quantity_default_weight_per_unit": 50,
       "quantity_id": "coriander.unit",
       "quantity_ingredient_name": "Coriandre",
+      "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "coriander",
       "ingredient_name": "Coriandre"
@@ -1352,6 +1412,7 @@
       "quantity_default_weight_per_unit": 50,
       "quantity_id": "mint.unit",
       "quantity_ingredient_name": "Menthe",
+      "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "mint",
       "ingredient_name": "Menthe"
@@ -1363,6 +1424,7 @@
       "quantity_default_weight_per_unit": 100,
       "quantity_id": "green-onions.unit",
       "quantity_ingredient_name": "Oignons verts",
+      "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "green-onions",
       "ingredient_name": "Oignons verts"
@@ -1374,6 +1436,7 @@
       "quantity_default_weight_per_unit": 50,
       "quantity_id": "parsley.unit",
       "quantity_ingredient_name": "Persil",
+      "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "parsley",
       "ingredient_name": "Persil"
