@@ -8,13 +8,13 @@ Viandes, poissons, oeufs	meat-fish-eggs
 									cuisses	cuisse	Cuisses de poulet	thigh-unit		250	6		https://images.openfoodfacts.org/images/products/323/089/002/6553/front_fr.17.400.jpg
 									blancs	blanc	Blancs de poulet	breast-unit		200	4		https://images.openfoodfacts.org/images/products/021/040/303/3783/front_fr.3.400.jpg
 			Boeuf	beef				Le boeuf a un fort impact environnemental.									
-											Viande de boeuf	g	500				https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg
-											Viande de boeuf hachée	g	500				https://images.openfoodfacts.org/images/products/324/541/585/1442/front_fr.3.400.jpg
+											Viande de boeuf	meat-g	500			100	https://images.openfoodfacts.org/images/products/021/526/405/7206/front_fr.3.400.jpg
+											Viande de boeuf hachée	ground-meat-g	500			100	https://images.openfoodfacts.org/images/products/324/541/585/1442/front_fr.3.400.jpg
 			Agneau	lamb													
-											Viande d'agneau	g	500				https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg
+											Viande d'agneau	g	500			100	https://images.openfoodfacts.org/images/products/249/364/703/8372/front_fr.4.400.jpg
 									côtes	côte	Côtes d'agneau	chop-unit		200	4		https://images.openfoodfacts.org/images/products/285/687/502/8735/front_fr.3.400.jpg
 			Poisson blanc	white-fish													
-												g		1000		100	https://images.openfoodfacts.org/images/products/345/302/009/7111/front_fr.10.400.jpg
+												g		500		100	https://images.openfoodfacts.org/images/products/345/302/009/7111/front_fr.10.400.jpg
 																	
 																	
 																	
@@ -38,40 +38,40 @@ Légumes	vegetables
 			Oignon	onions													
 									oignon	oignons		unit		150	2		https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
 			Piment vert	green-chili-pepper													
-												g					https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
+												g	100			100	https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
 			Piment rouge	red-chili-pepper													
-												g					https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
+												g	100			100	https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
 			Poireau	leek													
-												g					https://images.openfoodfacts.org/images/products/376/005/653/0926/front_fr.4.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/376/005/653/0926/front_fr.4.400.jpg
 			Poivron rouge	red-pepper													
-												g					https://images.openfoodfacts.org/images/products/843/517/701/1863/front_fr.3.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/843/517/701/1863/front_fr.3.400.jpg
 			Poivron vert	green-pepper													
-												g					https://images.openfoodfacts.org/images/products/843/700/678/8915/front_fr.4.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/843/700/678/8915/front_fr.4.400.jpg
 			Tomate	tomato													
-												g					https://images.openfoodfacts.org/images/products/020/969/003/0506/front_fr.9.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/020/969/003/0506/front_fr.9.400.jpg
 			Pulpe de tomate	tomato-pulp													
-												g					https://images.openfoodfacts.org/images/products/358/028/211/0804/front_fr.3.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/358/028/211/0804/front_fr.3.400.jpg
 			Sauce tomate	tomato-sauce													
-												g					https://images.openfoodfacts.org/images/products/20023218/front_fr.97.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/20023218/front_fr.97.400.jpg
 Pommes de terre, légumineuses et céréales	potatoes-legumes-cereals																
 																	
 																	
 			Pomme de terre	potato													
-												g					https://images.openfoodfacts.org/images/products/20439354/front_fr.24.400.jpg
+												g	500			250	https://images.openfoodfacts.org/images/products/20439354/front_fr.24.400.jpg
 			Lentilles	lentils													
-												g					https://images.openfoodfacts.org/images/products/326/385/078/1568/front_fr.11.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/326/385/078/1568/front_fr.11.400.jpg
 			Pois chiche	chickpea													
-												g					https://images.openfoodfacts.org/images/products/301/780/007/8860/front_fr.108.400.jpg
+												g	250			50	https://images.openfoodfacts.org/images/products/301/780/007/8860/front_fr.108.400.jpg
 			Farine de blé	wheat-flour													
-												g					https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg
+												g	250			50	https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg
 			Frik (blé concassé)	frik							Frik						
-												g					https://images.openfoodfacts.org/images/products/319/122/002/0262/front_fr.10.400.jpg
+												g	250			50	https://images.openfoodfacts.org/images/products/319/122/002/0262/front_fr.10.400.jpg
 			Semoule de blé	wheat-semolina													
-												g					https://images.openfoodfacts.org/images/products/303/835/235/7005/front_fr.82.400.jpg
+												g	250			50	https://images.openfoodfacts.org/images/products/303/835/235/7005/front_fr.82.400.jpg
 			Riz	rice													
-												g					https://images.openfoodfacts.org/images/products/405/648/909/5736/front_fr.37.400.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/405/648/909/5736/front_fr.37.400.jpg
 			Pâtes	pasta													
-												g					https://images.openfoodfacts.org/images/products/807/680/208/5738/front_fr.3312.200.jpg
+												g	500			100	https://images.openfoodfacts.org/images/products/807/680/208/5738/front_fr.3312.200.jpg
 																	
 Matières grasses	fats	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.															
 			Huile d'olive	olive-oil													
@@ -81,22 +81,22 @@ Matières grasses	fats	La matière grasse permet de faire revenir la viande et/o
 			Huile de tournesol	sunflower-oil													
 									cuillères	cuillère		tbsp		10	2		https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
 			Beurre	butter													
-												g	50			10	https://images.openfoodfacts.org/images/products/315/525/120/5500/front_fr.181.400.jpg
+												g	50			25	https://images.openfoodfacts.org/images/products/315/525/120/5500/front_fr.181.400.jpg
 			Crème fraîche	cream													
-												ml	100				https://images.openfoodfacts.org/images/products/315/525/000/1554/front_fr.81.400.jpg
+												ml	100			25	https://images.openfoodfacts.org/images/products/315/525/000/1554/front_fr.81.400.jpg
 Liquides	liquids																
 			Eau	water													
-												cl	100				https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg
+												ml	500			100	https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg
 			Jus de citron	lemon-juice													
-												cl	100				https://images.openfoodfacts.org/images/products/325/622/297/3180/front_fr.38.400.jpg
+												cl	5			5	https://images.openfoodfacts.org/images/products/325/622/297/3180/front_fr.38.400.jpg
 			Lait de coco	coconut-milk													
-												cl					https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.10.400.jpg
+												ml	400			100	https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.10.400.jpg
 			Vinaigre	vinegar													
-												cl	100				https://images.openfoodfacts.org/images/products/356/470/711/7395/front_fr.75.400.jpg
+												cl	5			5	https://images.openfoodfacts.org/images/products/356/470/711/7395/front_fr.75.400.jpg
 			Vin blanc	white-wine													
-												cl	100				https://images.openfoodfacts.org/images/products/345/097/013/5887/front_fr.3.400.jpg
+												cl	25			25	https://images.openfoodfacts.org/images/products/345/097/013/5887/front_fr.3.400.jpg
 			Vin rouge	red-wine													
-												cl	100				https://images.openfoodfacts.org/images/products/317/907/100/0978/front_fr.3.400.jpg
+												cl	25			25	https://images.openfoodfacts.org/images/products/317/907/100/0978/front_fr.3.400.jpg
 																	
 																	
 																	
@@ -106,7 +106,7 @@ Epices et condiments	spices-condiments
 			Poivre	pepper													
 									pincées	pincée		unit		5	1		https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg
 			Sucre	sugar													
-												g	100				https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+												g	100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
 			Ail	garlic													
 									gousses	gousse		unit		10			https://images.openfoodfacts.org/images/products/20253462/front_fr.37.200.jpg
 			Bouillon de boeuf	beef-stock													
@@ -120,13 +120,13 @@ Epices et condiments	spices-condiments
 			Gingembre	ginger													
 									cuillères à café	cuillère à café		tsp		10	1		
 			Graines de courges	pumpkin-seeds													
-												g					https://images.openfoodfacts.org/images/products/260/072/201/2466/front_fr.3.200.jpg
+												g		20		10	https://images.openfoodfacts.org/images/products/260/072/201/2466/front_fr.3.200.jpg
 			Graines de fenouil	fennel-seeds													
 									cuillères à café	cuillère à café		tsp		10	1		
 			Graines de Nigelle	nigelle-seeds													
 									cuillères à café	cuillère à café		tsp		10	1		
 			Harissa	harissa													
-												g					
+												tsp		10	1		
 			Laurier	laurel													
 									feuilles	feuille		unit		5			
 			Moutarde	mustard													

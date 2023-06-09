@@ -123,6 +123,14 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
       currentState.ingredient_id + "." + lineObject.quantity_unit_id;
     lineObject.quantity_id = quantity_id;
 
+    // Defaultize values
+    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
+
+    // quantity_unit_id can contain a prefix that indicates the type of ingredient
+    // e.g. thigh-unit, meat-g, ground-meat-g
+    // extract the actual unit suffix
+    lineObject.quantity_unit = lineObject.quantity_unit_id.replace(/^.*-/, '');
+
     data.ingredients[currentState.ingredient_id].quantities.push(quantity_id);
 
     // If quantity_ingredient_name is not specified, use ingredient_name
@@ -141,8 +149,6 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     );
     lineObject.quantity_step = parseNumber(lineObject.quantity_step) ?? 1;
 
-    // Defaultize values
-    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
 
     data.quantities[quantity_id] = {
       ...lineObject,
