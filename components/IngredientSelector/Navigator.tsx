@@ -21,6 +21,7 @@ import {
   closeEditor,
 } from "@/redux/reducers/editor";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { getUnit } from "@/data/utils";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -59,8 +60,10 @@ export default function Navigator() {
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentCategory?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
+          console.log({ q: ingredient.quantities[0] });
           const image_url =
-            data.quantities[ingredient.quantities[0]].quantity_image_url;
+            data.quantities[ingredient.quantities[0]].quantity_image_url ??
+            null;
 
           return (
             <Button
@@ -144,8 +147,7 @@ export default function Navigator() {
   if (currentQuantity === null) {
     return null;
   }
-  const isWeightValue = currentQuantity?.quantity_default_weight !== undefined;
-  const updateStep = 1;
+
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
       <img
@@ -156,24 +158,36 @@ export default function Navigator() {
       />
       <Stack direction="row" justifyContent="space-between">
         <Button
-          disabled={!quantityValue || quantityValue - updateStep <= 0}
+          disabled={
+            !quantityValue || quantityValue - currentQuantity.quantity_step <= 0
+          }
           onClick={() => {
-            dispatch(decreaseQuantityValue({ step: updateStep }));
+            dispatch(
+              decreaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
           }}
         >
           -
         </Button>
         <Input
           type="number"
-          value={quantityValue ?? undefined}
-          onChange={(event) =>
-            dispatch(updateValue({ quantityValue: Number(event.target.value) }))
+          value={quantityValue!}
+          onChange={(event) => {
+            dispatch(
+              updateValue({
+                quantityValue: Number(event.target.value),
+              })
+            );
+          }}
+          endDecorator={
+            <Typography>{getUnit(currentQuantity, quantityValue!)}</Typography>
           }
-          endDecorator={isWeightValue ? <Typography>g</Typography> : (quantityValue! > 1 ? currentQuantity?.quantity_name_plural : currentQuantity?.quantity_name_singular)}
         />
         <Button
           onClick={() => {
-            dispatch(increaseQuantityValue({ step: updateStep }));
+            dispatch(
+              increaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
           }}
         >
           +
@@ -182,7 +196,12 @@ export default function Navigator() {
     </InteractionWrapper>
   );
 }
-const viewsOrder: ViewsTypes[] = ["category", "ingredient", "quantity", "value"];
+const viewsOrder: ViewsTypes[] = [
+  "category",
+  "ingredient",
+  "quantity",
+  "value",
+];
 
 const viewToValue = {
   category: "categoryId",

@@ -12,9 +12,12 @@ import { Ingredient, updateRecipeIngredients } from "@/redux/reducers/recipes";
 import data from "../data";
 import { updateEditorState } from "@/redux/reducers/editor";
 import { QuantityType } from "../data";
+import { getUnit } from "@/data/utils";
 
 const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
+
+  const isWeightValue = props.quantity_default_weight !== undefined;
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
@@ -45,14 +48,17 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
-                quantityValue: props.value - 1,
+                quantityValue: props.value - props.quantity_step,
               })
             )
           }
         >
           -
         </Button>
-        <Typography>{props.value} { props.quantity_unit_id == 'g' ? 'g' : (props.value > 1 ? props?.quantity_name_plural : props?.quantity_name_singular)}</Typography>
+        <Typography>{`${props.value} ${getUnit(
+          props,
+          props.value
+        )}`}</Typography>
 
         <Button
           variant="solid"
@@ -66,7 +72,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 ingredientCategoryId: props.category_id,
                 ingredientId: props.ingredient_id,
                 quantityId: props.quantity_id,
-                quantityValue: props.value + 1,
+                quantityValue: props.value + props.quantity_step,
               })
             )
           }

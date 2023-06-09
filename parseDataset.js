@@ -6,6 +6,13 @@
 
 const fs = require("fs");
 
+const parseNumber = (n) => {
+  if (n === undefined || Number.isNaN(n)) {
+    return undefined;
+  }
+  return parseInt(n);
+};
+
 const TITLE_LINE = 3;
 
 const parseLine = (line) =>
@@ -42,13 +49,14 @@ const COLUMNS = {
   13: "quantity_default_weight",
   14: "quantity_default_weight_per_unit",
   15: "quantity_default_number_of_units",
-  16: "quantity_image_url",
+  16: "quantity_step",
+  17: "quantity_image_url",
 };
 
 // Level of depths (end excluded)
 const categoriesRange = [0, 3];
 const ingredientsRange = [3, 9];
-const quantitiesRange = [9, 16];
+const quantitiesRange = [9, 17];
 
 const createObject = (line) => {
   const rep = {};
@@ -70,6 +78,9 @@ let currentState = {};
 lines.slice(TITLE_LINE + 1).forEach((line) => {
   const parsedLine = parseLine(line);
 
+  if (parsedLine.filter((element) => element !== "").length === 0) {
+    return;
+  }
   const lineObject = createObject(parsedLine);
 
   const isNewCategory = parsedLine
@@ -108,13 +119,31 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
   }
   if (isNewQuantity) {
     // Concatenate ingredient_id and quantity_unit_id to get the unique quantity_id
-    const quantity_id = currentState.ingredient_id + '.' + lineObject.quantity_unit_id;
+    const quantity_id =
+      currentState.ingredient_id + "." + lineObject.quantity_unit_id;
     lineObject.quantity_id = quantity_id;
-    data.ingredients[currentState.ingredient_id].quantities.push(
-      quantity_id
-    );
+
+    data.ingredients[currentState.ingredient_id].quantities.push(quantity_id);
+
     // If quantity_ingredient_name is not specified, use ingredient_name
-    lineObject.quantity_ingredient_name = lineObject.quantity_ingredient_name || currentState.ingredient_name;
+    lineObject.quantity_ingredient_name =
+      lineObject.quantity_ingredient_name || currentState.ingredient_name;
+
+    // Parse numbers when provided
+    lineObject.quantity_default_weight = parseNumber(
+      lineObject.quantity_default_weight
+    );
+    lineObject.quantity_default_weight_per_unit = parseNumber(
+      lineObject.quantity_default_weight_per_unit
+    );
+    lineObject.quantity_default_number_of_units = parseNumber(
+      lineObject.quantity_default_number_of_units
+    );
+    lineObject.quantity_step = parseNumber(lineObject.quantity_step) ?? 1;
+
+    // Defaultize values
+    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
+
     data.quantities[quantity_id] = {
       ...lineObject,
       ...currentState,
