@@ -30,7 +30,9 @@ export const updateRecipeIngredients = createAsyncThunk(
             quantity.value *
             (isPerUnit ? quantityData.quantity_default_weight_per_unit! : 1);
 
-          return `${ingredientData.ingredient_name} ${weight}g`;
+          const ingredientName = quantityData.quantity_ingredient_name || ingredientData.ingredient_name;
+
+          return `${ingredientName} ${weight}g`;
         });
       })
       .join(", ");
