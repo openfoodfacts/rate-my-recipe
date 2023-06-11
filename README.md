@@ -16,6 +16,7 @@ This project use `yarn` to manage library dependencies with
 
 ```bash
 npm install --global yarn
+```
 
 ### Run the project
 
