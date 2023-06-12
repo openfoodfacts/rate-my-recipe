@@ -118,17 +118,19 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     return;
   }
   if (isNewQuantity) {
+    // Defaultize values
+    // if we don't have a unit in the table, assume it is "g"
+    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
+
     // Concatenate ingredient_id and quantity_unit_id to get the unique quantity_id
+    // e.g. beef.ground-meat-g or beef.meat-g
     const quantity_id =
       currentState.ingredient_id + "." + lineObject.quantity_unit_id;
     lineObject.quantity_id = quantity_id;
 
-    // Defaultize values
-    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
-
     // quantity_unit_id can contain a prefix that indicates the type of ingredient
     // e.g. thigh-unit, meat-g, ground-meat-g
-    // extract the actual unit suffix
+    // extract the actual unit suffix, that is used to display quantity amounts for weights/volumes (e.g. 1000 g, 20 cl)
     lineObject.quantity_unit = lineObject.quantity_unit_id.replace(/^.*-/, '');
 
     data.ingredients[currentState.ingredient_id].quantities.push(quantity_id);
