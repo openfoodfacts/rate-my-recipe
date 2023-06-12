@@ -32,7 +32,7 @@ export const updateRecipeIngredients = createAsyncThunk(
 
           const ingredientName = quantityData.quantity_ingredient_name || ingredientData.ingredient_name;
 
-          return `${ingredientName} ${weight}g`;
+          return `${ingredientName} ${weight} ${quantityData.quantity_unit!}`;
         });
       })
       .join(", ");
