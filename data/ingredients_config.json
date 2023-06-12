@@ -734,7 +734,7 @@
       "ingredient_name": "Agneau"
     },
     "white-fish": {
-      "quantity_default_weight_per_unit": 500,
+      "quantity_default_weight": 500,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/345/302/009/7111/front_fr.10.400.jpg",
       "quantity_id": "white-fish",
