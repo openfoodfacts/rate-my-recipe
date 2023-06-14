@@ -4,7 +4,7 @@ export function getUnit(quantity: QuantityType, value: number) {
   const isWeightValue = quantity.quantity_default_weight !== undefined;
 
   if (isWeightValue) {
-    return quantity.quantity_unit_id;
+    return quantity.quantity_unit;
   }
 
   if (value > 1) {

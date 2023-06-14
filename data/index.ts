@@ -30,6 +30,7 @@ export type QuantityType = {
   quantity_ingredient_name?: string;
   quantity_id: QuantityId;
   quantity_unit_id?: string;
+  quantity_unit: string;
   quantity_default_weight?: number;
   quantity_default_weight_per_unit?: number;
   quantity_default_number_of_units?: number;

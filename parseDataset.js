@@ -46,17 +46,18 @@ const COLUMNS = {
   10: "quantity_name_singular",
   11: "quantity_ingredient_name",
   12: "quantity_unit_id",
-  13: "quantity_default_weight",
-  14: "quantity_default_weight_per_unit",
-  15: "quantity_default_number_of_units",
-  16: "quantity_step",
-  17: "quantity_image_url",
+  13: "quantity_unit",
+  14: "quantity_default_weight",
+  15: "quantity_default_weight_per_unit",
+  16: "quantity_default_number_of_units",
+  17: "quantity_step",
+  18: "quantity_image_url",
 };
 
 // Level of depths (end excluded)
 const categoriesRange = [0, 3];
 const ingredientsRange = [3, 9];
-const quantitiesRange = [9, 17];
+const quantitiesRange = [9, 18];
 
 const createObject = (line) => {
   const rep = {};
@@ -118,12 +119,19 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     return;
   }
   if (isNewQuantity) {
+
     // Concatenate ingredient_id and quantity_unit_id to get the unique quantity_id
+    // e.g. beef.ground-meat or beef.meat
+    // If we don't have a quantity_unit_id, just use the ingredient_id
     const quantity_id =
-      currentState.ingredient_id + "." + lineObject.quantity_unit_id;
+      currentState.ingredient_id + (lineObject.quantity_unit_id ? "." + lineObject.quantity_unit_id : '');
     lineObject.quantity_id = quantity_id;
 
     data.ingredients[currentState.ingredient_id].quantities.push(quantity_id);
+
+    // Defaultize values
+    // if we don't have a unit in the table, assume it is "g"
+    lineObject.quantity_unit = lineObject.quantity_unit || "g";    
 
     // If quantity_ingredient_name is not specified, use ingredient_name
     lineObject.quantity_ingredient_name =
@@ -141,8 +149,6 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
     );
     lineObject.quantity_step = parseNumber(lineObject.quantity_step) ?? 1;
 
-    // Defaultize values
-    lineObject.quantity_unit_id = lineObject.quantity_unit_id || "g";
 
     data.quantities[quantity_id] = {
       ...lineObject,
