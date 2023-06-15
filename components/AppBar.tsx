@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import IngredientSelector from "@/components/IngredientSelector";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
+import { selectUserNutriscore, selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
 import store, { RootState } from "@/redux/store";
 import IngredientCard from "@/components/IngredientCard";
 import { Button, Icon, Snackbar, Stack } from "@mui/material";
@@ -31,6 +31,8 @@ const AppBar = () => {
   function handleShareButtonClick() {
     const url = "https://amathjourney.com/api/yololo";
 
+    const userNutriscore = selectUserNutriscore(store.getState(), "userRecipe");
+
     const ingredients = selectCurrentIngredients(
       store.getState(),
       "userRecipe"
@@ -42,7 +44,7 @@ const AppBar = () => {
         value: quantity.value,
       }))
     );
-    const body = JSON.stringify({ valuesAndQuantities });
+    const body = JSON.stringify({ valuesAndQuantities, nutriscore: userNutriscore });
 
     fetch(url, {
       method: "POST",
@@ -103,7 +105,7 @@ const AppBar = () => {
         open={open}
         autoHideDuration={5000}
         onClose={() => setOpen(false)}
-        message="url copié dans le press papier"
+        message="Lien copié dans le presse-papier"
       />
     </Sheet>
   );
