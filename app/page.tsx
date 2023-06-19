@@ -27,22 +27,25 @@ export default function Home() {
   const searchParams = useSearchParams();
 
   React.useEffect(() => {
-    dispatch<any>(
-      updateRecipeIngredients({
-        recipeId: "userRecipe",
-        type: "overideFromURLParams",
-        ingredients: Array.from(searchParams.entries()).map(([key, value]) => ({
-          key,
-          value,
-        })),
-      })
-    );
-    if (Array.from(searchParams.entries()).length !== 0) {
+    const ingredients = Array.from(searchParams.entries());
+
+    if (ingredients.length !== 0) {
+      dispatch<any>(
+        updateRecipeIngredients({
+          recipeId: "userRecipe",
+          type: "overideFromURLParams",
+          ingredients: ingredients.map(([key, value]) => ({
+            key,
+            value,
+          })),
+        })
+      );
+
       dispatch<any>(
         updateRecipeIngredients({
           recipeId: "urlRecipe",
           type: "overideFromURLParams",
-          ingredients: Array.from(searchParams.entries()).map(
+          ingredients: ingredients.map(
             ([key, value]) => ({
               key,
               value,

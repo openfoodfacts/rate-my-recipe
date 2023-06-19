@@ -98,6 +98,7 @@ export default function Navigator() {
               {ingredient.ingredient_name}
               {image_url && (
                 <img
+                  alt={ingredient.ingredient_name ?? "ingredient_image"}
                   src={image_url}
                   height={100}
                   width={100}
@@ -131,6 +132,7 @@ export default function Navigator() {
               {quantity.quantity_ingredient_name}
               {quantity.quantity_image_url && (
                 <img
+                  alt={quantity.quantity_ingredient_name ?? "quantity_ingredient"}
                   src={quantity.quantity_image_url}
                   height={150}
                   width={150}

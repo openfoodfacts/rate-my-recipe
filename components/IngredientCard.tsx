@@ -32,7 +32,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
         objectFit="contain"
         sx={{ my: 1 }}
       >
-        <img src={props.quantity_image_url} loading="lazy" alt="" />
+        <img src={props.quantity_image_url} loading="lazy" alt={props.quantity_ingredient_name ?? ""} />
       </AspectRatio>
       <Box sx={{ display: "flex", py: 1, justifyContent: "space-between" }}>
         <Button
@@ -142,6 +142,16 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
       value,
     }))
   );
+
+  if(cardsToDisplay.length === 0) {
+    return (
+      <Box sx={{ display: "flex", py: 2, justifyContent: "center", alignItems: "center" }}>
+        <Typography level="body5" fontSize="md" textAlign={"center"}>
+          You have not added any ingredients yet!!!
+        </Typography>
+      </Box>
+    )
+  }
 
   return (
     <Grid container rowGap={2}>
