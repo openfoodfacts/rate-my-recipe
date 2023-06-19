@@ -2,24 +2,30 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
+import AppBar from "@/components/AppBar";
 import IngredientSelector from "@/components/IngredientSelector";
+import IngredientCards from "@/components/IngredientCard";
+import "./i18n";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentIngredients } from "@/redux/selectors";
-import { RootState } from "@/redux/store";
-import IngredientCards from "@/components/IngredientCard";
-import { openEditor } from "@/redux/reducers/editor";
-import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { RootState } from "@/redux/store";
+import { openEditor } from "@/redux/reducers/editor";
+
+import Sheet from "@mui/joy/Sheet";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
-import AppBar from "@/components/AppBar";
 import Button from "@mui/joy/Button";
 import Box from "@mui/joy/Box";
 
+import { useTranslation } from "react-i18next";
+
 export default function Home() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
+
   React.useEffect(() => {
     dispatch<any>(
       updateRecipeIngredients({
@@ -86,7 +92,7 @@ export default function Home() {
           onClick={() => dispatch(openEditor({}))}
           sx={{ mb: 2 }}
         >
-          Add Ingredient
+          {t("actions.add_ingredient")}
         </Button>
         <ShowNutritionalTable />
       </Sheet>
