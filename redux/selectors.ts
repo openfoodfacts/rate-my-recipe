@@ -3,15 +3,6 @@ import { RootState } from "./store";
 import data from "../data";
 import { VALUE, QUANTITY, INGREDIENT } from "./reducers/recipes";
 
-export const selectUserNutriscore = createSelector(
-  (state: RootState, currentRecipeId: string) => currentRecipeId,
-  (state: RootState) => state.recipe.recipes,
-  (currentRecipeId, recipes) => recipes[currentRecipeId].nutriscore
-);
-
-//   (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore
-
-
 export const selectCurrentIngredients = createSelector(
   
   (state: RootState, currentRecipeId: string) => currentRecipeId,

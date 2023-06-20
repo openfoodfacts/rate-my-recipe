@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import IngredientSelector from "@/components/IngredientSelector";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserNutriscore, selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
+import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
 import store, { RootState } from "@/redux/store";
 import IngredientCard from "@/components/IngredientCard";
 import { Button, Icon, Snackbar, Stack } from "@mui/material";
