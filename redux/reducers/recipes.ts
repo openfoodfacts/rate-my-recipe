@@ -8,7 +8,7 @@ import data from "../../data";
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
   async (
-    { recipeId, ...action }: ReciepeAction<UpdateActionType>,
+    { recipeId, ...action }: RecipeAction<UpdateActionType>,
     thunkAPI: any
   ) => {
     const nextIngredients = ingredientReducer(
@@ -162,7 +162,7 @@ type RecipesStateType = {
   ids: string[];
 };
 
-type ReciepeAction<CustomT> = CustomT & { recipeId: string };
+type RecipeAction<CustomT> = CustomT & { recipeId: string };
 
 type UpdateActionType =
   | {

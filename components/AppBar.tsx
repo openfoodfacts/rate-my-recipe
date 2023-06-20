@@ -47,7 +47,7 @@ const AppBar = () => {
         value: quantity.value,
       }))
     );
-    const body = JSON.stringify({ valuesAndQuantities, nutriscore, nutriscore_100, ecoscore, ecoscore_100 });
+    const body = JSON.stringify({ return_url : `${window.location.origin}${window.location.pathname}?${params}`, valuesAndQuantities, nutriscore, nutriscore_100, ecoscore, ecoscore_100 });
 
     fetch(url, {
       method: "POST",
