@@ -48,10 +48,11 @@ export const updateRecipeIngredients = createAsyncThunk(
         method: "PATCH",
         body: JSON.stringify({
           lc: "fr",
-          fields: "ingredients,nutriments_estimated,nutriscore_grade",
+          tags_lc: "fr",
+          fields: "ingredients,nutriments_estimated,nutriscore_grade,nutriscore_score,ecoscore_grade,ecoscore_score",
           product: {
             lang: "fr",
-            categories_tags: ["fruits"],
+            categories_tags: ["Cassoulets au confit de canard"],
             ingredients_text_fr: ingredients,
           },
         }),
@@ -145,7 +146,10 @@ type RecipeStateType = {
   servings: number;
   ingredients: Ingredient[];
   instructions: string[];
+  ecoscore:any;
+  ecoscore_100: any;
   nutriscore: any;
+  nutriscore_100: any;
   nutriments: any;
 };
 
@@ -284,14 +288,20 @@ const recipeSlice = createSlice<
         ingredients: [],
         servings: 4,
         instructions: [],
+        ecoscore: null,
+        ecoscore_100: null,        
         nutriscore: null,
+        nutriscore_100: null,
         nutriments: {},
       },
       userRecipe: {
         ingredients: [],
         servings: 4,
         instructions: [],
+        ecoscore: null,
+        ecoscore_100: null,         
         nutriscore: null,
+        nutriscore_100: null,
         nutriments: {},
       },
     },
@@ -313,8 +323,14 @@ const recipeSlice = createSlice<
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);
       }
-      const { nutriscore_grade, nutriments_estimated } = action.payload.product;
+      const { ecoscore_grade, ecoscore_score, nutriscore_grade, nutriscore_score, nutriments_estimated } = action.payload.product;
+
+      state.recipes[recipeId].ecoscore = ecoscore_grade;
+      state.recipes[recipeId].ecoscore_100 = ecoscore_score;
+
       state.recipes[recipeId].nutriscore = nutriscore_grade;
+      // nutriscore_score goes from -15 to 42, compute nutriscore_100 on a 0 to 100 scale, 100 being the best
+      state.recipes[recipeId].nutriscore_100 = Math.round(100 - (nutriscore_score + 15) / 57 * 100);
       state.recipes[recipeId].nutriments = nutriments_estimated;
     });
   },

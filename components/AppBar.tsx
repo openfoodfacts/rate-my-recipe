@@ -31,7 +31,10 @@ const AppBar = () => {
   function handleShareButtonClick() {
     const url = "https://amathjourney.com/api/yololo";
 
-    const userNutriscore = selectUserNutriscore(store.getState(), "userRecipe");
+    const nutriscore = store.getState().recipe.recipes.userRecipe.nutriscore;
+    const nutriscore_100 = store.getState().recipe.recipes.userRecipe.nutriscore_100;
+    const ecoscore = store.getState().recipe.recipes.userRecipe.ecoscore;
+    const ecoscore_100 = store.getState().recipe.recipes.userRecipe.ecoscore_100;    
 
     const ingredients = selectCurrentIngredients(
       store.getState(),
@@ -44,7 +47,7 @@ const AppBar = () => {
         value: quantity.value,
       }))
     );
-    const body = JSON.stringify({ valuesAndQuantities, nutriscore: userNutriscore });
+    const body = JSON.stringify({ valuesAndQuantities, nutriscore, nutriscore_100, ecoscore, ecoscore_100 });
 
     fetch(url, {
       method: "POST",
