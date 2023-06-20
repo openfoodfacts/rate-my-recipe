@@ -2,41 +2,50 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
+import AppBar from "@/components/AppBar";
 import IngredientSelector from "@/components/IngredientSelector";
+import IngredientCards from "@/components/IngredientCard";
+import "./i18n";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentIngredients } from "@/redux/selectors";
-import { RootState } from "@/redux/store";
-import IngredientCards from "@/components/IngredientCard";
-import { openEditor } from "@/redux/reducers/editor";
-import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
+import { RootState } from "@/redux/store";
+import { openEditor } from "@/redux/reducers/editor";
+
+import Sheet from "@mui/joy/Sheet";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
-import AppBar from "@/components/AppBar";
 import Button from "@mui/joy/Button";
 import Box from "@mui/joy/Box";
 
+import { useTranslation } from "react-i18next";
+
 export default function Home() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
+
   React.useEffect(() => {
-    dispatch<any>(
-      updateRecipeIngredients({
-        recipeId: "userRecipe",
-        type: "overideFromURLParams",
-        ingredients: Array.from(searchParams.entries()).map(([key, value]) => ({
-          key,
-          value,
-        })),
-      })
-    );
-    if (Array.from(searchParams.entries()).length !== 0) {
+    const ingredients = Array.from(searchParams.entries());
+
+    if (ingredients.length !== 0) {
+      dispatch<any>(
+        updateRecipeIngredients({
+          recipeId: "userRecipe",
+          type: "overideFromURLParams",
+          ingredients: ingredients.map(([key, value]) => ({
+            key,
+            value,
+          })),
+        })
+      );
+
       dispatch<any>(
         updateRecipeIngredients({
           recipeId: "urlRecipe",
           type: "overideFromURLParams",
-          ingredients: Array.from(searchParams.entries()).map(
+          ingredients: ingredients.map(
             ([key, value]) => ({
               key,
               value,
@@ -86,7 +95,7 @@ export default function Home() {
           onClick={() => dispatch(openEditor({}))}
           sx={{ mb: 2 }}
         >
-          Add Ingredient
+          {t("actions.add_ingredient")}
         </Button>
         <ShowNutritionalTable />
       </Sheet>

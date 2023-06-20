@@ -12,7 +12,7 @@ After that, you will be able to run `nvm install <node version>` and `nvm use <n
 
 ### Install the package manager
 
-This project use `yarn` to manage library dependencies with 
+This project use `yarn` to manage library dependencies with
 
 ```bash
 npm install --global yarn
@@ -20,7 +20,7 @@ npm install --global yarn
 
 ### Run the project
 
-The following commend will install all the dependencies and run the project in localhost:3000
+The following command will install all the dependencies and run the project in localhost:3000
 
 ```bash
 yarn dev
@@ -35,6 +35,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+### Set your locale
+
+To see the English translation of the app in locale env, you can add a `.env.locale` file at the root of the project with the next variable.
+
+```
+NEXT_PUBLIC_LANG=en
+```
 
 ## Learn More
 
