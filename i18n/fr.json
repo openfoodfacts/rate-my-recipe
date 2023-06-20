@@ -1,3 +1,35 @@
 {
-  "actions": { "add_ingredient": "Ajouter un ingrédient" }
+  "actions": {
+    "add_ingredient": "Ajouter un ingrédient",
+    "delete": "supprimer",
+    "modify": "modifier",
+    "prev": "Prev",
+    "next": "Suivant",
+    "cancel": "Annuler",
+    "validate": "Valider"
+  },
+  "nutriments": {
+    "unknown": "N/A",
+    "nutriment": "Nutriment",
+    "initial_value": "Valeur initiale (pour 100 g)",
+    "modified_value": "Valeur modifiée (pour 100 g)",
+
+    "energy-kcal_100g": "Energie (kCal)",
+    "energy-kj_100g": "Energie (kJ)",
+    "carbohydrates_100g": "Calories",
+    "sugars_100g": "dont Sucre",
+    "fat_100g": "Graisse",
+    "saturated-fat_100g": "dont saturée",
+    "fiber_100g": "Fibres",
+    "proteins_100g": "Proteines",
+    "salt_100g": "Sel"
+  },
+  "messages": {
+    "no_ingredients": "Vous n'avez pas encore ajouté d'ingrédients.",
+    "copied": "url copié dans le press papier"
+  },
+  "appbar": {
+    "share_link": "Partager un lien",
+    "save_recipe": "Enregistrer la recette"
+  }
 }

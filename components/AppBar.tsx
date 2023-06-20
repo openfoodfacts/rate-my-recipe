@@ -1,29 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { useSearchParams } from "next/navigation";
-import IngredientSelector from "@/components/IngredientSelector";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
 import store, { RootState } from "@/redux/store";
-import IngredientCard from "@/components/IngredientCard";
-import { Button, Icon, Snackbar, Stack } from "@mui/material";
-import { openEditor } from "@/redux/reducers/editor";
-import { updateRecipeIngredients } from "@/redux/reducers/recipes";
-import ShowNutritionalTable from "@/components/ShowNutritionalTable";
+
+import { Snackbar } from "@mui/material";
 
 import Box from "@mui/joy/Box";
-
 import ShareIcon from "@mui/icons-material/Share";
 import SaveIcon from "@mui/icons-material/Save";
-import Typography from "@mui/joy/Typography";
-import Grid from "@mui/joy/Grid";
 import Sheet from "@mui/joy/Sheet";
-import { IconButton, Tooltip } from "@mui/joy";
+import IconButton from "@mui/joy/IconButton";
+import Tooltip from "@mui/joy/Tooltip";
+import { useTranslation } from "react-i18next";
 
 const AppBar = () => {
   const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation();
 
   const params = useSelector((state: RootState) =>
     selectURLParams(state, "userRecipe")
@@ -76,7 +71,7 @@ const AppBar = () => {
     >
       Rate My Recipes
       <Box>
-        <Tooltip title="Partager un lien">
+        <Tooltip title={t("appbar.share_link")}>
           <IconButton
             sx={{ mr: 1 }}
             onClick={() => {
@@ -89,7 +84,7 @@ const AppBar = () => {
             <ShareIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Enregistrer la recette">
+        <Tooltip title={t("appbar.save_recipe")}>
           <IconButton
             onClick={() => {
               handleShareButtonClick();
@@ -103,7 +98,7 @@ const AppBar = () => {
         open={open}
         autoHideDuration={5000}
         onClose={() => setOpen(false)}
-        message="url copié dans le press papier"
+        message={t("messages.copied")}
       />
     </Sheet>
   );

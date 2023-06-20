@@ -22,6 +22,7 @@ import {
 } from "@/redux/reducers/editor";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import { getUnit } from "@/data/utils";
+import { useTranslation } from "react-i18next";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -60,7 +61,6 @@ export default function Navigator() {
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentCategory?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
-          console.log({ q: ingredient.quantities[0] });
           const image_url =
             data.quantities[ingredient.quantities[0]].quantity_image_url ??
             null;
@@ -132,7 +132,9 @@ export default function Navigator() {
               {quantity.quantity_ingredient_name}
               {quantity.quantity_image_url && (
                 <img
-                  alt={quantity.quantity_ingredient_name ?? "quantity_ingredient"}
+                  alt={
+                    quantity.quantity_ingredient_name ?? "quantity_ingredient"
+                  }
                   src={quantity.quantity_image_url}
                   height={150}
                   width={150}
@@ -218,6 +220,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
     modifiedIngredient,
     ...values
   } = useSelector(selectEditorState);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -249,13 +252,13 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
           disabled={!prevView}
           onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
         >
-          Prev
+          {t("action.prev")}
         </Button>
         <Button
           disabled={!nextView || disableNext}
           onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
         >
-          Next
+          {t("action.next")}
         </Button>
       </Stack>
 
@@ -271,7 +274,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
           color="danger"
           onClick={() => dispatch(closeEditor({}))}
         >
-          Cancel
+          {t("action.cancel")}
         </Button>
         <Button
           fullWidth
@@ -304,7 +307,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
             dispatch(closeEditor({}));
           }}
         >
-          Validate
+          {t("action.validate")}
         </Button>
       </Stack>
     </Stack>

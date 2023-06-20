@@ -13,11 +13,11 @@ import data from "../data";
 import { updateEditorState } from "@/redux/reducers/editor";
 import { QuantityType } from "../data";
 import { getUnit } from "@/data/utils";
+import { useTranslation } from "react-i18next";
 
 const IngredientCard = (props: QuantityType & { value: number }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const isWeightValue = props.quantity_default_weight !== undefined;
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
@@ -32,7 +32,11 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
         objectFit="contain"
         sx={{ my: 1 }}
       >
-        <img src={props.quantity_image_url} loading="lazy" alt={props.quantity_ingredient_name ?? ""} />
+        <img
+          src={props.quantity_image_url}
+          loading="lazy"
+          alt={props.quantity_ingredient_name ?? ""}
+        />
       </AspectRatio>
       <Box sx={{ display: "flex", py: 1, justifyContent: "space-between" }}>
         <Button
@@ -99,7 +103,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
             )
           }
         >
-          Delete
+          {t("actions.delete")}
         </Button>
         <Button
           variant="solid"
@@ -126,7 +130,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
             );
           }}
         >
-          Edit
+          {t("actions.modify")}
         </Button>
       </Box>
     </Card>
@@ -134,6 +138,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
 };
 
 const IngredientCards = (props: { ingredients: Ingredient[] }) => {
+  const { t } = useTranslation();
   const { ingredients } = props;
 
   const cardsToDisplay = ingredients.flatMap(({ quantities }) =>
@@ -143,14 +148,21 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
     }))
   );
 
-  if(cardsToDisplay.length === 0) {
+  if (cardsToDisplay.length === 0) {
     return (
-      <Box sx={{ display: "flex", py: 2, justifyContent: "center", alignItems: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          py: 2,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Typography level="body5" fontSize="md" textAlign={"center"}>
-          You have not added any ingredients yet!!!
+          {t("messages.no_ingredients")}
         </Typography>
       </Box>
-    )
+    );
   }
 
   return (
