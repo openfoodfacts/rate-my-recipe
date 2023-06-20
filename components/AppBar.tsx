@@ -29,7 +29,7 @@ const AppBar = () => {
     selectURLParams(state, "userRecipe")
   );
   function handleShareButtonClick() {
-    const url = "https://amathjourney.com/api/yololo";
+    const url = new URLSearchParams(document.location.search).get('share_url') || "https://amathjourney.com/api/yololo";
 
     const nutriscore = store.getState().recipe.recipes.userRecipe.nutriscore;
     const nutriscore_100 = store.getState().recipe.recipes.userRecipe.nutriscore_100;
