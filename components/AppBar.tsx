@@ -29,7 +29,12 @@ const AppBar = () => {
     selectURLParams(state, "userRecipe")
   );
   function handleShareButtonClick() {
-    const url = "https://amathjourney.com/api/yololo";
+    const url = new URLSearchParams(document.location.search).get('share_url') || "https://amathjourney.com/api/yololo";
+
+    const nutriscore = store.getState().recipe.recipes.userRecipe.nutriscore;
+    const nutriscore_100 = store.getState().recipe.recipes.userRecipe.nutriscore_100;
+    const ecoscore = store.getState().recipe.recipes.userRecipe.ecoscore;
+    const ecoscore_100 = store.getState().recipe.recipes.userRecipe.ecoscore_100;    
 
     const ingredients = selectCurrentIngredients(
       store.getState(),
@@ -42,7 +47,7 @@ const AppBar = () => {
         value: quantity.value,
       }))
     );
-    const body = JSON.stringify({ valuesAndQuantities });
+    const body = JSON.stringify({ return_url : `${window.location.origin}${window.location.pathname}?${params}`, valuesAndQuantities, nutriscore, nutriscore_100, ecoscore, ecoscore_100 });
 
     fetch(url, {
       method: "POST",
@@ -103,7 +108,7 @@ const AppBar = () => {
         open={open}
         autoHideDuration={5000}
         onClose={() => setOpen(false)}
-        message="url copié dans le press papier"
+        message="Lien copié dans le presse-papier"
       />
     </Sheet>
   );
