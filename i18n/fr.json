@@ -26,7 +26,7 @@
   },
   "messages": {
     "no_ingredients": "Vous n'avez pas encore ajouté d'ingrédients.",
-    "copied": "url copié dans le press papier"
+    "copied": "Lien copié dans le presse-papier"
   },
   "appbar": {
     "share_link": "Partager un lien",
