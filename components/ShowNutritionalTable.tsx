@@ -3,9 +3,8 @@ import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import Nutriscore from "@/components/Nutriscore";
 import { Drawer, drawerClasses } from "@mui/material";
-import { Button, Divider, Stack } from "@mui/joy";
+import { Stack } from "@mui/joy";
 import Table from "@mui/joy/Table";
-import Sheet from "@mui/joy/Sheet";
 import IconButton from "@mui/joy/IconButton";
 import DecreaseIcon from "@mui/icons-material/SouthEast";
 import IncreaseIcon from "@mui/icons-material/NorthEast";
@@ -13,6 +12,7 @@ import StableIcon from "@mui/icons-material/East";
 import InfoIcon from "@mui/icons-material/Info";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CloseIcon from "@mui/icons-material/Close";
+import { useTranslation } from "react-i18next";
 
 const NUTRIMENTS_TITLE: { [key: string]: string } = {
   "energy-kcal_100g": "Energie (kCal)",
@@ -25,6 +25,9 @@ const NUTRIMENTS_TITLE: { [key: string]: string } = {
   proteins_100g: "Proteines",
   salt_100g: "Sel",
 };
+
+const isSubNutriment = (nutrimentKey: string) =>
+  ["sugars_100g", "saturated-fat_100g"].includes(nutrimentKey);
 
 const NUTRIMENTS_PRECISION = {
   "energy-kcal_100g": 1,
@@ -75,6 +78,7 @@ const EvolutionIcon = ({
 };
 
 export default function ShowNutritionalTable() {
+  const { t } = useTranslation();
   const userNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore
   );
@@ -129,12 +133,12 @@ export default function ShowNutritionalTable() {
         <Table sx={{ "& span": { whiteSpace: "initial" } }}>
           <thead>
             <tr>
-              <th>Nutriment</th>
+              <th>{t("nutriment.nutriment")}</th>
               <th>
-                <span>Valeur initiale (pour 100 g)</span>
+                <span>{t("nutriment.initial_value")}</span>
               </th>
               <th>
-                <span>Valeur modifiée (pour 100 g)</span>
+                <span>{t("nutriment.modified_value")}</span>
               </th>
             </tr>
           </thead>
@@ -151,14 +155,12 @@ export default function ShowNutritionalTable() {
                 <tr key={key}>
                   <td
                     style={{
-                      paddingLeft: NUTRIMENTS_TITLE[key].includes("dont")
-                        ? 10
-                        : 0,
+                      paddingLeft: isSubNutriment(key) ? 10 : 0,
                     }}
                   >
-                    {NUTRIMENTS_TITLE[key]}
+                    {t(`nutriment.${key}`)}
                   </td>
-                  <td>{urlValue ?? "N/A"}</td>
+                  <td>{urlValue ?? t(`nutriment.unknown`)}</td>
                   <td
                     style={{
                       display: "flex",
@@ -166,7 +168,7 @@ export default function ShowNutritionalTable() {
                       justifyContent: "space-between",
                     }}
                   >
-                    <span>{userValue ?? "N/A"}</span>
+                    <span>{userValue ?? t(`nutriment.unknown`)}</span>
                     <EvolutionIcon
                       urlValue={urlValue}
                       userValue={userValue}
