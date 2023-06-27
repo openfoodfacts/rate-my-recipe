@@ -15,6 +15,7 @@ import Sheet from "@mui/joy/Sheet";
 import IconButton from "@mui/joy/IconButton";
 import Tooltip from "@mui/joy/Tooltip";
 import { useTranslation } from "react-i18next";
+import data from "../data";
 
 const AppBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -23,26 +24,56 @@ const AppBar = () => {
   const params = useSelector((state: RootState) =>
     selectURLParams(state, "userRecipe")
   );
+
+  // The share button makes a POST request to share_url and sends the ingredients and scores
   function handleShareButtonClick() {
     const url = new URLSearchParams(document.location.search).get('share_url') || "https://amathjourney.com/api/yololo";
 
+    // get the scores
     const nutriscore = store.getState().recipe.recipes.userRecipe.nutriscore;
     const nutriscore_100 = store.getState().recipe.recipes.userRecipe.nutriscore_100;
     const ecoscore = store.getState().recipe.recipes.userRecipe.ecoscore;
     const ecoscore_100 = store.getState().recipe.recipes.userRecipe.ecoscore_100;    
 
-    const ingredients = selectCurrentIngredients(
+    // build a list of ingredients with their name, weight and unit
+    const currentIngredients = selectCurrentIngredients(
       store.getState(),
       "userRecipe"
     );
 
-    const valuesAndQuantities = ingredients.flatMap((ingredient) =>
-      ingredient.quantities.map((quantity) => ({
-        quantity: quantity.id,
-        value: quantity.value,
-      }))
-    );
-    const body = JSON.stringify({ return_url : `${window.location.origin}${window.location.pathname}?${params}`, valuesAndQuantities, nutriscore, nutriscore_100, ecoscore, ecoscore_100 });
+    const ingredients = currentIngredients
+      .flatMap((ingredient) => {
+        const ingredientData = data.ingredients[ingredient.id];
+
+        return ingredient.quantities.map((quantity) => {
+          const quantityData = data.quantities[quantity.id];
+
+          const isPerUnit =
+            quantityData.quantity_default_weight_per_unit !== undefined;
+
+          const weight =
+            quantity.value *
+            (isPerUnit ? quantityData.quantity_default_weight_per_unit! : 1);
+
+          const ingredientName = quantityData.quantity_ingredient_name || ingredientData.ingredient_name;
+
+          return {
+            name: ingredientName,
+            weight: weight,
+            unit: quantityData.quantity_unit!
+          };
+        });
+      });
+
+    const body = JSON.stringify({
+      // the return_url allows to go back to the current recipe
+      return_url : `${window.location.origin}${window.location.pathname}?${params}`,
+      ingredients,
+      nutriscore, 
+      nutriscore_100, 
+      ecoscore,
+      ecoscore_100
+    });
 
     fetch(url, {
       method: "POST",
