@@ -1,9 +1,9 @@
 {
   "actions": {
     "add_ingredient": "Ajouter un ingrédient",
-    "delete": "supprimer",
-    "modify": "modifier",
-    "prev": "Prev",
+    "delete": "Supprimer",
+    "modify": "Modifier",
+    "prev": "Précédent",
     "next": "Suivant",
     "cancel": "Annuler",
     "validate": "Valider"
