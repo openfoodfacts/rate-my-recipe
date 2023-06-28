@@ -66,6 +66,8 @@ const AppBar = () => {
           name: ingredientName,
           weight: weight,
           unit: quantityData.quantity_unit!,
+          quantity_value: quantity.value,
+          quantity_name: quantityData.quantity_name_plural
         };
       });
     });
