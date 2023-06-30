@@ -87,7 +87,6 @@ const PublishRecipe = () => {
         if (data.url) {
             window.location.assign(data.url);
         }
-        return data;
       })
       .catch((error) => {
         console.error(error);
