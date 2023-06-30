@@ -15,7 +15,7 @@ import { QuantityType } from "../../data";
 import { getUnit } from "@/data/utils";
 import {EditButtons} from "@/components/IngredientCard/components/EditButtons";
 
-const Index = (props: QuantityType & { value: number }) => {
+const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
 
   const isWeightValue = props.quantity_default_weight !== undefined;
@@ -135,7 +135,7 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
           lg={3}
           xl={2}
         >
-          <Index {...quantityData} />
+          <IngredientCard {...quantityData} />
         </Grid>
       ))}
     </Grid>
