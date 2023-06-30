@@ -16,7 +16,6 @@ export const EditButton = ({ title, onClick, type }: EditButtonProps) => {
       size="md"
       fullWidth
       color={type === "edit" ? "primary" : "danger"}
-      aria-label="Explore Bahamas Islands"
       sx={{ fontWeight: 600 }}
       onClick={onClick}
     >
