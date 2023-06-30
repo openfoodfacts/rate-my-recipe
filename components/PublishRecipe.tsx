@@ -84,7 +84,6 @@ const PublishRecipe = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.url) {
             window.location.assign(data.url);
         }
