@@ -1,7 +1,5 @@
 import * as React from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import Grid from "@mui/material/Grid";
@@ -14,6 +12,7 @@ import { updateEditorState } from "@/redux/reducers/editor";
 import { QuantityType } from "../../data";
 import { getUnit } from "@/data/utils";
 import {EditButtons} from "@/components/IngredientCard/components/EditButtons";
+import {CountingPanel} from "@/components/IngredientCard/components/CountingPanel";
 
 const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
@@ -47,6 +46,29 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
                 },
             })
         );}
+    const onIncrement = () =>
+        dispatch<any>(
+            updateRecipeIngredients({
+                type: "upsert",
+                recipeId: "userRecipe",
+                ingredientCategoryId: props.category_id,
+                ingredientId: props.ingredient_id,
+                quantityId: props.quantity_id,
+                quantityValue: props.value + props.quantity_step,
+            })
+        )
+
+    const onDecrement = () =>
+        dispatch<any>(
+            updateRecipeIngredients({
+                type: "upsert",
+                recipeId: "userRecipe",
+                ingredientCategoryId: props.category_id,
+                ingredientId: props.ingredient_id,
+                quantityId: props.quantity_id,
+                quantityValue: props.value - props.quantity_step,
+            })
+        )
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
@@ -63,52 +85,11 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
       >
         <img src={props.quantity_image_url} loading="lazy" alt="" />
       </AspectRatio>
-      <Box sx={{ display: "flex", py: 1, justifyContent: "space-between" }}>
-        <Button
-          variant="solid"
-          color="neutral"
-          size="sm"
-          disabled={props.value < 2}
-          onClick={() =>
-            dispatch<any>(
-              updateRecipeIngredients({
-                type: "upsert",
-                recipeId: "userRecipe",
-                ingredientCategoryId: props.category_id,
-                ingredientId: props.ingredient_id,
-                quantityId: props.quantity_id,
-                quantityValue: props.value - props.quantity_step,
-              })
-            )
-          }
-        >
-          -
-        </Button>
-        <Typography>{`${props.value} ${getUnit(
-          props,
-          props.value
-        )}`}</Typography>
 
-        <Button
-          variant="solid"
-          color="neutral"
-          size="sm"
-          onClick={() =>
-            dispatch<any>(
-              updateRecipeIngredients({
-                type: "upsert",
-                recipeId: "userRecipe",
-                ingredientCategoryId: props.category_id,
-                ingredientId: props.ingredient_id,
-                quantityId: props.quantity_id,
-                quantityValue: props.value + props.quantity_step,
-              })
-            )
-          }
-        >
-          +
-        </Button>
-      </Box>
+        <CountingPanel onIncrement={onIncrement} onDecrement={onDecrement} disabledDecrement={props.value < 2}> <Typography>{`${props.value} ${getUnit(
+            props,
+            props.value
+        )}`}</Typography></CountingPanel>
           <EditButtons onEdit={onEdit} onDelete={onDelete}/>
     </Card>
   );
