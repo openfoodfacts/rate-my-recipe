@@ -9,15 +9,44 @@ import { useDispatch } from "react-redux";
 
 import { Ingredient, updateRecipeIngredients } from "@/redux/reducers/recipes";
 
-import data from "../data";
+import data from "../../data";
 import { updateEditorState } from "@/redux/reducers/editor";
-import { QuantityType } from "../data";
+import { QuantityType } from "../../data";
 import { getUnit } from "@/data/utils";
+import {EditButtons} from "@/components/IngredientCard/components/EditButtons";
 
-const IngredientCard = (props: QuantityType & { value: number }) => {
+const Index = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
 
   const isWeightValue = props.quantity_default_weight !== undefined;
+
+    const onDelete = () => {
+        dispatch<any>(
+            updateRecipeIngredients({
+                recipeId: "userRecipe",
+                type: "delete",
+                ingredientId: props.ingredient_id,
+                quantityId: props.quantity_id,
+            })
+        )
+    }
+
+    const onEdit = () => {
+        dispatch(
+            updateEditorState({
+                currentView: "ingredient",
+                categoryId: props.category_id,
+                ingredientId: props.ingredient_id,
+                quantityId: props.quantity_id,
+                quantityValue: props.value,
+                // This identify the modified ingredient, such that we can delete it if validated
+                modifiedIngredient: {
+                    categoryId: props.category_id,
+                    ingredientId: props.ingredient_id,
+                    quantityId: props.quantity_id,
+                },
+            })
+        );}
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
@@ -80,55 +109,7 @@ const IngredientCard = (props: QuantityType & { value: number }) => {
           +
         </Button>
       </Box>
-      <Box sx={{ display: "flex" }}>
-        <Button
-          variant="solid"
-          size="md"
-          fullWidth
-          color="danger"
-          aria-label="Explore Bahamas Islands"
-          sx={{ ml: "auto", fontWeight: 600, mr: 5 }}
-          onClick={() =>
-            dispatch<any>(
-              updateRecipeIngredients({
-                recipeId: "userRecipe",
-                type: "delete",
-                ingredientId: props.ingredient_id,
-                quantityId: props.quantity_id,
-              })
-            )
-          }
-        >
-          Delete
-        </Button>
-        <Button
-          variant="solid"
-          size="md"
-          fullWidth
-          color="primary"
-          aria-label="Explore Bahamas Islands"
-          sx={{ ml: "auto", fontWeight: 600 }}
-          onClick={() => {
-            dispatch(
-              updateEditorState({
-                currentView: "ingredient",
-                categoryId: props.category_id,
-                ingredientId: props.ingredient_id,
-                quantityId: props.quantity_id,
-                quantityValue: props.value,
-                // This identify the modified ingredient, such that we can delete it if validated
-                modifiedIngredient: {
-                  categoryId: props.category_id,
-                  ingredientId: props.ingredient_id,
-                  quantityId: props.quantity_id,
-                },
-              })
-            );
-          }}
-        >
-          Edit
-        </Button>
-      </Box>
+          <EditButtons onEdit={onEdit} onDelete={onDelete}/>
     </Card>
   );
 };
@@ -154,7 +135,7 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
           lg={3}
           xl={2}
         >
-          <IngredientCard {...quantityData} />
+          <Index {...quantityData} />
         </Grid>
       ))}
     </Grid>
