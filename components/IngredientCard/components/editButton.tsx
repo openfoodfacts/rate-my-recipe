@@ -2,24 +2,25 @@ import Button from "@mui/joy/Button";
 import * as React from "react";
 
 interface EditButtonProps {
-    title: string;
+  title: string;
 
-    onClick(): void;
+  onClick(): void;
 
-    type: "edit" | 'delete'
+  type: "edit" | "delete";
 }
 
-export const EditButton = ({title, onClick, type}: EditButtonProps) => {
-
-    return <Button
-        variant="solid"
-        size="md"
-        fullWidth
-        color={type === "edit" ? "primary" : "danger"}
-        aria-label="Explore Bahamas Islands"
-        sx={{fontWeight: 600}}
-        onClick={onClick}
+export const EditButton = ({ title, onClick, type }: EditButtonProps) => {
+  return (
+    <Button
+      variant="solid"
+      size="md"
+      fullWidth
+      color={type === "edit" ? "primary" : "danger"}
+      aria-label="Explore Bahamas Islands"
+      sx={{ fontWeight: 600 }}
+      onClick={onClick}
     >
-        {title}
+      {title}
     </Button>
-}
+  );
+};
