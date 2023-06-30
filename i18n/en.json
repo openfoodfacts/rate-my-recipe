@@ -1,8 +1,8 @@
 {
   "actions": {
     "add_ingredient": "Add ingredient",
-    "delete": "delete",
-    "modify": "modify",
+    "delete": "Delete",
+    "modify": "Edit",
     "prev": "Prev",
     "next": "Next",
     "cancel": "Cancel",
@@ -25,7 +25,7 @@
     "salt_100g": "Salt"
   },
   "messages": {
-    "no_ingredients": "You did not selected ingredients yet.",
+    "no_ingredients": "You did not select ingredients yet.",
     "copied": "url copied"
   },
   "appbar": {

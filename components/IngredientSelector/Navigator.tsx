@@ -252,13 +252,13 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
           disabled={!prevView}
           onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
         >
-          {t("action.prev")}
+          {t("actions.prev")}
         </Button>
         <Button
           disabled={!nextView || disableNext}
           onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
         >
-          {t("action.next")}
+          {t("actions.next")}
         </Button>
       </Stack>
 
@@ -274,7 +274,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
           color="danger"
           onClick={() => dispatch(closeEditor({}))}
         >
-          {t("action.cancel")}
+          {t("actions.cancel")}
         </Button>
         <Button
           fullWidth
@@ -307,7 +307,7 @@ const InteractionWrapper = ({ skipQuantityView, children }: any) => {
             dispatch(closeEditor({}));
           }}
         >
-          {t("action.validate")}
+          {t("actions.validate")}
         </Button>
       </Stack>
     </Stack>
