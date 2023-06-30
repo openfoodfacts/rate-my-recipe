@@ -17,7 +17,7 @@
         "eggplant",
         "beetroot-cooked",
         "carrot",
-        "celeri-branche",
+        "celery-branch",
         "white-cabbage",
         "green-cabbage",
         "courgettes",
@@ -173,12 +173,12 @@
         "carrot"
       ]
     },
-    "celeri-branche": {
+    "celery-branch": {
       "ingredient_name": "Céleri branche",
-      "ingredient_id": "celeri-branche",
+      "ingredient_id": "celery-branch",
       "category_id": "vegetables",
       "quantities": [
-        "celeri-branche.unit"
+        "celery-branch.unit"
       ]
     },
     "white-cabbage": {
@@ -209,7 +209,9 @@
       "ingredient_name": "Epinard",
       "ingredient_id": "spinach",
       "category_id": "vegetables",
-      "quantities": []
+      "quantities": [
+        "spinach"
+      ]
     },
     "onions": {
       "ingredient_name": "Oignon",
@@ -777,19 +779,19 @@
       "ingredient_id": "carrot",
       "ingredient_name": "Carotte"
     },
-    "celeri-branche.unit": {
+    "celery-branch.unit": {
       "quantity_name_plural": "branches",
       "quantity_name_singular": "branche",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 2,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg",
-      "quantity_id": "celeri-branche.unit",
+      "quantity_id": "celery-branch.unit",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Céleri branche",
       "quantity_step": 1,
       "category_id": "vegetables",
-      "ingredient_id": "celeri-branche",
+      "ingredient_id": "celery-branch",
       "ingredient_name": "Céleri branche"
     },
     "white-cabbage.unit": {
@@ -836,6 +838,17 @@
       "category_id": "vegetables",
       "ingredient_id": "courgettes",
       "ingredient_name": "Courgette"
+    },
+    "spinach": {
+      "quantity_default_weight": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg",
+      "quantity_id": "spinach",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Epinard",
+      "quantity_step": 1,
+      "category_id": "vegetables",
+      "ingredient_id": "spinach",
+      "ingredient_name": "Epinard"
     },
     "onions.unit": {
       "quantity_name_plural": "oignon",
