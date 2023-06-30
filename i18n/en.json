@@ -6,7 +6,8 @@
     "prev": "Prev",
     "next": "Next",
     "cancel": "Cancel",
-    "validate": "Validate"
+    "validate": "Validate",
+    "publish_recipe": "Publish the recipe"
   },
   "nutriments": {
     "unknown": "N/A",

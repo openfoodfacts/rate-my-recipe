@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import AppBar from "@/components/AppBar";
 import IngredientSelector from "@/components/IngredientSelector";
 import IngredientCards from "@/components/IngredientCard";
+import PublishRecipe from "@/components/PublishRecipe";
 import "./i18n";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +18,7 @@ import Sheet from "@mui/joy/Sheet";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
 import Button from "@mui/joy/Button";
+import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 
 import { useTranslation } from "react-i18next";
@@ -88,15 +90,19 @@ export default function Home() {
           borderTopRightRadius: "10px",
         }}
       >
+        <Stack direction="row" spacing={2} alignItems="center"
+  justifyContent="center">
         <Button
           variant="solid"
           color="primary"
           startDecorator={<Add />}
           onClick={() => dispatch(openEditor({}))}
-          sx={{ mb: 2 }}
         >
           {t("actions.add_ingredient")}
         </Button>
+        <PublishRecipe />
+        </Stack>
+
         <ShowNutritionalTable />
       </Sheet>
       <IngredientSelector />
