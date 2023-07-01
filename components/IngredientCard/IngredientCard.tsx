@@ -5,7 +5,7 @@ import { updateEditorState } from "@/redux/reducers/editor";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import AspectRatio from "@mui/joy/AspectRatio";
-import { CountingPanel } from "@/components/IngredientCard/CountingPanel";
+import { ValueEditor } from "@/components/IngredientCard/ValueEditor";
 import { getUnit } from "@/data/utils";
 import { EditButtons } from "@/components/IngredientCard/EditButtons";
 import * as React from "react";
@@ -84,7 +84,7 @@ export const IngredientCard = (props: QuantityType & { value: number }) => {
         <img src={props.quantity_image_url} loading="lazy" alt="" />
       </AspectRatio>
 
-      <CountingPanel
+      <ValueEditor
         onIncrement={onIncrement}
         onDecrement={onDecrement}
         disabledDecrement={props.value < 2}
@@ -93,7 +93,7 @@ export const IngredientCard = (props: QuantityType & { value: number }) => {
           props,
           props.value
         )}`}</Typography>
-      </CountingPanel>
+      </ValueEditor>
       <EditButtons onEdit={onEdit} onDelete={onDelete} />
     </Card>
   );

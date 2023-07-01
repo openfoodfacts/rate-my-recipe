@@ -11,7 +11,7 @@ interface CountingPanelProps {
   children: React.ReactNode;
 }
 
-export const CountingPanel = ({
+export const ValueEditor = ({
   onIncrement,
   onDecrement,
   disabledDecrement,
