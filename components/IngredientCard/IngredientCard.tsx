@@ -4,11 +4,10 @@ import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import { updateEditorState } from "@/redux/reducers/editor";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
-import AspectRatio from "@mui/joy/AspectRatio";
 import { ValueEditor } from "@/components/IngredientCard/ValueEditor";
 import { getUnit } from "@/data/utils";
-import { EditButtons } from "@/components/IngredientCard/EditButtons";
 import * as React from "react";
+import { IngredientPicture } from "@/components/IngredientCard/IngredientPicture";
 
 export const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();
@@ -70,31 +69,22 @@ export const IngredientCard = (props: QuantityType & { value: number }) => {
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
-      <Typography level="h2" fontSize="md">
-        {props.quantity_ingredient_name}
-      </Typography>
-      {/* <Typography level="body2">({props.quantity_name})</Typography> */}
-
-      <AspectRatio
-        minHeight="150px"
-        maxHeight="300px"
-        objectFit="contain"
-        sx={{ my: 1 }}
-      >
-        <img src={props.quantity_image_url} loading="lazy" alt="" />
-      </AspectRatio>
-
+      <IngredientPicture
+        ingredientName={props.quantity_ingredient_name}
+        imageUrl={props.quantity_image_url}
+      />
       <ValueEditor
         onIncrement={onIncrement}
         onDecrement={onDecrement}
         disabledDecrement={props.value < 2}
+        onDelete={onDelete}
+        onEdit={onEdit}
       >
         <Typography>{`${props.value} ${getUnit(
           props,
           props.value
         )}`}</Typography>
       </ValueEditor>
-      <EditButtons onEdit={onEdit} onDelete={onDelete} />
     </Card>
   );
 };
