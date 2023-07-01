@@ -5,9 +5,9 @@ import { updateEditorState } from "@/redux/reducers/editor";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import AspectRatio from "@mui/joy/AspectRatio";
-import { CountingPanel } from "@/components/IngredientCard/components/CountingPanel";
+import { CountingPanel } from "@/components/IngredientCard/CountingPanel";
 import { getUnit } from "@/data/utils";
-import { EditButtons } from "@/components/IngredientCard/components/EditButtons";
+import { EditButtons } from "@/components/IngredientCard/EditButtons";
 import * as React from "react";
 
 export const IngredientCard = (props: QuantityType & { value: number }) => {

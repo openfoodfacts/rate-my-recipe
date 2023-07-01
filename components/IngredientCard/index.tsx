@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import { Ingredient } from "@/redux/reducers/recipes";
 import data from "../../data";
-import { IngredientCard } from "@/components/IngredientCard/components/IngredientCard";
+import { IngredientCard } from "@/components/IngredientCard/IngredientCard";
 
 const IngredientCards = (props: { ingredients: Ingredient[] }) => {
   const { ingredients } = props;
