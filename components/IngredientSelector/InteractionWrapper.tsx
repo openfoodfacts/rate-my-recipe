@@ -51,7 +51,6 @@ export const InteractionWrapper = ({
       : viewsOrder[viewIndex + 1];
 
   const disableNext =
-    // @ts-ignore
     !viewToValue[view!] || values[viewToValue[view!]] === null;
 
   const disableValidation = viewsOrder.some(
