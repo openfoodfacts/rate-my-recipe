@@ -1,7 +1,7 @@
-import { CountingButton } from "@/components/shared/buttons/CountingButton";
 import * as React from "react";
 import { Stack } from "@mui/joy";
 import { EditButtons } from "@/components/IngredientCards/EditButtons";
+import Button from "@mui/joy/Button";
 
 interface CountingPanelProps {
   onIncrement(): void;
@@ -25,13 +25,20 @@ export const ValueEditor = ({
   return (
     <>
       <Stack sx={{ py: 1 }} direction={"row"} justifyContent="space-between">
-        <CountingButton
-          action={"decrement"}
-          onClick={onDecrement}
+        <Button
+          variant="solid"
+          color="neutral"
+          size="sm"
           disabled={disabledDecrement}
-        />
+          onClick={onDecrement}
+        >
+          -
+        </Button>
+
         {children}
-        <CountingButton action={"increment"} onClick={onIncrement} />
+        <Button variant="solid" color="neutral" size="sm" onClick={onIncrement}>
+          +
+        </Button>
       </Stack>
       <EditButtons onEdit={onEdit} onDelete={onDelete} />
     </>
