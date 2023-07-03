@@ -1,7 +1,7 @@
 import { CountingButton } from "@/components/shared/buttons/CountingButton";
 import * as React from "react";
 import { Stack } from "@mui/joy";
-import { EditButtons } from "@/components/IngredientCard/EditButtons";
+import { EditButtons } from "@/components/IngredientCards/EditButtons";
 
 interface CountingPanelProps {
   onIncrement(): void;

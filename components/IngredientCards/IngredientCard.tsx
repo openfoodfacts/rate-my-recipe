@@ -4,10 +4,10 @@ import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import { updateEditorState } from "@/redux/reducers/editor";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
-import { ValueEditor } from "@/components/IngredientCard/ValueEditor";
+import { ValueEditor } from "@/components/IngredientCards/ValueEditor";
 import { getUnit } from "@/data/utils";
 import * as React from "react";
-import { IngredientPicture } from "@/components/IngredientCard/IngredientPicture";
+import { IngredientPicture } from "@/components/IngredientCards/IngredientPicture";
 
 export const IngredientCard = (props: QuantityType & { value: number }) => {
   const dispatch = useDispatch();

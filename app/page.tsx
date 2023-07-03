@@ -3,11 +3,10 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 import IngredientSelector from "@/components/IngredientSelector";
-
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentIngredients } from "@/redux/selectors";
 import { RootState } from "@/redux/store";
-import IngredientCards from "@/components/IngredientCard";
+import IngredientCards from "@/components/IngredientCards";
 import { openEditor } from "@/redux/reducers/editor";
 import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
