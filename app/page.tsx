@@ -12,7 +12,7 @@ import Sheet from "@mui/joy/Sheet";
 import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
-import AppBar from "@/components/AppBar";
+import AppBar from "@/components/Appbar/AppBar";
 import Button from "@mui/joy/Button";
 import Box from "@mui/joy/Box";
 

@@ -5,11 +5,8 @@ import { useSelector } from "react-redux";
 import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
 import store, { RootState } from "@/redux/store";
 import { Snackbar } from "@mui/material";
-import Box from "@mui/joy/Box";
-import ShareIcon from "@mui/icons-material/Share";
-import SaveIcon from "@mui/icons-material/Save";
-import Sheet from "@mui/joy/Sheet";
-import { IconButton, Tooltip } from "@mui/joy";
+import { TooltipButtons } from "@/components/Appbar/TooltipButtons";
+import { AppBarContainer } from "@/components/Appbar/AppBarContainer";
 
 const AppBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -48,53 +45,29 @@ const AppBar = () => {
         console.error(error);
       });
   }
+  const onShareButtonClick = () => {
+    navigator.clipboard.writeText(
+      `${window.location.origin}${window.location.pathname}?${params}`
+    );
+    setOpen(true);
+  };
+  const onSaveRecipe = () => {
+    handleShareButtonClick();
+  };
   return (
-    <Sheet
-      variant="solid"
-      color="primary"
-      invertedColors
-      sx={(theme) => ({
-        width: "100%",
-        height: "54px",
-        ...theme.typography.h5,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 2,
-      })}
-    >
+    <AppBarContainer>
       Rate My Recipes
-      <Box>
-        <Tooltip title="Partager un lien">
-          <IconButton
-            sx={{ mr: 1 }}
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `${window.location.origin}${window.location.pathname}?${params}`
-              );
-              setOpen(true);
-            }}
-          >
-            <ShareIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Enregistrer la recette">
-          <IconButton
-            onClick={() => {
-              handleShareButtonClick();
-            }}
-          >
-            <SaveIcon />
-          </IconButton>
-        </Tooltip>
-      </Box>
+      <TooltipButtons
+        onShareButtonClick={onShareButtonClick}
+        onSaveRecipe={onSaveRecipe}
+      />
       <Snackbar
         open={open}
         autoHideDuration={5000}
         onClose={() => setOpen(false)}
         message="url copié dans le press papier"
       />
-    </Sheet>
+    </AppBarContainer>
   );
 };
 
