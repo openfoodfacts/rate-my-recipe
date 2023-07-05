@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/redux-logger": "^3.0.9",
-    "@types/uuid": "^9.0.1"
+    "@types/uuid": "^9.0.1",
+    "prettier": "2.8.8"
   }
 }

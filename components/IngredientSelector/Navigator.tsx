@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Input, Stack, Grid, Typography } from "@mui/joy";
+import { Button, Input, Stack, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -10,18 +10,15 @@ import {
 } from "@/redux/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  updateEditorState,
   updateCategory,
   updateIngredient,
   updateQuantity,
   updateValue,
   decreaseQuantityValue,
   increaseQuantityValue,
-  ViewsTypes,
-  closeEditor,
 } from "@/redux/reducers/editor";
-import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import { getUnit } from "@/data/utils";
+import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
 import { useTranslation } from "react-i18next";
 
 export default function Navigator() {
@@ -36,7 +33,7 @@ export default function Navigator() {
     currentIngredient && currentIngredient.quantities.length === 1;
   if (view === "category") {
     return (
-      <InteractionWrapper>
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
         {Object.values(data.categories).map((category) => (
           <Button
             color="primary"
@@ -113,7 +110,7 @@ export default function Navigator() {
   }
   if (view === "quantity") {
     return (
-      <InteractionWrapper>
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
           return (
@@ -200,116 +197,3 @@ export default function Navigator() {
     </InteractionWrapper>
   );
 }
-const viewsOrder: ViewsTypes[] = [
-  "category",
-  "ingredient",
-  "quantity",
-  "value",
-];
-
-const viewToValue = {
-  category: "categoryId",
-  ingredient: "ingredientId",
-  quantity: "quantityId",
-  value: "quantityValue",
-} as const;
-
-const InteractionWrapper = ({ skipQuantityView, children }: any) => {
-  const {
-    currentView: view,
-    modifiedIngredient,
-    ...values
-  } = useSelector(selectEditorState);
-  const { t } = useTranslation();
-
-  const dispatch = useDispatch();
-
-  const viewIndex = viewsOrder.findIndex((v) => v === view);
-  const prevView =
-    skipQuantityView && viewsOrder[viewIndex - 1] === "quantity"
-      ? viewsOrder[viewIndex - 2]
-      : viewsOrder[viewIndex - 1];
-  const nextView =
-    skipQuantityView && viewsOrder[viewIndex + 1] === "quantity"
-      ? viewsOrder[viewIndex + 2]
-      : viewsOrder[viewIndex + 1];
-
-  const disableNext =
-    !viewToValue[view!] || values[viewToValue[view!]] === null;
-
-  const disableValidation = viewsOrder.some(
-    // Test if some value are not specified
-    (v) => values[viewToValue[view!]] === null
-  );
-  return (
-    <Stack
-      direction="column"
-      spacing={2}
-      sx={{ position: "relative", height: "100%" }}
-    >
-      <Stack direction="row" justifyContent="space-between">
-        <Button
-          disabled={!prevView}
-          onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
-        >
-          {t("actions.prev")}
-        </Button>
-        <Button
-          disabled={!nextView || disableNext}
-          onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
-        >
-          {t("actions.next")}
-        </Button>
-      </Stack>
-
-      {children}
-
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        sx={{ position: "absolute", bottom: 0, width: "100%" }}
-      >
-        <Button
-          fullWidth
-          color="danger"
-          onClick={() => dispatch(closeEditor({}))}
-        >
-          {t("actions.cancel")}
-        </Button>
-        <Button
-          fullWidth
-          color="success"
-          disabled={disableValidation}
-          onClick={() => {
-            if (
-              modifiedIngredient !== undefined &&
-              values.quantityId !== modifiedIngredient.quantityId
-            ) {
-              dispatch<any>(
-                updateRecipeIngredients({
-                  recipeId: "userRecipe",
-                  type: "delete",
-                  ingredientId: modifiedIngredient.ingredientId!,
-                  quantityId: modifiedIngredient.quantityId!,
-                })
-              );
-            }
-            dispatch<any>(
-              updateRecipeIngredients({
-                recipeId: "userRecipe",
-                type: "upsert",
-                ingredientCategoryId: values.categoryId!,
-                ingredientId: values.ingredientId!,
-                quantityId: values.quantityId!,
-                quantityValue: values.quantityValue!,
-              })
-            );
-            dispatch(closeEditor({}));
-          }}
-        >
-          {t("actions.validate")}
-        </Button>
-      </Stack>
-    </Stack>
-  );
-};

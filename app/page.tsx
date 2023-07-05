@@ -2,10 +2,13 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
+
 import AppBar from "@/components/AppBar";
 import IngredientSelector from "@/components/IngredientSelector";
-import IngredientCards from "@/components/IngredientCard";
+import IngredientCards from "@/components/IngredientCards";
 import PublishRecipe from "@/components/PublishRecipe";
+import ShowNutritionalTable from "@/components/ShowNutritionalTable";
+
 import "./i18n";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +18,6 @@ import { RootState } from "@/redux/store";
 import { openEditor } from "@/redux/reducers/editor";
 
 import Sheet from "@mui/joy/Sheet";
-import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 import Add from "@mui/icons-material/Add";
 import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
