@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { selectCurrentIngredients, selectURLParams } from "@/redux/selectors";
 import store, { RootState } from "@/redux/store";
 import { Snackbar } from "@mui/material";
-import { TooltipButtons } from "@/components/Appbar/TooltipButtons";
-import { AppBarContainer } from "@/components/Appbar/AppBarContainer";
+import { TooltipButtons } from "./TooltipButtons";
+import { AppBarContainer } from "./AppBarContainer";
 
 const AppBar = () => {
   const [open, setOpen] = React.useState(false);
