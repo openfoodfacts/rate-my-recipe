@@ -19,7 +19,7 @@ import {
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
-import { useTranslation } from "react-i18next";
+import { IngredientCard } from "@/components/IngredientSelector/IngredientCard";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -63,14 +63,10 @@ export default function Navigator() {
             null;
 
           return (
-            <Button
-              variant="outlined"
-              key={ingredientId}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "10px",
-              }}
+            <IngredientCard
+              ingredientId={ingredientId}
+              ingredient={ingredient}
+              imageUrl={image_url}
               onClick={() => {
                 if (ingredient.quantities.length === 1) {
                   // If only one quantity type, we set it directly
@@ -91,18 +87,7 @@ export default function Navigator() {
                   })
                 );
               }}
-            >
-              {ingredient.ingredient_name}
-              {image_url && (
-                <img
-                  alt={ingredient.ingredient_name ?? "ingredient_image"}
-                  src={image_url}
-                  height={100}
-                  width={100}
-                  style={{ objectFit: "contain", marginLeft: "10px" }}
-                />
-              )}
-            </Button>
+            />
           );
         })}
       </InteractionWrapper>

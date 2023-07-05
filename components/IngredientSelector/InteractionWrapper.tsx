@@ -86,33 +86,40 @@ export const InteractionWrapper = ({
   const onCancelClick = () => dispatch(closeEditor({}));
 
   return (
-    <Stack
-      direction="column"
-      spacing={2}
-      sx={{ position: "relative", height: "100%" }}
-    >
-      <Stack direction="row" justifyContent="space-between">
-        <Button
-          disabled={!prevView}
-          onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
+    <>
+      <Stack direction="column" spacing={2} height={"90%"}>
+        <Stack direction="row" justifyContent="space-between">
+          <Button
+            disabled={!prevView}
+            onClick={() =>
+              dispatch(updateEditorState({ currentView: prevView }))
+            }
+          >
+            Prev
+          </Button>
+          <Button
+            disabled={!nextView || disableNext}
+            onClick={() =>
+              dispatch(updateEditorState({ currentView: nextView }))
+            }
+          >
+            Next
+          </Button>
+        </Stack>
+        <Stack
+          direction={"row"}
+          flexWrap={"wrap"}
+          gap={2}
+          justifyContent={"center"}
+          sx={{
+            overflowY: "scroll",
+            "::-webkit-scrollbar": { display: "none" },
+          }}
         >
-          Prev
-        </Button>
-        <Button
-          disabled={!nextView || disableNext}
-          onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
-        >
-          Next
-        </Button>
+          {children}
+        </Stack>
       </Stack>
-
-      {children}
-
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        sx={{ position: "absolute", bottom: 0, width: "100%" }}
-      >
+      <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
           Cancel
         </Button>
@@ -125,6 +132,6 @@ export const InteractionWrapper = ({
           Validate
         </Button>
       </Stack>
-    </Stack>
+    </>
   );
 };
