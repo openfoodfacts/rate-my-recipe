@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 
 import AppBar from "@/components/AppBar";
 import IngredientSelector from "@/components/IngredientSelector";
-import IngredientCards from "@/components/IngredientCard";
+import IngredientCards from "@/components/IngredientCards";
 import PublishRecipe from "@/components/PublishRecipe";
 import ShowNutritionalTable from "@/components/ShowNutritionalTable";
 
