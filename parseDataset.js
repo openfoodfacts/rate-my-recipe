@@ -158,6 +158,18 @@ lines.slice(TITLE_LINE + 1).forEach((line) => {
   }
 });
 
+// Check that we don't have ingredients without quantities
+Object.values(data.categories).forEach((category) => {
+  console.log("category: " + category.category_id);
+  category.ingredients.forEach((ingredient_id) => {
+    console.log("- ingredient: " + ingredient_id);
+    ingredient = data.ingredients[ingredient_id];
+    if (ingredient.quantities.length == 0) {
+      throw new Error("no quantities defined for ingredient " + ingredient.ingredient_id);
+    }
+  });
+});
+
 fs.writeFile(
   "./data/ingredients_config.json",
   JSON.stringify(data, null, 2),

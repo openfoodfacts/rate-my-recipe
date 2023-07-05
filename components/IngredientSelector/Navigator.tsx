@@ -19,6 +19,7 @@ import {
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
+import { useTranslation } from "react-i18next";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -57,7 +58,6 @@ export default function Navigator() {
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentCategory?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
-          console.log({ q: ingredient.quantities[0] });
           const image_url =
             data.quantities[ingredient.quantities[0]].quantity_image_url ??
             null;
@@ -95,6 +95,7 @@ export default function Navigator() {
               {ingredient.ingredient_name}
               {image_url && (
                 <img
+                  alt={ingredient.ingredient_name ?? "ingredient_image"}
                   src={image_url}
                   height={100}
                   width={100}
@@ -128,6 +129,9 @@ export default function Navigator() {
               {quantity.quantity_ingredient_name}
               {quantity.quantity_image_url && (
                 <img
+                  alt={
+                    quantity.quantity_ingredient_name ?? "quantity_ingredient"
+                  }
                   src={quantity.quantity_image_url}
                   height={150}
                   width={150}

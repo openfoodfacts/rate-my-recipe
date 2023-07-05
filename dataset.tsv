@@ -25,7 +25,7 @@ Légumes	vegetables
 														500			100	https://images.openfoodfacts.org/images/products/328/144/000/0035/front_fr.15.400.jpg
 			Carotte	carrot														
 														500			100	https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg
-			Céleri branche	celeri-branche														
+			Céleri branche	celery-branch														
 									branches	branche		unit			100	2		https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg
 			Chou blanc	white-cabbage														
 									chou	choux		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
@@ -34,7 +34,7 @@ Légumes	vegetables
 			Courgette	courgettes														
 									courgettes	courgette		unit			150	3		https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg
 			Epinard	spinach														
-																		https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg
+														100				https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg
 			Oignon	onions														
 									oignon	oignons		unit			150	2		https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
 			Piment vert	green-chili-pepper														
