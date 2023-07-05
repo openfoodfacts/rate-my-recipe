@@ -4,7 +4,7 @@ import { updateRecipeIngredients } from "@/redux/reducers/recipes";
 import { updateEditorState } from "@/redux/reducers/editor";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
-import { ValueEditor } from "@/components/IngredientCards/ValueEditor";
+import { ValueEditor } from "@/components/shared/molecules/ValueEditor";
 import { getUnit } from "@/data/utils";
 import * as React from "react";
 import { IngredientPicture } from "@/components/IngredientCards/IngredientPicture";
