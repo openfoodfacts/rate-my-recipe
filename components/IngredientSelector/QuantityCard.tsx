@@ -23,17 +23,16 @@ export function QuantityCard({
   title,
 }: QuantityCardProps) {
   return (
-    <Stack
-      alignItems="center"
-      width={"fit-content"}
-      maxHeight={300}
-      alignSelf={"center"}
-    >
+    <Stack alignItems="center" width={"fit-content"} alignSelf={"center"}>
       <Typography component={"h1"} fontSize={"x-large"}>
         {title}
       </Typography>
       {imgSrc ? (
-        <img src={imgSrc} alt="A beautiful landscape." />
+        <img
+          src={imgSrc}
+          alt="A beautiful landscape."
+          style={{ maxHeight: "70vh" }}
+        />
       ) : (
         <ImagePlaceholder placeholderText={"No image sorry"} />
       )}

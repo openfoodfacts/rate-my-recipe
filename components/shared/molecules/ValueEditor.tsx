@@ -38,7 +38,6 @@ export const ValueEditor = ({
         >
           -
         </Button>
-
         {children}
         <Button variant="solid" color="neutral" size="sm" onClick={onIncrement}>
           +

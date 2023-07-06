@@ -90,7 +90,7 @@ export const InteractionWrapper = ({
 
   return (
     <>
-      <Stack direction="column" spacing={2} height={"90%"}>
+      <Stack direction="column" spacing={2}>
         <Stack direction="row" justifyContent="space-between">
           <Button
             disabled={!prevView}
