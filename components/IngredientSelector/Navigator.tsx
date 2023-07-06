@@ -85,10 +85,10 @@ export default function Navigator() {
 
           return (
             <IngredientCard
-              ingredientId={ingredientId}
               ingredient={ingredient}
               imageUrl={image_url}
               onClick={onClick}
+              key={ingredientId}
             />
           );
         })}

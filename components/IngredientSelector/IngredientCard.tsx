@@ -3,14 +3,12 @@ import * as React from "react";
 import { IngredientType } from "@/data";
 
 interface IngredientCardProps {
-  ingredientId: any;
   ingredient: IngredientType;
   onClick(): void;
   imageUrl?: string | null;
 }
 
 export function IngredientCard({
-  ingredientId,
   ingredient,
   onClick,
   imageUrl,
@@ -19,7 +17,6 @@ export function IngredientCard({
     "https://play.google.com/store/apps/dev?id=4712693179220384697&hl=ru&gl=US";
   return (
     <Stack
-      key={ingredientId}
       sx={{
         display: "flex",
         alignItems: "center",
