@@ -89,32 +89,31 @@ export const InteractionWrapper = ({
   const onCancelClick = () => dispatch(closeEditor({}));
 
   return (
-    <Stack justifyContent="space-between" height={"100%"}>
-      <Stack direction="column" spacing={2}>
-        <Stack direction="row" justifyContent="space-between">
-          <Button
-            disabled={!prevView}
-            onClick={() =>
-              dispatch(updateEditorState({ currentView: prevView }))
-            }
-          >
-            Prev
-          </Button>
-          <Button
-            disabled={!nextView || disableNext}
-            onClick={() =>
-              dispatch(updateEditorState({ currentView: nextView }))
-            }
-          >
-            Next
-          </Button>
-        </Stack>
-        {wrapChildren ? (
-          <CategoriesAndCardsContainer>{children}</CategoriesAndCardsContainer>
-        ) : (
-          children
-        )}
+    <Stack
+      justifyContent="space-between"
+      height={"100%"}
+      direction="column"
+      spacing={2}
+    >
+      <Stack direction="row" justifyContent="space-between">
+        <Button
+          disabled={!prevView}
+          onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
+        >
+          Prev
+        </Button>
+        <Button
+          disabled={!nextView || disableNext}
+          onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
+        >
+          Next
+        </Button>
       </Stack>
+      {wrapChildren ? (
+        <CategoriesAndCardsContainer>{children}</CategoriesAndCardsContainer>
+      ) : (
+        children
+      )}
       <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
           Cancel
