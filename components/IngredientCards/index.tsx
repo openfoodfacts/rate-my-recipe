@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateEditorState } from "@/redux/reducers/editor";
 
 const IngredientCards = (props: { ingredients: Ingredient[] }) => {
+  const dispatch = useDispatch();
   const { ingredients } = props;
 
   const cardsToDisplay = ingredients.flatMap(({ quantities }) =>
@@ -19,8 +20,6 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
   return (
     <Grid container rowGap={2}>
       {cardsToDisplay.map((quantityData) => {
-        const dispatch = useDispatch();
-
         const isWeightValue =
           quantityData.quantity_default_weight !== undefined;
 
