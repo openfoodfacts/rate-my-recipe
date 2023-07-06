@@ -89,7 +89,7 @@ export const InteractionWrapper = ({
   const onCancelClick = () => dispatch(closeEditor({}));
 
   return (
-    <>
+    <Stack justifyContent="space-between" height={"100%"}>
       <Stack direction="column" spacing={2}>
         <Stack direction="row" justifyContent="space-between">
           <Button
@@ -128,6 +128,6 @@ export const InteractionWrapper = ({
           Validate
         </Button>
       </Stack>
-    </>
+    </Stack>
   );
 };
