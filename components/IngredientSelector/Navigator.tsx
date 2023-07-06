@@ -159,6 +159,7 @@ export default function Navigator() {
           );
         }}
         unit={getUnit(currentQuantity, quantityValue!)}
+        title={currentQuantity.quantity_ingredient_name}
       />
     </InteractionWrapper>
   );

@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Avatar, Input, Stack, Typography } from "@mui/joy";
+import { Input, Stack, Typography } from "@mui/joy";
 import { ValueEditor } from "../shared/molecules/ValueEditor";
 import { ChangeEvent } from "react";
+import { ImagePlaceholder } from "@/components/shared/atoms/ImagePlaceholder";
 
 interface QuantityCardProps {
   onIncrement(): void;
@@ -10,6 +11,7 @@ interface QuantityCardProps {
   onInputChange(event: ChangeEvent<HTMLInputElement>): void;
   unit: string | undefined;
   imgSrc: string | undefined;
+  title: string | undefined;
 }
 export function QuantityCard({
   onIncrement,
@@ -18,6 +20,7 @@ export function QuantityCard({
   onInputChange,
   unit,
   imgSrc,
+  title,
 }: QuantityCardProps) {
   return (
     <Stack
@@ -26,7 +29,14 @@ export function QuantityCard({
       maxHeight={300}
       alignSelf={"center"}
     >
-      <img src={imgSrc} alt="A beautiful landscape." />
+      <Typography component={"h1"} fontSize={"x-large"}>
+        {title}
+      </Typography>
+      {imgSrc ? (
+        <img src={imgSrc} alt="A beautiful landscape." />
+      ) : (
+        <ImagePlaceholder placeholderText={"No image sorry"} />
+      )}
 
       <ValueEditor onIncrement={onIncrement} onDecrement={onDecrement}>
         <Input
