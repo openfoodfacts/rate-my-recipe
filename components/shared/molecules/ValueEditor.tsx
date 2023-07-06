@@ -23,7 +23,12 @@ export const ValueEditor = ({
 }: CountingPanelProps) => {
   return (
     <>
-      <Stack sx={{ py: 1 }} direction={"row"} justifyContent="space-between">
+      <Stack
+        sx={{ py: 1 }}
+        direction={"row"}
+        justifyContent="space-between"
+        width={"100%"}
+      >
         <Button
           variant="solid"
           color="neutral"

@@ -20,18 +20,13 @@ export function QuantityCard({
   imgSrc,
 }: QuantityCardProps) {
   return (
-    <Stack alignItems="center">
-      <Avatar
-        src={imgSrc}
-        sx={{
-          height: "80%",
-          width: "100%",
-          maxHeight: 450,
-          maxWidth: 400,
-          borderRadius: "4px",
-          objectFit: "cover",
-        }}
-      />
+    <Stack
+      alignItems="center"
+      width={"fit-content"}
+      maxHeight={300}
+      alignSelf={"center"}
+    >
+      <img src={imgSrc} alt="A beautiful landscape." />
 
       <ValueEditor onIncrement={onIncrement} onDecrement={onDecrement}>
         <Input
