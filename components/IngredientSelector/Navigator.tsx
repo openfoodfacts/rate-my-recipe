@@ -113,6 +113,7 @@ export default function Navigator() {
               name={quantity.quantity_ingredient_name}
               onClick={onCLick}
               imageUrl={quantity.quantity_image_url || undefined}
+              key={quantityId}
             />
           );
         })}
