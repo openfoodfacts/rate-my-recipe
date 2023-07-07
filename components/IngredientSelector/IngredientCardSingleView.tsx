@@ -30,7 +30,11 @@ export function IngredientCardSingleView({
       width={"fit-content"}
       alignSelf={"center"}
       maxWidth={"100%"}
-      overflow={"hidden"}
+      overflow={"scroll"}
+      sx={{
+        overflowY: "scroll",
+        "::-webkit-scrollbar": { display: "none" },
+      }}
     >
       <Typography component={"h1"} fontSize={"x-large"}>
         {title}
@@ -39,7 +43,7 @@ export function IngredientCardSingleView({
         <img
           src={imgSrc}
           alt="A beautiful landscape."
-          style={{ maxHeight: "70vh" }}
+          style={{ maxHeight: "70%" }}
         />
       ) : (
         <ImagePlaceholder placeholderText={"No image sorry"} />
