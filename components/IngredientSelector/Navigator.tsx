@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -19,9 +18,9 @@ import {
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
-import { IngredientAndQuantityCard } from "@/components/IngredientSelector/IngredientAndQuantityCard";
 import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
 import { CategoryCard } from "@/components/IngredientSelector/CategoryCard";
+import { GenericCard } from "@/components/shared/molecules/GenericCard";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -83,10 +82,10 @@ export default function Navigator() {
           };
 
           return (
-            <IngredientAndQuantityCard
-              name={ingredient.ingredient_name}
-              imageUrl={image_url}
+            <GenericCard
+              imgUrl={image_url}
               onClick={onClick}
+              title={ingredient.ingredient_name}
               key={ingredientId}
             />
           );
@@ -108,10 +107,10 @@ export default function Navigator() {
             );
           };
           return (
-            <IngredientAndQuantityCard
-              name={quantity.quantity_ingredient_name}
+            <GenericCard
+              title={quantity.quantity_ingredient_name}
               onClick={onCLick}
-              imageUrl={quantity.quantity_image_url || undefined}
+              imgUrl={quantity.quantity_image_url || undefined}
               key={quantityId}
             />
           );
