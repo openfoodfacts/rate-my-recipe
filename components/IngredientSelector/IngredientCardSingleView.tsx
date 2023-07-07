@@ -12,8 +12,9 @@ interface QuantityCardProps {
   unit: string | undefined;
   imgSrc: string | undefined;
   title: string | undefined;
+  step?: number;
 }
-export function QuantityCard({
+export function IngredientCardSingleView({
   onIncrement,
   onDecrement,
   quantityValue,
@@ -21,9 +22,16 @@ export function QuantityCard({
   unit,
   imgSrc,
   title,
+  step = 2,
 }: QuantityCardProps) {
   return (
-    <Stack alignItems="center" width={"fit-content"} alignSelf={"center"}>
+    <Stack
+      alignItems="center"
+      width={"fit-content"}
+      alignSelf={"center"}
+      maxWidth={"100%"}
+      overflow={"hidden"}
+    >
       <Typography component={"h1"} fontSize={"x-large"}>
         {title}
       </Typography>
@@ -37,7 +45,11 @@ export function QuantityCard({
         <ImagePlaceholder placeholderText={"No image sorry"} />
       )}
 
-      <ValueEditor onIncrement={onIncrement} onDecrement={onDecrement}>
+      <ValueEditor
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        disabledDecrement={quantityValue! <= step}
+      >
         <Input
           type="number"
           value={quantityValue!}

@@ -8,7 +8,6 @@ interface CountingPanelProps {
   onDecrement(): void;
   onEdit?(): void;
   onDelete?(): void;
-
   disabledDecrement?: boolean;
   children: React.ReactNode;
 }

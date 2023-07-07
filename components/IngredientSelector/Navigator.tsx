@@ -20,7 +20,7 @@ import {
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
 import { IngredientCard } from "@/components/IngredientSelector/IngredientCard";
-import { QuantityCard } from "@/components/IngredientSelector/QuantityCard";
+import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -138,7 +138,7 @@ export default function Navigator() {
 
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
-      <QuantityCard
+      <IngredientCardSingleView
         onIncrement={() => {
           dispatch(
             increaseQuantityValue({ step: currentQuantity.quantity_step })
@@ -160,6 +160,7 @@ export default function Navigator() {
         }}
         unit={getUnit(currentQuantity, quantityValue!)}
         title={currentQuantity.quantity_ingredient_name}
+        step={currentQuantity.quantity_step}
       />
     </InteractionWrapper>
   );
