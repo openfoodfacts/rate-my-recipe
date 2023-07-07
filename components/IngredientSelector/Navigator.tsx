@@ -19,7 +19,7 @@ import {
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
-import { IngredientCard } from "@/components/IngredientSelector/IngredientCard";
+import { IngredientAndQuantityCard } from "@/components/IngredientSelector/IngredientAndQuantityCard";
 import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
 
 export default function Navigator() {
@@ -84,8 +84,8 @@ export default function Navigator() {
           };
 
           return (
-            <IngredientCard
-              ingredient={ingredient}
+            <IngredientAndQuantityCard
+              name={ingredient.ingredient_name}
               imageUrl={image_url}
               onClick={onClick}
               key={ingredientId}
@@ -97,35 +97,23 @@ export default function Navigator() {
   }
   if (view === "quantity") {
     return (
-      <InteractionWrapper skipQuantityView={skipQuantityView}>
+      <InteractionWrapper skipQuantityView={skipQuantityView} wrapChildren>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
+          const onCLick = () => {
+            dispatch(
+              updateQuantity({
+                currentView: "value",
+                quantityId: quantityId,
+              })
+            );
+          };
           return (
-            <Button
-              variant="outlined"
-              key={quantityId}
-              onClick={() => {
-                dispatch(
-                  updateQuantity({
-                    currentView: "value",
-                    quantityId: quantityId,
-                  })
-                );
-              }}
-            >
-              {quantity.quantity_ingredient_name}
-              {quantity.quantity_image_url && (
-                <img
-                  alt={
-                    quantity.quantity_ingredient_name ?? "quantity_ingredient"
-                  }
-                  src={quantity.quantity_image_url}
-                  height={150}
-                  width={150}
-                  style={{ objectFit: "contain" }}
-                />
-              )}
-            </Button>
+            <IngredientAndQuantityCard
+              name={quantity.quantity_ingredient_name}
+              onClick={onCLick}
+              imageUrl={quantity.quantity_image_url || undefined}
+            />
           );
         })}
       </InteractionWrapper>
