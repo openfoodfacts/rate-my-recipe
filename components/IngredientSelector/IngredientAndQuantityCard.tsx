@@ -1,6 +1,5 @@
 import { Avatar, Stack, Typography } from "@mui/joy";
 import * as React from "react";
-import { IngredientType } from "@/data";
 
 interface IngredientAndQuantityCardProps {
   name: string | undefined;

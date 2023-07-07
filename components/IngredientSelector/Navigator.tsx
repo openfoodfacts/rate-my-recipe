@@ -21,6 +21,7 @@ import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
 import { IngredientAndQuantityCard } from "@/components/IngredientSelector/IngredientAndQuantityCard";
 import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
+import { CategoryCard } from "@/components/IngredientSelector/CategoryCard";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -36,8 +37,8 @@ export default function Navigator() {
     return (
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {Object.values(data.categories).map((category) => (
-          <Button
-            color="primary"
+          <CategoryCard
+            title={category.category_name}
             key={category.category_id}
             onClick={() => {
               dispatch(
@@ -47,16 +48,14 @@ export default function Navigator() {
                 })
               );
             }}
-          >
-            {category.category_name}
-          </Button>
+          />
         ))}
       </InteractionWrapper>
     );
   }
   if (view === "ingredient") {
     return (
-      <InteractionWrapper skipQuantityView={skipQuantityView} wrapChildren>
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentCategory?.ingredients.map((ingredientId) => {
           const ingredient = data.ingredients[ingredientId];
           const image_url =
@@ -97,7 +96,7 @@ export default function Navigator() {
   }
   if (view === "quantity") {
     return (
-      <InteractionWrapper skipQuantityView={skipQuantityView} wrapChildren>
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
           const onCLick = () => {

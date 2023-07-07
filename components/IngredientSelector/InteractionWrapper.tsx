@@ -13,7 +13,6 @@ import { CategoriesAndCardsContainer } from "@/components/IngredientSelector/Cat
 interface InteractionWrapperProps {
   skipQuantityView: boolean | null;
   children: React.ReactNode;
-  wrapChildren?: boolean;
 }
 
 const viewsOrder: ViewsTypes[] = [
@@ -33,7 +32,6 @@ const viewToValue = {
 export const InteractionWrapper = ({
   skipQuantityView,
   children,
-  wrapChildren,
 }: InteractionWrapperProps) => {
   const {
     currentView: view,
@@ -109,11 +107,9 @@ export const InteractionWrapper = ({
           Next
         </Button>
       </Stack>
-      {wrapChildren ? (
-        <CategoriesAndCardsContainer>{children}</CategoriesAndCardsContainer>
-      ) : (
-        children
-      )}
+
+      <CategoriesAndCardsContainer>{children}</CategoriesAndCardsContainer>
+
       <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
           Cancel
