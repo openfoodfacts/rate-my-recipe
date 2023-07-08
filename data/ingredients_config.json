@@ -1342,6 +1342,8 @@
       "ingredient_name": "Graines de Nigelle"
     },
     "harissa.tsp": {
+      "quantity_name_plural": "cuillères à café",
+      "quantity_name_singular": "cuillère à café",
       "quantity_unit_id": "tsp",
       "quantity_default_weight_per_unit": 10,
       "quantity_default_number_of_units": 1,
