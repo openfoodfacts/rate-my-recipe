@@ -53,14 +53,14 @@ const PublishRecipe = () => {
 
         const ingredientName =
           quantityData.quantity_ingredient_name ||
-          ingredientData.ingredient_name;
+          ingredientData.ingredient_name || "";
 
         return {
           name: ingredientName,
           weight: weight,
           unit: quantityData.quantity_unit!,
           quantity_value: quantity.value,
-          quantity_name: quantityData.quantity_name_plural
+          quantity_name: quantityData.quantity_name_plural || ""
         };
       });
     });
