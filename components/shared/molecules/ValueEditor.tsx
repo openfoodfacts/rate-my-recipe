@@ -5,11 +5,9 @@ import Button from "@mui/joy/Button";
 
 interface CountingPanelProps {
   onIncrement(): void;
-
   onDecrement(): void;
-  onEdit(): void;
-  onDelete(): void;
-
+  onEdit?(): void;
+  onDelete?(): void;
   disabledDecrement?: boolean;
   children: React.ReactNode;
 }
@@ -24,7 +22,12 @@ export const ValueEditor = ({
 }: CountingPanelProps) => {
   return (
     <>
-      <Stack sx={{ py: 1 }} direction={"row"} justifyContent="space-between">
+      <Stack
+        sx={{ py: 1 }}
+        direction={"row"}
+        justifyContent="space-between"
+        width={"100%"}
+      >
         <Button
           variant="solid"
           color="neutral"
@@ -34,13 +37,14 @@ export const ValueEditor = ({
         >
           -
         </Button>
-
         {children}
         <Button variant="solid" color="neutral" size="sm" onClick={onIncrement}>
           +
         </Button>
       </Stack>
-      <EditButtons onEdit={onEdit} onDelete={onDelete} />
+      {onEdit && onDelete && (
+        <EditButtons onEdit={onEdit} onDelete={onDelete} />
+      )}
     </>
   );
 };

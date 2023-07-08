@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import data from "../../data";
-import { Button, Input, Stack, Typography } from "@mui/joy";
 import {
   selectEditorCurrentIngredient,
   selectEditorCurrentQuantity,
@@ -19,7 +18,9 @@ import {
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
-import { useTranslation } from "react-i18next";
+import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
+import { CategoryCard } from "@/components/IngredientSelector/CategoryCard";
+import { GenericCard } from "@/components/shared/molecules/GenericCard";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
@@ -35,8 +36,8 @@ export default function Navigator() {
     return (
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {Object.values(data.categories).map((category) => (
-          <Button
-            color="primary"
+          <CategoryCard
+            title={category.category_name}
             key={category.category_id}
             onClick={() => {
               dispatch(
@@ -46,9 +47,7 @@ export default function Navigator() {
                 })
               );
             }}
-          >
-            {category.category_name}
-          </Button>
+          />
         ))}
       </InteractionWrapper>
     );
@@ -62,47 +61,33 @@ export default function Navigator() {
             data.quantities[ingredient.quantities[0]].quantity_image_url ??
             null;
 
-          return (
-            <Button
-              variant="outlined"
-              key={ingredientId}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "10px",
-              }}
-              onClick={() => {
-                if (ingredient.quantities.length === 1) {
-                  // If only one quantity type, we set it directly
-                  dispatch(
-                    updateQuantity({
-                      currentView: "value",
-                      ingredientId,
-                      quantityId: ingredient.quantities[0],
-                    })
-                  );
+          const onClick = () => {
+            if (ingredient.quantities.length === 1) {
+              // If only one quantity type, we set it directly
+              dispatch(
+                updateQuantity({
+                  currentView: "value",
+                  ingredientId,
+                  quantityId: ingredient.quantities[0],
+                })
+              );
+              return;
+            }
+            dispatch(
+              updateIngredient({
+                currentView: "quantity",
+                ingredientId,
+              })
+            );
+          };
 
-                  return;
-                }
-                dispatch(
-                  updateIngredient({
-                    currentView: "quantity",
-                    ingredientId,
-                  })
-                );
-              }}
-            >
-              {ingredient.ingredient_name}
-              {image_url && (
-                <img
-                  alt={ingredient.ingredient_name ?? "ingredient_image"}
-                  src={image_url}
-                  height={100}
-                  width={100}
-                  style={{ objectFit: "contain", marginLeft: "10px" }}
-                />
-              )}
-            </Button>
+          return (
+            <GenericCard
+              imgUrl={image_url}
+              onClick={onClick}
+              title={ingredient.ingredient_name}
+              key={ingredientId}
+            />
           );
         })}
       </InteractionWrapper>
@@ -113,32 +98,21 @@ export default function Navigator() {
       <InteractionWrapper skipQuantityView={skipQuantityView}>
         {currentIngredient?.quantities.map((quantityId) => {
           const quantity = data.quantities[quantityId];
+          const onCLick = () => {
+            dispatch(
+              updateQuantity({
+                currentView: "value",
+                quantityId: quantityId,
+              })
+            );
+          };
           return (
-            <Button
-              variant="outlined"
+            <GenericCard
+              title={quantity.quantity_ingredient_name}
+              onClick={onCLick}
+              imgUrl={quantity.quantity_image_url || undefined}
               key={quantityId}
-              onClick={() => {
-                dispatch(
-                  updateQuantity({
-                    currentView: "value",
-                    quantityId: quantityId,
-                  })
-                );
-              }}
-            >
-              {quantity.quantity_ingredient_name}
-              {quantity.quantity_image_url && (
-                <img
-                  alt={
-                    quantity.quantity_ingredient_name ?? "quantity_ingredient"
-                  }
-                  src={quantity.quantity_image_url}
-                  height={150}
-                  width={150}
-                  style={{ objectFit: "contain" }}
-                />
-              )}
-            </Button>
+            />
           );
         })}
       </InteractionWrapper>
@@ -151,49 +125,30 @@ export default function Navigator() {
 
   return (
     <InteractionWrapper skipQuantityView={skipQuantityView}>
-      <img
-        src={currentQuantity.quantity_image_url}
-        height={150}
-        width={150}
-        style={{ objectFit: "contain" }}
+      <IngredientCardSingleView
+        onIncrement={() => {
+          dispatch(
+            increaseQuantityValue({ step: currentQuantity.quantity_step })
+          );
+        }}
+        onDecrement={() => {
+          dispatch(
+            decreaseQuantityValue({ step: currentQuantity.quantity_step })
+          );
+        }}
+        quantityValue={quantityValue!}
+        imgSrc={currentQuantity.quantity_image_url}
+        onInputChange={(event) => {
+          dispatch(
+            updateValue({
+              quantityValue: Number(event.target.value),
+            })
+          );
+        }}
+        unit={getUnit(currentQuantity, quantityValue!)}
+        title={currentQuantity.quantity_ingredient_name}
+        step={currentQuantity.quantity_step}
       />
-      <Stack direction="row" justifyContent="space-between">
-        <Button
-          disabled={
-            !quantityValue || quantityValue - currentQuantity.quantity_step <= 0
-          }
-          onClick={() => {
-            dispatch(
-              decreaseQuantityValue({ step: currentQuantity.quantity_step })
-            );
-          }}
-        >
-          -
-        </Button>
-        <Input
-          type="number"
-          value={quantityValue!}
-          onChange={(event) => {
-            dispatch(
-              updateValue({
-                quantityValue: Number(event.target.value),
-              })
-            );
-          }}
-          endDecorator={
-            <Typography>{getUnit(currentQuantity, quantityValue!)}</Typography>
-          }
-        />
-        <Button
-          onClick={() => {
-            dispatch(
-              increaseQuantityValue({ step: currentQuantity.quantity_step })
-            );
-          }}
-        >
-          +
-        </Button>
-      </Stack>
     </InteractionWrapper>
   );
 }

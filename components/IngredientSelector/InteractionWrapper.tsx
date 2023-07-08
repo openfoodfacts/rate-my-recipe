@@ -8,6 +8,7 @@ import {
 } from "@/redux/reducers/editor";
 import { Button, Stack } from "@mui/joy";
 import * as React from "react";
+import { CardsContainer } from "@/components/IngredientSelector/CardsContainer";
 
 interface InteractionWrapperProps {
   skipQuantityView: boolean | null;
@@ -87,9 +88,10 @@ export const InteractionWrapper = ({
 
   return (
     <Stack
+      justifyContent="space-between"
+      height={"100%"}
       direction="column"
       spacing={2}
-      sx={{ position: "relative", height: "100%" }}
     >
       <Stack direction="row" justifyContent="space-between">
         <Button
@@ -106,13 +108,9 @@ export const InteractionWrapper = ({
         </Button>
       </Stack>
 
-      {children}
+      <CardsContainer>{children}</CardsContainer>
 
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        sx={{ position: "absolute", bottom: 0, width: "100%" }}
-      >
+      <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
           Cancel
         </Button>
