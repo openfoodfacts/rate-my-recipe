@@ -7,7 +7,13 @@ export const ImagePlaceholder = ({
   placeholderText?: string;
 }) => {
   return (
-    <Stack sx={{ width: "100%", bgcolor: "#BDECB6", height: 150 }}>
+    <Stack
+      sx={(theme) => ({
+        width: "100%",
+        bgcolor: theme.colorSchemes.light.palette.primary[100],
+        height: 150,
+      })}
+    >
       {placeholderText}
     </Stack>
   );
