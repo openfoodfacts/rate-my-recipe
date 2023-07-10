@@ -4,7 +4,6 @@ export const MuiJoyTheme = extendTheme({
   colorSchemes: {
     light: {
       palette: {
-        // affects all Joy components that has `color="primary"` prop.
         primary: {
           50: "#F9FCF9",
           100: "#F0F9E5",
