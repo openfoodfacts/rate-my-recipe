@@ -69,10 +69,10 @@ const PublishRecipe = () => {
       // the return_url allows to go back to the current recipe
       return_url: `${window.location.origin}${window.location.pathname}?${params}`,
       ingredients,
-      nutriscore,
-      nutriscore_100,
-      ecoscore,
-      ecoscore_100,
+      nutriscore: nutriscore || null,
+      nutriscore_100: nutriscore_100 || null,
+      ecoscore: ecoscore || null,
+      ecoscore_100: ecoscore_100 || null,
     });
 
     fetch(url, {
