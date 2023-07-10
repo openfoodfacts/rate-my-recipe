@@ -22,14 +22,22 @@ import Add from "@mui/icons-material/Add";
 import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
+import {
+  experimental_extendTheme as materialExtendTheme,
+  Experimental_CssVarsProvider as MaterialCssVarsProvider,
+  THEME_ID as MATERIAL_THEME_ID,
+} from "@mui/material/styles";
+import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 import { useTranslation } from "react-i18next";
+import { MuiJoyTheme } from "@/theme";
 
 export default function Home() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
 
+  const materialTheme = materialExtendTheme();
   React.useEffect(() => {
     const ingredients = Array.from(searchParams.entries());
 
@@ -49,12 +57,10 @@ export default function Home() {
         updateRecipeIngredients({
           recipeId: "urlRecipe",
           type: "overideFromURLParams",
-          ingredients: ingredients.map(
-            ([key, value]) => ({
-              key,
-              value,
-            })
-          ),
+          ingredients: ingredients.map(([key, value]) => ({
+            key,
+            value,
+          })),
         })
       );
     }
@@ -65,49 +71,57 @@ export default function Home() {
   );
 
   return (
-    <main
-      style={{
-        height: "100%",
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <AppBar />
-      <Box sx={{ my: 2, mx: 1, flexGrow: 1 }}>
-        <IngredientCards ingredients={ingredients} />
-      </Box>
-      <Sheet
-        variant="soft"
-        color="neutral"
-        invertedColors
-        sx={{
-          pt: 2,
-          pb: 1,
-          position: "sticky",
-          bottom: 0,
-          width: "100%",
-          textAlign: "center",
-          borderTopLeftRadius: "10px",
-          borderTopRightRadius: "10px",
-        }}
-      >
-        <Stack direction="row" spacing={2} alignItems="center"
-  justifyContent="center">
-        <Button
-          variant="solid"
-          color="primary"
-          startDecorator={<Add />}
-          onClick={() => dispatch(openEditor({}))}
+    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
+      <JoyCssVarsProvider theme={MuiJoyTheme}>
+        <main
+          style={{
+            height: "100%",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
-          {t("actions.add_ingredient")}
-        </Button>
-        <PublishRecipe />
-        </Stack>
+          <AppBar />
+          <Box sx={{ my: 2, mx: 1, flexGrow: 1 }}>
+            <IngredientCards ingredients={ingredients} />
+          </Box>
+          <Sheet
+            variant="soft"
+            color="neutral"
+            invertedColors
+            sx={{
+              pt: 2,
+              pb: 1,
+              position: "sticky",
+              bottom: 0,
+              width: "100%",
+              textAlign: "center",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
+            }}
+          >
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button
+                variant="solid"
+                color="primary"
+                startDecorator={<Add />}
+                onClick={() => dispatch(openEditor({}))}
+              >
+                {t("actions.add_ingredient")}
+              </Button>
+              <PublishRecipe />
+            </Stack>
 
-        <ShowNutritionalTable />
-      </Sheet>
-      <IngredientSelector />
-    </main>
+            <ShowNutritionalTable />
+          </Sheet>
+          <IngredientSelector />
+        </main>
+      </JoyCssVarsProvider>
+    </MaterialCssVarsProvider>
   );
 }
