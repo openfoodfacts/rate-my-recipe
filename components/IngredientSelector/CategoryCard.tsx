@@ -26,7 +26,6 @@ export function CategoryCard({
   onClick,
   categoryId,
 }: CategoryCardProps) {
-  console.log(categoryId);
   const IconsMap = {
     "meat-fish-eggs": [
       <BeefIcon key={"beef"} />,
