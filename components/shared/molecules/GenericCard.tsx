@@ -20,6 +20,7 @@ export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
         display: "flex",
         justifyContent: "center",
         border: "1px solid lightGrey",
+        alignItems: "center",
       }}
       onClick={onClick}
     >
