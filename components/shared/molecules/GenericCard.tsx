@@ -7,7 +7,7 @@ interface GenericCardProps {
   title: string | undefined;
   onClick(): void;
   imgUrl?: string | undefined | null;
-  svg?: React.ReactNode[];
+  svg?: JSX.Element[];
 }
 
 export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {

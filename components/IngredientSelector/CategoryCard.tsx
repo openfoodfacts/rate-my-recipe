@@ -18,7 +18,14 @@ import { LeafIcon } from "@/components/shared/atoms/icons/LeafIcon";
 interface CategoryCardProps {
   title: string | undefined;
   onClick(): void;
-  categoryId: string;
+  categoryId:
+    | "meat-fish-eggs"
+    | "vegetables"
+    | "potatoes-legumes-cereals"
+    | "fats"
+    | "liquids"
+    | "spices-condiments"
+    | "fresh-herbs";
 }
 
 export function CategoryCard({
@@ -49,7 +56,6 @@ export function CategoryCard({
   };
 
   return (
-    // @ts-ignore
     <GenericCard title={title} onClick={onClick} svg={IconsMap[categoryId]} />
   );
 }
