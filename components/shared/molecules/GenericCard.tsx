@@ -1,14 +1,16 @@
 import Card from "@mui/joy/Card";
 import { CardMedia } from "@mui/material";
-import { CardContent, Typography } from "@mui/joy";
+import { CardContent, Stack, Typography } from "@mui/joy";
+import React from "react";
 
 interface GenericCardProps {
   title: string | undefined;
   onClick(): void;
-  imgUrl: string | undefined | null;
+  imgUrl?: string | undefined | null;
+  svg?: React.ReactNode[];
 }
 
-export function GenericCard({ title, onClick, imgUrl }: GenericCardProps) {
+export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
   return (
     <Card
       sx={{
@@ -21,8 +23,20 @@ export function GenericCard({ title, onClick, imgUrl }: GenericCardProps) {
       }}
       onClick={onClick}
     >
-      <CardMedia component="img" height={90} image={imgUrl || ""} alt={title} />
+      {imgUrl && (
+        <CardMedia
+          component="img"
+          height={90}
+          image={imgUrl || ""}
+          alt={title}
+        />
+      )}
       <CardContent>
+        {svg && (
+          <Stack direction={"row"} justifyContent={"center"} gap={1}>
+            {svg}
+          </Stack>
+        )}
         <Typography maxWidth={"100%"}>{title}</Typography>
       </CardContent>
     </Card>
