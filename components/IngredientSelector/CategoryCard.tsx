@@ -25,7 +25,8 @@ interface CategoryCardProps {
     | "fats"
     | "liquids"
     | "spices-condiments"
-    | "fresh-herbs";
+    | "fresh-herbs"
+    | undefined;
 }
 
 export function CategoryCard({
@@ -56,6 +57,10 @@ export function CategoryCard({
   };
 
   return (
-    <GenericCard title={title} onClick={onClick} svg={IconsMap[categoryId]} />
+    <GenericCard
+      title={title}
+      onClick={onClick}
+      svg={categoryId ? IconsMap[categoryId] : undefined}
+    />
   );
 }
