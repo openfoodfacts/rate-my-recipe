@@ -26,7 +26,9 @@ export function CategoryCard({
   onClick,
   categoryId,
 }: CategoryCardProps) {
-  const IconsMap = {
+  const IconsMap: {
+    [key: string]: JSX.Element[];
+  } = {
     "meat-fish-eggs": [
       <BeefIcon key={"beef"} />,
       <EggIcon key={"egg"} />,
@@ -48,11 +50,6 @@ export function CategoryCard({
   };
 
   return (
-    <GenericCard
-      title={title}
-      onClick={onClick}
-      // @ts-ignore
-      svg={categoryId ? IconsMap[categoryId] : undefined}
-    />
+    <GenericCard title={title} onClick={onClick} svg={IconsMap[categoryId]} />
   );
 }
