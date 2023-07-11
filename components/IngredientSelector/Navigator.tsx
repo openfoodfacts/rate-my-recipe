@@ -39,6 +39,7 @@ export default function Navigator() {
           <CategoryCard
             title={category.category_name}
             key={category.category_id}
+            categoryId={category.category_id}
             onClick={() => {
               dispatch(
                 updateCategory({
