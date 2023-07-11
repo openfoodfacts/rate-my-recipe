@@ -28,13 +28,24 @@ export function CategoryCard({
 }: CategoryCardProps) {
   console.log(categoryId);
   const IconsMap = {
-    "meat-fish-eggs": [<BeefIcon />, <EggIcon />, <FishIcon />],
-    vegetables: [<BroccoliIcon />, <CarrotIcon />, <EggplantIcon />],
-    "potatoes-legumes-cereals": [<FlourIcon />, <CerealsIcon />],
-    fats: [<OliveOil />, <Butter />],
-    liquids: [<WineBottle />, <Milk />],
-    "spices-condiments": [<SaltAndPaper />],
-    "fresh-herbs": [<LeafIcon />, <SaladIcon />],
+    "meat-fish-eggs": [
+      <BeefIcon key={"beef"} />,
+      <EggIcon key={"egg"} />,
+      <FishIcon key={"fish"} />,
+    ],
+    vegetables: [
+      <BroccoliIcon key={"broccoli"} />,
+      <CarrotIcon key={"carrot"} />,
+      <EggplantIcon key={"eggplant"} />,
+    ],
+    "potatoes-legumes-cereals": [
+      <FlourIcon key={"flour"} />,
+      <CerealsIcon key={"cereals"} />,
+    ],
+    fats: [<OliveOil key={"oliveoil"} />, <Butter key={"butter"} />],
+    liquids: [<WineBottle key={"wine"} />, <Milk key={"milk"} />],
+    "spices-condiments": [<SaltAndPaper key={"salt"} />],
+    "fresh-herbs": [<LeafIcon key={"leaf"} />, <SaladIcon key={"salad"} />],
   };
 
   return (
