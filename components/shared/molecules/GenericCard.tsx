@@ -37,7 +37,9 @@ export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
             {svg}
           </Stack>
         )}
-        <Typography maxWidth={"100%"}>{title}</Typography>
+        <Typography maxWidth={"100%"} textAlign={"center"}>
+          {title}
+        </Typography>
       </CardContent>
     </Card>
   );
