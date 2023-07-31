@@ -1,4 +1,4 @@
-import { Stack } from "@mui/joy";
+import { Box } from "@mui/joy";
 import * as React from "react";
 
 export const ImagePlaceholder = ({
@@ -9,7 +9,8 @@ export const ImagePlaceholder = ({
   height?: number;
 }) => {
   return (
-    <Stack
+    <Box
+      component={"div"}
       sx={(theme) => ({
         width: "100%",
         bgcolor: theme.colorSchemes.light.palette.primary[100],
@@ -17,6 +18,6 @@ export const ImagePlaceholder = ({
       })}
     >
       {placeholderText}
-    </Stack>
+    </Box>
   );
 };

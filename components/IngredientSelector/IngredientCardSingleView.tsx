@@ -51,7 +51,7 @@ export function IngredientCardSingleView({
           alt={title}
         />
       ) : (
-        <ImagePlaceholder />
+        <ImagePlaceholder placeholderText={"no image sorry"} />
       )}
 
       <CardContent>

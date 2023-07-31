@@ -37,7 +37,9 @@ export function GenericCard({
           alt={title}
         />
       )}
-      {!imgUrl && !icons && <ImagePlaceholder height={70} />}
+      {!imgUrl && !icons && (
+        <ImagePlaceholder height={70} placeholderText={"no image sorry"} />
+      )}
       <CardContent>
         {icons && (
           <Stack direction={"row"} justifyContent={"center"} gap={1}>
