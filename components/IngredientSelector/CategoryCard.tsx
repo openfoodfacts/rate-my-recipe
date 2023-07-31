@@ -1,19 +1,11 @@
 import { GenericCard } from "@/components/shared/molecules/GenericCard";
-import { BeefIcon } from "@/components/shared/atoms/icons/BeefIcon";
-import { FishIcon } from "@/components/shared/atoms/icons/FishIcon";
-import { EggIcon } from "@/components/shared/atoms/icons/EggIcon";
-import { BroccoliIcon } from "@/components/shared/atoms/icons/BroccoliIcon";
-import { CarrotIcon } from "@/components/shared/atoms/icons/CarrotIcon";
-import { EggplantIcon } from "@/components/shared/atoms/icons/EggplantIcon";
-import { FlourIcon } from "@/components/shared/atoms/icons/FlourIcon";
-import { CerealsIcon } from "@/components/shared/atoms/icons/CerealsIcon";
-import { OliveOil } from "@/components/shared/atoms/icons/OliveOil";
-import { Butter } from "@/components/shared/atoms/icons/Butter";
-import { WineBottle } from "@/components/shared/atoms/icons/WineBottle";
-import { Milk } from "@/components/shared/atoms/icons/Milk";
-import { SaltAndPaper } from "@/components/shared/atoms/icons/SaltAndPaper";
-import { SaladIcon } from "@/components/shared/atoms/icons/SaladIcon";
-import { LeafIcon } from "@/components/shared/atoms/icons/LeafIcon";
+import { MeatFishEggs } from "@/components/IngredientSelector/icons/MeatFishEggs";
+import { Vegetables } from "@/components/IngredientSelector/icons/Vegitables";
+import { PotatoesLegimesCereals } from "@/components/IngredientSelector/icons/PotatoesLegimesCereals";
+import { Fats } from "@/components/IngredientSelector/icons/Fats";
+import { Liquids } from "@/components/IngredientSelector/icons/Liquids";
+import { Spices } from "@/components/IngredientSelector/icons/Spices";
+import { Herbs } from "@/components/IngredientSelector/icons/Herbs";
 
 interface CategoryCardProps {
   title: string | undefined;
@@ -27,29 +19,18 @@ export function CategoryCard({
   categoryId,
 }: CategoryCardProps) {
   const IconsMap: {
-    [key: string]: JSX.Element[];
+    [key: string]: JSX.Element;
   } = {
-    "meat-fish-eggs": [
-      <BeefIcon key={"beef"} />,
-      <EggIcon key={"egg"} />,
-      <FishIcon key={"fish"} />,
-    ],
-    vegetables: [
-      <BroccoliIcon key={"broccoli"} />,
-      <CarrotIcon key={"carrot"} />,
-      <EggplantIcon key={"eggplant"} />,
-    ],
-    "potatoes-legumes-cereals": [
-      <FlourIcon key={"flour"} />,
-      <CerealsIcon key={"cereals"} />,
-    ],
-    fats: [<OliveOil key={"oliveoil"} />, <Butter key={"butter"} />],
-    liquids: [<WineBottle key={"wine"} />, <Milk key={"milk"} />],
-    "spices-condiments": [<SaltAndPaper key={"salt"} />],
-    "fresh-herbs": [<LeafIcon key={"leaf"} />, <SaladIcon key={"salad"} />],
+    "meat-fish-eggs": <MeatFishEggs />,
+    vegetables: <Vegetables />,
+    "potatoes-legumes-cereals": <PotatoesLegimesCereals />,
+    fats: <Fats />,
+    liquids: <Liquids />,
+    "spices-condiments": <Spices />,
+    "fresh-herbs": <Herbs />,
   };
 
   return (
-    <GenericCard title={title} onClick={onClick} svg={IconsMap[categoryId]} />
+    <GenericCard title={title} onClick={onClick} icons={IconsMap[categoryId]} />
   );
 }

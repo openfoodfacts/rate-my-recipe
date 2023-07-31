@@ -8,10 +8,15 @@ interface GenericCardProps {
   title: string | undefined;
   onClick(): void;
   imgUrl?: string | undefined | null;
-  svg?: JSX.Element[];
+  icons?: JSX.Element;
 }
 
-export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
+export function GenericCard({
+  title,
+  onClick,
+  imgUrl,
+  icons,
+}: GenericCardProps) {
   return (
     <Card
       sx={{
@@ -32,11 +37,11 @@ export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
           alt={title}
         />
       )}
-      {!imgUrl && !svg && <ImagePlaceholder height={70} />}
+      {!imgUrl && !icons && <ImagePlaceholder height={70} />}
       <CardContent>
-        {svg && (
+        {icons && (
           <Stack direction={"row"} justifyContent={"center"} gap={1}>
-            {svg}
+            {icons}
           </Stack>
         )}
         <Typography maxWidth={"100%"} textAlign={"center"}>
