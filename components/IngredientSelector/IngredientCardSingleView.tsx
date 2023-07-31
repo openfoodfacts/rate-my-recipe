@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CardContent, Input, Stack, Typography } from "@mui/joy";
+import { CardContent, Input, Typography } from "@mui/joy";
 import { ValueEditor } from "../shared/molecules/ValueEditor";
 import { ChangeEvent } from "react";
 import { ImagePlaceholder } from "@/components/shared/atoms/ImagePlaceholder";
@@ -46,12 +46,12 @@ export function IngredientCardSingleView({
       {imgSrc ? (
         <CardMedia
           component="img"
-          height={"70%"}
+          height={"30%"}
           image={imgSrc || ""}
           alt={title}
         />
       ) : (
-        <ImagePlaceholder placeholderText={"No image sorry"} />
+        <ImagePlaceholder placeholderText={"no image sorry"} />
       )}
 
       <CardContent>

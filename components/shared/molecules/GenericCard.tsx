@@ -2,15 +2,21 @@ import Card from "@mui/joy/Card";
 import { CardMedia } from "@mui/material";
 import { CardContent, Stack, Typography } from "@mui/joy";
 import React from "react";
+import { ImagePlaceholder } from "@/components/shared/atoms/ImagePlaceholder";
 
 interface GenericCardProps {
   title: string | undefined;
   onClick(): void;
   imgUrl?: string | undefined | null;
-  svg?: JSX.Element[];
+  icons?: JSX.Element;
 }
 
-export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
+export function GenericCard({
+  title,
+  onClick,
+  imgUrl,
+  icons,
+}: GenericCardProps) {
   return (
     <Card
       sx={{
@@ -31,10 +37,13 @@ export function GenericCard({ title, onClick, imgUrl, svg }: GenericCardProps) {
           alt={title}
         />
       )}
+      {!imgUrl && !icons && (
+        <ImagePlaceholder height={70} placeholderText={"no image sorry"} />
+      )}
       <CardContent>
-        {svg && (
+        {icons && (
           <Stack direction={"row"} justifyContent={"center"} gap={1}>
-            {svg}
+            {icons}
           </Stack>
         )}
         <Typography maxWidth={"100%"} textAlign={"center"}>
