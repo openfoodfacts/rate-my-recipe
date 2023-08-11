@@ -9,6 +9,7 @@ import {
 import { Button, Stack } from "@mui/joy";
 import * as React from "react";
 import { CardsContainer } from "@/components/IngredientSelector/CardsContainer";
+import { useTranslation } from "react-i18next";
 
 interface InteractionWrapperProps {
   skipQuantityView: boolean | null;
@@ -85,6 +86,7 @@ export const InteractionWrapper = ({
     dispatch(closeEditor({}));
   };
   const onCancelClick = () => dispatch(closeEditor({}));
+  const { t } = useTranslation();
 
   return (
     <Stack
@@ -98,13 +100,13 @@ export const InteractionWrapper = ({
           disabled={!prevView}
           onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
         >
-          Prev
+           {t("actions.prev")}
         </Button>
         <Button
           disabled={!nextView || disableNext}
           onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
         >
-          Next
+           {t("actions.next")}
         </Button>
       </Stack>
 
@@ -112,7 +114,7 @@ export const InteractionWrapper = ({
 
       <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
-          Cancel
+        {t("actions.cancel")}
         </Button>
         <Button
           fullWidth
@@ -120,7 +122,7 @@ export const InteractionWrapper = ({
           disabled={disableValidation}
           onClick={onValidateClick}
         >
-          Validate
+           {t("actions.validate")}
         </Button>
       </Stack>
     </Stack>
