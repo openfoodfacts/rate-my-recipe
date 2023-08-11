@@ -56,7 +56,7 @@ const AppBar = () => {
   };
   return (
     <AppBarContainer>
-      Rate My Recipes
+      ContribAlim
       <TooltipButtons
         onShareButtonClick={onShareButtonClick}
         onSaveRecipe={onSaveRecipe}

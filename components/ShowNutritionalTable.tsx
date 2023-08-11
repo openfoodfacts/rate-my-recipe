@@ -83,6 +83,9 @@ export default function ShowNutritionalTable() {
   const userNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore
   );
+  const userNutriscore100 = useSelector(
+    (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore_100
+  );
   const userNutriments = useSelector(
     (state: RootState) => state.recipe.recipes["userRecipe"].nutriments
   );
@@ -91,6 +94,9 @@ export default function ShowNutritionalTable() {
   );
   const urlNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["urlRecipe"].nutriscore
+  );
+  const urlNutriscore100 = useSelector(
+    (state: RootState) => state.recipe.recipes["urlRecipe"].nutriscore_100
   );
 
   const [open, setOpen] = React.useState(false);
@@ -102,9 +108,16 @@ export default function ShowNutritionalTable() {
         spacing={2}
         sx={{ justifyContent: "center", alignItems: "center" }}
       >
-        <Nutriscore grade={urlNutriscore} height={50} />
-        <ArrowForwardIcon />
-        <Nutriscore grade={userNutriscore} height={50} />
+        {urlNutriscore ? (
+          <>
+            <Nutriscore grade={urlNutriscore} score={urlNutriscore100} height={50} />
+            <ArrowForwardIcon />
+          </>
+        ) : (
+          null
+        )}
+        
+        <Nutriscore grade={userNutriscore} score={userNutriscore100} height={50} />
         <IconButton variant="plain" onClick={() => setOpen(true)}>
           <InfoIcon />
         </IconButton>
@@ -134,12 +147,12 @@ export default function ShowNutritionalTable() {
         <Table sx={{ "& span": { whiteSpace: "initial" } }}>
           <thead>
             <tr>
-              <th>{t("nutriment.nutriment")}</th>
+              <th>{t("nutriments.nutriment")}</th>
               <th>
-                <span>{t("nutriment.initial_value")}</span>
+                <span>{t("nutriments.initial_value")}</span>
               </th>
               <th>
-                <span>{t("nutriment.modified_value")}</span>
+                <span>{t("nutriments.modified_value")}</span>
               </th>
             </tr>
           </thead>
@@ -159,9 +172,9 @@ export default function ShowNutritionalTable() {
                       paddingLeft: isSubNutriment(key) ? 10 : 0,
                     }}
                   >
-                    {t(`nutriment.${key}`)}
+                    {t(`nutriments.${key}`)}
                   </td>
-                  <td>{urlValue ?? t(`nutriment.unknown`)}</td>
+                  <td>{urlValue ?? t(`nutriments.unknown`)}</td>
                   <td
                     style={{
                       display: "flex",
@@ -169,7 +182,7 @@ export default function ShowNutritionalTable() {
                       justifyContent: "space-between",
                     }}
                   >
-                    <span>{userValue ?? t(`nutriment.unknown`)}</span>
+                    <span>{userValue ?? t(`nutriments.unknown`)}</span>
                     <EvolutionIcon
                       urlValue={urlValue}
                       userValue={userValue}
@@ -182,10 +195,10 @@ export default function ShowNutritionalTable() {
             <tr>
               <td />
               <td>
-                <Nutriscore grade={urlNutriscore} height={40} />
+                <Nutriscore grade={urlNutriscore} score={urlNutriscore100} height={40} />
               </td>
               <td>
-                <Nutriscore grade={userNutriscore} height={40} />
+                <Nutriscore grade={userNutriscore} score={userNutriscore100} height={40} />
               </td>
             </tr>
           </tbody>
