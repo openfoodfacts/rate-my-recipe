@@ -56,14 +56,15 @@ const PublishRecipe = () => {
 
         const ingredientName =
           quantityData.quantity_ingredient_name ||
-          ingredientData.ingredient_name || "";
+          ingredientData.ingredient_name ||
+          "";
 
         return {
           name: ingredientName,
           weight: weight,
           unit: quantityData.quantity_unit!,
           quantity_value: quantity.value,
-          quantity_name: quantityData.quantity_name_plural || ""
+          quantity_name: quantityData.quantity_name_plural || "",
         };
       });
     });
@@ -72,9 +73,9 @@ const PublishRecipe = () => {
       // the return_url allows to go back to the current recipe
       return_url: `${window.location.origin}${window.location.pathname}?${params}`,
       ingredients,
-      nutriscore: nutriscore || '',
+      nutriscore: nutriscore || "",
       nutriscore_100: nutriscore_100 || null,
-      ecoscore: ecoscore || '',
+      ecoscore: ecoscore || "",
       ecoscore_100: ecoscore_100 || null,
     });
 
@@ -88,7 +89,7 @@ const PublishRecipe = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.url) {
-            window.location.assign(data.url);
+          window.location.assign(data.url);
         }
       })
       .catch((error) => {
@@ -98,23 +99,19 @@ const PublishRecipe = () => {
   // Display the publish button only if we have at least one ingredient
   if (currentIngredients.length > 0) {
     return (
-
       <Button
-      variant="solid"
-      color="primary"
-      startDecorator={<Send />}
-      onClick={() => handlePublishRecipeButtonClick()}
-      sx={{ mb: 2 }}
-    >
-      {t("actions.publish_recipe")}
-    </Button>
-  
+        variant="solid"
+        color="primary"
+        startDecorator={<Send />}
+        onClick={() => handlePublishRecipeButtonClick()}
+        sx={{ mb: 2 }}
+      >
+        {t("actions.publish_recipe")}
+      </Button>
     );
+  } else {
+    return null;
   }
-  else {
-    return;
-  }
-
 };
 
 export default PublishRecipe;
