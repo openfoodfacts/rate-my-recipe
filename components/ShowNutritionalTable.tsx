@@ -78,6 +78,7 @@ const EvolutionIcon = ({
 };
 
 export default function ShowNutritionalTable() {
+  console.log("ShowNutritionalTable");
   const { t } = useTranslation();
   const userNutriscore = useSelector(
     (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore

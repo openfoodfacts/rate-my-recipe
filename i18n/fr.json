@@ -2,7 +2,7 @@
   "actions": {
     "add_ingredient": "Ajouter un ingrédient",
     "delete": "Supprimer",
-    "modify": "Modifier",
+    "edit": "Modifier",
     "prev": "Précédent",
     "next": "Suivant",
     "cancel": "Annuler",

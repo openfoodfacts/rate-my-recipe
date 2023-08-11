@@ -11,11 +11,14 @@ import { useTranslation } from "react-i18next";
 import data from "../data";
 
 const PublishRecipe = () => {
-  const [open, setOpen] = React.useState(false);
+  console.log("PublishRecipe");
   const { t } = useTranslation();
 
   const params = useSelector((state: RootState) =>
     selectURLParams(state, "userRecipe")
+  );
+  const currentIngredients = useSelector((state: RootState) =>
+    selectCurrentIngredients(state, "userRecipe")
   );
 
   // The share button makes a POST request to publish_url and sends the ingredients and scores
@@ -69,9 +72,9 @@ const PublishRecipe = () => {
       // the return_url allows to go back to the current recipe
       return_url: `${window.location.origin}${window.location.pathname}?${params}`,
       ingredients,
-      nutriscore: nutriscore || null,
+      nutriscore: nutriscore || '',
       nutriscore_100: nutriscore_100 || null,
-      ecoscore: ecoscore || null,
+      ecoscore: ecoscore || '',
       ecoscore_100: ecoscore_100 || null,
     });
 
@@ -92,19 +95,26 @@ const PublishRecipe = () => {
         console.error(error);
       });
   }
-  return (
+  // Display the publish button only if we have at least one ingredient
+  if (currentIngredients.length > 0) {
+    return (
 
-    <Button
-    variant="solid"
-    color="primary"
-    startDecorator={<Send />}
-    onClick={() => handlePublishRecipeButtonClick()}
-    sx={{ mb: 2 }}
-  >
-    {t("actions.publish_recipe")}
-  </Button>
+      <Button
+      variant="solid"
+      color="primary"
+      startDecorator={<Send />}
+      onClick={() => handlePublishRecipeButtonClick()}
+      sx={{ mb: 2 }}
+    >
+      {t("actions.publish_recipe")}
+    </Button>
+  
+    );
+  }
+  else {
+    return;
+  }
 
-  );
 };
 
 export default PublishRecipe;

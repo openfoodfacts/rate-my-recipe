@@ -328,9 +328,15 @@ const recipeSlice = createSlice<
       const { ecoscore_grade, ecoscore_score, nutriscore_grade, nutriscore_score, nutriments_estimated } = action.payload.product;
 
       state.recipes[recipeId].ecoscore = ecoscore_grade;
+      if (state.recipes[recipeId].ecoscore == 'unknown') {
+        state.recipes[recipeId].ecoscore = '';
+      }
       state.recipes[recipeId].ecoscore_100 = ecoscore_score;
 
       state.recipes[recipeId].nutriscore = nutriscore_grade;
+      if (state.recipes[recipeId].nutriscore == 'unknown') {
+        state.recipes[recipeId].nutriscore = '';
+      }      
       // nutriscore_score goes from -15 to 42, compute nutriscore_100 on a 0 to 100 scale, 100 being the best
       state.recipes[recipeId].nutriscore_100 = Math.round(100 - (nutriscore_score + 15) / 57 * 100);
       state.recipes[recipeId].nutriments = nutriments_estimated;
