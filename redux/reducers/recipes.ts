@@ -30,7 +30,9 @@ export const updateRecipeIngredients = createAsyncThunk(
             quantity.value *
             (isPerUnit ? quantityData.quantity_default_weight_per_unit! : 1);
 
-          const ingredientName = quantityData.quantity_ingredient_name || ingredientData.ingredient_name;
+          const ingredientName =
+            quantityData.quantity_ingredient_name ||
+            ingredientData.ingredient_name;
 
           return `${ingredientName} ${weight} ${quantityData.quantity_unit!}`;
         });
@@ -49,7 +51,8 @@ export const updateRecipeIngredients = createAsyncThunk(
         body: JSON.stringify({
           lc: "fr",
           tags_lc: "fr",
-          fields: "ingredients,nutriments_estimated,nutriscore_grade,nutriscore_score,ecoscore_grade,ecoscore_score",
+          fields:
+            "ingredients,nutriments_estimated,nutriscore_grade,nutriscore_score,ecoscore_grade,ecoscore_score",
           product: {
             lang: "fr",
             // disable the Eco-Score by not sending a category, as we don't have recipe specific Eco-Score
@@ -148,7 +151,7 @@ type RecipeStateType = {
   servings: number;
   ingredients: Ingredient[];
   instructions: string[];
-  ecoscore:any;
+  ecoscore: any;
   ecoscore_100: any;
   nutriscore: any;
   nutriscore_100: any;
@@ -257,25 +260,33 @@ const ingredientReducer = (
     );
     return ingredients;
   }
-  const { ingredientId, quantityId } = action;
+  if (action.type === "delete") {
+    const { ingredientId, quantityId } = action;
 
-  const ingredientIndex = ingredients.findIndex(
-    ({ id }) => ingredientId === id
-  );
-  if (ingredientIndex === -1) {
-    return ingredients;
+    const ingredientIndex = ingredients.findIndex(
+      ({ id }) => ingredientId === id
+    );
+    if (ingredientIndex === -1) {
+      return ingredients;
+    }
+
+    const newQuantities = ingredients[ingredientIndex].quantities.filter(
+      ({ id }) => quantityId !== id
+    );
+    return [
+      ...ingredients.slice(0, ingredientIndex),
+      ...(newQuantities.length === 0
+        ? []
+        : [
+            {
+              ...ingredients[ingredientIndex],
+              quantities: newQuantities,
+            },
+          ]),
+      ...ingredients.slice(ingredientIndex + 1),
+    ];
   }
-
-  return [
-    ...ingredients.slice(0, ingredientIndex),
-    {
-      ...ingredients[ingredientIndex],
-      quantities: ingredients[ingredientIndex].quantities.filter(
-        ({ id }) => quantityId !== id
-      ),
-    },
-    ...ingredients.slice(ingredientIndex + 1),
-  ];
+  return ingredients;
 };
 
 const recipeSlice = createSlice<
@@ -291,7 +302,7 @@ const recipeSlice = createSlice<
         servings: 4,
         instructions: [],
         ecoscore: null,
-        ecoscore_100: null,        
+        ecoscore_100: null,
         nutriscore: null,
         nutriscore_100: null,
         nutriments: {},
@@ -301,7 +312,7 @@ const recipeSlice = createSlice<
         servings: 4,
         instructions: [],
         ecoscore: null,
-        ecoscore_100: null,         
+        ecoscore_100: null,
         nutriscore: null,
         nutriscore_100: null,
         nutriments: {},
@@ -325,20 +336,28 @@ const recipeSlice = createSlice<
       if (!action.payload.product.nutriscore_grade) {
         console.error(action.payload);
       }
-      const { ecoscore_grade, ecoscore_score, nutriscore_grade, nutriscore_score, nutriments_estimated } = action.payload.product;
+      const {
+        ecoscore_grade,
+        ecoscore_score,
+        nutriscore_grade,
+        nutriscore_score,
+        nutriments_estimated,
+      } = action.payload.product;
 
       state.recipes[recipeId].ecoscore = ecoscore_grade;
-      if (state.recipes[recipeId].ecoscore == 'unknown') {
-        state.recipes[recipeId].ecoscore = '';
+      if (state.recipes[recipeId].ecoscore == "unknown") {
+        state.recipes[recipeId].ecoscore = "";
       }
       state.recipes[recipeId].ecoscore_100 = ecoscore_score;
 
       state.recipes[recipeId].nutriscore = nutriscore_grade;
-      if (state.recipes[recipeId].nutriscore == 'unknown') {
-        state.recipes[recipeId].nutriscore = '';
-      }      
+      if (state.recipes[recipeId].nutriscore == "unknown") {
+        state.recipes[recipeId].nutriscore = "";
+      }
       // nutriscore_score goes from -15 to 42, compute nutriscore_100 on a 0 to 100 scale, 100 being the best
-      state.recipes[recipeId].nutriscore_100 = Math.round(100 - (nutriscore_score + 15) / 57 * 100);
+      state.recipes[recipeId].nutriscore_100 = Math.round(
+        100 - ((nutriscore_score + 15) / 57) * 100
+      );
       state.recipes[recipeId].nutriments = nutriments_estimated;
     });
   },
