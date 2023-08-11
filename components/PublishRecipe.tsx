@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import data from "../data";
 
 const PublishRecipe = () => {
-  console.log("PublishRecipe");
   const { t } = useTranslation();
 
   const params = useSelector((state: RootState) =>
