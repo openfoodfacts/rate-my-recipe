@@ -55,9 +55,9 @@ export const updateRecipeIngredients = createAsyncThunk(
             "ingredients,nutriments_estimated,nutriscore_grade,nutriscore_score,ecoscore_grade,ecoscore_score",
           product: {
             lang: "fr",
-            // disable the Eco-Score by not sending a category, as we don't have recipe specific Eco-Score
-            // implemented on the server.
-            // categories_tags: ["Cassoulets au confit de canard"],
+            // disable the Eco-Score by not sending a precise category, as we don't have recipe specific Eco-Score
+            // implemented on the server. We do need an imprecise category in order to compute the Nutri-Score.
+            categories_tags: ["en:soups"],
             ingredients_text_fr: ingredients,
           },
         }),

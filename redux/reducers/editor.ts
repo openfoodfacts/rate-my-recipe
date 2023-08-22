@@ -40,7 +40,7 @@ type EditorState = {
   ingredientId?: string | null;
   quantityId?: string | null;
   quantityValue?: number | null;
-  // This identify the modified ingredient, such that we cvan delete it if validated
+  // This identifies the modified ingredient, so that we can delete it if validated
   modifiedIngredient?: {
     categoryId: string | null;
     ingredientId: string | null;
