@@ -57,16 +57,6 @@ const AppBar = () => {
   return (
     <AppBarContainer>
       ContribAlim
-      <TooltipButtons
-        onShareButtonClick={onShareButtonClick}
-        onSaveRecipe={onSaveRecipe}
-      />
-      <Snackbar
-        open={open}
-        autoHideDuration={5000}
-        onClose={() => setOpen(false)}
-        message="url copié dans le press papier"
-      />
     </AppBarContainer>
   );
 };
