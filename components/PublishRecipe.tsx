@@ -19,6 +19,9 @@ const PublishRecipe = () => {
   const currentIngredients = useSelector((state: RootState) =>
     selectCurrentIngredients(state, "userRecipe")
   );
+  const currentNutriscore = useSelector(
+    (state: RootState) => state.recipe.recipes["userRecipe"].nutriscore
+  );
 
   // The share button makes a POST request to publish_url and sends the ingredients and scores
   function handlePublishRecipeButtonClick() {
@@ -96,7 +99,8 @@ const PublishRecipe = () => {
       });
   }
   // Display the publish button only if we have at least one ingredient
-  if (currentIngredients.length > 0) {
+  // and a Nutri-Score computed
+  if ((currentIngredients.length > 0)  && (currentNutriscore !== undefined)) {
     return (
       <Button
         variant="solid"

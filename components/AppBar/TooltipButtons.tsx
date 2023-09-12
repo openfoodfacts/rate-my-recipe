@@ -14,11 +14,6 @@ export const TooltipButtons = ({
 }: TooltipButtonsProps) => {
   return (
     <Stack spacing={1} direction={"row"}>
-      <Tooltip title="Partager un lien">
-        <IconButton onClick={onShareButtonClick}>
-          <ShareIcon />
-        </IconButton>
-      </Tooltip>
       <Tooltip title="Enregistrer la recette">
         <IconButton onClick={onSaveRecipe}>
           <SaveIcon />
