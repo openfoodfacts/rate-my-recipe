@@ -10,7 +10,7 @@ const parseNumber = (n) => {
   if (n === undefined || Number.isNaN(n)) {
     return undefined;
   }
-  return parseInt(n);
+  return parseFloat(n);
 };
 
 const TITLE_LINE = 3;
