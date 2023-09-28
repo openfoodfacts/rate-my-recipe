@@ -147,8 +147,12 @@ export default function Navigator() {
           );
         }}
         unit={getUnit(currentQuantity, quantityValue!)}
+
         title={currentQuantity.quantity_ingredient_name}
+       
         step={currentQuantity.quantity_step}
+
+        quantity_default_weight_per_unit={currentQuantity.quantity_default_weight_per_unit}
       />
     </InteractionWrapper>
   );

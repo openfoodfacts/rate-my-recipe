@@ -15,6 +15,7 @@ interface QuantityCardProps {
   imgSrc: string | undefined;
   title: string | undefined;
   step?: number;
+  quantity_default_weight_per_unit: number;
 }
 export function IngredientCardSingleView({
   onIncrement,
@@ -25,7 +26,15 @@ export function IngredientCardSingleView({
   imgSrc,
   title,
   step = 2,
+  quantity_default_weight_per_unit,
 }: QuantityCardProps) {
+
+  // If the weight is not per g, we will display an equivalence
+  var weight = "";
+  if (quantity_default_weight_per_unit !== undefined) {
+    weight = " (" + (quantityValue! * quantity_default_weight_per_unit) + " g)";
+  }
+  
   return (
     <Card
       sx={{
@@ -64,7 +73,7 @@ export function IngredientCardSingleView({
             type="number"
             value={quantityValue!}
             onChange={onInputChange}
-            endDecorator={<Typography>{unit}</Typography>}
+            endDecorator={<Typography> {unit}{weight}</Typography>}
           />
         </ValueEditor>
       </CardContent>
