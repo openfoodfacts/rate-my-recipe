@@ -28,15 +28,15 @@ Légumes	vegetables
 			Céleri branche	celery-branch														
 									branches	branche		unit			100	2		https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg
 			Chou blanc	white-cabbage														
-									chou	choux		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
+									choux	chou		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
 			Chou vert	green-cabbage														
-									chou	choux		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
+									choux	chou		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
 			Courgette	courgettes														
 									courgettes	courgette		unit			150	3		https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg
 			Epinard	spinach														
 														100				https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg
 			Oignon	onions														
-									oignon	oignons		unit			150	2		https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
+									oignons	oignon		unit			150	2		https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
 			Piment vert	green-chili-pepper														
 														100			100	https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
 			Piment rouge	red-chili-pepper														
@@ -75,11 +75,11 @@ Pommes de terre, légumineuses et céréales	potatoes-legumes-cereals
 																		
 Matières grasses	fats	La matière grasse permet de faire revenir la viande et/ou certains légumes comme les oignons.																
 			Huile d'olive	olive-oil														
-									cuillères	cuillère		tbsp			10	2		https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg
+									cuillères à soupe	cuillère à soupe		tbsp			15	2		https://images.openfoodfacts.org/images/products/356/007/091/0366/front_fr.70.400.jpg
 			Huile de colza	rapeseed-oil														
-									cuillères	cuillère		tbsp			10	2		https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
+									cuillères à soupe	cuillère à soupe		tbsp			15	2		https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
 			Huile de tournesol	sunflower-oil														
-									cuillères	cuillère		tbsp			10	2		https://images.openfoodfacts.org/images/products/325/622/171/2254/front_fr.44.400.jpg
+									cuillères à soupe	cuillère à soupe		tbsp			15	2		https://images.openfoodfacts.org/images/products/327/019/011/8862/front_fr.53.400.jpg
 			Beurre	butter														
 														50			25	https://images.openfoodfacts.org/images/products/315/525/120/5500/front_fr.181.400.jpg
 			Crème fraîche	cream														
@@ -102,54 +102,55 @@ Liquides	liquids
 																		
 Epices et condiments	spices-condiments																	
 			Sel	salt														
-									pincées	pincée		unit			5	1		https://images.openfoodfacts.org/images/products/318/328/000/1800/front_en.123.200.jpg
+									pincées	pincée		unit			0.5	1		https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg
 			Poivre	pepper														
-									pincées	pincée		unit			5	1		https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg
+									pincées	pincée		unit			0.5	1		https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg
 			Sucre	sugar														
 														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
 			Ail	garlic														
-									gousses	gousse		unit			10			https://images.openfoodfacts.org/images/products/20253462/front_fr.37.200.jpg
+									gousses	gousse		unit			10	1		https://images.openfoodfacts.org/images/products/20253462/front_fr.37.200.jpg
 			Bouillon de boeuf	beef-stock														
 									cubes	cube		unit			10	1		https://images.openfoodfacts.org/images/products/761/303/368/7983/front_en.239.200.jpg
 			Cannelle	cinnamon														
-									cuillères à café	cuillère à café		tsp			10	1		https://images.openfoodfacts.org/images/products/520/233/610/3539/front_fr.3.200.jpg
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/520/233/610/3539/front_fr.3.200.jpg
 			Curcuma	curcuma														
-									cuillères à café	cuillère à café		tsp			10	1		https://images.openfoodfacts.org/images/products/405/648/902/1773/front_fr.12.200.jpg
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/405/648/902/1773/front_fr.12.200.jpg
 			Curry	curry														
-									cuillères à café	cuillère à café		tsp			10	1		
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/20249939/front_fr.25.400.jpg
 			Gingembre	ginger														
-									cuillères à café	cuillère à café		tsp			10	1		
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/316/629/150/3303/front_fr.56.400.jpg
 			Graines de courges	pumpkin-seeds														
-															20		10	https://images.openfoodfacts.org/images/products/260/072/201/2466/front_fr.3.200.jpg
+									cuillères à café	cuillère à café		tsp			5	1	10	https://images.openfoodfacts.org/images/products/260/072/201/2466/front_fr.3.200.jpg
 			Graines de fenouil	fennel-seeds														
-									cuillères à café	cuillère à café		tsp			10	1		
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/330/713/993/2002/front_fr.11.400.jpg
 			Graines de Nigelle	nigelle-seeds														
-									cuillères à café	cuillère à café		tsp			10	1		
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/316/205/001/0396/front_fr.3.400.jpg
 			Harissa	harissa														
-									cuillères à café	cuillère à café		tsp			10	1		
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/619/405/550/0272/front_fr.45.400.jpg
 			Laurier	laurel														
-									feuilles	feuille		unit			5			
+									feuilles	feuille		unit			5	1		https://images.openfoodfacts.org/images/products/325/622/547/2642/front_fr.27.400.jpg
 			Moutarde	mustard														
-									cuillères à café	cuillère à café		tsp			10			https://images.openfoodfacts.org/images/products/871/210/087/1986/front_fr.121.200.jpg
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/871/210/087/1986/front_fr.121.200.jpg
 			Muscade	nutmeg														
-									cuillères à café	cuillère à café		tsp			10			
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/356/470/650/1096/front_fr.15.400.jpg
 			Origan	oregano														
-									cuillères à café	cuillère à café		tsp			10			
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/316/629/620/3109/front_fr.48.400.jpg
 			Paprika	paprika														
-									cuillères à café	cuillère à café		tsp			10			
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/316/629/146/4901/front_fr.76.400.jpg
 			Ras el hanout	ras-el-hanout														
-									cuillères à café	cuillère à café		tsp			10			
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/359/671/051/8241/front_fr.7.400.jpg
 			Tomate concentrée	concentrated-tomato														
-									cuillères à café	cuillère à café		tsp			20			
-																		
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/303/835/900/8641/front_fr.54.400.jpg
+			Pâte d'arachide	peanut-butter														
+									cuillères à soupe	cuillère à soupe		tbsp			15			https://images.openfoodfacts.org/images/products/370/001/950/7152/front_fr.40.400.jpg
 Herbes fraîches	fresh-herbs																	
 			Basilic	basil														
-									bottes	botte		unit			25			
+									bottes	botte		unit			25			https://images.openfoodfacts.org/images/products/800/520/150/7886/front_fr.3.400.jpg
 			Coriandre	coriander														
-									bottes	botte		unit			50			
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/370/070/550/0030/front_fr.3.400.jpg
 			Menthe	mint														
-									bottes	botte		unit			50			
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/871/545/923/6741/front_fr.3.400.jpg
 			Oignons verts	green-onions														
-									bottes	botte		unit			100			
+									bottes	botte		unit			100			https://images.openfoodfacts.org/images/products/003/338/390/4030/front_en.3.400.jpg
 			Persil	parsley														
-									bottes	botte		unit			50			
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/350/391/000/0117/front_fr.14.400.jpg
