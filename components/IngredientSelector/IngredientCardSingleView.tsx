@@ -15,7 +15,7 @@ interface QuantityCardProps {
   imgSrc: string | undefined;
   title: string | undefined;
   step?: number;
-  quantity_default_weight_per_unit: number;
+  quantity_default_weight_per_unit?: number;
 }
 export function IngredientCardSingleView({
   onIncrement,
