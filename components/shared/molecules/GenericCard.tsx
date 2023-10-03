@@ -1,8 +1,8 @@
 import Card from "@mui/joy/Card";
-import { CardMedia } from "@mui/material";
 import { CardContent, Stack, Typography } from "@mui/joy";
 import React from "react";
 import { ImagePlaceholder } from "@/components/shared/atoms/ImagePlaceholder";
+import ResponsiveImage from "@/components/shared/atoms/ResponsiveImage";
 
 interface GenericCardProps {
   title: string | undefined;
@@ -30,10 +30,12 @@ export function GenericCard({
       onClick={onClick}
     >
       {imgUrl && (
-        <CardMedia
-          component="img"
-          height={90}
-          image={imgUrl || ""}
+        <ResponsiveImage
+          minHeight="100px"
+          maxHeight="150px"
+          objectFit="contain"
+          sx={{ my: 1 }}
+          src={imgUrl}
           alt={title}
         />
       )}
