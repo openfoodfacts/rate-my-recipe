@@ -26,7 +26,7 @@ export function IngredientCardSingleView({
   imgSrc,
   title,
   step = 2,
-  quantity_default_weight_per_unit,
+  weightPerUnit,
 }: QuantityCardProps) {
 
   // If the weight is not per g, we will display an equivalence
