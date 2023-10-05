@@ -15,6 +15,11 @@ export const IngredientCard = (
     onDelete?(): void;
   }
 ) => {
+    // If the weight is not per g, we will display an equivalence
+    var weight = "";
+    if (props.quantity_default_weight_per_unit !== undefined) {
+      weight = " (" + (props.value! * props.quantity_default_weight_per_unit) + " g)";
+    }
   return (
     <Card variant="outlined" sx={{ maxWidth: 300, m: "auto" }}>
       <IngredientPicture
@@ -31,7 +36,7 @@ export const IngredientCard = (
         <Typography>{`${props.value} ${getUnit(
           props,
           props.value
-        )}`}</Typography>
+        )}${weight}`}</Typography>
       </ValueEditor>
     </Card>
   );

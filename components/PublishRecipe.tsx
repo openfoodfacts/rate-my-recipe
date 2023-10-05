@@ -100,7 +100,7 @@ const PublishRecipe = () => {
   }
   // Display the publish button only if we have at least one ingredient
   // and a Nutri-Score computed
-  if ((currentIngredients.length > 0)  && (currentNutriscore !== undefined)) {
+  if ((currentIngredients.length > 0)  && (currentNutriscore !== undefined) && (currentNutriscore !== "")) {
     return (
       <Button
         variant="solid"

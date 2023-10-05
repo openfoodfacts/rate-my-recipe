@@ -14,7 +14,7 @@ export const AppBarContainer = ({ children }: AppBarContainerProps) => {
       sx={(theme) => ({
         width: "100%",
         height: "54px",
-        ...theme.typography.h5,
+        ...theme.typography.h4,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
