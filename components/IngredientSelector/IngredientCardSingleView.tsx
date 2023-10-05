@@ -31,7 +31,7 @@ export function IngredientCardSingleView({
 
   // If the weight is not per g, we will display an equivalence
   var weight = "";
-  if (quantity_default_weight_per_unit !== undefined) {
+  if (weightPerUnit !== undefined) {
     weight = " (" + (quantityValue! * quantity_default_weight_per_unit) + " g)";
   }
   
