@@ -1,10 +1,10 @@
 import * as React from "react";
 import { CardContent, Input, Typography } from "@mui/joy";
-import { ValueEditor } from "../shared/molecules/ValueEditor";
 import { ChangeEvent } from "react";
 import { ImagePlaceholder } from "@/components/shared/atoms/ImagePlaceholder";
 import Card from "@mui/joy/Card";
-import { CardMedia } from "@mui/material";
+import { ValueEditor } from "@/components/shared/molecules/ValueEditor";
+import ResponsiveImage from "@/components/shared/atoms/ResponsiveImage";
 
 interface QuantityCardProps {
   onIncrement(): void;
@@ -17,6 +17,7 @@ interface QuantityCardProps {
   step?: number;
   weightPerUnit?: number;
 }
+
 export function IngredientCardSingleView({
   onIncrement,
   onDecrement,
@@ -53,10 +54,10 @@ export function IngredientCardSingleView({
         </Typography>
       </CardContent>
       {imgSrc ? (
-        <CardMedia
-          component="img"
-          height={"30%"}
-          image={imgSrc || ""}
+        <ResponsiveImage
+          minHeight={100}
+          maxHeight={150}
+          src={imgSrc || ""}
           alt={title}
         />
       ) : (

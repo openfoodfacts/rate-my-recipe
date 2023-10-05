@@ -1,6 +1,6 @@
-import Typography from "@mui/joy/Typography";
-import AspectRatio from "@mui/joy/AspectRatio";
 import * as React from "react";
+import Typography from "@mui/joy/Typography";
+import ResponsiveImage from "@/components/shared/atoms/ResponsiveImage";
 
 interface IngredientPictureProps {
   ingredientName: string | undefined;
@@ -18,14 +18,14 @@ export const IngredientPicture = ({
       </Typography>
       {/* <Typography level="body2">({props.quantity_name})</Typography> */}
 
-      <AspectRatio
-        minHeight="150px"
-        maxHeight="300px"
+      <ResponsiveImage
+        minHeight="50px"
+        maxHeight="150px"
         objectFit="contain"
         sx={{ my: 1 }}
-      >
-        <img src={imageUrl} loading="lazy" alt="" />
-      </AspectRatio>
+        src={imageUrl}
+        alt=""
+      />
     </>
   );
 };
