@@ -7,7 +7,8 @@
         "chicken",
         "beef",
         "lamb",
-        "white-fish"
+        "white-fish",
+        "egg"
       ]
     },
     "vegetables": {
@@ -22,6 +23,7 @@
         "green-cabbage",
         "courgettes",
         "spinach",
+        "belgian-endive",
         "onions",
         "green-chili-pepper",
         "red-chili-pepper",
@@ -56,6 +58,7 @@
         "rapeseed-oil",
         "sunflower-oil",
         "butter",
+        "salted-butter",
         "cream"
       ]
     },
@@ -65,10 +68,12 @@
       "ingredients": [
         "water",
         "lemon-juice",
+        "orange juice",
         "coconut-milk",
         "vinegar",
         "white-wine",
-        "red-wine"
+        "red-wine",
+        "soy-sauce"
       ]
     },
     "spices-condiments": {
@@ -95,7 +100,8 @@
         "paprika",
         "ras-el-hanout",
         "concentrated-tomato",
-        "peanut-butter"
+        "peanut-butter",
+        "tahini"
       ]
     },
     "fresh-herbs": {
@@ -107,6 +113,16 @@
         "mint",
         "green-onions",
         "parsley"
+      ]
+    },
+    "pastries": {
+      "category_name": "Pâtisserie",
+      "category_id": "pastries",
+      "ingredients": [
+        "wheat-flour",
+        "dark-chocolate",
+        "milk-chocolate",
+        "sugar"
       ]
     }
   },
@@ -148,6 +164,14 @@
       "category_id": "meat-fish-eggs",
       "quantities": [
         "white-fish"
+      ]
+    },
+    "egg": {
+      "ingredient_name": "Oeuf",
+      "ingredient_id": "egg",
+      "category_id": "meat-fish-eggs",
+      "quantities": [
+        "egg"
       ]
     },
     "eggplant": {
@@ -212,6 +236,14 @@
       "category_id": "vegetables",
       "quantities": [
         "spinach"
+      ]
+    },
+    "belgian-endive": {
+      "ingredient_name": "Endives",
+      "ingredient_id": "belgian-endive",
+      "category_id": "vegetables",
+      "quantities": [
+        "belgian-endive"
       ]
     },
     "onions": {
@@ -313,7 +345,7 @@
     "wheat-flour": {
       "ingredient_name": "Farine de blé",
       "ingredient_id": "wheat-flour",
-      "category_id": "potatoes-legumes-cereals",
+      "category_id": "pastries",
       "quantities": [
         "wheat-flour"
       ]
@@ -376,11 +408,19 @@
       ]
     },
     "butter": {
-      "ingredient_name": "Beurre",
+      "ingredient_name": "Beurre doux",
       "ingredient_id": "butter",
       "category_id": "fats",
       "quantities": [
         "butter"
+      ]
+    },
+    "salted-butter": {
+      "ingredient_name": "Beurre demi-sel",
+      "ingredient_id": "salted-butter",
+      "category_id": "fats",
+      "quantities": [
+        "salted-butter"
       ]
     },
     "cream": {
@@ -405,6 +445,14 @@
       "category_id": "liquids",
       "quantities": [
         "lemon-juice"
+      ]
+    },
+    "orange juice": {
+      "ingredient_name": "Jus d'orange",
+      "ingredient_id": "orange juice",
+      "category_id": "liquids",
+      "quantities": [
+        "orange juice"
       ]
     },
     "coconut-milk": {
@@ -439,6 +487,14 @@
         "red-wine"
       ]
     },
+    "soy-sauce": {
+      "ingredient_name": "Sauce soja",
+      "ingredient_id": "soy-sauce",
+      "category_id": "liquids",
+      "quantities": [
+        "soy-sauce"
+      ]
+    },
     "salt": {
       "ingredient_name": "Sel",
       "ingredient_id": "salt",
@@ -458,7 +514,7 @@
     "sugar": {
       "ingredient_name": "Sucre",
       "ingredient_id": "sugar",
-      "category_id": "spices-condiments",
+      "category_id": "pastries",
       "quantities": [
         "sugar"
       ]
@@ -607,6 +663,14 @@
         "peanut-butter.tbsp"
       ]
     },
+    "tahini": {
+      "ingredient_name": "Tahini",
+      "ingredient_id": "tahini",
+      "category_id": "spices-condiments",
+      "quantities": [
+        "tahini.tbsp"
+      ]
+    },
     "basil": {
       "ingredient_name": "Basilic",
       "ingredient_id": "basil",
@@ -645,6 +709,22 @@
       "category_id": "fresh-herbs",
       "quantities": [
         "parsley.unit"
+      ]
+    },
+    "dark-chocolate": {
+      "ingredient_name": "Chocolat noir",
+      "ingredient_id": "dark-chocolate",
+      "category_id": "pastries",
+      "quantities": [
+        "dark-chocolate"
+      ]
+    },
+    "milk-chocolate": {
+      "ingredient_name": "Chocolat au lait",
+      "ingredient_id": "milk-chocolate",
+      "category_id": "pastries",
+      "quantities": [
+        "milk-chocolate"
       ]
     }
   },
@@ -755,6 +835,20 @@
       "ingredient_id": "white-fish",
       "ingredient_name": "Poisson blanc"
     },
+    "egg": {
+      "quantity_name_plural": "oeufs",
+      "quantity_name_singular": "oeuf",
+      "quantity_ingredient_name": "Oeufs",
+      "quantity_default_weight_per_unit": 60,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg",
+      "quantity_id": "egg",
+      "quantity_unit": "g",
+      "quantity_step": 1,
+      "category_id": "meat-fish-eggs",
+      "ingredient_id": "egg",
+      "ingredient_name": "Oeuf"
+    },
     "eggplant": {
       "quantity_default_weight": 500,
       "quantity_step": 100,
@@ -858,6 +952,17 @@
       "category_id": "vegetables",
       "ingredient_id": "spinach",
       "ingredient_name": "Epinard"
+    },
+    "belgian-endive": {
+      "quantity_default_weight": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/376/009/595/6527/front_fr.12.400.jpg",
+      "quantity_id": "belgian-endive",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Endives",
+      "quantity_step": 1,
+      "category_id": "vegetables",
+      "ingredient_id": "belgian-endive",
+      "ingredient_name": "Endives"
     },
     "onions.unit": {
       "quantity_name_plural": "oignons",
@@ -1002,7 +1107,7 @@
       "quantity_id": "wheat-flour",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Farine de blé",
-      "category_id": "potatoes-legumes-cereals",
+      "category_id": "pastries",
       "ingredient_id": "wheat-flour",
       "ingredient_name": "Farine de blé"
     },
@@ -1101,10 +1206,21 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/315/525/120/5500/front_fr.181.400.jpg",
       "quantity_id": "butter",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Beurre",
+      "quantity_ingredient_name": "Beurre doux",
       "category_id": "fats",
       "ingredient_id": "butter",
-      "ingredient_name": "Beurre"
+      "ingredient_name": "Beurre doux"
+    },
+    "salted-butter": {
+      "quantity_default_weight": 50,
+      "quantity_step": 25,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/341/229/001/5997/front_fr.75.400.jpg",
+      "quantity_id": "salted-butter",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Beurre demi-sel",
+      "category_id": "fats",
+      "ingredient_id": "salted-butter",
+      "ingredient_name": "Beurre demi-sel"
     },
     "cream": {
       "quantity_unit": "ml",
@@ -1138,6 +1254,17 @@
       "category_id": "liquids",
       "ingredient_id": "lemon-juice",
       "ingredient_name": "Jus de citron"
+    },
+    "orange juice": {
+      "quantity_unit": "cl",
+      "quantity_default_weight": 10,
+      "quantity_step": 10,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/350/211/000/9449/front_fr.134.400.jpg",
+      "quantity_id": "orange juice",
+      "quantity_ingredient_name": "Jus d'orange",
+      "category_id": "liquids",
+      "ingredient_id": "orange juice",
+      "ingredient_name": "Jus d'orange"
     },
     "coconut-milk": {
       "quantity_unit": "ml",
@@ -1183,11 +1310,22 @@
       "ingredient_id": "red-wine",
       "ingredient_name": "Vin rouge"
     },
+    "soy-sauce": {
+      "quantity_unit": "cl",
+      "quantity_default_weight": 5,
+      "quantity_step": 5,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/400/235/965/4404/front_fr.61.400.jpg",
+      "quantity_id": "soy-sauce",
+      "quantity_ingredient_name": "Sauce soja",
+      "category_id": "liquids",
+      "ingredient_id": "soy-sauce",
+      "ingredient_name": "Sauce soja"
+    },
     "salt.unit": {
       "quantity_name_plural": "pincées",
       "quantity_name_singular": "pincée",
       "quantity_unit_id": "unit",
-      "quantity_default_weight_per_unit": 0.5,
+      "quantity_default_weight_per_unit": 0,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg",
       "quantity_id": "salt.unit",
@@ -1202,7 +1340,7 @@
       "quantity_name_plural": "pincées",
       "quantity_name_singular": "pincée",
       "quantity_unit_id": "unit",
-      "quantity_default_weight_per_unit": 0.5,
+      "quantity_default_weight_per_unit": 0,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg",
       "quantity_id": "pepper.unit",
@@ -1220,7 +1358,7 @@
       "quantity_id": "sugar",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Sucre",
-      "category_id": "spices-condiments",
+      "category_id": "pastries",
       "ingredient_id": "sugar",
       "ingredient_name": "Sucre"
     },
@@ -1487,6 +1625,20 @@
       "ingredient_id": "peanut-butter",
       "ingredient_name": "Pâte d'arachide"
     },
+    "tahini.tbsp": {
+      "quantity_name_plural": "cuillères à soupe",
+      "quantity_name_singular": "cuillère à soupe",
+      "quantity_unit_id": "tbsp",
+      "quantity_default_weight_per_unit": 15,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/541/178/803/7792/front_fr.41.400.jpg",
+      "quantity_id": "tahini.tbsp",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Tahini",
+      "quantity_step": 1,
+      "category_id": "spices-condiments",
+      "ingredient_id": "tahini",
+      "ingredient_name": "Tahini"
+    },
     "basil.unit": {
       "quantity_name_plural": "bottes",
       "quantity_name_singular": "botte",
@@ -1556,6 +1708,28 @@
       "category_id": "fresh-herbs",
       "ingredient_id": "parsley",
       "ingredient_name": "Persil"
+    },
+    "dark-chocolate": {
+      "quantity_default_weight": 25,
+      "quantity_step": 25,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/306/994/232/0901/front_fr.97.400.jpg",
+      "quantity_id": "dark-chocolate",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Chocolat noir",
+      "category_id": "pastries",
+      "ingredient_id": "dark-chocolate",
+      "ingredient_name": "Chocolat noir"
+    },
+    "milk-chocolate": {
+      "quantity_default_weight": 25,
+      "quantity_step": 25,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg",
+      "quantity_id": "milk-chocolate",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Chocolat au lait",
+      "category_id": "pastries",
+      "ingredient_id": "milk-chocolate",
+      "ingredient_name": "Chocolat au lait"
     }
   }
 }
