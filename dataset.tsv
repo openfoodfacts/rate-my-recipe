@@ -18,6 +18,13 @@ Viandes, poissons, oeufs	meat-fish-eggs
 			Oeuf	egg														
 									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
 																		
+																		
+Fruits	fruits																	
+			Pomme	apple														
+									pommes	pomme		unit			150	1		https://images.openfoodfacts.org/images/products/370/047/661/1638/front_fr.39.400.jpg
+			Pomme verte	green-apple														
+									pommes	pomme		unit			150	1		https://images.openfoodfacts.org/images/products/405/648/918/6267/front_fr.15.400.jpg
+																		
 Légumes	vegetables																	
 			Aubergine	eggplant														
 														500			100	https://images.openfoodfacts.org/images/products/358/805/000/3815/front_fr.4.400.jpg
@@ -95,6 +102,8 @@ Liquides	liquids
 													cl	5			5	https://images.openfoodfacts.org/images/products/325/622/297/3180/front_fr.38.400.jpg
 			Jus d'orange	orange juice														
 													cl	10			10	https://images.openfoodfacts.org/images/products/350/211/000/9449/front_fr.134.400.jpg
+			Lait demi-écrémé	semi-skimmed-milk														
+													ml	400			100	https://images.openfoodfacts.org/images/products/359/671/047/8941/front_fr.39.400.jpg
 			Lait de coco	coconut-milk														
 													ml	400			100	https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.10.400.jpg
 			Vinaigre	vinegar														
@@ -109,6 +118,8 @@ Liquides	liquids
 Epices et condiments	spices-condiments																	
 			Sel	salt														
 									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg
+			Fleur de sel	fleur-de-sel														
+									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg
 			Poivre	pepper														
 									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg
 			Sucre	sugar														
@@ -119,8 +130,12 @@ Epices et condiments	spices-condiments
 									cubes	cube		unit			10	1		https://images.openfoodfacts.org/images/products/761/303/368/7983/front_en.239.200.jpg
 			Cannelle	cinnamon														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/520/233/610/3539/front_fr.3.200.jpg
+			Citron confit	preserved-lemon														
+														20			10	https://images.openfoodfacts.org/images/products/359/671/044/0795/front_fr.30.400.jpg
 			Curcuma	curcuma														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/405/648/902/1773/front_fr.12.200.jpg
+			Cumin	cumin														
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/316/629/153/1108/front_fr.64.400.jpg
 			Curry	curry														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/20249939/front_fr.25.400.jpg
 			Gingembre	ginger														
@@ -151,6 +166,8 @@ Epices et condiments	spices-condiments
 									cuillères à soupe	cuillère à soupe		tbsp			15			https://images.openfoodfacts.org/images/products/370/001/950/7152/front_fr.40.400.jpg
 			Tahini	tahini														
 									cuillères à soupe	cuillère à soupe		tbsp			15			https://images.openfoodfacts.org/images/products/541/178/803/7792/front_fr.41.400.jpg
+			Zaatar	zaatar														
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/358/028/808/2532/front_fr.10.400.jpg
 Herbes fraîches	fresh-herbs																	
 			Basilic	basil														
 									bottes	botte		unit			25			https://images.openfoodfacts.org/images/products/800/520/150/7886/front_fr.3.400.jpg
@@ -168,6 +185,28 @@ Pâtisserie	pastries
 			Chocolat noir	dark-chocolate														
 														25			25	https://images.openfoodfacts.org/images/products/306/994/232/0901/front_fr.97.400.jpg
 			Chocolat au lait	milk-chocolate														
+														25			25	https://images.openfoodfacts.org/images/products/859/389/375/7653/front_fr.178.400.jpg
+			Chocolat blanc	white-chocolate														
 														25			25	https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg
 			Sucre	sugar														
 														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+			Sucre de canne	cane-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg
+			Sucre glace	icing-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+			Oeuf	egg														
+									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Blanc d'oeuf	egg-white														
+									oeufs	oeuf	Oeufs				30	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Jaune d'oeuf	egg-yolk														
+									oeufs	oeuf	Oeufs				20	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Galettes bretonnes	shortbread-cookies														
+									galettes	galette	Galettes				8	8	1	https://images.openfoodfacts.org/images/products/325/456/002/8715/front_fr.47.400.jpg
+			Poudre d'amande	almond-powder														
+														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+			Feta	feta														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg
+			Petit suisse	petit-suisse														
+														100			50	https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg
+			Saint Moret	saint-moret														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg

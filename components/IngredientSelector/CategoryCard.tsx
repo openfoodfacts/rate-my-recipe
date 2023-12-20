@@ -1,5 +1,6 @@
 import { GenericCard } from "@/components/shared/molecules/GenericCard";
 import { MeatFishEggs } from "@/components/IngredientSelector/icons/MeatFishEggs";
+import { Fruits } from "@/components/IngredientSelector/icons/Fruits";
 import { Vegetables } from "@/components/IngredientSelector/icons/Vegetables";
 import { PotatoesLegumesCereals } from "@/components/IngredientSelector/icons/PotatoesLegumesCereals";
 import { Fats } from "@/components/IngredientSelector/icons/Fats";
@@ -23,6 +24,7 @@ export function CategoryCard({
     [key: string]: JSX.Element;
   } = {
     "meat-fish-eggs": <MeatFishEggs />,
+    fruits: <Fruits />,    
     vegetables: <Vegetables />,
     "potatoes-legumes-cereals": <PotatoesLegumesCereals />,
     fats: <Fats />,

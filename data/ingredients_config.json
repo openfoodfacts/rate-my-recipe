@@ -11,6 +11,14 @@
         "egg"
       ]
     },
+    "fruits": {
+      "category_name": "Fruits",
+      "category_id": "fruits",
+      "ingredients": [
+        "apple",
+        "green-apple"
+      ]
+    },
     "vegetables": {
       "category_name": "Légumes",
       "category_id": "vegetables",
@@ -69,6 +77,7 @@
         "water",
         "lemon-juice",
         "orange juice",
+        "semi-skimmed-milk",
         "coconut-milk",
         "vinegar",
         "white-wine",
@@ -81,12 +90,15 @@
       "category_id": "spices-condiments",
       "ingredients": [
         "salt",
+        "fleur-de-sel",
         "pepper",
         "sugar",
         "garlic",
         "beef-stock",
         "cinnamon",
+        "preserved-lemon",
         "curcuma",
+        "cumin",
         "curry",
         "ginger",
         "pumpkin-seeds",
@@ -101,7 +113,8 @@
         "ras-el-hanout",
         "concentrated-tomato",
         "peanut-butter",
-        "tahini"
+        "tahini",
+        "zaatar"
       ]
     },
     "fresh-herbs": {
@@ -122,7 +135,18 @@
         "wheat-flour",
         "dark-chocolate",
         "milk-chocolate",
-        "sugar"
+        "white-chocolate",
+        "sugar",
+        "cane-sugar",
+        "icing-sugar",
+        "egg",
+        "egg-white",
+        "egg-yolk",
+        "shortbread-cookies",
+        "almond-powder",
+        "feta",
+        "petit-suisse",
+        "saint-moret"
       ]
     }
   },
@@ -169,9 +193,25 @@
     "egg": {
       "ingredient_name": "Oeuf",
       "ingredient_id": "egg",
-      "category_id": "meat-fish-eggs",
+      "category_id": "pastries",
       "quantities": [
         "egg"
+      ]
+    },
+    "apple": {
+      "ingredient_name": "Pomme",
+      "ingredient_id": "apple",
+      "category_id": "fruits",
+      "quantities": [
+        "apple.unit"
+      ]
+    },
+    "green-apple": {
+      "ingredient_name": "Pomme verte",
+      "ingredient_id": "green-apple",
+      "category_id": "fruits",
+      "quantities": [
+        "green-apple.unit"
       ]
     },
     "eggplant": {
@@ -455,6 +495,14 @@
         "orange juice"
       ]
     },
+    "semi-skimmed-milk": {
+      "ingredient_name": "Lait demi-écrémé",
+      "ingredient_id": "semi-skimmed-milk",
+      "category_id": "liquids",
+      "quantities": [
+        "semi-skimmed-milk"
+      ]
+    },
     "coconut-milk": {
       "ingredient_name": "Lait de coco",
       "ingredient_id": "coconut-milk",
@@ -503,6 +551,14 @@
         "salt.unit"
       ]
     },
+    "fleur-de-sel": {
+      "ingredient_name": "Fleur de sel",
+      "ingredient_id": "fleur-de-sel",
+      "category_id": "spices-condiments",
+      "quantities": [
+        "fleur-de-sel.unit"
+      ]
+    },
     "pepper": {
       "ingredient_name": "Poivre",
       "ingredient_id": "pepper",
@@ -543,12 +599,28 @@
         "cinnamon.tsp"
       ]
     },
+    "preserved-lemon": {
+      "ingredient_name": "Citron confit",
+      "ingredient_id": "preserved-lemon",
+      "category_id": "spices-condiments",
+      "quantities": [
+        "preserved-lemon"
+      ]
+    },
     "curcuma": {
       "ingredient_name": "Curcuma",
       "ingredient_id": "curcuma",
       "category_id": "spices-condiments",
       "quantities": [
         "curcuma.tsp"
+      ]
+    },
+    "cumin": {
+      "ingredient_name": "Cumin",
+      "ingredient_id": "cumin",
+      "category_id": "spices-condiments",
+      "quantities": [
+        "cumin.tsp"
       ]
     },
     "curry": {
@@ -671,6 +743,14 @@
         "tahini.tbsp"
       ]
     },
+    "zaatar": {
+      "ingredient_name": "Zaatar",
+      "ingredient_id": "zaatar",
+      "category_id": "spices-condiments",
+      "quantities": [
+        "zaatar.tsp"
+      ]
+    },
     "basil": {
       "ingredient_name": "Basilic",
       "ingredient_id": "basil",
@@ -725,6 +805,86 @@
       "category_id": "pastries",
       "quantities": [
         "milk-chocolate"
+      ]
+    },
+    "white-chocolate": {
+      "ingredient_name": "Chocolat blanc",
+      "ingredient_id": "white-chocolate",
+      "category_id": "pastries",
+      "quantities": [
+        "white-chocolate"
+      ]
+    },
+    "cane-sugar": {
+      "ingredient_name": "Sucre de canne",
+      "ingredient_id": "cane-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "cane-sugar"
+      ]
+    },
+    "icing-sugar": {
+      "ingredient_name": "Sucre glace",
+      "ingredient_id": "icing-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "icing-sugar"
+      ]
+    },
+    "egg-white": {
+      "ingredient_name": "Blanc d'oeuf",
+      "ingredient_id": "egg-white",
+      "category_id": "pastries",
+      "quantities": [
+        "egg-white"
+      ]
+    },
+    "egg-yolk": {
+      "ingredient_name": "Jaune d'oeuf",
+      "ingredient_id": "egg-yolk",
+      "category_id": "pastries",
+      "quantities": [
+        "egg-yolk"
+      ]
+    },
+    "shortbread-cookies": {
+      "ingredient_name": "Galettes bretonnes",
+      "ingredient_id": "shortbread-cookies",
+      "category_id": "pastries",
+      "quantities": [
+        "shortbread-cookies"
+      ]
+    },
+    "almond-powder": {
+      "ingredient_name": "Poudre d'amande",
+      "ingredient_id": "almond-powder",
+      "category_id": "pastries",
+      "quantities": [
+        "almond-powder"
+      ]
+    },
+    "feta": {
+      "ingredient_name": "Feta",
+      "ingredient_id": "feta",
+      "category_id": "pastries",
+      "quantities": [
+        "feta"
+      ]
+    },
+    "petit-suisse": {
+      "ingredient_name": "Petit suisse",
+      "ingredient_id": "petit-suisse",
+      "category_id": "pastries",
+      "quantities": [
+        "petit-suisse"
+      ]
+    },
+    "saint-moret": {
+      "ingredient_name": "Saint Moret",
+      "ingredient_id": "saint-moret",
+      "category_id": "pastries",
+      "quantities": [
+        "saint-moret"
       ]
     }
   },
@@ -845,9 +1005,39 @@
       "quantity_id": "egg",
       "quantity_unit": "g",
       "quantity_step": 1,
-      "category_id": "meat-fish-eggs",
+      "category_id": "pastries",
       "ingredient_id": "egg",
       "ingredient_name": "Oeuf"
+    },
+    "apple.unit": {
+      "quantity_name_plural": "pommes",
+      "quantity_name_singular": "pomme",
+      "quantity_unit_id": "unit",
+      "quantity_default_weight_per_unit": 150,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/047/661/1638/front_fr.39.400.jpg",
+      "quantity_id": "apple.unit",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Pomme",
+      "quantity_step": 1,
+      "category_id": "fruits",
+      "ingredient_id": "apple",
+      "ingredient_name": "Pomme"
+    },
+    "green-apple.unit": {
+      "quantity_name_plural": "pommes",
+      "quantity_name_singular": "pomme",
+      "quantity_unit_id": "unit",
+      "quantity_default_weight_per_unit": 150,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/405/648/918/6267/front_fr.15.400.jpg",
+      "quantity_id": "green-apple.unit",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Pomme verte",
+      "quantity_step": 1,
+      "category_id": "fruits",
+      "ingredient_id": "green-apple",
+      "ingredient_name": "Pomme verte"
     },
     "eggplant": {
       "quantity_default_weight": 500,
@@ -1266,6 +1456,17 @@
       "ingredient_id": "orange juice",
       "ingredient_name": "Jus d'orange"
     },
+    "semi-skimmed-milk": {
+      "quantity_unit": "ml",
+      "quantity_default_weight": 400,
+      "quantity_step": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/047/8941/front_fr.39.400.jpg",
+      "quantity_id": "semi-skimmed-milk",
+      "quantity_ingredient_name": "Lait demi-écrémé",
+      "category_id": "liquids",
+      "ingredient_id": "semi-skimmed-milk",
+      "ingredient_name": "Lait demi-écrémé"
+    },
     "coconut-milk": {
       "quantity_unit": "ml",
       "quantity_default_weight": 400,
@@ -1335,6 +1536,21 @@
       "category_id": "spices-condiments",
       "ingredient_id": "salt",
       "ingredient_name": "Sel"
+    },
+    "fleur-de-sel.unit": {
+      "quantity_name_plural": "pincées",
+      "quantity_name_singular": "pincée",
+      "quantity_unit_id": "unit",
+      "quantity_default_weight_per_unit": 0,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg",
+      "quantity_id": "fleur-de-sel.unit",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Fleur de sel",
+      "quantity_step": 1,
+      "category_id": "spices-condiments",
+      "ingredient_id": "fleur-de-sel",
+      "ingredient_name": "Fleur de sel"
     },
     "pepper.unit": {
       "quantity_name_plural": "pincées",
@@ -1407,6 +1623,17 @@
       "ingredient_id": "cinnamon",
       "ingredient_name": "Cannelle"
     },
+    "preserved-lemon": {
+      "quantity_default_weight": 20,
+      "quantity_step": 10,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/044/0795/front_fr.30.400.jpg",
+      "quantity_id": "preserved-lemon",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Citron confit",
+      "category_id": "spices-condiments",
+      "ingredient_id": "preserved-lemon",
+      "ingredient_name": "Citron confit"
+    },
     "curcuma.tsp": {
       "quantity_name_plural": "cuillères à café",
       "quantity_name_singular": "cuillère à café",
@@ -1421,6 +1648,21 @@
       "category_id": "spices-condiments",
       "ingredient_id": "curcuma",
       "ingredient_name": "Curcuma"
+    },
+    "cumin.tsp": {
+      "quantity_name_plural": "cuillères à café",
+      "quantity_name_singular": "cuillère à café",
+      "quantity_unit_id": "tsp",
+      "quantity_default_weight_per_unit": 5,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/629/153/1108/front_fr.64.400.jpg",
+      "quantity_id": "cumin.tsp",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Cumin",
+      "quantity_step": 1,
+      "category_id": "spices-condiments",
+      "ingredient_id": "cumin",
+      "ingredient_name": "Cumin"
     },
     "curry.tsp": {
       "quantity_name_plural": "cuillères à café",
@@ -1639,6 +1881,20 @@
       "ingredient_id": "tahini",
       "ingredient_name": "Tahini"
     },
+    "zaatar.tsp": {
+      "quantity_name_plural": "cuillères à café",
+      "quantity_name_singular": "cuillère à café",
+      "quantity_unit_id": "tsp",
+      "quantity_default_weight_per_unit": 5,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/358/028/808/2532/front_fr.10.400.jpg",
+      "quantity_id": "zaatar.tsp",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Zaatar",
+      "quantity_step": 1,
+      "category_id": "spices-condiments",
+      "ingredient_id": "zaatar",
+      "ingredient_name": "Zaatar"
+    },
     "basil.unit": {
       "quantity_name_plural": "bottes",
       "quantity_name_singular": "botte",
@@ -1723,13 +1979,132 @@
     "milk-chocolate": {
       "quantity_default_weight": 25,
       "quantity_step": 25,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/859/389/375/7653/front_fr.178.400.jpg",
       "quantity_id": "milk-chocolate",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Chocolat au lait",
       "category_id": "pastries",
       "ingredient_id": "milk-chocolate",
       "ingredient_name": "Chocolat au lait"
+    },
+    "white-chocolate": {
+      "quantity_default_weight": 25,
+      "quantity_step": 25,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg",
+      "quantity_id": "white-chocolate",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Chocolat blanc",
+      "category_id": "pastries",
+      "ingredient_id": "white-chocolate",
+      "ingredient_name": "Chocolat blanc"
+    },
+    "cane-sugar": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg",
+      "quantity_id": "cane-sugar",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Sucre de canne",
+      "category_id": "pastries",
+      "ingredient_id": "cane-sugar",
+      "ingredient_name": "Sucre de canne"
+    },
+    "icing-sugar": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg",
+      "quantity_id": "icing-sugar",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Sucre glace",
+      "category_id": "pastries",
+      "ingredient_id": "icing-sugar",
+      "ingredient_name": "Sucre glace"
+    },
+    "egg-white": {
+      "quantity_name_plural": "oeufs",
+      "quantity_name_singular": "oeuf",
+      "quantity_ingredient_name": "Oeufs",
+      "quantity_default_weight_per_unit": 30,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg",
+      "quantity_id": "egg-white",
+      "quantity_unit": "g",
+      "quantity_step": 1,
+      "category_id": "pastries",
+      "ingredient_id": "egg-white",
+      "ingredient_name": "Blanc d'oeuf"
+    },
+    "egg-yolk": {
+      "quantity_name_plural": "oeufs",
+      "quantity_name_singular": "oeuf",
+      "quantity_ingredient_name": "Oeufs",
+      "quantity_default_weight_per_unit": 20,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg",
+      "quantity_id": "egg-yolk",
+      "quantity_unit": "g",
+      "quantity_step": 1,
+      "category_id": "pastries",
+      "ingredient_id": "egg-yolk",
+      "ingredient_name": "Jaune d'oeuf"
+    },
+    "shortbread-cookies": {
+      "quantity_name_plural": "galettes",
+      "quantity_name_singular": "galette",
+      "quantity_ingredient_name": "Galettes",
+      "quantity_default_weight_per_unit": 8,
+      "quantity_default_number_of_units": 8,
+      "quantity_step": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/456/002/8715/front_fr.47.400.jpg",
+      "quantity_id": "shortbread-cookies",
+      "quantity_unit": "g",
+      "category_id": "pastries",
+      "ingredient_id": "shortbread-cookies",
+      "ingredient_name": "Galettes bretonnes"
+    },
+    "almond-powder": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg",
+      "quantity_id": "almond-powder",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Poudre d'amande",
+      "category_id": "pastries",
+      "ingredient_id": "almond-powder",
+      "ingredient_name": "Poudre d'amande"
+    },
+    "feta": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg",
+      "quantity_id": "feta",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Feta",
+      "category_id": "pastries",
+      "ingredient_id": "feta",
+      "ingredient_name": "Feta"
+    },
+    "petit-suisse": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg",
+      "quantity_id": "petit-suisse",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Petit suisse",
+      "category_id": "pastries",
+      "ingredient_id": "petit-suisse",
+      "ingredient_name": "Petit suisse"
+    },
+    "saint-moret": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg",
+      "quantity_id": "saint-moret",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Saint Moret",
+      "category_id": "pastries",
+      "ingredient_id": "saint-moret",
+      "ingredient_name": "Saint Moret"
     }
   }
 }
