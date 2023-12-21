@@ -1001,7 +1001,7 @@
       "quantity_ingredient_name": "Oeufs",
       "quantity_default_weight_per_unit": 60,
       "quantity_default_number_of_units": 1,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg",
       "quantity_id": "egg",
       "quantity_unit": "g",
       "quantity_step": 1,
@@ -1570,7 +1570,7 @@
     "sugar": {
       "quantity_default_weight": 100,
       "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/371/4010/front_fr.38.200.jpg",
       "quantity_id": "sugar",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Sucre",
@@ -2001,7 +2001,7 @@
     "cane-sugar": {
       "quantity_default_weight": 100,
       "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/372/4019/front_fr.60.200.jpg",
       "quantity_id": "cane-sugar",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Sucre de canne",
