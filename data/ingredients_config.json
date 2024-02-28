@@ -25,8 +25,10 @@
       "ingredients": [
         "eggplant",
         "beetroot-cooked",
+        "butternut",
         "carrot",
         "celery-branch",
+        "pumpkin",
         "white-cabbage",
         "green-cabbage",
         "courgettes",
@@ -38,6 +40,7 @@
         "leek",
         "red-pepper",
         "green-pepper",
+        "giant-squash",
         "tomato",
         "tomato-pulp",
         "tomato-sauce"
@@ -139,6 +142,7 @@
         "sugar",
         "cane-sugar",
         "icing-sugar",
+        "vanilla-sugar",
         "egg",
         "egg-white",
         "egg-yolk",
@@ -230,6 +234,14 @@
         "beetroot-cooked"
       ]
     },
+    "butternut": {
+      "ingredient_name": "Butternut",
+      "ingredient_id": "butternut",
+      "category_id": "vegetables",
+      "quantities": [
+        "butternut"
+      ]
+    },
     "carrot": {
       "ingredient_name": "Carotte",
       "ingredient_id": "carrot",
@@ -244,6 +256,14 @@
       "category_id": "vegetables",
       "quantities": [
         "celery-branch.unit"
+      ]
+    },
+    "pumpkin": {
+      "ingredient_name": "Citrouille",
+      "ingredient_id": "pumpkin",
+      "category_id": "vegetables",
+      "quantities": [
+        "pumpkin.unit"
       ]
     },
     "white-cabbage": {
@@ -332,6 +352,14 @@
       "category_id": "vegetables",
       "quantities": [
         "green-pepper"
+      ]
+    },
+    "giant-squash": {
+      "ingredient_name": "Potiron",
+      "ingredient_id": "giant-squash",
+      "category_id": "vegetables",
+      "quantities": [
+        "giant-squash"
       ]
     },
     "tomato": {
@@ -831,6 +859,14 @@
         "icing-sugar"
       ]
     },
+    "vanilla-sugar": {
+      "ingredient_name": "Sucre vanillé",
+      "ingredient_id": "vanilla-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "vanilla-sugar"
+      ]
+    },
     "egg-white": {
       "ingredient_name": "Blanc d'oeuf",
       "ingredient_id": "egg-white",
@@ -1061,6 +1097,19 @@
       "ingredient_id": "beetroot-cooked",
       "ingredient_name": "Betterave cuite"
     },
+    "butternut": {
+      "quantity_name_plural": "Butternut",
+      "quantity_name_singular": "Butternuts",
+      "quantity_default_weight": 100,
+      "quantity_step": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/841/227/611/2905/front_fr.4.200.jpg",
+      "quantity_id": "butternut",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Butternut",
+      "category_id": "vegetables",
+      "ingredient_id": "butternut",
+      "ingredient_name": "Butternut"
+    },
     "carrot": {
       "quantity_default_weight": 500,
       "quantity_step": 100,
@@ -1086,6 +1135,21 @@
       "category_id": "vegetables",
       "ingredient_id": "celery-branch",
       "ingredient_name": "Céleri branche"
+    },
+    "pumpkin.unit": {
+      "quantity_name_plural": "citrouilles",
+      "quantity_name_singular": "citrouille",
+      "quantity_unit_id": "unit",
+      "quantity_default_weight_per_unit": 100,
+      "quantity_default_number_of_units": 2,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/377/002/583/4443/front_fr.3.400.jpg",
+      "quantity_id": "pumpkin.unit",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Citrouille",
+      "quantity_step": 1,
+      "category_id": "vegetables",
+      "ingredient_id": "pumpkin",
+      "ingredient_name": "Citrouille"
     },
     "white-cabbage.unit": {
       "quantity_name_plural": "choux",
@@ -1223,6 +1287,19 @@
       "category_id": "vegetables",
       "ingredient_id": "green-pepper",
       "ingredient_name": "Poivron vert"
+    },
+    "giant-squash": {
+      "quantity_name_plural": "potirons",
+      "quantity_name_singular": "potiron",
+      "quantity_default_weight": 100,
+      "quantity_step": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/280/418/601/6071/front_fr.4.400.jpg",
+      "quantity_id": "giant-squash",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Potiron",
+      "category_id": "vegetables",
+      "ingredient_id": "giant-squash",
+      "ingredient_name": "Potiron"
     },
     "tomato": {
       "quantity_default_weight": 500,
@@ -2012,13 +2089,24 @@
     "icing-sugar": {
       "quantity_default_weight": 100,
       "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg",
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg",
       "quantity_id": "icing-sugar",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Sucre glace",
       "category_id": "pastries",
       "ingredient_id": "icing-sugar",
       "ingredient_name": "Sucre glace"
+    },
+    "vanilla-sugar": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/872/270/003/0119/front_fr.73.400.jpg",
+      "quantity_id": "vanilla-sugar",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Sucre vanillé",
+      "category_id": "pastries",
+      "ingredient_id": "vanilla-sugar",
+      "ingredient_name": "Sucre vanillé"
     },
     "egg-white": {
       "quantity_name_plural": "oeufs",

@@ -1,6 +1,8 @@
 Notes:											ciqual_food_code:en:							
 Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées											ciqual_food_name:fr:							
 																		
+outil de test des ingrédients pour voir s'ils existent dans Open Food Facts : https://fr.openfoodfacts.org/cgi/test_ingredients_analysis.pl?ingredients_text=%0D%0Achampignons&type=add&action=process&submit=Envoyer	permet de trouver l'identifiant en:vanilla-sugar -> vanilla-sugar dans le champs ingredient id	pour les images, chercher un produit																
+																		
 Ingredient category name	Ingredient category id	Description	Ingredient name	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed plural	Quantity displayed singular	Quantity ingredient name	Quantity unit id	Quantity unit	Default weight	Weight per unit	Default number of units	Quantity step	image_url
 Viandes, poissons, oeufs	meat-fish-eggs																	
 			Poulet	chicken	Le mafé de poulet est l'un des plats les plus populaires d'Afrique.		Le poulet est une viande blanche peu calorique.											
@@ -30,10 +32,14 @@ Légumes	vegetables
 														500			100	https://images.openfoodfacts.org/images/products/358/805/000/3815/front_fr.4.400.jpg
 			Betterave cuite	beetroot-cooked														
 														500			100	https://images.openfoodfacts.org/images/products/328/144/000/0035/front_fr.15.400.jpg
+			Butternut 	butternut 														
+									Butternut	Butternuts				100			100	https://images.openfoodfacts.org/images/products/841/227/611/2905/front_fr.4.200.jpg
 			Carotte	carrot														
 														500			100	https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg
 			Céleri branche	celery-branch														
 									branches	branche		unit			100	2		https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg
+			Citrouille	pumpkin														
+									citrouilles	citrouille		unit			100	2		https://images.openfoodfacts.org/images/products/377/002/583/4443/front_fr.3.400.jpg
 			Chou blanc	white-cabbage														
 									choux	chou		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
 			Chou vert	green-cabbage														
@@ -56,6 +62,8 @@ Légumes	vegetables
 														500			100	https://images.openfoodfacts.org/images/products/843/517/701/1863/front_fr.3.400.jpg
 			Poivron vert	green-pepper														
 														500			100	https://images.openfoodfacts.org/images/products/843/700/678/8915/front_fr.4.400.jpg
+			Potiron	giant-squash														
+									potirons	potiron				100			100	https://images.openfoodfacts.org/images/products/280/418/601/6071/front_fr.4.400.jpg
 			Tomate	tomato														
 														500			100	https://images.openfoodfacts.org/images/products/020/969/003/0506/front_fr.9.400.jpg
 			Pulpe de tomate	tomato-pulp														
@@ -194,6 +202,8 @@ Pâtisserie	pastries
 														100			50	https://images.openfoodfacts.org/images/products/316/543/372/4019/front_fr.60.200.jpg
 			Sucre glace	icing-sugar														
 														100			50	https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg
+			Sucre vanillé	vanilla-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/872/270/003/0119/front_fr.73.400.jpg
 			Oeuf	egg														
 									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
 			Blanc d'oeuf	egg-white														
