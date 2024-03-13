@@ -3,13 +3,7 @@
     "meat-fish-eggs": {
       "category_name": "Viandes, poissons, oeufs",
       "category_id": "meat-fish-eggs",
-      "ingredients": [
-        "chicken",
-        "beef",
-        "lamb",
-        "white-fish",
-        "egg"
-      ]
+      "ingredients": ["chicken", "beef", "lamb", "white-fish", "egg"]
     },
     "vegetables": {
       "category_name": "Légumes",
@@ -107,13 +101,7 @@
     "fresh-herbs": {
       "category_name": "Herbes fraîches",
       "category_id": "fresh-herbs",
-      "ingredients": [
-        "basil",
-        "coriander",
-        "mint",
-        "green-onions",
-        "parsley"
-      ]
+      "ingredients": ["basil", "coriander", "mint", "green-onions", "parsley"]
     },
     "pastries": {
       "category_name": "Pâtisserie",
@@ -144,588 +132,440 @@
       "ingredient_id": "beef",
       "ingredient_environment": "Le boeuf a un fort impact environnemental.",
       "category_id": "meat-fish-eggs",
-      "quantities": [
-        "beef.meat",
-        "beef.ground-meat"
-      ]
+      "quantities": ["beef.meat", "beef.ground-meat"]
     },
     "lamb": {
       "ingredient_name": "Agneau",
       "ingredient_id": "lamb",
       "category_id": "meat-fish-eggs",
-      "quantities": [
-        "lamb",
-        "lamb.chop-unit"
-      ]
+      "quantities": ["lamb", "lamb.chop-unit"]
     },
     "white-fish": {
       "ingredient_name": "Poisson blanc",
       "ingredient_id": "white-fish",
       "category_id": "meat-fish-eggs",
-      "quantities": [
-        "white-fish"
-      ]
+      "quantities": ["white-fish"]
     },
     "egg": {
       "ingredient_name": "Oeuf",
       "ingredient_id": "egg",
       "category_id": "meat-fish-eggs",
-      "quantities": [
-        "egg"
-      ]
+      "quantities": ["egg"]
     },
     "eggplant": {
       "ingredient_name": "Aubergine",
       "ingredient_id": "eggplant",
       "category_id": "vegetables",
-      "quantities": [
-        "eggplant"
-      ]
+      "quantities": ["eggplant"]
     },
     "beetroot-cooked": {
       "ingredient_name": "Betterave cuite",
       "ingredient_id": "beetroot-cooked",
       "category_id": "vegetables",
-      "quantities": [
-        "beetroot-cooked"
-      ]
+      "quantities": ["beetroot-cooked"]
     },
     "carrot": {
       "ingredient_name": "Carotte",
       "ingredient_id": "carrot",
       "category_id": "vegetables",
-      "quantities": [
-        "carrot"
-      ]
+      "quantities": ["carrot"]
     },
     "celery-branch": {
       "ingredient_name": "Céleri branche",
       "ingredient_id": "celery-branch",
       "category_id": "vegetables",
-      "quantities": [
-        "celery-branch.unit"
-      ]
+      "quantities": ["celery-branch.unit"]
     },
     "white-cabbage": {
       "ingredient_name": "Chou blanc",
       "ingredient_id": "white-cabbage",
       "category_id": "vegetables",
-      "quantities": [
-        "white-cabbage.unit"
-      ]
+      "quantities": ["white-cabbage.unit"]
     },
     "green-cabbage": {
       "ingredient_name": "Chou vert",
       "ingredient_id": "green-cabbage",
       "category_id": "vegetables",
-      "quantities": [
-        "green-cabbage.unit"
-      ]
+      "quantities": ["green-cabbage.unit"]
     },
     "courgettes": {
       "ingredient_name": "Courgette",
       "ingredient_id": "courgettes",
       "category_id": "vegetables",
-      "quantities": [
-        "courgettes.unit"
-      ]
+      "quantities": ["courgettes.unit"]
     },
     "spinach": {
       "ingredient_name": "Epinard",
       "ingredient_id": "spinach",
       "category_id": "vegetables",
-      "quantities": [
-        "spinach"
-      ]
+      "quantities": ["spinach"]
     },
     "belgian-endive": {
       "ingredient_name": "Endives",
       "ingredient_id": "belgian-endive",
       "category_id": "vegetables",
-      "quantities": [
-        "belgian-endive"
-      ]
+      "quantities": ["belgian-endive"]
     },
     "onions": {
       "ingredient_name": "Oignon",
       "ingredient_id": "onions",
       "category_id": "vegetables",
-      "quantities": [
-        "onions.unit"
-      ]
+      "quantities": ["onions.unit"]
     },
     "green-chili-pepper": {
       "ingredient_name": "Piment vert",
       "ingredient_id": "green-chili-pepper",
       "category_id": "vegetables",
-      "quantities": [
-        "green-chili-pepper"
-      ]
+      "quantities": ["green-chili-pepper"]
     },
     "red-chili-pepper": {
       "ingredient_name": "Piment rouge",
       "ingredient_id": "red-chili-pepper",
       "category_id": "vegetables",
-      "quantities": [
-        "red-chili-pepper"
-      ]
+      "quantities": ["red-chili-pepper"]
     },
     "leek": {
       "ingredient_name": "Poireau",
       "ingredient_id": "leek",
       "category_id": "vegetables",
-      "quantities": [
-        "leek"
-      ]
+      "quantities": ["leek"]
     },
     "red-pepper": {
       "ingredient_name": "Poivron rouge",
       "ingredient_id": "red-pepper",
       "category_id": "vegetables",
-      "quantities": [
-        "red-pepper"
-      ]
+      "quantities": ["red-pepper"]
     },
     "green-pepper": {
       "ingredient_name": "Poivron vert",
       "ingredient_id": "green-pepper",
       "category_id": "vegetables",
-      "quantities": [
-        "green-pepper"
-      ]
+      "quantities": ["green-pepper"]
     },
     "tomato": {
       "ingredient_name": "Tomate",
       "ingredient_id": "tomato",
       "category_id": "vegetables",
-      "quantities": [
-        "tomato"
-      ]
+      "quantities": ["tomato"]
     },
     "tomato-pulp": {
       "ingredient_name": "Pulpe de tomate",
       "ingredient_id": "tomato-pulp",
       "category_id": "vegetables",
-      "quantities": [
-        "tomato-pulp"
-      ]
+      "quantities": ["tomato-pulp"]
     },
     "tomato-sauce": {
       "ingredient_name": "Sauce tomate",
       "ingredient_id": "tomato-sauce",
       "category_id": "vegetables",
-      "quantities": [
-        "tomato-sauce"
-      ]
+      "quantities": ["tomato-sauce"]
     },
     "potato": {
       "ingredient_name": "Pomme de terre",
       "ingredient_id": "potato",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "potato"
-      ]
+      "quantities": ["potato"]
     },
     "lentils": {
       "ingredient_name": "Lentilles",
       "ingredient_id": "lentils",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "lentils"
-      ]
+      "quantities": ["lentils"]
     },
     "chickpea": {
       "ingredient_name": "Pois chiche",
       "ingredient_id": "chickpea",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "chickpea"
-      ]
+      "quantities": ["chickpea"]
     },
     "wheat-flour": {
       "ingredient_name": "Farine de blé",
       "ingredient_id": "wheat-flour",
       "category_id": "pastries",
-      "quantities": [
-        "wheat-flour"
-      ]
+      "quantities": ["wheat-flour"]
     },
     "frik": {
       "ingredient_name": "Frik (blé concassé)",
       "ingredient_id": "frik",
       "quantity_ingredient_name": "Frik",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "frik"
-      ]
+      "quantities": ["frik"]
     },
     "wheat-semolina": {
       "ingredient_name": "Semoule de blé",
       "ingredient_id": "wheat-semolina",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "wheat-semolina"
-      ]
+      "quantities": ["wheat-semolina"]
     },
     "rice": {
       "ingredient_name": "Riz",
       "ingredient_id": "rice",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "rice"
-      ]
+      "quantities": ["rice"]
     },
     "pasta": {
       "ingredient_name": "Pâtes",
       "ingredient_id": "pasta",
       "category_id": "potatoes-legumes-cereals",
-      "quantities": [
-        "pasta"
-      ]
+      "quantities": ["pasta"]
     },
     "olive-oil": {
       "ingredient_name": "Huile d'olive",
       "ingredient_id": "olive-oil",
       "category_id": "fats",
-      "quantities": [
-        "olive-oil.tbsp"
-      ]
+      "quantities": ["olive-oil.tbsp"]
     },
     "rapeseed-oil": {
       "ingredient_name": "Huile de colza",
       "ingredient_id": "rapeseed-oil",
       "category_id": "fats",
-      "quantities": [
-        "rapeseed-oil.tbsp"
-      ]
+      "quantities": ["rapeseed-oil.tbsp"]
     },
     "sunflower-oil": {
       "ingredient_name": "Huile de tournesol",
       "ingredient_id": "sunflower-oil",
       "category_id": "fats",
-      "quantities": [
-        "sunflower-oil.tbsp"
-      ]
+      "quantities": ["sunflower-oil.tbsp"]
     },
     "butter": {
       "ingredient_name": "Beurre doux",
       "ingredient_id": "butter",
       "category_id": "fats",
-      "quantities": [
-        "butter"
-      ]
+      "quantities": ["butter"]
     },
     "salted-butter": {
       "ingredient_name": "Beurre demi-sel",
       "ingredient_id": "salted-butter",
       "category_id": "fats",
-      "quantities": [
-        "salted-butter"
-      ]
+      "quantities": ["salted-butter"]
     },
     "cream": {
       "ingredient_name": "Crème fraîche",
       "ingredient_id": "cream",
       "category_id": "fats",
-      "quantities": [
-        "cream"
-      ]
+      "quantities": ["cream"]
     },
     "water": {
       "ingredient_name": "Eau",
       "ingredient_id": "water",
       "category_id": "liquids",
-      "quantities": [
-        "water"
-      ]
+      "quantities": ["water"]
     },
     "lemon-juice": {
       "ingredient_name": "Jus de citron",
       "ingredient_id": "lemon-juice",
       "category_id": "liquids",
-      "quantities": [
-        "lemon-juice"
-      ]
+      "quantities": ["lemon-juice"]
     },
     "orange juice": {
       "ingredient_name": "Jus d'orange",
       "ingredient_id": "orange juice",
       "category_id": "liquids",
-      "quantities": [
-        "orange juice"
-      ]
+      "quantities": ["orange juice"]
     },
     "coconut-milk": {
       "ingredient_name": "Lait de coco",
       "ingredient_id": "coconut-milk",
       "category_id": "liquids",
-      "quantities": [
-        "coconut-milk"
-      ]
+      "quantities": ["coconut-milk"]
     },
     "vinegar": {
       "ingredient_name": "Vinaigre",
       "ingredient_id": "vinegar",
       "category_id": "liquids",
-      "quantities": [
-        "vinegar"
-      ]
+      "quantities": ["vinegar"]
     },
     "white-wine": {
       "ingredient_name": "Vin blanc",
       "ingredient_id": "white-wine",
       "category_id": "liquids",
-      "quantities": [
-        "white-wine"
-      ]
+      "quantities": ["white-wine"]
     },
     "red-wine": {
       "ingredient_name": "Vin rouge",
       "ingredient_id": "red-wine",
       "category_id": "liquids",
-      "quantities": [
-        "red-wine"
-      ]
+      "quantities": ["red-wine"]
     },
     "soy-sauce": {
       "ingredient_name": "Sauce soja",
       "ingredient_id": "soy-sauce",
       "category_id": "liquids",
-      "quantities": [
-        "soy-sauce"
-      ]
+      "quantities": ["soy-sauce"]
     },
     "salt": {
       "ingredient_name": "Sel",
       "ingredient_id": "salt",
       "category_id": "spices-condiments",
-      "quantities": [
-        "salt.unit"
-      ]
+      "quantities": ["salt.unit"]
     },
     "pepper": {
       "ingredient_name": "Poivre",
       "ingredient_id": "pepper",
       "category_id": "spices-condiments",
-      "quantities": [
-        "pepper.unit"
-      ]
+      "quantities": ["pepper.unit"]
     },
     "sugar": {
       "ingredient_name": "Sucre",
       "ingredient_id": "sugar",
       "category_id": "pastries",
-      "quantities": [
-        "sugar"
-      ]
+      "quantities": ["sugar"]
     },
     "garlic": {
       "ingredient_name": "Ail",
       "ingredient_id": "garlic",
       "category_id": "spices-condiments",
-      "quantities": [
-        "garlic.unit"
-      ]
+      "quantities": ["garlic.unit"]
     },
     "beef-stock": {
       "ingredient_name": "Bouillon de boeuf",
       "ingredient_id": "beef-stock",
       "category_id": "spices-condiments",
-      "quantities": [
-        "beef-stock.unit"
-      ]
+      "quantities": ["beef-stock.unit"]
     },
     "cinnamon": {
       "ingredient_name": "Cannelle",
       "ingredient_id": "cinnamon",
       "category_id": "spices-condiments",
-      "quantities": [
-        "cinnamon.tsp"
-      ]
+      "quantities": ["cinnamon.tsp"]
     },
     "curcuma": {
       "ingredient_name": "Curcuma",
       "ingredient_id": "curcuma",
       "category_id": "spices-condiments",
-      "quantities": [
-        "curcuma.tsp"
-      ]
+      "quantities": ["curcuma.tsp"]
     },
     "curry": {
       "ingredient_name": "Curry",
       "ingredient_id": "curry",
       "category_id": "spices-condiments",
-      "quantities": [
-        "curry.tsp"
-      ]
+      "quantities": ["curry.tsp"]
     },
     "ginger": {
       "ingredient_name": "Gingembre",
       "ingredient_id": "ginger",
       "category_id": "spices-condiments",
-      "quantities": [
-        "ginger.tsp"
-      ]
+      "quantities": ["ginger.tsp"]
     },
     "pumpkin-seeds": {
       "ingredient_name": "Graines de courges",
       "ingredient_id": "pumpkin-seeds",
       "category_id": "spices-condiments",
-      "quantities": [
-        "pumpkin-seeds.tsp"
-      ]
+      "quantities": ["pumpkin-seeds.tsp"]
     },
     "fennel-seeds": {
       "ingredient_name": "Graines de fenouil",
       "ingredient_id": "fennel-seeds",
       "category_id": "spices-condiments",
-      "quantities": [
-        "fennel-seeds.tsp"
-      ]
+      "quantities": ["fennel-seeds.tsp"]
     },
     "nigelle-seeds": {
       "ingredient_name": "Graines de Nigelle",
       "ingredient_id": "nigelle-seeds",
       "category_id": "spices-condiments",
-      "quantities": [
-        "nigelle-seeds.tsp"
-      ]
+      "quantities": ["nigelle-seeds.tsp"]
     },
     "harissa": {
       "ingredient_name": "Harissa",
       "ingredient_id": "harissa",
       "category_id": "spices-condiments",
-      "quantities": [
-        "harissa.tsp"
-      ]
+      "quantities": ["harissa.tsp"]
     },
     "laurel": {
       "ingredient_name": "Laurier",
       "ingredient_id": "laurel",
       "category_id": "spices-condiments",
-      "quantities": [
-        "laurel.unit"
-      ]
+      "quantities": ["laurel.unit"]
     },
     "mustard": {
       "ingredient_name": "Moutarde",
       "ingredient_id": "mustard",
       "category_id": "spices-condiments",
-      "quantities": [
-        "mustard.tsp"
-      ]
+      "quantities": ["mustard.tsp"]
     },
     "nutmeg": {
       "ingredient_name": "Muscade",
       "ingredient_id": "nutmeg",
       "category_id": "spices-condiments",
-      "quantities": [
-        "nutmeg.tsp"
-      ]
+      "quantities": ["nutmeg.tsp"]
     },
     "oregano": {
       "ingredient_name": "Origan",
       "ingredient_id": "oregano",
       "category_id": "spices-condiments",
-      "quantities": [
-        "oregano.tsp"
-      ]
+      "quantities": ["oregano.tsp"]
     },
     "paprika": {
       "ingredient_name": "Paprika",
       "ingredient_id": "paprika",
       "category_id": "spices-condiments",
-      "quantities": [
-        "paprika.tsp"
-      ]
+      "quantities": ["paprika.tsp"]
     },
     "ras-el-hanout": {
       "ingredient_name": "Ras el hanout",
       "ingredient_id": "ras-el-hanout",
       "category_id": "spices-condiments",
-      "quantities": [
-        "ras-el-hanout.tsp"
-      ]
+      "quantities": ["ras-el-hanout.tsp"]
     },
     "concentrated-tomato": {
       "ingredient_name": "Tomate concentrée",
       "ingredient_id": "concentrated-tomato",
       "category_id": "spices-condiments",
-      "quantities": [
-        "concentrated-tomato.tsp"
-      ]
+      "quantities": ["concentrated-tomato.tsp"]
     },
     "peanut-butter": {
       "ingredient_name": "Pâte d'arachide",
       "ingredient_id": "peanut-butter",
       "category_id": "spices-condiments",
-      "quantities": [
-        "peanut-butter.tbsp"
-      ]
+      "quantities": ["peanut-butter.tbsp"]
     },
     "tahini": {
       "ingredient_name": "Tahini",
       "ingredient_id": "tahini",
       "category_id": "spices-condiments",
-      "quantities": [
-        "tahini.tbsp"
-      ]
+      "quantities": ["tahini.tbsp"]
     },
     "basil": {
       "ingredient_name": "Basilic",
       "ingredient_id": "basil",
       "category_id": "fresh-herbs",
-      "quantities": [
-        "basil.unit"
-      ]
+      "quantities": ["basil.unit"]
     },
     "coriander": {
       "ingredient_name": "Coriandre",
       "ingredient_id": "coriander",
       "category_id": "fresh-herbs",
-      "quantities": [
-        "coriander.unit"
-      ]
+      "quantities": ["coriander.unit"]
     },
     "mint": {
       "ingredient_name": "Menthe",
       "ingredient_id": "mint",
       "category_id": "fresh-herbs",
-      "quantities": [
-        "mint.unit"
-      ]
+      "quantities": ["mint.unit"]
     },
     "green-onions": {
       "ingredient_name": "Oignons verts",
       "ingredient_id": "green-onions",
       "category_id": "fresh-herbs",
-      "quantities": [
-        "green-onions.unit"
-      ]
+      "quantities": ["green-onions.unit"]
     },
     "parsley": {
       "ingredient_name": "Persil",
       "ingredient_id": "parsley",
       "category_id": "fresh-herbs",
-      "quantities": [
-        "parsley.unit"
-      ]
+      "quantities": ["parsley.unit"]
     },
     "dark-chocolate": {
       "ingredient_name": "Chocolat noir",
       "ingredient_id": "dark-chocolate",
       "category_id": "pastries",
-      "quantities": [
-        "dark-chocolate"
-      ]
+      "quantities": ["dark-chocolate"]
     },
     "milk-chocolate": {
       "ingredient_name": "Chocolat au lait",
       "ingredient_id": "milk-chocolate",
       "category_id": "pastries",
-      "quantities": [
-        "milk-chocolate"
-      ]
+      "quantities": ["milk-chocolate"]
     }
   },
   "quantities": {
