@@ -10,9 +10,17 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
   const dispatch = useDispatch();
   const { ingredients } = props;
 
-  const cardsToDisplay = ingredients.flatMap(({ quantities }) =>
+  const cardsToDisplay = ingredients.flatMap(({ categoryId, id, quantities }) =>
     quantities.map(({ id: quantityId, value }) => ({
-      ...data.quantities[quantityId],
+      ...(data.quantities[quantityId] ?? {
+        quantity_id: quantityId,
+        quantity_unit: "g",
+        quantity_step: 1,
+        quantity_default_weight: 1,
+        category_id: categoryId,
+        ingredient_id: id,
+        quantity_ingredient_name: id,
+      }),
       value,
     }))
   );
@@ -20,9 +28,6 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
   return (
     <Grid container rowGap={2}>
       {cardsToDisplay.map((quantityData) => {
-        const isWeightValue =
-          quantityData.quantity_default_weight !== undefined;
-
         const onDelete = () => {
           dispatch<any>(
             updateRecipeIngredients({
@@ -42,6 +47,12 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
               ingredientId: quantityData.ingredient_id,
               quantityId: quantityData.quantity_id,
               quantityValue: quantityData.value,
+              ...(quantityData.quantity_id === "unknown"
+                ? {
+                    currentView: "customIngredient",
+                    ingredientName: quantityData.ingredient_id,
+                  }
+                : {}),
               // This identify the modified ingredient, such that we can delete it if validated
               modifiedIngredient: {
                 categoryId: quantityData.category_id,
@@ -77,6 +88,7 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
         return (
           <Grid
             key={quantityData.quantity_id}
+            item
             xs={12}
             sm={6}
             md={4}

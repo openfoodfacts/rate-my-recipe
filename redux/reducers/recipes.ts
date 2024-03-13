@@ -16,11 +16,15 @@ export const updateRecipeIngredients = createAsyncThunk(
       action
     );
 
+    console.log(nextIngredients);
     const ingredients = nextIngredients
       .flatMap((ingredient) => {
         const ingredientData = data.ingredients[ingredient.id];
 
         return ingredient.quantities.map((quantity) => {
+          if (quantity.id === "unknown") {
+            return `${ingredient.id} ${quantity.value} g`;
+          }
           const quantityData = data.quantities[quantity.id];
 
           const isPerUnit =

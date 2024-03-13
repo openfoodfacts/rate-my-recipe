@@ -15,17 +15,19 @@ import {
   updateValue,
   decreaseQuantityValue,
   increaseQuantityValue,
+  updateEditorState,
 } from "@/redux/reducers/editor";
 import { getUnit } from "@/data/utils";
 import { InteractionWrapper } from "@/components/IngredientSelector/InteractionWrapper";
 import { IngredientCardSingleView } from "@/components/IngredientSelector/IngredientCardSingleView";
+import { UnknownIngredientView } from "@/components/IngredientSelector/UnknownIngredientView";
 import { CategoryCard } from "@/components/IngredientSelector/CategoryCard";
 import { GenericCard } from "@/components/shared/molecules/GenericCard";
 
 export default function Navigator() {
   const state = useSelector(selectEditorState);
   const dispatch = useDispatch();
-  const { currentView: view, quantityValue } = state;
+  const { currentView: view, quantityValue, ingredientName } = state;
   const currentCategory = useSelector(selectEditorCurrentCategory);
   const currentIngredient = useSelector(selectEditorCurrentIngredient);
   const currentQuantity = useSelector(selectEditorCurrentQuantity);
@@ -86,11 +88,24 @@ export default function Navigator() {
             <GenericCard
               imgUrl={image_url}
               onClick={onClick}
-              title={ingredient.ingredient_name}
+              title={`${ingredient.ingredient_name} (${ingredient.quantities[0]})`}
               key={ingredientId}
             />
           );
         })}
+        <GenericCard
+          imgUrl=""
+          onClick={() =>
+            dispatch(
+              updateQuantity({
+                currentView: "customIngredient",
+                ingredientId: undefined,
+                quantityId: "unknown",
+              })
+            )
+          }
+          title="Custom ingredient"
+        />
       </InteractionWrapper>
     );
   }
@@ -122,6 +137,38 @@ export default function Navigator() {
 
   if (currentQuantity === null) {
     return null;
+  }
+
+  if (view === "customIngredient") {
+    return (
+      <InteractionWrapper skipQuantityView={skipQuantityView}>
+        <UnknownIngredientView
+          onIncrement={() => {
+            dispatch(
+              increaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
+          }}
+          onDecrement={() => {
+            dispatch(
+              decreaseQuantityValue({ step: currentQuantity.quantity_step })
+            );
+          }}
+          quantityValue={quantityValue!}
+          onInputChange={(event) => {
+            dispatch(
+              updateValue({
+                quantityValue: Number(event.target.value),
+              })
+            );
+          }}
+          title={ingredientName}
+          onTitleChange={(event) =>
+            dispatch(updateEditorState({ ingredientName: event.target.value }))
+          }
+          step={currentQuantity.quantity_step}
+        />
+      </InteractionWrapper>
+    );
   }
 
   return (
