@@ -1,19 +1,20 @@
 import * as React from "react";
-import { CardContent, TextField, Typography } from "@mui/joy";
+import CardContent from "@mui/joy/CardContent";
+import Typography from "@mui/joy/Typography";
 import FormControl from "@mui/joy/FormControl";
+import Autocomplete from "@mui/joy/Autocomplete";
 import FormLabel from "@mui/joy/FormLabel";
-import FormHelperText from "@mui/joy/FormHelperText";
 import Input from "@mui/joy/Input";
-import { ChangeEvent } from "react";
 import Card from "@mui/joy/Card";
+import availableIngredients from "@/data/otherIngredients.json";
 import { ValueEditor } from "@/components/shared/molecules/ValueEditor";
 
 interface UnknownIngredientViewProps {
   onIncrement(): void;
   onDecrement(): void;
   quantityValue: number | null | undefined;
-  onInputChange(event: ChangeEvent<HTMLInputElement>): void;
-  onTitleChange(event: ChangeEvent<HTMLInputElement>): void;
+  onInputChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onTitleChange(newValue: string): void;
   unit?: string | undefined;
   title: string | undefined;
   step?: number;
@@ -44,11 +45,16 @@ export function UnknownIngredientView({
       <CardContent>
         <FormControl id="ingredient-name" required size="md">
           <FormLabel>{"Nom de l'ingredient"}</FormLabel>
-          <Input fullWidth value={title ?? ""} onChange={onTitleChange} />
+          <Autocomplete
+            options={availableIngredients}
+            slotProps={{
+              listbox: { sx: { zIndex: 1800 } },
+            }}
+            value={title ?? ""}
+            onChange={(event, newValue) => onTitleChange(newValue ?? "")}
+          />
         </FormControl>
-      </CardContent>
 
-      <CardContent>
         <ValueEditor
           onIncrement={onIncrement}
           onDecrement={onDecrement}
@@ -56,7 +62,7 @@ export function UnknownIngredientView({
         >
           <Input
             type="number"
-            value={quantityValue!}
+            value={`${Math.max(0, quantityValue ?? 0)}`}
             onChange={onInputChange}
             endDecorator={<Typography> {unit}</Typography>}
           />

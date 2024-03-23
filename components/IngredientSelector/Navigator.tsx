@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import data from "../../data";
 import {
   selectEditorCurrentIngredient,
@@ -25,6 +26,7 @@ import { CategoryCard } from "@/components/IngredientSelector/CategoryCard";
 import { GenericCard } from "@/components/shared/molecules/GenericCard";
 
 export default function Navigator() {
+  const { t } = useTranslation();
   const state = useSelector(selectEditorState);
   const dispatch = useDispatch();
   const { currentView: view, quantityValue, ingredientName } = state;
@@ -94,7 +96,7 @@ export default function Navigator() {
           );
         })}
         <GenericCard
-          imgUrl=""
+          imgUrl={null}
           onClick={() =>
             dispatch(
               updateQuantity({
@@ -104,7 +106,7 @@ export default function Navigator() {
               })
             )
           }
-          title="Custom ingredient"
+          title={t("actions.other_ingredient")}
         />
       </InteractionWrapper>
     );
@@ -162,8 +164,8 @@ export default function Navigator() {
             );
           }}
           title={ingredientName}
-          onTitleChange={(event) =>
-            dispatch(updateEditorState({ ingredientName: event.target.value }))
+          onTitleChange={(newValue) =>
+            dispatch(updateEditorState({ ingredientName: newValue }))
           }
           step={currentQuantity.quantity_step}
         />

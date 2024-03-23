@@ -16,7 +16,6 @@ export const updateRecipeIngredients = createAsyncThunk(
       action
     );
 
-    console.log(nextIngredients);
     const ingredients = nextIngredients
       .flatMap((ingredient) => {
         const ingredientData = data.ingredients[ingredient.id];

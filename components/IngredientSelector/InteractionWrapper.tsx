@@ -74,7 +74,8 @@ export const InteractionWrapper = ({
     !isValidCustomIngredient &&
     viewsOrder.some(
       // Test if some value are not specified
-      () => values[viewToValue[view!]] == null
+      () =>
+        values[viewToValue[view!]] == null || values[viewToValue[view!]] === 0
     );
 
   const onValidateClick = () => {

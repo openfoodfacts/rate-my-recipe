@@ -87,7 +87,7 @@ const IngredientCards = (props: { ingredients: Ingredient[] }) => {
           );
         return (
           <Grid
-            key={quantityData.quantity_id}
+            key={quantityData.ingredient_id}
             item
             xs={12}
             sm={6}
