@@ -45,7 +45,7 @@ export const updateRecipeIngredients = createAsyncThunk(
     });
 
     const rep = await fetch(
-      "https://world.openfoodfacts.org/api/v3/product/test",
+      "https://world.openfoodfacts.dev/api/v3/product/test",
       {
         method: "PATCH",
         body: JSON.stringify({

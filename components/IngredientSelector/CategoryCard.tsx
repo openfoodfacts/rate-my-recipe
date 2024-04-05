@@ -3,7 +3,9 @@ import { MeatFishEggs } from "@/components/IngredientSelector/icons/MeatFishEggs
 import { Fruits } from "@/components/IngredientSelector/icons/Fruits";
 import { Vegetables } from "@/components/IngredientSelector/icons/Vegetables";
 import { PotatoesLegumesCereals } from "@/components/IngredientSelector/icons/PotatoesLegumesCereals";
+import { Nuts } from "@/components/IngredientSelector/icons/Nuts";
 import { Fats } from "@/components/IngredientSelector/icons/Fats";
+import { Cheeses } from "@/components/IngredientSelector/icons/Cheeses";
 import { Liquids } from "@/components/IngredientSelector/icons/Liquids";
 import { Spices } from "@/components/IngredientSelector/icons/Spices";
 import { Herbs } from "@/components/IngredientSelector/icons/Herbs";
@@ -27,7 +29,9 @@ export function CategoryCard({
     fruits: <Fruits />,    
     vegetables: <Vegetables />,
     "potatoes-legumes-cereals": <PotatoesLegumesCereals />,
+    nuts: <Nuts />,
     fats: <Fats />,
+    cheeses: <Cheeses />,
     liquids: <Liquids />,
     "spices-condiments": <Spices />,
     "fresh-herbs": <Herbs />,
