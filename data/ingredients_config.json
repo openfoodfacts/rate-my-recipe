@@ -61,6 +61,7 @@
         "fennel",
         "white-bean",
         "green-bean",
+        "helianthis",
         "lettuce",
         "maïs en conserve",
         "onions",
@@ -532,6 +533,14 @@
       "category_id": "vegetables",
       "quantities": [
         "green-bean"
+      ]
+    },
+    "helianthis": {
+      "ingredient_name": "Hélianthis",
+      "ingredient_id": "helianthis",
+      "category_id": "vegetables",
+      "quantities": [
+        "helianthis"
       ]
     },
     "lettuce": {
@@ -1952,6 +1961,16 @@
       "category_id": "vegetables",
       "ingredient_id": "green-bean",
       "ingredient_name": "Haricot vert"
+    },
+    "helianthis": {
+      "quantity_default_weight": 100,
+      "quantity_step": 100,
+      "quantity_id": "helianthis",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Hélianthis",
+      "category_id": "vegetables",
+      "ingredient_id": "helianthis",
+      "ingredient_name": "Hélianthis"
     },
     "lettuce": {
       "quantity_default_weight": 100,
