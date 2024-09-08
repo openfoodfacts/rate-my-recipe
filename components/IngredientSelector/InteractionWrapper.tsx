@@ -28,6 +28,7 @@ const viewToValue = {
   ingredient: "ingredientId",
   quantity: "quantityId",
   value: "quantityValue",
+  customIngredient: "ingredientName",
 } as const;
 
 export const InteractionWrapper = ({
@@ -43,22 +44,40 @@ export const InteractionWrapper = ({
   const dispatch = useDispatch();
 
   const viewIndex = viewsOrder.findIndex((v) => v === view);
-  const prevView =
-    skipQuantityView && viewsOrder[viewIndex - 1] === "quantity"
-      ? viewsOrder[viewIndex - 2]
-      : viewsOrder[viewIndex - 1];
-  const nextView =
-    skipQuantityView && viewsOrder[viewIndex + 1] === "quantity"
-      ? viewsOrder[viewIndex + 2]
-      : viewsOrder[viewIndex + 1];
 
-  const disableNext =
-    !viewToValue[view!] || values[viewToValue[view!]] === null;
+  let prevView: ViewsTypes | undefined = undefined;
+  if (skipQuantityView && viewsOrder[viewIndex - 1] === "quantity") {
+    prevView = viewsOrder[viewIndex - 2];
+  } else if (view === "customIngredient") {
+    prevView = "ingredient";
+  } else {
+    prevView = viewsOrder[viewIndex - 1];
+  }
 
-  const disableValidation = viewsOrder.some(
-    // Test if some value are not specified
-    (_) => values[viewToValue[view!]] === null
-  );
+  let nextView: ViewsTypes | undefined = undefined;
+  if (skipQuantityView && viewsOrder[viewIndex + 1] === "quantity") {
+    nextView = viewsOrder[viewIndex + 2];
+  } else if (view === "customIngredient") {
+    nextView = undefined;
+  } else {
+    nextView = viewsOrder[viewIndex + 1];
+  }
+
+  const disableNext = !viewToValue[view!] || values[viewToValue[view!]] == null;
+
+  const isValidCustomIngredient =
+    view === "customIngredient" &&
+    values.ingredientName &&
+    values.quantityValue;
+
+  const disableValidation =
+    !isValidCustomIngredient &&
+    viewsOrder.some(
+      // Test if some value are not specified
+      () =>
+        values[viewToValue[view!]] == null || values[viewToValue[view!]] === 0
+    );
+
   const onValidateClick = () => {
     if (
       modifiedIngredient !== undefined &&
@@ -72,6 +91,20 @@ export const InteractionWrapper = ({
           quantityId: modifiedIngredient.quantityId!,
         })
       );
+    }
+    if (view === "customIngredient") {
+      dispatch<any>(
+        updateRecipeIngredients({
+          recipeId: "userRecipe",
+          type: "upsert",
+          ingredientCategoryId: values.categoryId!,
+          ingredientId: values.ingredientName!,
+          quantityId: values.quantityId!,
+          quantityValue: values.quantityValue!,
+        })
+      );
+      dispatch(closeEditor({}));
+      return;
     }
     dispatch<any>(
       updateRecipeIngredients({
@@ -100,13 +133,13 @@ export const InteractionWrapper = ({
           disabled={!prevView}
           onClick={() => dispatch(updateEditorState({ currentView: prevView }))}
         >
-           {t("actions.prev")}
+          {t("actions.prev")}
         </Button>
         <Button
           disabled={!nextView || disableNext}
           onClick={() => dispatch(updateEditorState({ currentView: nextView }))}
         >
-           {t("actions.next")}
+          {t("actions.next")}
         </Button>
       </Stack>
 
@@ -114,7 +147,7 @@ export const InteractionWrapper = ({
 
       <Stack direction="row" justifyContent="space-between">
         <Button fullWidth color="danger" onClick={onCancelClick}>
-        {t("actions.cancel")}
+          {t("actions.cancel")}
         </Button>
         <Button
           fullWidth
@@ -122,7 +155,7 @@ export const InteractionWrapper = ({
           disabled={disableValidation}
           onClick={onValidateClick}
         >
-           {t("actions.validate")}
+          {t("actions.validate")}
         </Button>
       </Stack>
     </Stack>
