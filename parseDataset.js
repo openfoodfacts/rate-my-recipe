@@ -13,7 +13,7 @@ const parseNumber = (n) => {
   return parseFloat(n);
 };
 
-const TITLE_LINE = 3;
+const TITLE_LINE = 5;
 
 const parseLine = (line) =>
   line.split("\t").map((cell) => cell.replace("\r", ""));
@@ -63,6 +63,8 @@ const createObject = (line) => {
   const rep = {};
   line.forEach((value, colIndex) => {
     if (value !== "") {
+      // remove trailing spaces, line feeds and carriage returns
+      value = value.replace(/\s+$/g, "");
       rep[COLUMNS[colIndex]] = value;
     }
   });
