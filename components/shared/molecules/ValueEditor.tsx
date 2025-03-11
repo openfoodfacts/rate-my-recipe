@@ -34,11 +34,18 @@ export const ValueEditor = ({
           size="sm"
           disabled={disabledDecrement}
           onClick={onDecrement}
+          aria-label="Decrease quantity"
         >
           -
         </Button>
         {children}
-        <Button variant="solid" color="neutral" size="sm" onClick={onIncrement}>
+        <Button 
+          variant="solid" 
+          color="neutral" 
+          size="sm" 
+          onClick={onIncrement}
+          aria-label="Increase quantity"
+        >
           +
         </Button>
       </Stack>
