@@ -1,5 +1,7 @@
-Notes:											ciqual_food_code:en:							
 Les champs "id" de types d'ingrédients, d'ingrédients et de quantités sont utiles au cas où on souhaite renommer un type d'ingrédient, ingrédient ou quantité, sans que cela casse la faculté de modifier des recettes pré-existantes qui ont été préalablement sauvegardées											ciqual_food_name:fr:							
+																		
+outil de test des ingrédients pour voir s'ils existent dans Open Food Facts : https://fr.openfoodfacts.org/cgi/test_ingredients_analysis.pl?ingredients_text=%0D%0Achampignons&type=add&action=process&submit=Envoyer	permet de trouver l'identifiant en:vanilla-sugar -> vanilla-sugar dans le champs ingredient id	pour les images, chercher un produit																
+Notes:											ciqual_food_code:en:							
 																		
 Ingredient category name	Ingredient category id	Description	Ingredient name	Ingredient id	Description	Preparation	Health	Environment	Quantity displayed plural	Quantity displayed singular	Quantity ingredient name	Quantity unit id	Quantity unit	Default weight	Weight per unit	Default number of units	Quantity step	image_url
 Viandes, poissons, oeufs	meat-fish-eggs																	
@@ -17,38 +19,105 @@ Viandes, poissons, oeufs	meat-fish-eggs
 														500			100	https://images.openfoodfacts.org/images/products/345/302/009/7111/front_fr.10.400.jpg
 			Oeuf	egg														
 									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
-																		
+			Thon au naturel	tuna-in-brine														
+														200			100	https://images.openfoodfacts.org/images/products/301/908/123/9640/front_fr.71.400.jpg
+			Thon à l'huile	tuna-in-oil														
+														200			100	https://images.openfoodfacts.org/images/products/370/002/920/8063/front_fr.3.full.jpg
+Fruits	fruits																	
+			Avocat 	avocado														
+									avocats 	avocat 		unit 			100	1		https://images.openfoodfacts.org/images/products/843/517/706/0625/front_fr.18.400.jpg
+			Citron 	lemon														
+									citrons 	citron 		unit 			100	1		https://images.openfoodfacts.org/images/products/843/517/700/3141/front_fr.3.400.jpg
+			Orange 	orange														
+									oranges	orange		unit 			100	1		https://images.openfoodfacts.org/images/products/20241698/front_fr.28.400.jpg
+			Pomme	apple														
+									pommes	pomme		unit			150	1		https://images.openfoodfacts.org/images/products/370/047/661/1638/front_fr.39.400.jpg
+			Pomme verte	green-apple														
+									pommes	pomme		unit			150	1		https://images.openfoodfacts.org/images/products/405/648/918/6267/front_fr.15.400.jpg
+			Poire 	pear														
+									poires	poire		unit 			100	1		https://images.openfoodfacts.org/images/products/300/001/703/6563/front_fr.4.400.jpg
+Fruit à coque 	nuts																	
+			Noix 	walnut														
+														100				https://images.openfoodfacts.org/images/products/260/994/804/8280/front_fr.3.400.jpg
+			Noisettes 	hazelnut 														
+														100				https://images.openfoodfacts.org/images/products/376/015/901/0561/front_fr.9.400.jpg
+			Pistaches 	pistachio-nuts														
+														100				https://images.openfoodfacts.org/images/products/325/622/121/2297/front_fr.69.400.jpg
+			Cacahuetes non salée 	peanut 														
+														100				https://images.openfoodfacts.org/images/products/20615420/front_fr.86.400.jpg
+			Amandes	almond 														
+														100				https://images.openfoodfacts.org/images/products/350/249/021/5621/front_fr.22.400.jpg
 Légumes	vegetables																	
 			Aubergine	eggplant														
 														500			100	https://images.openfoodfacts.org/images/products/358/805/000/3815/front_fr.4.400.jpg
 			Betterave cuite	beetroot-cooked														
 														500			100	https://images.openfoodfacts.org/images/products/328/144/000/0035/front_fr.15.400.jpg
+			Brocoli 	broccoli														
+														100			100	https://images.openfoodfacts.org/images/products/352/368/044/1026/front_fr.9.400.jpg
+			Butternut 	butternut 														
+									Butternut	Butternuts				100			100	https://images.openfoodfacts.org/images/products/841/227/611/2905/front_fr.4.200.jpg
 			Carotte	carrot														
 														500			100	https://images.openfoodfacts.org/images/products/342/082/000/9040/front_fr.8.400.jpg
 			Céleri branche	celery-branch														
 									branches	branche		unit			100	2		https://images.openfoodfacts.org/images/products/200/771/400/0003/front_fr.3.400.jpg
+			Cèpe séchée	cep														
+									Boites	boite		unit 			50	2		https://images.openfoodfacts.org/images/products/20321710/front_fr.53.400.jpg
+			Champignons de Paris	paris-mushrooms														
+														100			100	https://images.openfoodfacts.org/images/products/325/039/260/0211/front_fr.10.400.jpg
+			Chou rouge 	red-cabbage														
+									choux rouge 	chou rouge 		unit			100	2		https://images.openfoodfacts.org/images/products/356/470/715/2358/front_fr.3.400.jpg
+			Citrouille	pumpkin														
+									citrouilles	citrouille		unit			100	2		https://images.openfoodfacts.org/images/products/377/002/583/4443/front_fr.3.400.jpg
 			Chou blanc	white-cabbage														
 									choux	chou		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
 			Chou vert	green-cabbage														
 									choux	chou		unit			1500	1		https://images.openfoodfacts.org/images/products/370/065/157/6660/front_fr.3.400.jpg
+			Concombre 	cucumber														
+									concombres 	concombre		unit 			100	3		https://images.openfoodfacts.org/images/products/843/517/701/8961/front_fr.6.400.jpg
+			Courge 	pumpkin														
+									courges 	courge		unit			100	3		https://images.openfoodfacts.org/images/products/370/061/720/1056/front_fr.4.400.jpg
 			Courgette	courgettes														
 									courgettes	courgette		unit			150	3		https://images.openfoodfacts.org/images/products/020/351/701/1020/front_fr.4.400.jpg
+			Échalote	shallot														
+									échalote	échalotes		unit			100			https://images.openfoodfacts.org/images/products/322/247/365/0903/front_fr.13.400.jpg
 			Epinard	spinach														
-														100				https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg
+														100			100	https://images.openfoodfacts.org/images/products/540/014/126/8898/front_fr.4.400.jpg
 			Endives	belgian-endive														
-														100				https://images.openfoodfacts.org/images/products/376/009/595/6527/front_fr.12.400.jpg
+														100			100	https://images.openfoodfacts.org/images/products/376/009/595/6527/front_fr.12.400.jpg
+			Fenouil	fennel														
+														100			100	https://images.openfoodfacts.org/images/products/020/565/800/7672/front_fr.4.400.jpg
+			Haricot blanc	white-bean														
+														100			100	https://images.openfoodfacts.org/images/products/356/470/713/7539/front_fr.17.400.jpg
+			Haricot vert 	green-bean														
+														100			100	https://images.openfoodfacts.org/images/products/356/007/116/1668/front_fr.40.400.jpg
+			Hélianthis	helianthis														
+														100			100	
+			Laitue 	lettuce														
+														100			100	https://images.openfoodfacts.org/images/products/327/655/982/3125/front_fr.11.400.jpg
+			Maïs en conserve	maïs en conserve														
+														100			100	https://images.openfoodfacts.org/images/products/356/007/027/2174/front_fr.37.400.jpg
 			Oignon	onions														
 									oignons	oignon		unit			150	2		https://images.openfoodfacts.org/images/products/318/050/030/1047/front_fr.3.400.jpg
+			Oignon grelot 	pearl-onion														
+									oignons grelots	oignon grelot 				100			100	https://images.openfoodfacts.org/images/products/329/259/083/0519/front_fr.10.400.jpg
+			Petit pois 	garden-peas 														
+														100				https://images.openfoodfacts.org/images/products/325/039/294/8740/front_fr.15.400.jpg
 			Piment vert	green-chili-pepper														
 														100			100	https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
 			Piment rouge	red-chili-pepper														
 														100			100	https://images.openfoodfacts.org/images/products/366/194/588/2303/front_fr.3.400.jpg
+			Pleurotte 	oyster-mushroom 														
+														100			100	https://images.openfoodfacts.org/images/products/370/062/632/7723/front_fr.3.400.jpg
 			Poireau	leek														
 														500			100	https://images.openfoodfacts.org/images/products/376/005/653/0926/front_fr.4.400.jpg
 			Poivron rouge	red-pepper														
 														500			100	https://images.openfoodfacts.org/images/products/843/517/701/1863/front_fr.3.400.jpg
 			Poivron vert	green-pepper														
 														500			100	https://images.openfoodfacts.org/images/products/843/700/678/8915/front_fr.4.400.jpg
+			Potiron	giant-squash														
+														100			100	https://images.openfoodfacts.org/images/products/280/418/601/6071/front_fr.4.400.jpg
+			Potimarron	red-kuri-squash														
+														100			100	https://images.openfoodfacts.org/images/products/323/326/001/2170/front_fr.4.400.jpg
 			Tomate	tomato														
 														500			100	https://images.openfoodfacts.org/images/products/020/969/003/0506/front_fr.9.400.jpg
 			Pulpe de tomate	tomato-pulp														
@@ -56,22 +125,36 @@ Légumes	vegetables
 			Sauce tomate	tomato-sauce														
 														500			100	https://images.openfoodfacts.org/images/products/20023218/front_fr.97.400.jpg
 Pommes de terre, légumineuses et céréales	potatoes-legumes-cereals																	
-																		
-																		
+			Panais 	parsnip														
+														100				https://images.openfoodfacts.org/images/products/358/805/000/4027/front_fr.3.400.jpg
+			Patate douce 	sweet-potato														
+									patates douce 	patate douce 				100				https://images.openfoodfacts.org/images/products/370/035/361/5377/front_fr.3.400.jpg
 			Pomme de terre	potato														
 														500			250	https://images.openfoodfacts.org/images/products/20439354/front_fr.24.400.jpg
 			Lentilles	lentils														
 														500			100	https://images.openfoodfacts.org/images/products/326/385/078/1568/front_fr.11.400.jpg
+			lentilles corail	red-lentils														
+														500			100	https://images.openfoodfacts.org/images/products/326/746/006/1027/front_fr.55.full.jpg
 			Pois chiche	chickpea														
 														250			50	https://images.openfoodfacts.org/images/products/301/780/007/8860/front_fr.108.400.jpg
 			Farine de blé	wheat-flour														
 														250			50	https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg
+			flocons d’avoine	oat-flakes														
+														250			50	https://images.openfoodfacts.org/images/products/322/982/001/9307/front_fr.194.full.jpg
 			Frik (blé concassé)	frik							Frik							
 														250			50	https://images.openfoodfacts.org/images/products/319/122/002/0262/front_fr.10.400.jpg
+			graines de tournesol	sunflower-seed														
+														250			50	https://images.openfoodfacts.org/images/products/356/470/712/0715/front_fr.21.full.jpg
 			Semoule de blé	wheat-semolina														
 														250			50	https://images.openfoodfacts.org/images/products/303/835/235/7005/front_fr.82.400.jpg
 			Riz	rice														
 														500			100	https://images.openfoodfacts.org/images/products/405/648/909/5736/front_fr.37.400.jpg
+			Riz basmati 	basmati-rice														
+														500			100	https://images.openfoodfacts.org/images/products/303/835/900/7224/front_fr.84.400.jpg
+			riz rond	round-rice 														
+														500			100	https://images.openfoodfacts.org/images/products/356/470/057/7103/front_fr.38.400.jpg
+			Riz sauvage 	wild-rice														
+														500			100	https://images.openfoodfacts.org/images/products/326/619/112/1079/front_fr.11.full.jpg
 			Pâtes	pasta														
 														500			100	https://images.openfoodfacts.org/images/products/807/680/208/5738/front_fr.3312.200.jpg
 																		
@@ -88,6 +171,8 @@ Matières grasses	fats	La matière grasse permet de faire revenir la viande et/o
 														50			25	https://images.openfoodfacts.org/images/products/341/229/001/5997/front_fr.75.400.jpg
 			Crème fraîche	cream														
 													ml	100			25	https://images.openfoodfacts.org/images/products/315/525/000/1554/front_fr.81.400.jpg
+			Crème fleurette	creme-fleurette														
+													ml	100			25	https://images.openfoodfacts.org/images/products/345/179/001/2358/front_fr.88.400.jpg
 Liquides	liquids																	
 			Eau	water														
 													ml	500			100	https://upload.wikimedia.org/wikipedia/commons/a/ae/Drinking_water.jpg
@@ -95,6 +180,8 @@ Liquides	liquids
 													cl	5			5	https://images.openfoodfacts.org/images/products/325/622/297/3180/front_fr.38.400.jpg
 			Jus d'orange	orange juice														
 													cl	10			10	https://images.openfoodfacts.org/images/products/350/211/000/9449/front_fr.134.400.jpg
+			Lait demi-écrémé	semi-skimmed-milk														
+													ml	400			100	https://images.openfoodfacts.org/images/products/359/671/047/8941/front_fr.39.400.jpg
 			Lait de coco	coconut-milk														
 													ml	400			100	https://images.openfoodfacts.org/images/products/888/630/321/0238/front_fr.10.400.jpg
 			Vinaigre	vinegar														
@@ -105,24 +192,35 @@ Liquides	liquids
 													cl	25			25	https://images.openfoodfacts.org/images/products/317/907/100/0978/front_fr.3.400.jpg
 			Sauce soja	soy-sauce														
 													cl	5			5	https://images.openfoodfacts.org/images/products/400/235/965/4404/front_fr.61.400.jpg
-																		
 Epices et condiments	spices-condiments																	
 			Sel	salt														
 									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg
+			Fleur de sel	fleur-de-sel														
+									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/344/585/002/0339/front_fr.22.400.jpg
 			Poivre	pepper														
 									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/316/629/655/0371/front_fr.3.200.jpg
 			Sucre	sugar														
-														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+														100			50	https://images.openfoodfacts.org/images/products/316/543/371/4010/front_fr.38.200.jpg
 			Ail	garlic														
 									gousses	gousse		unit			10	1		https://images.openfoodfacts.org/images/products/20253462/front_fr.37.200.jpg
 			Bouillon de boeuf	beef-stock														
 									cubes	cube		unit			10	1		https://images.openfoodfacts.org/images/products/761/303/368/7983/front_en.239.200.jpg
+			Bouillon de légumes	vegetable-broth 														
+									cubes	cube		unit 			10	1		https://images.openfoodfacts.org/images/products/858/500/248/4093/front_fr.221.full.jpg
 			Cannelle	cinnamon														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/520/233/610/3539/front_fr.3.200.jpg
+			Citron confit	preserved-lemon														
+														20			10	https://images.openfoodfacts.org/images/products/359/671/044/0795/front_fr.30.400.jpg
+			Coriandre en poudre	coriander  vegan														
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/327/665/013/0900/front_fr.4.full.jpg
 			Curcuma	curcuma														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/405/648/902/1773/front_fr.12.200.jpg
+			Cumin	cumin														
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/316/629/153/1108/front_fr.64.400.jpg
 			Curry	curry														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/20249939/front_fr.25.400.jpg
+			Extrait de levure	yeast-extract														
+									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/370/021/621/1432/front_fr.11.full.jpg
 			Gingembre	ginger														
 									cuillères à café	cuillère à café		tsp			5	1		https://images.openfoodfacts.org/images/products/316/629/150/3303/front_fr.56.400.jpg
 			Graines de courges	pumpkin-seeds														
@@ -149,25 +247,86 @@ Epices et condiments	spices-condiments
 									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/303/835/900/8641/front_fr.54.400.jpg
 			Pâte d'arachide	peanut-butter														
 									cuillères à soupe	cuillère à soupe		tbsp			15			https://images.openfoodfacts.org/images/products/370/001/950/7152/front_fr.40.400.jpg
+			Purée de cachuete 	butter peanut 														
+									cuillères a soupe 	cuillère à soupe					20			https://images.openfoodfacts.org/images/products/760/324/840/573/front_fr.4.400.jpg
 			Tahini	tahini														
 									cuillères à soupe	cuillère à soupe		tbsp			15			https://images.openfoodfacts.org/images/products/541/178/803/7792/front_fr.41.400.jpg
+			Zaatar	zaatar														
+									cuillères à café	cuillère à café		tsp			5			https://images.openfoodfacts.org/images/products/358/028/808/2532/front_fr.10.400.jpg
 Herbes fraîches	fresh-herbs																	
 			Basilic	basil														
 									bottes	botte		unit			25			https://images.openfoodfacts.org/images/products/800/520/150/7886/front_fr.3.400.jpg
 			Coriandre	coriander														
 									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/370/070/550/0030/front_fr.3.400.jpg
+			Laurier	bay-leaf														
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/335/239/400/1024/front_fr.8.full.jpg
 			Menthe	mint														
 									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/871/545/923/6741/front_fr.3.400.jpg
+			Romarin 	rosemary														
+									Bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/330/713/993/6826/front_fr.12.400.jpg
 			Oignons verts	green-onions														
 									bottes	botte		unit			100			https://images.openfoodfacts.org/images/products/003/338/390/4030/front_en.3.400.jpg
+			Thym	thyme 														
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/370/045/710/0052/front_fr.4.full.jpg
+			Sauge 	Sage 														
+									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/611/126/609/0156/front_fr.3.full.jpg
 			Persil	parsley														
 									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/350/391/000/0117/front_fr.14.400.jpg
+Fromages	cheeses																	
+			Emmental rapé	grated-emmental-cheese 														
+														100				https://images.openfoodfacts.org/images/products/322/802/117/0046/front_fr.154.400.jpg
+			Comté 	comté														
+														100				https://images.openfoodfacts.org/images/products/322/247/326/9501/front_fr.47.400.jpg
+			Feta	feta														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg
+			Petit suisse	petit-suisse														
+														100			50	https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg
+			Saint Moret	saint-moret														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg
 Pâtisserie	pastries																	
 			Farine de blé	wheat-flour														
 														250			50	https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg
+			Farine de mais 	corn-flour														
+														250			50	https://images.openfoodfacts.org/images/products/759/100/200/0547/front_fr.35.full.jpg
+			Farine de riz	rice-flour 														
+														250			50	https://images.openfoodfacts.org/images/products/332/948/660/5002/front_fr.24.full.jpg
+			Farine de semoule	semolina-flour														
+														250			50	https://images.openfoodfacts.org/images/products/800/914/911/7718/front_fr.4.full.jpg
 			Chocolat noir	dark-chocolate														
 														25			25	https://images.openfoodfacts.org/images/products/306/994/232/0901/front_fr.97.400.jpg
 			Chocolat au lait	milk-chocolate														
+														25			25	https://images.openfoodfacts.org/images/products/859/389/375/7653/front_fr.178.400.jpg
+			Chocolat blanc	white-chocolate														
 														25			25	https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg
+			Miel liquide	liquid-honey														
+														25			25	https://images.openfoodfacts.org/images/products/359/671/040/9556/front_fr.31.full.jpg
+			Noix de coco râpée	grated-coconut														
+														25			25	https://images.openfoodfacts.org/images/products/350/249/019/2106/front_fr.37.400.jpg
+			Noisettes	hazelnuts														
+														25			25	https://images.openfoodfacts.org/images/products/350/249/019/2106/front_fr.37.400.jpg
 			Sucre	sugar														
-														100			50	https://images.openfoodfacts.org/images/products/540/016/416/7017/front_fr.6.200.jpg
+														100			50	https://images.openfoodfacts.org/images/products/316/543/371/4010/front_fr.38.200.jpg
+			Sucre de canne	cane-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/316/543/372/4019/front_fr.60.200.jpg
+			Sucre glace	icing-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/316/543/264/0006/front_fr.245.400.jpg
+			Sucre cristallisé	crystallized-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/307/190/000/5102/front_fr.18.full.jpg
+			Sucre vanillé	vanilla-sugar														
+														100			50	https://images.openfoodfacts.org/images/products/872/270/003/0119/front_fr.73.400.jpg
+			Oeuf	egg														
+									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Blanc d'oeuf	egg-white														
+									oeufs	oeuf	Oeufs				30	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Jaune d'oeuf	egg-yolk														
+									oeufs	oeuf	Oeufs				20	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
+			Galettes bretonnes	shortbread-cookies														
+									galettes	galette	Galettes				8	8	1	https://images.openfoodfacts.org/images/products/325/456/002/8715/front_fr.47.400.jpg
+			Poudre d'amande	almond-powder														
+														100			50	https://images.openfoodfacts.org/images/products/317/914/205/4633/front_en.51.400.jpg
+			Feta	feta														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg
+			Petit suisse	petit-suisse														
+														100			50	https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg
+			Saint Moret	saint-moret														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg
