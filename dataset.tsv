@@ -19,10 +19,12 @@ Viandes, poissons, oeufs	meat-fish-eggs
 														500			100	https://images.openfoodfacts.org/images/products/345/302/009/7111/front_fr.10.400.jpg
 			Oeuf	egg														
 									oeufs	oeuf	Oeufs				60	1		https://images.openfoodfacts.org/images/products/359/671/046/6054/front_fr.77.400.jpg
-			Thon	tuna														
-														500			100	https://images.openfoodfacts.org/images/products/301/908/123/9640/front_fr.71.400.jpg
+			Thon au naturel	tuna-in-brine														
+														200			100	https://images.openfoodfacts.org/images/products/301/908/123/9640/front_fr.71.400.jpg
+			Thon à l'huile	tuna-in-oil														
+														200			100	https://images.openfoodfacts.org/images/products/370/002/920/8063/front_fr.3.full.jpg
 Fruits	fruits																	
-			avocat 	avocato 														
+			Avocat 	avocado														
 									avocats 	avocat 		unit 			100	1		https://images.openfoodfacts.org/images/products/843/517/706/0625/front_fr.18.400.jpg
 			Citron 	lemon														
 									citrons 	citron 		unit 			100	1		https://images.openfoodfacts.org/images/products/843/517/700/3141/front_fr.3.400.jpg
@@ -34,16 +36,16 @@ Fruits	fruits
 									pommes	pomme		unit			150	1		https://images.openfoodfacts.org/images/products/405/648/918/6267/front_fr.15.400.jpg
 			Poire 	pear														
 									poires	poire		unit 			100	1		https://images.openfoodfacts.org/images/products/300/001/703/6563/front_fr.4.400.jpg
-Fruit à coque 	Nut 																	
+Fruit à coque 	nuts																	
 			Noix 	walnut														
 														100				https://images.openfoodfacts.org/images/products/260/994/804/8280/front_fr.3.400.jpg
-			Noisette 	hazelnut 														
+			Noisettes 	hazelnut 														
 														100				https://images.openfoodfacts.org/images/products/376/015/901/0561/front_fr.9.400.jpg
-			Pistache 	pistachio nuts														
+			Pistaches 	pistachio-nuts														
 														100				https://images.openfoodfacts.org/images/products/325/622/121/2297/front_fr.69.400.jpg
-			Cacahuete non salée 	peanut 														
+			Cacahuetes non salée 	peanut 														
 														100				https://images.openfoodfacts.org/images/products/20615420/front_fr.86.400.jpg
-			Amande 	almond 														
+			Amandes	almond 														
 														100				https://images.openfoodfacts.org/images/products/350/249/021/5621/front_fr.22.400.jpg
 Légumes	vegetables																	
 			Aubergine	eggplant														
@@ -88,6 +90,8 @@ Légumes	vegetables
 														100			100	https://images.openfoodfacts.org/images/products/356/470/713/7539/front_fr.17.400.jpg
 			Haricot vert 	green-bean														
 														100			100	https://images.openfoodfacts.org/images/products/356/007/116/1668/front_fr.40.400.jpg
+			Hélianthis	helianthis														
+														100			100	
 			Laitue 	lettuce														
 														100			100	https://images.openfoodfacts.org/images/products/327/655/982/3125/front_fr.11.400.jpg
 			Maïs en conserve	maïs en conserve														
@@ -188,8 +192,6 @@ Liquides	liquids
 													cl	25			25	https://images.openfoodfacts.org/images/products/317/907/100/0978/front_fr.3.400.jpg
 			Sauce soja	soy-sauce														
 													cl	5			5	https://images.openfoodfacts.org/images/products/400/235/965/4404/front_fr.61.400.jpg
-			concassées de tomates 	chopped-tomatoes														
-													cl 	100			100	https://images.openfoodfacts.org/images/products/40879345/front_fr.48.400.jpg
 Epices et condiments	spices-condiments																	
 			Sel	salt														
 									pincées	pincée		unit			0,5	1		https://images.openfoodfacts.org/images/products/336/895/840/4163/front_fr.55.400.jpg
@@ -270,11 +272,17 @@ Herbes fraîches	fresh-herbs
 									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/611/126/609/0156/front_fr.3.full.jpg
 			Persil	parsley														
 									bottes	botte		unit			50			https://images.openfoodfacts.org/images/products/350/391/000/0117/front_fr.14.400.jpg
-Fromage 	cheese																	
+Fromages	cheeses																	
 			Emmental rapé	grated-emmental-cheese 														
 														100				https://images.openfoodfacts.org/images/products/322/802/117/0046/front_fr.154.400.jpg
 			Comté 	comté														
 														100				https://images.openfoodfacts.org/images/products/322/247/326/9501/front_fr.47.400.jpg
+			Feta	feta														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg
+			Petit suisse	petit-suisse														
+														100			50	https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg
+			Saint Moret	saint-moret														
+														100			50	https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg
 Pâtisserie	pastries																	
 			Farine de blé	wheat-flour														
 														250			50	https://images.openfoodfacts.org/images/products/306/811/070/2235/front_fr.80.400.jpg
@@ -292,6 +300,8 @@ Pâtisserie	pastries
 														25			25	https://images.openfoodfacts.org/images/products/356/470/061/1715/front_fr.27.200.jpg
 			Miel liquide	liquid-honey														
 														25			25	https://images.openfoodfacts.org/images/products/359/671/040/9556/front_fr.31.full.jpg
+			Noix de coco râpée	grated-coconut														
+														25			25	https://images.openfoodfacts.org/images/products/350/249/019/2106/front_fr.37.400.jpg
 			Noisettes	hazelnuts														
 														25			25	https://images.openfoodfacts.org/images/products/350/249/019/2106/front_fr.37.400.jpg
 			Sucre	sugar														

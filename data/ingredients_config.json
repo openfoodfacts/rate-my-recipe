@@ -31,14 +31,15 @@
         "lamb",
         "white-fish",
         "egg",
-        "tuna"
+        "tuna-in-brine",
+        "tuna-in-oil"
       ]
     },
     "fruits": {
       "category_name": "Fruits",
       "category_id": "fruits",
       "ingredients": [
-        "avocato ",
+        "avocado",
         "lemon",
         "orange",
         "apple",
@@ -46,15 +47,15 @@
         "pear"
       ]
     },
-    "Nut ": {
-      "category_name": "Fruit à coque ",
-      "category_id": "Nut ",
+    "nuts": {
+      "category_name": "Fruit à coque",
+      "category_id": "nuts",
       "ingredients": [
         "walnut",
-        "hazelnut ",
-        "pistachio nuts",
-        "peanut ",
-        "almond "
+        "hazelnut",
+        "pistachio-nuts",
+        "peanut",
+        "almond"
       ]
     },
     "vegetables": {
@@ -64,7 +65,7 @@
         "eggplant",
         "beetroot-cooked",
         "broccoli",
-        "butternut ",
+        "butternut",
         "carrot",
         "celery-branch",
         "cep",
@@ -82,14 +83,15 @@
         "fennel",
         "white-bean",
         "green-bean",
+        "helianthis",
         "lettuce",
         "maïs en conserve",
         "onions",
         "pearl-onion",
-        "garden-peas ",
+        "garden-peas",
         "green-chili-pepper",
         "red-chili-pepper",
-        "oyster-mushroom ",
+        "oyster-mushroom",
         "leek",
         "red-pepper",
         "green-pepper",
@@ -117,7 +119,7 @@
         "wheat-semolina",
         "rice",
         "basmati-rice",
-        "round-rice ",
+        "round-rice",
         "wild-rice",
         "pasta"
       ]
@@ -162,7 +164,7 @@
         "sugar",
         "garlic",
         "beef-stock",
-        "vegetable-broth ",
+        "vegetable-broth",
         "cinnamon",
         "preserved-lemon",
         "coriander  vegan",
@@ -183,7 +185,7 @@
         "ras-el-hanout",
         "concentrated-tomato",
         "peanut-butter",
-        "butter peanut ",
+        "butter peanut",
         "tahini",
         "zaatar"
       ]
@@ -198,17 +200,20 @@
         "mint",
         "rosemary",
         "green-onions",
-        "thyme ",
-        "Sage ",
+        "thyme",
+        "Sage",
         "parsley"
       ]
     },
-    "cheese": {
-      "category_name": "Fromage ",
-      "category_id": "cheese",
+    "cheeses": {
+      "category_name": "Fromages",
+      "category_id": "cheeses",
       "ingredients": [
-        "grated-emmental-cheese ",
-        "comté"
+        "grated-emmental-cheese",
+        "comté",
+        "feta",
+        "petit-suisse",
+        "saint-moret"
       ]
     },
     "pastries": {
@@ -217,12 +222,13 @@
       "ingredients": [
         "wheat-flour",
         "corn-flour",
-        "rice-flour ",
+        "rice-flour",
         "semolina-flour",
         "dark-chocolate",
         "milk-chocolate",
         "white-chocolate",
         "liquid-honey",
+        "grated-coconut",
         "hazelnuts",
         "sugar",
         "cane-sugar",
@@ -288,36 +294,44 @@
         "egg"
       ]
     },
-    "tuna": {
-      "ingredient_name": "Thon",
-      "ingredient_id": "tuna",
+    "tuna-in-brine": {
+      "ingredient_name": "Thon au naturel",
+      "ingredient_id": "tuna-in-brine",
       "category_id": "meat-fish-eggs",
       "quantities": [
-        "tuna"
+        "tuna-in-brine"
       ]
     },
-    "avocato ": {
-      "ingredient_name": "avocat ",
-      "ingredient_id": "avocato ",
+    "tuna-in-oil": {
+      "ingredient_name": "Thon à l'huile",
+      "ingredient_id": "tuna-in-oil",
+      "category_id": "meat-fish-eggs",
+      "quantities": [
+        "tuna-in-oil"
+      ]
+    },
+    "avocado": {
+      "ingredient_name": "Avocat",
+      "ingredient_id": "avocado",
       "category_id": "fruits",
       "quantities": [
-        "avocato .unit "
+        "avocado.unit"
       ]
     },
     "lemon": {
-      "ingredient_name": "Citron ",
+      "ingredient_name": "Citron",
       "ingredient_id": "lemon",
       "category_id": "fruits",
       "quantities": [
-        "lemon.unit "
+        "lemon.unit"
       ]
     },
     "orange": {
-      "ingredient_name": "Orange ",
+      "ingredient_name": "Orange",
       "ingredient_id": "orange",
       "category_id": "fruits",
       "quantities": [
-        "orange.unit "
+        "orange.unit"
       ]
     },
     "apple": {
@@ -337,51 +351,51 @@
       ]
     },
     "pear": {
-      "ingredient_name": "Poire ",
+      "ingredient_name": "Poire",
       "ingredient_id": "pear",
       "category_id": "fruits",
       "quantities": [
-        "pear.unit "
+        "pear.unit"
       ]
     },
     "walnut": {
-      "ingredient_name": "Noix ",
+      "ingredient_name": "Noix",
       "ingredient_id": "walnut",
-      "category_id": "Nut ",
+      "category_id": "nuts",
       "quantities": [
         "walnut"
       ]
     },
-    "hazelnut ": {
-      "ingredient_name": "Noisette ",
-      "ingredient_id": "hazelnut ",
-      "category_id": "Nut ",
+    "hazelnut": {
+      "ingredient_name": "Noisettes",
+      "ingredient_id": "hazelnut",
+      "category_id": "nuts",
       "quantities": [
-        "hazelnut "
+        "hazelnut"
       ]
     },
-    "pistachio nuts": {
-      "ingredient_name": "Pistache ",
-      "ingredient_id": "pistachio nuts",
-      "category_id": "Nut ",
+    "pistachio-nuts": {
+      "ingredient_name": "Pistaches",
+      "ingredient_id": "pistachio-nuts",
+      "category_id": "nuts",
       "quantities": [
-        "pistachio nuts"
+        "pistachio-nuts"
       ]
     },
-    "peanut ": {
-      "ingredient_name": "Cacahuete non salée ",
-      "ingredient_id": "peanut ",
-      "category_id": "Nut ",
+    "peanut": {
+      "ingredient_name": "Cacahuetes non salée",
+      "ingredient_id": "peanut",
+      "category_id": "nuts",
       "quantities": [
-        "peanut "
+        "peanut"
       ]
     },
-    "almond ": {
-      "ingredient_name": "Amande ",
-      "ingredient_id": "almond ",
-      "category_id": "Nut ",
+    "almond": {
+      "ingredient_name": "Amandes",
+      "ingredient_id": "almond",
+      "category_id": "nuts",
       "quantities": [
-        "almond "
+        "almond"
       ]
     },
     "eggplant": {
@@ -401,19 +415,19 @@
       ]
     },
     "broccoli": {
-      "ingredient_name": "Brocoli ",
+      "ingredient_name": "Brocoli",
       "ingredient_id": "broccoli",
       "category_id": "vegetables",
       "quantities": [
         "broccoli"
       ]
     },
-    "butternut ": {
-      "ingredient_name": "Butternut ",
-      "ingredient_id": "butternut ",
+    "butternut": {
+      "ingredient_name": "Butternut",
+      "ingredient_id": "butternut",
       "category_id": "vegetables",
       "quantities": [
-        "butternut "
+        "butternut"
       ]
     },
     "carrot": {
@@ -437,7 +451,7 @@
       "ingredient_id": "cep",
       "category_id": "vegetables",
       "quantities": [
-        "cep.unit "
+        "cep.unit"
       ]
     },
     "paris-mushrooms": {
@@ -449,7 +463,7 @@
       ]
     },
     "red-cabbage": {
-      "ingredient_name": "Chou rouge ",
+      "ingredient_name": "Chou rouge",
       "ingredient_id": "red-cabbage",
       "category_id": "vegetables",
       "quantities": [
@@ -457,7 +471,7 @@
       ]
     },
     "pumpkin": {
-      "ingredient_name": "Courge ",
+      "ingredient_name": "Courge",
       "ingredient_id": "pumpkin",
       "category_id": "vegetables",
       "quantities": [
@@ -481,11 +495,11 @@
       ]
     },
     "cucumber": {
-      "ingredient_name": "Concombre ",
+      "ingredient_name": "Concombre",
       "ingredient_id": "cucumber",
       "category_id": "vegetables",
       "quantities": [
-        "cucumber.unit "
+        "cucumber.unit"
       ]
     },
     "courgettes": {
@@ -537,15 +551,23 @@
       ]
     },
     "green-bean": {
-      "ingredient_name": "Haricot vert ",
+      "ingredient_name": "Haricot vert",
       "ingredient_id": "green-bean",
       "category_id": "vegetables",
       "quantities": [
         "green-bean"
       ]
     },
+    "helianthis": {
+      "ingredient_name": "Hélianthis",
+      "ingredient_id": "helianthis",
+      "category_id": "vegetables",
+      "quantities": [
+        "helianthis"
+      ]
+    },
     "lettuce": {
-      "ingredient_name": "Laitue ",
+      "ingredient_name": "Laitue",
       "ingredient_id": "lettuce",
       "category_id": "vegetables",
       "quantities": [
@@ -569,19 +591,19 @@
       ]
     },
     "pearl-onion": {
-      "ingredient_name": "Oignon grelot ",
+      "ingredient_name": "Oignon grelot",
       "ingredient_id": "pearl-onion",
       "category_id": "vegetables",
       "quantities": [
         "pearl-onion"
       ]
     },
-    "garden-peas ": {
-      "ingredient_name": "Petit pois ",
-      "ingredient_id": "garden-peas ",
+    "garden-peas": {
+      "ingredient_name": "Petit pois",
+      "ingredient_id": "garden-peas",
       "category_id": "vegetables",
       "quantities": [
-        "garden-peas "
+        "garden-peas"
       ]
     },
     "green-chili-pepper": {
@@ -600,12 +622,12 @@
         "red-chili-pepper"
       ]
     },
-    "oyster-mushroom ": {
-      "ingredient_name": "Pleurotte ",
-      "ingredient_id": "oyster-mushroom ",
+    "oyster-mushroom": {
+      "ingredient_name": "Pleurotte",
+      "ingredient_id": "oyster-mushroom",
       "category_id": "vegetables",
       "quantities": [
-        "oyster-mushroom "
+        "oyster-mushroom"
       ]
     },
     "leek": {
@@ -673,7 +695,7 @@
       ]
     },
     "parsnip": {
-      "ingredient_name": "Panais ",
+      "ingredient_name": "Panais",
       "ingredient_id": "parsnip",
       "category_id": "potatoes-legumes-cereals",
       "quantities": [
@@ -681,7 +703,7 @@
       ]
     },
     "sweet-potato": {
-      "ingredient_name": "Patate douce ",
+      "ingredient_name": "Patate douce",
       "ingredient_id": "sweet-potato",
       "category_id": "potatoes-legumes-cereals",
       "quantities": [
@@ -770,23 +792,23 @@
       ]
     },
     "basmati-rice": {
-      "ingredient_name": "Riz basmati ",
+      "ingredient_name": "Riz basmati",
       "ingredient_id": "basmati-rice",
       "category_id": "potatoes-legumes-cereals",
       "quantities": [
         "basmati-rice"
       ]
     },
-    "round-rice ": {
+    "round-rice": {
       "ingredient_name": "riz rond",
-      "ingredient_id": "round-rice ",
+      "ingredient_id": "round-rice",
       "category_id": "potatoes-legumes-cereals",
       "quantities": [
-        "round-rice "
+        "round-rice"
       ]
     },
     "wild-rice": {
-      "ingredient_name": "Riz sauvage ",
+      "ingredient_name": "Riz sauvage",
       "ingredient_id": "wild-rice",
       "category_id": "potatoes-legumes-cereals",
       "quantities": [
@@ -985,12 +1007,12 @@
         "beef-stock.unit"
       ]
     },
-    "vegetable-broth ": {
+    "vegetable-broth": {
       "ingredient_name": "Bouillon de légumes",
-      "ingredient_id": "vegetable-broth ",
+      "ingredient_id": "vegetable-broth",
       "category_id": "spices-condiments",
       "quantities": [
-        "vegetable-broth .unit "
+        "vegetable-broth.unit"
       ]
     },
     "cinnamon": {
@@ -1153,12 +1175,12 @@
         "peanut-butter.tbsp"
       ]
     },
-    "butter peanut ": {
-      "ingredient_name": "Purée de cachuete ",
-      "ingredient_id": "butter peanut ",
+    "butter peanut": {
+      "ingredient_name": "Purée de cachuete",
+      "ingredient_id": "butter peanut",
       "category_id": "spices-condiments",
       "quantities": [
-        "butter peanut "
+        "butter peanut"
       ]
     },
     "tahini": {
@@ -1210,7 +1232,7 @@
       ]
     },
     "rosemary": {
-      "ingredient_name": "Romarin ",
+      "ingredient_name": "Romarin",
       "ingredient_id": "rosemary",
       "category_id": "fresh-herbs",
       "quantities": [
@@ -1225,20 +1247,20 @@
         "green-onions.unit"
       ]
     },
-    "thyme ": {
+    "thyme": {
       "ingredient_name": "Thym",
-      "ingredient_id": "thyme ",
+      "ingredient_id": "thyme",
       "category_id": "fresh-herbs",
       "quantities": [
-        "thyme .unit"
+        "thyme.unit"
       ]
     },
-    "Sage ": {
-      "ingredient_name": "Sauge ",
-      "ingredient_id": "Sage ",
+    "Sage": {
+      "ingredient_name": "Sauge",
+      "ingredient_id": "Sage",
       "category_id": "fresh-herbs",
       "quantities": [
-        "Sage .unit"
+        "Sage.unit"
       ]
     },
     "parsley": {
@@ -1249,36 +1271,60 @@
         "parsley.unit"
       ]
     },
-    "grated-emmental-cheese ": {
+    "grated-emmental-cheese": {
       "ingredient_name": "Emmental rapé",
-      "ingredient_id": "grated-emmental-cheese ",
-      "category_id": "cheese",
+      "ingredient_id": "grated-emmental-cheese",
+      "category_id": "cheeses",
       "quantities": [
-        "grated-emmental-cheese "
+        "grated-emmental-cheese"
       ]
     },
     "comté": {
-      "ingredient_name": "Comté ",
+      "ingredient_name": "Comté",
       "ingredient_id": "comté",
-      "category_id": "cheese",
+      "category_id": "cheeses",
       "quantities": [
         "comté"
       ]
     },
+    "feta": {
+      "ingredient_name": "Feta",
+      "ingredient_id": "feta",
+      "category_id": "pastries",
+      "quantities": [
+        "feta"
+      ]
+    },
+    "petit-suisse": {
+      "ingredient_name": "Petit suisse",
+      "ingredient_id": "petit-suisse",
+      "category_id": "pastries",
+      "quantities": [
+        "petit-suisse"
+      ]
+    },
+    "saint-moret": {
+      "ingredient_name": "Saint Moret",
+      "ingredient_id": "saint-moret",
+      "category_id": "pastries",
+      "quantities": [
+        "saint-moret"
+      ]
+    },
     "corn-flour": {
-      "ingredient_name": "Farine de mais ",
+      "ingredient_name": "Farine de mais",
       "ingredient_id": "corn-flour",
       "category_id": "pastries",
       "quantities": [
         "corn-flour"
       ]
     },
-    "rice-flour ": {
+    "rice-flour": {
       "ingredient_name": "Farine de riz",
-      "ingredient_id": "rice-flour ",
+      "ingredient_id": "rice-flour",
       "category_id": "pastries",
       "quantities": [
-        "rice-flour "
+        "rice-flour"
       ]
     },
     "semolina-flour": {
@@ -1304,6 +1350,119 @@
       "quantities": [
         "milk-chocolate"
       ]
+    },
+    "white-chocolate": {
+      "ingredient_name": "Chocolat blanc",
+      "ingredient_id": "white-chocolate",
+      "category_id": "pastries",
+      "quantities": [
+        "white-chocolate"
+      ]
+    },
+    "liquid-honey": {
+      "ingredient_name": "Miel liquide",
+      "ingredient_id": "liquid-honey",
+      "category_id": "pastries",
+      "quantities": [
+        "liquid-honey"
+      ]
+    },
+    "grated-coconut": {
+      "ingredient_name": "Noix de coco râpée",
+      "ingredient_id": "grated-coconut",
+      "category_id": "pastries",
+      "quantities": [
+        "grated-coconut"
+      ]
+    },
+    "hazelnuts": {
+      "ingredient_name": "Noisettes",
+      "ingredient_id": "hazelnuts",
+      "category_id": "pastries",
+      "quantities": [
+        "hazelnuts"
+      ]
+    },
+    "cane-sugar": {
+      "ingredient_name": "Sucre de canne",
+      "ingredient_id": "cane-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "cane-sugar"
+      ]
+    },
+    "icing-sugar": {
+      "ingredient_name": "Sucre glace",
+      "ingredient_id": "icing-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "icing-sugar"
+      ]
+    },
+    "crystallized-sugar": {
+      "ingredient_name": "Sucre cristallisé",
+      "ingredient_id": "crystallized-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "crystallized-sugar"
+      ]
+    },
+    "vanilla-sugar": {
+      "ingredient_name": "Sucre vanillé",
+      "ingredient_id": "vanilla-sugar",
+      "category_id": "pastries",
+      "quantities": [
+        "vanilla-sugar"
+      ]
+    },
+    "egg-white": {
+      "ingredient_name": "Blanc d'oeuf",
+      "ingredient_id": "egg-white",
+      "category_id": "pastries",
+      "quantities": [
+        "egg-white"
+      ]
+    },
+    "egg-yolk": {
+      "ingredient_name": "Jaune d'oeuf",
+      "ingredient_id": "egg-yolk",
+      "category_id": "pastries",
+      "quantities": [
+        "egg-yolk"
+      ]
+    },
+    "shortbread-cookies": {
+      "ingredient_name": "Galettes bretonnes",
+      "ingredient_id": "shortbread-cookies",
+      "category_id": "pastries",
+      "quantities": [
+        "shortbread-cookies"
+      ]
+    },
+    "almond-powder": {
+      "ingredient_name": "Poudre d'amande",
+      "ingredient_id": "almond-powder",
+      "category_id": "pastries",
+      "quantities": [
+        "almond-powder"
+      ]
+    }
+  },
+  "quantities": {
+    "chicken.whole-unit": {
+      "quantity_name_plural": "poulets",
+      "quantity_name_singular": "poulet",
+      "quantity_ingredient_name": "Poulet entier",
+      "quantity_unit_id": "whole-unit",
+      "quantity_default_weight_per_unit": 1500,
+      "quantity_default_number_of_units": 1,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/223/389/123/9954/front_fr.3.400.jpg",
+      "quantity_id": "chicken.whole-unit",
+      "quantity_unit": "g",
+      "quantity_step": 1,
+      "category_id": "meat-fish-eggs",
+      "ingredient_id": "chicken",
+      "ingredient_name": "Poulet"
     },
     "white-chocolate": {
       "ingredient_name": "Chocolat blanc",
@@ -1539,61 +1698,72 @@
       "ingredient_id": "egg",
       "ingredient_name": "Oeuf"
     },
-    "tuna": {
-      "quantity_default_weight": 500,
+    "tuna-in-brine": {
+      "quantity_default_weight": 200,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/301/908/123/9640/front_fr.71.400.jpg",
-      "quantity_id": "tuna",
+      "quantity_id": "tuna-in-brine",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Thon",
+      "quantity_ingredient_name": "Thon au naturel",
       "category_id": "meat-fish-eggs",
-      "ingredient_id": "tuna",
-      "ingredient_name": "Thon"
+      "ingredient_id": "tuna-in-brine",
+      "ingredient_name": "Thon au naturel"
     },
-    "avocato .unit ": {
-      "quantity_name_plural": "avocats ",
-      "quantity_name_singular": "avocat ",
-      "quantity_unit_id": "unit ",
+    "tuna-in-oil": {
+      "quantity_default_weight": 200,
+      "quantity_step": 100,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/002/920/8063/front_fr.3.full.jpg",
+      "quantity_id": "tuna-in-oil",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Thon à l'huile",
+      "category_id": "meat-fish-eggs",
+      "ingredient_id": "tuna-in-oil",
+      "ingredient_name": "Thon à l'huile"
+    },
+    "avocado.unit": {
+      "quantity_name_plural": "avocats",
+      "quantity_name_singular": "avocat",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/843/517/706/0625/front_fr.18.400.jpg",
-      "quantity_id": "avocato .unit ",
+      "quantity_id": "avocado.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "avocat ",
+      "quantity_ingredient_name": "Avocat",
       "quantity_step": 1,
       "category_id": "fruits",
-      "ingredient_id": "avocato ",
-      "ingredient_name": "avocat "
+      "ingredient_id": "avocado",
+      "ingredient_name": "Avocat"
     },
-    "lemon.unit ": {
-      "quantity_name_plural": "citrons ",
-      "quantity_name_singular": "citron ",
-      "quantity_unit_id": "unit ",
+    "lemon.unit": {
+      "quantity_name_plural": "citrons",
+      "quantity_name_singular": "citron",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/843/517/700/3141/front_fr.3.400.jpg",
-      "quantity_id": "lemon.unit ",
+      "quantity_id": "lemon.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Citron ",
+      "quantity_ingredient_name": "Citron",
       "quantity_step": 1,
       "category_id": "fruits",
       "ingredient_id": "lemon",
-      "ingredient_name": "Citron "
+      "ingredient_name": "Citron"
     },
-    "orange.unit ": {
+    "orange.unit": {
       "quantity_name_plural": "oranges",
       "quantity_name_singular": "orange",
-      "quantity_unit_id": "unit ",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20241698/front_fr.28.400.jpg",
-      "quantity_id": "orange.unit ",
+      "quantity_id": "orange.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Orange ",
+      "quantity_ingredient_name": "Orange",
       "quantity_step": 1,
       "category_id": "fruits",
       "ingredient_id": "orange",
-      "ingredient_name": "Orange "
+      "ingredient_name": "Orange"
     },
     "apple.unit": {
       "quantity_name_plural": "pommes",
@@ -1625,75 +1795,75 @@
       "ingredient_id": "green-apple",
       "ingredient_name": "Pomme verte"
     },
-    "pear.unit ": {
+    "pear.unit": {
       "quantity_name_plural": "poires",
       "quantity_name_singular": "poire",
-      "quantity_unit_id": "unit ",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/300/001/703/6563/front_fr.4.400.jpg",
-      "quantity_id": "pear.unit ",
+      "quantity_id": "pear.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Poire ",
+      "quantity_ingredient_name": "Poire",
       "quantity_step": 1,
       "category_id": "fruits",
       "ingredient_id": "pear",
-      "ingredient_name": "Poire "
+      "ingredient_name": "Poire"
     },
     "walnut": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/260/994/804/8280/front_fr.3.400.jpg",
       "quantity_id": "walnut",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Noix ",
+      "quantity_ingredient_name": "Noix",
       "quantity_step": 1,
-      "category_id": "Nut ",
+      "category_id": "nuts",
       "ingredient_id": "walnut",
-      "ingredient_name": "Noix "
+      "ingredient_name": "Noix"
     },
-    "hazelnut ": {
+    "hazelnut": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/376/015/901/0561/front_fr.9.400.jpg",
-      "quantity_id": "hazelnut ",
+      "quantity_id": "hazelnut",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Noisette ",
+      "quantity_ingredient_name": "Noisettes",
       "quantity_step": 1,
-      "category_id": "Nut ",
-      "ingredient_id": "hazelnut ",
-      "ingredient_name": "Noisette "
+      "category_id": "nuts",
+      "ingredient_id": "hazelnut",
+      "ingredient_name": "Noisettes"
     },
-    "pistachio nuts": {
+    "pistachio-nuts": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/622/121/2297/front_fr.69.400.jpg",
-      "quantity_id": "pistachio nuts",
+      "quantity_id": "pistachio-nuts",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Pistache ",
+      "quantity_ingredient_name": "Pistaches",
       "quantity_step": 1,
-      "category_id": "Nut ",
-      "ingredient_id": "pistachio nuts",
-      "ingredient_name": "Pistache "
+      "category_id": "nuts",
+      "ingredient_id": "pistachio-nuts",
+      "ingredient_name": "Pistaches"
     },
-    "peanut ": {
+    "peanut": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20615420/front_fr.86.400.jpg",
-      "quantity_id": "peanut ",
+      "quantity_id": "peanut",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Cacahuete non salée ",
+      "quantity_ingredient_name": "Cacahuetes non salée",
       "quantity_step": 1,
-      "category_id": "Nut ",
-      "ingredient_id": "peanut ",
-      "ingredient_name": "Cacahuete non salée "
+      "category_id": "nuts",
+      "ingredient_id": "peanut",
+      "ingredient_name": "Cacahuetes non salée"
     },
-    "almond ": {
+    "almond": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/350/249/021/5621/front_fr.22.400.jpg",
-      "quantity_id": "almond ",
+      "quantity_id": "almond",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Amande ",
+      "quantity_ingredient_name": "Amandes",
       "quantity_step": 1,
-      "category_id": "Nut ",
-      "ingredient_id": "almond ",
-      "ingredient_name": "Amande "
+      "category_id": "nuts",
+      "ingredient_id": "almond",
+      "ingredient_name": "Amandes"
     },
     "eggplant": {
       "quantity_default_weight": 500,
@@ -1723,23 +1893,23 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/352/368/044/1026/front_fr.9.400.jpg",
       "quantity_id": "broccoli",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Brocoli ",
+      "quantity_ingredient_name": "Brocoli",
       "category_id": "vegetables",
       "ingredient_id": "broccoli",
-      "ingredient_name": "Brocoli "
+      "ingredient_name": "Brocoli"
     },
-    "butternut ": {
+    "butternut": {
       "quantity_name_plural": "Butternut",
       "quantity_name_singular": "Butternuts",
       "quantity_default_weight": 100,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/841/227/611/2905/front_fr.4.200.jpg",
-      "quantity_id": "butternut ",
+      "quantity_id": "butternut",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Butternut ",
+      "quantity_ingredient_name": "Butternut",
       "category_id": "vegetables",
-      "ingredient_id": "butternut ",
-      "ingredient_name": "Butternut "
+      "ingredient_id": "butternut",
+      "ingredient_name": "Butternut"
     },
     "carrot": {
       "quantity_default_weight": 500,
@@ -1767,14 +1937,14 @@
       "ingredient_id": "celery-branch",
       "ingredient_name": "Céleri branche"
     },
-    "cep.unit ": {
+    "cep.unit": {
       "quantity_name_plural": "Boites",
       "quantity_name_singular": "boite",
-      "quantity_unit_id": "unit ",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 50,
       "quantity_default_number_of_units": 2,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/20321710/front_fr.53.400.jpg",
-      "quantity_id": "cep.unit ",
+      "quantity_id": "cep.unit",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Cèpe séchée",
       "quantity_step": 1,
@@ -1794,22 +1964,22 @@
       "ingredient_name": "Champignons de Paris"
     },
     "red-cabbage.unit": {
-      "quantity_name_plural": "choux rouge ",
-      "quantity_name_singular": "chou rouge ",
+      "quantity_name_plural": "choux rouge",
+      "quantity_name_singular": "chou rouge",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 2,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/715/2358/front_fr.3.400.jpg",
       "quantity_id": "red-cabbage.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Chou rouge ",
+      "quantity_ingredient_name": "Chou rouge",
       "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "red-cabbage",
-      "ingredient_name": "Chou rouge "
+      "ingredient_name": "Chou rouge"
     },
     "pumpkin.unit": {
-      "quantity_name_plural": "courges ",
+      "quantity_name_plural": "courges",
       "quantity_name_singular": "courge",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
@@ -1817,11 +1987,11 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/061/720/1056/front_fr.4.400.jpg",
       "quantity_id": "pumpkin.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Courge ",
+      "quantity_ingredient_name": "Courge",
       "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "pumpkin",
-      "ingredient_name": "Courge "
+      "ingredient_name": "Courge"
     },
     "white-cabbage.unit": {
       "quantity_name_plural": "choux",
@@ -1853,20 +2023,20 @@
       "ingredient_id": "green-cabbage",
       "ingredient_name": "Chou vert"
     },
-    "cucumber.unit ": {
-      "quantity_name_plural": "concombres ",
+    "cucumber.unit": {
+      "quantity_name_plural": "concombres",
       "quantity_name_singular": "concombre",
-      "quantity_unit_id": "unit ",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 100,
       "quantity_default_number_of_units": 3,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/843/517/701/8961/front_fr.6.400.jpg",
-      "quantity_id": "cucumber.unit ",
+      "quantity_id": "cucumber.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Concombre ",
+      "quantity_ingredient_name": "Concombre",
       "quantity_step": 1,
       "category_id": "vegetables",
       "ingredient_id": "cucumber",
-      "ingredient_name": "Concombre "
+      "ingredient_name": "Concombre"
     },
     "courgettes.unit": {
       "quantity_name_plural": "courgettes",
@@ -1947,10 +2117,20 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/007/116/1668/front_fr.40.400.jpg",
       "quantity_id": "green-bean",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Haricot vert ",
+      "quantity_ingredient_name": "Haricot vert",
       "category_id": "vegetables",
       "ingredient_id": "green-bean",
-      "ingredient_name": "Haricot vert "
+      "ingredient_name": "Haricot vert"
+    },
+    "helianthis": {
+      "quantity_default_weight": 100,
+      "quantity_step": 100,
+      "quantity_id": "helianthis",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Hélianthis",
+      "category_id": "vegetables",
+      "ingredient_id": "helianthis",
+      "ingredient_name": "Hélianthis"
     },
     "lettuce": {
       "quantity_default_weight": 100,
@@ -1958,10 +2138,10 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/655/982/3125/front_fr.11.400.jpg",
       "quantity_id": "lettuce",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Laitue ",
+      "quantity_ingredient_name": "Laitue",
       "category_id": "vegetables",
       "ingredient_id": "lettuce",
-      "ingredient_name": "Laitue "
+      "ingredient_name": "Laitue"
     },
     "maïs en conserve": {
       "quantity_default_weight": 100,
@@ -1991,27 +2171,27 @@
     },
     "pearl-onion": {
       "quantity_name_plural": "oignons grelots",
-      "quantity_name_singular": "oignon grelot ",
+      "quantity_name_singular": "oignon grelot",
       "quantity_default_weight": 100,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/329/259/083/0519/front_fr.10.400.jpg",
       "quantity_id": "pearl-onion",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Oignon grelot ",
+      "quantity_ingredient_name": "Oignon grelot",
       "category_id": "vegetables",
       "ingredient_id": "pearl-onion",
-      "ingredient_name": "Oignon grelot "
+      "ingredient_name": "Oignon grelot"
     },
-    "garden-peas ": {
+    "garden-peas": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/325/039/294/8740/front_fr.15.400.jpg",
-      "quantity_id": "garden-peas ",
+      "quantity_id": "garden-peas",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Petit pois ",
+      "quantity_ingredient_name": "Petit pois",
       "quantity_step": 1,
       "category_id": "vegetables",
-      "ingredient_id": "garden-peas ",
-      "ingredient_name": "Petit pois "
+      "ingredient_id": "garden-peas",
+      "ingredient_name": "Petit pois"
     },
     "green-chili-pepper": {
       "quantity_default_weight": 100,
@@ -2035,16 +2215,16 @@
       "ingredient_id": "red-chili-pepper",
       "ingredient_name": "Piment rouge"
     },
-    "oyster-mushroom ": {
+    "oyster-mushroom": {
       "quantity_default_weight": 100,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/062/632/7723/front_fr.3.400.jpg",
-      "quantity_id": "oyster-mushroom ",
+      "quantity_id": "oyster-mushroom",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Pleurotte ",
+      "quantity_ingredient_name": "Pleurotte",
       "category_id": "vegetables",
-      "ingredient_id": "oyster-mushroom ",
-      "ingredient_name": "Pleurotte "
+      "ingredient_id": "oyster-mushroom",
+      "ingredient_name": "Pleurotte"
     },
     "leek": {
       "quantity_default_weight": 500,
@@ -2139,24 +2319,24 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/358/805/000/4027/front_fr.3.400.jpg",
       "quantity_id": "parsnip",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Panais ",
+      "quantity_ingredient_name": "Panais",
       "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "parsnip",
-      "ingredient_name": "Panais "
+      "ingredient_name": "Panais"
     },
     "sweet-potato": {
-      "quantity_name_plural": "patates douce ",
-      "quantity_name_singular": "patate douce ",
+      "quantity_name_plural": "patates douce",
+      "quantity_name_singular": "patate douce",
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/035/361/5377/front_fr.3.400.jpg",
       "quantity_id": "sweet-potato",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Patate douce ",
+      "quantity_ingredient_name": "Patate douce",
       "quantity_step": 1,
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "sweet-potato",
-      "ingredient_name": "Patate douce "
+      "ingredient_name": "Patate douce"
     },
     "potato": {
       "quantity_default_weight": 500,
@@ -2274,20 +2454,20 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/303/835/900/7224/front_fr.84.400.jpg",
       "quantity_id": "basmati-rice",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Riz basmati ",
+      "quantity_ingredient_name": "Riz basmati",
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "basmati-rice",
-      "ingredient_name": "Riz basmati "
+      "ingredient_name": "Riz basmati"
     },
-    "round-rice ": {
+    "round-rice": {
       "quantity_default_weight": 500,
       "quantity_step": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/356/470/057/7103/front_fr.38.400.jpg",
-      "quantity_id": "round-rice ",
+      "quantity_id": "round-rice",
       "quantity_unit": "g",
       "quantity_ingredient_name": "riz rond",
       "category_id": "potatoes-legumes-cereals",
-      "ingredient_id": "round-rice ",
+      "ingredient_id": "round-rice",
       "ingredient_name": "riz rond"
     },
     "wild-rice": {
@@ -2296,10 +2476,10 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/326/619/112/1079/front_fr.11.full.jpg",
       "quantity_id": "wild-rice",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Riz sauvage ",
+      "quantity_ingredient_name": "Riz sauvage",
       "category_id": "potatoes-legumes-cereals",
       "ingredient_id": "wild-rice",
-      "ingredient_name": "Riz sauvage "
+      "ingredient_name": "Riz sauvage"
     },
     "pasta": {
       "quantity_default_weight": 500,
@@ -2597,19 +2777,19 @@
       "ingredient_id": "beef-stock",
       "ingredient_name": "Bouillon de boeuf"
     },
-    "vegetable-broth .unit ": {
+    "vegetable-broth.unit": {
       "quantity_name_plural": "cubes",
       "quantity_name_singular": "cube",
-      "quantity_unit_id": "unit ",
+      "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 10,
       "quantity_default_number_of_units": 1,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/858/500/248/4093/front_fr.221.full.jpg",
-      "quantity_id": "vegetable-broth .unit ",
+      "quantity_id": "vegetable-broth.unit",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Bouillon de légumes",
       "quantity_step": 1,
       "category_id": "spices-condiments",
-      "ingredient_id": "vegetable-broth ",
+      "ingredient_id": "vegetable-broth",
       "ingredient_name": "Bouillon de légumes"
     },
     "cinnamon.tsp": {
@@ -2901,18 +3081,18 @@
       "ingredient_id": "peanut-butter",
       "ingredient_name": "Pâte d'arachide"
     },
-    "butter peanut ": {
-      "quantity_name_plural": "cuillères a soupe ",
+    "butter peanut": {
+      "quantity_name_plural": "cuillères a soupe",
       "quantity_name_singular": "cuillère à soupe",
       "quantity_default_weight_per_unit": 20,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/760/324/840/573/front_fr.4.400.jpg",
-      "quantity_id": "butter peanut ",
+      "quantity_id": "butter peanut",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Purée de cachuete ",
+      "quantity_ingredient_name": "Purée de cachuete",
       "quantity_step": 1,
       "category_id": "spices-condiments",
-      "ingredient_id": "butter peanut ",
-      "ingredient_name": "Purée de cachuete "
+      "ingredient_id": "butter peanut",
+      "ingredient_name": "Purée de cachuete"
     },
     "tahini.tbsp": {
       "quantity_name_plural": "cuillères à soupe",
@@ -3006,11 +3186,11 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/330/713/993/6826/front_fr.12.400.jpg",
       "quantity_id": "rosemary.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Romarin ",
+      "quantity_ingredient_name": "Romarin",
       "quantity_step": 1,
       "category_id": "fresh-herbs",
       "ingredient_id": "rosemary",
-      "ingredient_name": "Romarin "
+      "ingredient_name": "Romarin"
     },
     "green-onions.unit": {
       "quantity_name_plural": "bottes",
@@ -3026,33 +3206,33 @@
       "ingredient_id": "green-onions",
       "ingredient_name": "Oignons verts"
     },
-    "thyme .unit": {
+    "thyme.unit": {
       "quantity_name_plural": "bottes",
       "quantity_name_singular": "botte",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 50,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/370/045/710/0052/front_fr.4.full.jpg",
-      "quantity_id": "thyme .unit",
+      "quantity_id": "thyme.unit",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Thym",
       "quantity_step": 1,
       "category_id": "fresh-herbs",
-      "ingredient_id": "thyme ",
+      "ingredient_id": "thyme",
       "ingredient_name": "Thym"
     },
-    "Sage .unit": {
+    "Sage.unit": {
       "quantity_name_plural": "bottes",
       "quantity_name_singular": "botte",
       "quantity_unit_id": "unit",
       "quantity_default_weight_per_unit": 50,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/611/126/609/0156/front_fr.3.full.jpg",
-      "quantity_id": "Sage .unit",
+      "quantity_id": "Sage.unit",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Sauge ",
+      "quantity_ingredient_name": "Sauge",
       "quantity_step": 1,
       "category_id": "fresh-herbs",
-      "ingredient_id": "Sage ",
-      "ingredient_name": "Sauge "
+      "ingredient_id": "Sage",
+      "ingredient_name": "Sauge"
     },
     "parsley.unit": {
       "quantity_name_plural": "bottes",
@@ -3068,15 +3248,15 @@
       "ingredient_id": "parsley",
       "ingredient_name": "Persil"
     },
-    "grated-emmental-cheese ": {
+    "grated-emmental-cheese": {
       "quantity_default_weight": 100,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/322/802/117/0046/front_fr.154.400.jpg",
-      "quantity_id": "grated-emmental-cheese ",
+      "quantity_id": "grated-emmental-cheese",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Emmental rapé",
       "quantity_step": 1,
-      "category_id": "cheese",
-      "ingredient_id": "grated-emmental-cheese ",
+      "category_id": "cheeses",
+      "ingredient_id": "grated-emmental-cheese",
       "ingredient_name": "Emmental rapé"
     },
     "comté": {
@@ -3084,11 +3264,44 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/322/247/326/9501/front_fr.47.400.jpg",
       "quantity_id": "comté",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Comté ",
+      "quantity_ingredient_name": "Comté",
       "quantity_step": 1,
-      "category_id": "cheese",
+      "category_id": "cheeses",
       "ingredient_id": "comté",
-      "ingredient_name": "Comté "
+      "ingredient_name": "Comté"
+    },
+    "feta": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg",
+      "quantity_id": "feta",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Feta",
+      "category_id": "pastries",
+      "ingredient_id": "feta",
+      "ingredient_name": "Feta"
+    },
+    "petit-suisse": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg",
+      "quantity_id": "petit-suisse",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Petit suisse",
+      "category_id": "pastries",
+      "ingredient_id": "petit-suisse",
+      "ingredient_name": "Petit suisse"
+    },
+    "saint-moret": {
+      "quantity_default_weight": 100,
+      "quantity_step": 50,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg",
+      "quantity_id": "saint-moret",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Saint Moret",
+      "category_id": "pastries",
+      "ingredient_id": "saint-moret",
+      "ingredient_name": "Saint Moret"
     },
     "corn-flour": {
       "quantity_default_weight": 250,
@@ -3096,20 +3309,20 @@
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/759/100/200/0547/front_fr.35.full.jpg",
       "quantity_id": "corn-flour",
       "quantity_unit": "g",
-      "quantity_ingredient_name": "Farine de mais ",
+      "quantity_ingredient_name": "Farine de mais",
       "category_id": "pastries",
       "ingredient_id": "corn-flour",
-      "ingredient_name": "Farine de mais "
+      "ingredient_name": "Farine de mais"
     },
-    "rice-flour ": {
+    "rice-flour": {
       "quantity_default_weight": 250,
       "quantity_step": 50,
       "quantity_image_url": "https://images.openfoodfacts.org/images/products/332/948/660/5002/front_fr.24.full.jpg",
-      "quantity_id": "rice-flour ",
+      "quantity_id": "rice-flour",
       "quantity_unit": "g",
       "quantity_ingredient_name": "Farine de riz",
       "category_id": "pastries",
-      "ingredient_id": "rice-flour ",
+      "ingredient_id": "rice-flour",
       "ingredient_name": "Farine de riz"
     },
     "semolina-flour": {
@@ -3166,6 +3379,17 @@
       "category_id": "pastries",
       "ingredient_id": "liquid-honey",
       "ingredient_name": "Miel liquide"
+    },
+    "grated-coconut": {
+      "quantity_default_weight": 25,
+      "quantity_step": 25,
+      "quantity_image_url": "https://images.openfoodfacts.org/images/products/350/249/019/2106/front_fr.37.400.jpg",
+      "quantity_id": "grated-coconut",
+      "quantity_unit": "g",
+      "quantity_ingredient_name": "Noix de coco râpée",
+      "category_id": "pastries",
+      "ingredient_id": "grated-coconut",
+      "ingredient_name": "Noix de coco râpée"
     },
     "hazelnuts": {
       "quantity_default_weight": 25,
@@ -3274,39 +3498,6 @@
       "category_id": "pastries",
       "ingredient_id": "almond-powder",
       "ingredient_name": "Poudre d'amande"
-    },
-    "feta": {
-      "quantity_default_weight": 100,
-      "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/001/5523/front_fr.24.400.jpg",
-      "quantity_id": "feta",
-      "quantity_unit": "g",
-      "quantity_ingredient_name": "Feta",
-      "category_id": "pastries",
-      "ingredient_id": "feta",
-      "ingredient_name": "Feta"
-    },
-    "petit-suisse": {
-      "quantity_default_weight": 100,
-      "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/303/349/145/1683/front_fr.35.400.jpg",
-      "quantity_id": "petit-suisse",
-      "quantity_unit": "g",
-      "quantity_ingredient_name": "Petit suisse",
-      "category_id": "pastries",
-      "ingredient_id": "petit-suisse",
-      "ingredient_name": "Petit suisse"
-    },
-    "saint-moret": {
-      "quantity_default_weight": 100,
-      "quantity_step": 50,
-      "quantity_image_url": "https://images.openfoodfacts.org/images/products/327/277/009/7444/front_fr.10.400.jpg",
-      "quantity_id": "saint-moret",
-      "quantity_unit": "g",
-      "quantity_ingredient_name": "Saint Moret",
-      "category_id": "pastries",
-      "ingredient_id": "saint-moret",
-      "ingredient_name": "Saint Moret"
     }
   }
 }
