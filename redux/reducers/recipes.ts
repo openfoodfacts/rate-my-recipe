@@ -5,6 +5,46 @@ import {
 } from "@reduxjs/toolkit";
 import data from "../../data";
 
+/**
+ * Updates recipe ingredients and fetches nutritional data from Open Food Facts API.
+ * 
+ * This async thunk performs three main operations:
+ * 1. Updates the ingredient list in the recipe state (optimistic update)
+ * 2. Converts ingredients to Open Food Facts API format (comma-separated text)
+ * 3. Calls the API to calculate Nutri-Score, Eco-Score, and nutriments
+ * 
+ * @param {RecipeAction<UpdateActionType>} params - The action parameters
+ * @param {string} params.recipeId - The ID of the recipe to update ('userRecipe' or 'urlRecipe')
+ * @param {UpdateActionType} params.action - The type of update action to perform:
+ *   - 'upsert': Add or update an ingredient/quantity
+ *   - 'delete': Remove an ingredient/quantity
+ *   - 'overideFromURLParams': Load recipe from URL parameters
+ * @param {Object} thunkAPI - Redux Toolkit thunk API
+ * @returns {Promise<Object>} API response containing product with nutriscore, ecoscore, and nutriments
+ * 
+ * @example
+ * // Add a new ingredient
+ * dispatch(updateRecipeIngredients({
+ *   recipeId: 'userRecipe',
+ *   type: 'upsert',
+ *   ingredientCategoryId: 'meat-fish-eggs',
+ *   ingredientId: 'chicken',
+ *   quantityId: 'chicken.breast-unit',
+ *   quantityValue: 4
+ * }))
+ * 
+ * @example
+ * // Load recipe from URL parameters
+ * dispatch(updateRecipeIngredients({
+ *   recipeId: 'urlRecipe',
+ *   type: 'overideFromURLParams',
+ *   ingredients: [
+ *     { key: 'i1', value: 'chicken' },
+ *     { key: 'q1', value: 'chicken.breast-unit' },
+ *     { key: 'v1', value: '4' }
+ *   ]
+ * }))
+ */
 export const updateRecipeIngredients = createAsyncThunk(
   "updateIngredients",
   async (
@@ -74,6 +114,23 @@ export const INGREDIENT = "i";
 export const QUANTITY = "q";
 export const VALUE = "v";
 
+/**
+ * Groups URL parameters by their numeric index.
+ * 
+ * Transforms an array of key-value pairs (i1, q1, v1, i2, q2, v2, ...)
+ * into an object where each index maps to an ingredient configuration.
+ * 
+ * @param {Array<{key: string, value: string}>} params - Array of URL parameters
+ * @returns {Object} Grouped parameters by index, with ingredientId, quantityId, and value
+ * 
+ * @example
+ * groupURLParams([
+ *   { key: 'i1', value: 'chicken' },
+ *   { key: 'q1', value: 'chicken.breast-unit' },
+ *   { key: 'v1', value: '4' }
+ * ])
+ * // Returns: { '1': { ingredientId: 'chicken', quantityId: 'chicken.breast-unit', value: 4 } }
+ */
 function groupURLParams(params: { key: string; value: string }[]) {
   const rep: {
     [k: string]: {
@@ -100,6 +157,26 @@ function groupURLParams(params: { key: string; value: string }[]) {
 
   return rep;
 }
+/**
+ * Groups ingredient quantities by ingredient ID.
+ * 
+ * Takes grouped URL parameters and organizes them by ingredient,
+ * collecting all quantities for each ingredient.
+ * Validates that ingredients exist in the dataset before including them.
+ * 
+ * @param {Object} groupedParams - Grouped parameters from groupURLParams
+ * @returns {Object} Ingredients with their quantities { ingredientId: [{ q: quantityId, v: value }] }
+ * 
+ * @example
+ * groupByIngredient({
+ *   '1': { ingredientId: 'chicken', quantityId: 'chicken.breast-unit', value: 4 },
+ *   '2': { ingredientId: 'rice', quantityId: 'rice', value: 200 }
+ * })
+ * // Returns: { 
+ * //   chicken: [{ q: 'chicken.breast-unit', v: 4 }],
+ * //   rice: [{ q: 'rice', v: 200 }]
+ * // }
+ */
 function groupByIngredient(groupedParams: {
   [k: string]: {
     ingredientId?: string;
@@ -190,6 +267,28 @@ type UpdateActionType =
       }[];
     };
 
+/**
+ * Pure reducer function that updates the ingredients array based on action type.
+ * 
+ * Handles three types of updates:
+ * - 'upsert': Add new ingredient or update existing ingredient/quantity
+ * - 'delete': Remove a specific quantity from an ingredient
+ * - 'overideFromURLParams': Replace entire ingredients array from URL parameters
+ * 
+ * @param {Ingredient[]} ingredients - Current ingredients array
+ * @param {UpdateActionType} action - The action to perform
+ * @returns {Ingredient[]} New ingredients array (immutable update)
+ * 
+ * @example
+ * // Add new ingredient
+ * ingredientReducer([], {
+ *   type: 'upsert',
+ *   ingredientCategoryId: 'meat-fish-eggs',
+ *   ingredientId: 'chicken',
+ *   quantityId: 'chicken.breast-unit',
+ *   quantityValue: 4
+ * })
+ */
 const ingredientReducer = (
   ingredients: Ingredient[],
   action: UpdateActionType
