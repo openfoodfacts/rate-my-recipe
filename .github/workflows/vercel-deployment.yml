@@ -18,6 +18,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     
     steps:
       - name: Checkout code
@@ -33,15 +35,15 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }}
 
       - name: Build Project Artifacts
-        run: vercel build ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build ${{ github.event_name == 'push' && '--prod' || '' }}
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
         run: |
-          DEPLOYMENT_URL=$(vercel deploy --prebuilt ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          DEPLOYMENT_URL=$(vercel deploy --prebuilt ${{ github.event_name == 'push' && '--prod' || '' }})
           echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
           echo "Deployment URL: $DEPLOYMENT_URL"
 
