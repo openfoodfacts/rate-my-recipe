@@ -49,13 +49,13 @@ jobs:
           script: |
             const deploymentUrl = '${{ steps.deploy.outputs.deployment_url }}';
             const comment = `## 🚀 Vercel Preview Deployment
-            
-            ✅ Preview deployment is ready!
-            
-            🔗 **Preview URL:** ${deploymentUrl}
-            
-            ---
-            *Deployed via GitHub Actions*`;
+
+✅ Preview deployment is ready!
+
+🔗 **Preview URL:** ${deploymentUrl}
+
+---
+*Deployed via GitHub Actions*`;
             
             github.rest.issues.createComment({
               issue_number: context.issue.number,
