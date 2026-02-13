@@ -52,7 +52,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const deploymentUrl = '${{ steps.deploy.outputs.deployment_url }}';
+            const deploymentUrl = `${{ steps.deploy.outputs.deployment_url }}`;
             const comment = `## 🚀 Vercel Preview Deployment
 
 ✅ Preview deployment is ready!
