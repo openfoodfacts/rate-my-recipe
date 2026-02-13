@@ -59,6 +59,24 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+### Automated Vercel Deployments
+
+This repository is configured with automated Vercel deployments via GitHub Actions:
+
+- **Pull Requests**: Every PR automatically gets a preview deployment on Vercel
+- **Main Branch**: Pushes to main branch trigger production deployments
+
+#### Setup Requirements
+
+To enable automated deployments, the following GitHub secrets need to be configured in the repository settings:
+
+1. `VERCEL_TOKEN` - Your Vercel authentication token
+   - Get it from: https://vercel.com/account/tokens
+2. `VERCEL_ORG_ID` - Your Vercel organization ID (automatically pulled by the workflow)
+3. `VERCEL_PROJECT_ID` - Your Vercel project ID (automatically pulled by the workflow)
+
+The workflow will automatically comment on PRs with the preview deployment URL.
+
 ## Redux infra
 
 ![Untitled-2022-11-29-1840](https://github.com/openfoodfacts/rate-my-recipe/assets/45398769/2a199fa5-5ade-4f4a-bce2-780bd0ed9800)
