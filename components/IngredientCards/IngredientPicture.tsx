@@ -24,7 +24,7 @@ export const IngredientPicture = ({
         objectFit="contain"
         sx={{ my: 1 }}
         src={imageUrl}
-        alt=""
+        alt={ingredientName || 'Ingredient image'}
       />
     </>
   );
