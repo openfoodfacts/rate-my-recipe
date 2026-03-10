@@ -32,12 +32,56 @@ import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 import { useTranslation } from "react-i18next";
 import { MuiJoyTheme } from "@/theme";
 
+/**
+ * Main application page component for Rate My Recipe.
+ * 
+ * This is the primary user interface that orchestrates the entire recipe creation
+ * and nutritional analysis experience. It handles:
+ * 
+ * - URL parameter parsing for shared recipes
+ * - Theme provider setup (Material-UI + Joy UI)
+ * - Recipe state management via Redux
+ * - User interactions (add, edit, delete ingredients)
+ * - Nutritional data display
+ * 
+ * Component Structure:
+ * - AppBar: Navigation and sharing controls
+ * - IngredientCards: Display selected ingredients
+ * - Bottom Sheet: Controls for adding ingredients and viewing nutrition
+ * - IngredientSelector: Modal for ingredient selection
+ * 
+ * URL Parameters:
+ * Supports recipe sharing via URL parameters (i1, q1, v1 format).
+ * On mount, checks for URL parameters and loads them into the recipe state.
+ * 
+ * @component
+ * @returns {JSX.Element} The main application page
+ * 
+ * @example
+ * // Accessed via URL with recipe parameters
+ * // https://example.com/?i1=chicken&q1=chicken.breast-unit&v1=4
+ * // Will automatically load the recipe with 4 chicken breasts
+ */
 export default function Home() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
 
   const materialTheme = materialExtendTheme();
+  
+  /**
+   * Effect: Parse and load recipe from URL parameters on mount.
+   * 
+   * When the page loads with URL parameters (shared recipe), this effect:
+   * 1. Extracts all search parameters from the URL
+   * 2. Dispatches updateRecipeIngredients for both userRecipe and urlRecipe
+   * 3. Triggers API call to calculate nutritional information
+   * 
+   * The urlRecipe is kept as a separate copy to allow comparison between
+   * the original shared recipe and any user modifications.
+   * 
+   * Only runs when searchParams changes (i.e., URL changes).
+   */
   React.useEffect(() => {
     const ingredients = Array.from(searchParams.entries());
 
