@@ -44,6 +44,7 @@ const PublishRecipe = () => {
     );
 
     const ingredients = currentIngredients.flatMap((ingredient) => {
+      // TODO: manage the custom ingredients
       const ingredientData = data.ingredients[ingredient.id];
 
       return ingredient.quantities.map((quantity) => {
@@ -100,7 +101,11 @@ const PublishRecipe = () => {
   }
   // Display the publish button only if we have at least one ingredient
   // and a Nutri-Score computed
-  if ((currentIngredients.length > 0)  && (currentNutriscore !== undefined) && (currentNutriscore !== "")) {
+  if (
+    currentIngredients.length > 0 &&
+    currentNutriscore !== undefined &&
+    currentNutriscore !== ""
+  ) {
     return (
       <Button
         variant="solid"

@@ -10,6 +10,9 @@ const getDefaultQuantityValue = (state: EditorState) => {
     throw new Error(`state.quantityId is "${state.quantityId}"`);
   }
 
+  if (state.quantityId === "unknown") {
+    return 1;
+  }
   const currentQuantity = data.quantities[state.quantityId];
 
   if (currentQuantity === undefined) {
@@ -32,7 +35,12 @@ const getDefaultQuantityValue = (state: EditorState) => {
   return 1;
 };
 
-export type ViewsTypes = "category" | "ingredient" | "quantity" | "value";
+export type ViewsTypes =
+  | "category"
+  | "ingredient"
+  | "quantity"
+  | "value"
+  | "customIngredient";
 
 type EditorState = {
   currentView: null | ViewsTypes;
@@ -40,6 +48,10 @@ type EditorState = {
   ingredientId?: string | null;
   quantityId?: string | null;
   quantityValue?: number | null;
+  /**
+   * A custom ingredient name. Only usefull for custom ingredients
+   */
+  ingredientName?: string;
   // This identifies the modified ingredient, so that we can delete it if validated
   modifiedIngredient?: {
     categoryId: string | null;
@@ -55,6 +67,7 @@ const editor = createSlice<EditorState, SliceCaseReducers<EditorState>, string>(
       currentView: null,
       categoryId: null,
       ingredientId: null,
+      ingredientName: "",
       quantityId: null,
       quantityValue: null,
     },

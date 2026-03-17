@@ -26,6 +26,7 @@ export function GenericCard({
         display: "flex",
         justifyContent: "center",
         border: "1px solid lightGrey",
+        ...(!imgUrl && !icons ? { py: 8 } : {}),
       }}
       onClick={onClick}
     >
@@ -38,9 +39,6 @@ export function GenericCard({
           src={imgUrl}
           alt={title}
         />
-      )}
-      {!imgUrl && !icons && (
-        <ImagePlaceholder height={70} placeholderText={"no image sorry"} />
       )}
       <CardContent>
         {icons && (

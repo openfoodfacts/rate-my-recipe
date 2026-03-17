@@ -1,14 +1,12 @@
 import { createSelector } from "reselect";
 import { RootState } from "./store";
-import data from "../data";
+import data, { QuantityType } from "../data";
 import { VALUE, QUANTITY, INGREDIENT } from "./reducers/recipes";
 
 export const selectCurrentIngredients = createSelector(
-  
   (state: RootState, currentRecipeId: string) => currentRecipeId,
   (state: RootState) => state.recipe.recipes,
   (currentRecipeId, recipes) => recipes[currentRecipeId].ingredients
-
 );
 
 export const selectURLParams = createSelector(
@@ -43,7 +41,8 @@ export const selectEditorView = createSelector(
 export const selectEditorCurrentCategory = createSelector(
   (state: RootState) => state.editor,
   (editor) =>
-    (editor.categoryId != undefined && data.categories[editor.categoryId]) || null
+    (editor.categoryId != undefined && data.categories[editor.categoryId]) ||
+    null
 );
 
 export const selectEditorCurrentIngredient = createSelector(
@@ -56,7 +55,19 @@ export const selectEditorCurrentIngredient = createSelector(
 
 export const selectEditorCurrentQuantity = createSelector(
   (state: RootState) => state.editor,
-  (editor) =>
-    (editor.quantityId != undefined && data.quantities[editor.quantityId]) ||
-    null
+  (editor) => {
+    if (editor.quantityId === "unknown") {
+      return {
+        quantity_id: "undefined",
+        quantity_unit: "g",
+        quantity_step: 1,
+        category_id: editor.categoryId,
+        ingredient_id: editor.ingredientId,
+      } as QuantityType;
+    }
+    return (
+      (editor.quantityId != undefined && data.quantities[editor.quantityId]) ||
+      null
+    );
+  }
 );

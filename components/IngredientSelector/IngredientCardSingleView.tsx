@@ -29,13 +29,12 @@ export function IngredientCardSingleView({
   step = 2,
   weightPerUnit,
 }: QuantityCardProps) {
-
   // If the weight is not per g, we will display an equivalence
   var weight = "";
   if (weightPerUnit !== undefined) {
-    weight = " (" + (quantityValue! * weightPerUnit) + " g)";
+    weight = " (" + quantityValue! * weightPerUnit + " g)";
   }
-  
+
   return (
     <Card
       sx={{
@@ -72,9 +71,15 @@ export function IngredientCardSingleView({
         >
           <Input
             type="number"
-            value={quantityValue!}
+            value={`${Math.max(0, quantityValue ?? 0)}`}
             onChange={onInputChange}
-            endDecorator={<Typography> {unit}{weight}</Typography>}
+            endDecorator={
+              <Typography>
+                {" "}
+                {unit}
+                {weight}
+              </Typography>
+            }
           />
         </ValueEditor>
       </CardContent>

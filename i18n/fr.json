@@ -7,7 +7,8 @@
     "next": "Suivant",
     "cancel": "Annuler",
     "validate": "Valider",
-    "publish_recipe": "Publier la recette"
+    "publish_recipe": "Publier la recette",
+    "other_ingredient": "Autre ingrédient"
   },
   "nutriments": {
     "unknown": "N/A",
