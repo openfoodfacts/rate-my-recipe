@@ -20,7 +20,7 @@ export const IngredientPicture = ({
 
       <ResponsiveImage
         minHeight="50px"
-        maxHeight="150px"
+        maxHeight="100%"
         objectFit="contain"
         sx={{ my: 1 }}
         src={imageUrl}
