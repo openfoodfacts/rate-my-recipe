@@ -1,3 +1,7 @@
+> [!WARNING]  
+> We are now focused on https://github.com/openfoodfacts/score-my-recipe which is the sucessor to Rate my Recipe
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
